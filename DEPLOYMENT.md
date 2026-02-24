@@ -93,7 +93,7 @@ Scroll to **Environment Variables** and click **Add Environment Variable**. Add 
 | `DATABASE_URL` | Paste the **full connection string** you copied from Neon | The `postgresql://...?sslmode=require` string. |
 | `JWT_SECRET` | A long random string | Example: open PowerShell and run `[Convert]::ToBase64String((1..32 | ForEach-Object { Get-Random -Maximum 256 }) -as [byte[]])` and use the output. Or use any long random phrase (e.g. 32+ characters). |
 | `NODE_ENV` | `production` | Exactly this. |
-| `CORS_ORIGINS` | `https://group.vercel.app,https://admin.vercel.app,https://entertainment.vercel.app,https://construction.vercel.app,https://mansaluxe-realty.vercel.app` | We’ll add your real Vercel URLs in Step 2.6 after the first deploy. For the first deploy you can leave this as above (Vercel will give similar URLs). |
+| `CORS_ORIGINS` | `https://group.vercel.app,https://admin.vercel.app,https://entertainment.vercel.app,https://construction.vercel.app,https://mansaluxe-realty.vercel.app` | We’ll add your real Vercel URLs in Step 2.7 after the first deploy. For the first deploy you can leave this as above (Vercel will give similar URLs). |
 | `UPLOAD_URL` | `https://mrdgn-api.onrender.com/uploads` | **Replace `mrdgn-api` with your Render service name** if you used a different name in Step 2.2. |
 | `API_ORIGIN` | `https://mrdgn-api.onrender.com` | Same as above, without `/uploads`. |
 
@@ -107,7 +107,25 @@ Click **Save** after adding each variable.
 4. At the top of the page you’ll see your service URL, e.g. **https://mrdgn-api.onrender.com**.  
    **Copy this URL** – this is your backend API URL. You’ll use it as `VITE_API_URL` in Part 3.
 
-## Step 2.5 – Create admin user (optional but useful)
+## Step 2.5 – Seed the database (required for properties, blogs, admin)
+
+Your Neon database has empty tables until you run the seed. Do this **once** from your computer:
+
+1. Open the **backend** folder and create or edit **`.env`** (do not commit this file).
+2. Set **only** this variable to your **Neon** connection string (the same one you use on Render):
+   ```env
+   DATABASE_URL="postgresql://USER:PASSWORD@ep-xxx.region.aws.neon.tech/neondb?sslmode=require"
+   ```
+3. In a terminal, from the **backend** folder, run:
+   ```bash
+   cd backend
+   npm run db:seed
+   ```
+4. You should see lines like: “Created admin user”, “Created 6 filler blog posts”, “Created 5 filler properties”, etc. After this, your live site will show blogs, properties, and you can log in to the admin with the seeded email/password (see your seed or `.env.example` for the default).
+
+If you skip this step, the sites will load but **blogs and properties will be empty**.
+
+## Step 2.6 – Create admin user (optional if you already seeded)
 
 1. In Render, open your service → **Shell** tab (or use a one-off job if available).
 2. If Shell is available, run:
@@ -118,7 +136,7 @@ Click **Save** after adding each variable.
 
 If Shell isn’t available, you can run `npm run db:seed` once from your computer after setting `DATABASE_URL` in your local `backend/.env` to the **same Neon connection string** (so you’re seeding the same DB).
 
-## Step 2.6 – Update CORS with your real Vercel URLs
+## Step 2.7 – Update CORS with your real Vercel URLs
 
 After you deploy the 5 sites on Vercel (Part 3), you’ll get URLs like:
 
@@ -161,7 +179,7 @@ You’ll create **5 separate Vercel projects**, one per app. Each project uses t
    - **Value:** your Render backend URL **with no slash at the end**, e.g. `https://mrdgn-api.onrender.com`
    - **Environments:** check Production, Preview, and Development.
 5. Click **Deploy**.
-6. Wait for the build to finish. You’ll get a URL like `https://mrdgn-group.vercel.app`. Save it for Step 2.6 (CORS).
+6. Wait for the build to finish. You’ll get a URL like `https://mrdgn-group.vercel.app`. Save it for Step 2.7 (CORS).
 
 ## Step 3.3 – Deploy the second site (Admin)
 

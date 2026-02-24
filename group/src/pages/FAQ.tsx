@@ -46,19 +46,39 @@ const faqItems = [
   },
   {
     question: 'What does MrDGN Entertainment do?',
-    answer: 'MrDGN Entertainment focuses on content creation, digital media, and entertainment experiences. This includes production, events, and brand partnerships. You can learn more and get in touch via their website at entertainment.mrdgngroup.com.',
+    answer: (
+      <>
+        MrDGN Entertainment focuses on content creation, digital media, and entertainment experiences. This includes production, events, and brand partnerships. You can learn more and get in touch via their website at{' '}
+        <a href="https://entertainment.mrdgngroup.com/" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">entertainment.mrdgngroup.com</a>.
+      </>
+    ),
   },
   {
     question: 'What does MrDGN Construction offer?',
-    answer: 'MrDGN Construction delivers commercial and residential construction, infrastructure projects, and green building solutions. They combine quality execution with sustainable practices. Visit construction.mrdgngroup.com for more.',
+    answer: (
+      <>
+        MrDGN Construction delivers commercial and residential construction, infrastructure projects, and green building solutions. They combine quality execution with sustainable practices. Visit{' '}
+        <a href="https://construction.mrdgngroup.com/" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">construction.mrdgngroup.com</a> for more.
+      </>
+    ),
   },
   {
     question: 'What services does Mansa Luxe Realty Limited provide?',
-    answer: 'Mansa Luxe Realty Limited offers property sales, investment advisory, property management, and market analysis. They focus on connecting clients with the right properties and opportunities. See mansaluxerealty.mrdgngroup.com for details.',
+    answer: (
+      <>
+        Mansa Luxe Realty Limited offers property sales, investment advisory, property management, and market analysis. They focus on connecting clients with the right properties and opportunities. See{' '}
+        <a href="https://mansaluxerealty.mrdgngroup.com/" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">mansaluxerealty.mrdgngroup.com</a> for details.
+      </>
+    ),
   },
   {
     question: 'What is Duerents?',
-    answer: 'Duerents is our technology subsidiary focused on property management and rentals. They provide rental platforms, automated solutions, and tenant management tools. More information is available at duerents.com.',
+    answer: (
+      <>
+        Duerents is our technology subsidiary focused on property management and rentals. They provide rental platforms, automated solutions, and tenant management tools. More information is available at{' '}
+        <a href="https://duerents.com/" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">duerents.com</a>.
+      </>
+    ),
   },
   {
     question: 'What are your business hours?',

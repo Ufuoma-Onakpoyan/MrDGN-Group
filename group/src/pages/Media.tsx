@@ -49,6 +49,7 @@ const Media = () => {
           ) : error ? (
             <div className="text-center py-20">
               <p className="text-muted-foreground">Error loading blog posts. Please try again later.</p>
+              <p className="text-sm text-muted-foreground mt-2">{error instanceof Error ? error.message : ''}</p>
             </div>
           ) : (
             <div className="grid md:grid-cols-2 gap-8">

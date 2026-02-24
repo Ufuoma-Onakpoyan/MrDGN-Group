@@ -89,7 +89,7 @@ const Contact = () => {
     {
       icon: MapPin,
       title: 'Visit Us',
-      details: 'Head Office, Asaba, Delta State, Nigeria',
+      details: 'Jossie Excel School, After Okpanam City Gate by the Express, Asaba, Delta State',
       description: 'Get directions',
       href: 'https://www.google.com/maps/place/MR+DGN+Construction+%26+Developers+Ltd/@6.2339308,6.6315024,17z/data=!3m1!4b1!4m6!3m5!1s0x1043f131bd08a91f:0xc8d3b62056822334!8m2!3d6.2339308!4d6.6340773!16s%2Fg%2F11nm_wxdx4?entry=ttu',
     },
@@ -311,7 +311,7 @@ const Contact = () => {
                 Where is your head office?
               </AccordionTrigger>
               <AccordionContent className="text-muted-foreground">
-                Our head office is in Asaba, Delta State, Nigeria. The map below shows the location; you can also open it in Google Maps for directions.
+                Our head office is at Jossie Excel School, After Okpanam City Gate by the Express, Asaba, Delta State. The map below shows the location; you can also open it in Google Maps for directions.
               </AccordionContent>
             </AccordionItem>
             <AccordionItem value="contact-3" className="border-border bg-card px-6 rounded-lg mb-4 tile-glassy">
@@ -334,7 +334,7 @@ const Contact = () => {
                 Find Our Office
               </h2>
               <p className="text-xl text-muted-foreground">
-                Head Office, Asaba, Delta State. Use the map below or <a href="https://www.google.com/maps/place/MR+DGN+Construction+%26+Developers+Ltd/@6.2339308,6.6315024,17z/data=!3m1!4b1!4m6!3m5!1s0x1043f131bd08a91f:0xc8d3b62056822334!8m2!3d6.2339308!4d6.6340773!16s%2Fg%2F11nm_wxdx4?entry=ttu" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">open in Google Maps</a> for directions.
+                Jossie Excel School, After Okpanam City Gate by the Express, Asaba, Delta State. Use the map below or <a href="https://www.google.com/maps/place/MR+DGN+Construction+%26+Developers+Ltd/@6.2339308,6.6315024,17z/data=!3m1!4b1!4m6!3m5!1s0x1043f131bd08a91f:0xc8d3b62056822334!8m2!3d6.2339308!4d6.6340773!16s%2Fg%2F11nm_wxdx4?entry=ttu" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">open in Google Maps</a> for directions.
               </p>
             </div>
             <div className="max-w-4xl mx-auto">

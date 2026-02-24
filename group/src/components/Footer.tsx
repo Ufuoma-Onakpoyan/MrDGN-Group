@@ -40,10 +40,10 @@ const Footer = () => {
     }
   };
   const businesses = [
-    { name: "MrDGN Entertainment", logo: "/assets/logo-entertainment.png" },
-    { name: "MrDGN Construction", logo: "/assets/logo-construction.png" },
-    { name: "Mansa Luxe Realty Limited", logo: "/assets/logo-mansaluxe.png" },
-    { name: "DueRent", logo: "/assets/duerent-logo.png" }
+    { name: "MrDGN Entertainment", logo: "/assets/logo-entertainment.png", url: "https://entertainment.mrdgngroup.com/" },
+    { name: "MrDGN Construction", logo: "/assets/logo-construction.png", url: "https://construction.mrdgngroup.com/" },
+    { name: "Mansa Luxe Realty Limited", logo: "/assets/logo-mansaluxe.png", url: "https://mansaluxerealty.mrdgngroup.com/" },
+    { name: "DueRent", logo: "/assets/duerent-logo.png", url: "https://duerents.com/" }
   ];
 
   return (
@@ -63,7 +63,7 @@ const Footer = () => {
               A modern holding company building the future across entertainment, construction, and real estate industries.
             </p>
             <p className="text-muted-foreground text-sm">
-              Head Office: Jossie Excel School, After okpanam City Gate by the express, Asaba, delta state · <a href="tel:+2348135324467" className="hover:text-foreground">+234 813 532 4467</a> · <a href="https://wa.me/2348135324467" target="_blank" rel="noopener noreferrer" className="hover:text-foreground">WhatsApp</a>
+              Head Office: Jossie Excel School, After Okpanam City Gate by the Express, Asaba, Delta State · <a href="tel:+2348135324467" className="hover:text-foreground">+234 813 532 4467</a> · <a href="https://wa.me/2348135324467" target="_blank" rel="noopener noreferrer" className="hover:text-foreground">WhatsApp</a>
             </p>
             <div className="flex items-center gap-3 mt-4">
               <span className="text-muted-foreground text-sm">Follow us:</span>
@@ -86,9 +86,14 @@ const Footer = () => {
                     alt={`${business.name} Logo`}
                     className="h-9 w-9 object-contain flex-shrink-0 drop-shadow-sm"
                   />
-                  <span className="text-muted-foreground hover:text-foreground transition-colors">
+                  <a 
+                    href={business.url} 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className="text-muted-foreground hover:text-foreground transition-colors"
+                  >
                     {business.name}
-                  </span>
+                  </a>
                 </li>
               ))}
             </ul>

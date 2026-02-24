@@ -33,7 +33,8 @@ router.get('/', async (req: Request, res: Response) => {
       ? posts.filter((p) => postMatchesSource(p.sources, source))
       : posts;
     res.json(filtered.map(mapPostWithSources));
-  } catch {
+  } catch (e) {
+    console.error('Blog list error:', e);
     res.status(500).json({ error: 'Failed to fetch blog posts' });
   }
 });

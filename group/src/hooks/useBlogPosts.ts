@@ -28,8 +28,12 @@ function normalizeFeaturedImageUrl(url: string | null | undefined): string | nul
 
 async function fetchPosts(source: string): Promise<BlogPost[]> {
   if (!API_BASE) return [];
-  const res = await fetch(`${API_BASE}/api/blog?source=${encodeURIComponent(source)}`);
-  if (!res.ok) return [];
+  const url = `${API_BASE}/api/blog?source=${encodeURIComponent(source)}`;
+  const res = await fetch(url);
+  if (!res.ok) {
+    const errText = await res.text();
+    throw new Error(res.status === 500 ? (errText || 'Server error') : `Blog API ${res.status}`);
+  }
   const data = await res.json();
   return (Array.isArray(data) ? data : []).map((p: BlogPost) => ({
     ...p,
