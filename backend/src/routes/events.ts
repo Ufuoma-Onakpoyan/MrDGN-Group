@@ -1,4 +1,4 @@
-import { Router } from 'express';
+import { Router, type Request, type Response } from 'express';
 import { prisma } from '../lib/prisma.js';
 
 const router = Router();
@@ -24,7 +24,7 @@ function parseJsonObject(s: string | null | undefined): Record<string, unknown> 
 }
 
 // Public: list sponsored events (optional ?past=true|false)
-router.get('/', async (req, res) => {
+router.get('/', async (req: Request, res: Response) => {
   try {
     const past = req.query.past as string | undefined;
     const where: { published?: boolean; isPast?: boolean } = { published: true };
@@ -67,7 +67,7 @@ router.get('/', async (req, res) => {
 });
 
 // Public: get by slug
-router.get('/slug/:slug', async (req, res) => {
+router.get('/slug/:slug', async (req: Request, res: Response) => {
   try {
     const event = await prisma.sponsoredEvent.findFirst({
       where: { slug: req.params.slug, published: true },

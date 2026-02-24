@@ -1,4 +1,4 @@
-import { Router } from 'express';
+import { Router, type Request, type Response } from 'express';
 import { prisma } from '../lib/prisma.js';
 import { authMiddleware, requireRole } from '../middleware/auth.js';
 
@@ -79,7 +79,7 @@ function mapProperty(p: Record<string, unknown> & {
   };
 }
 
-router.get('/', async (_req, res) => {
+router.get('/', async (_req: Request, res: Response) => {
   try {
     const props = await prisma.property.findMany({
       orderBy: { createdAt: 'desc' },
@@ -90,7 +90,7 @@ router.get('/', async (_req, res) => {
   }
 });
 
-router.get('/:id', async (req, res) => {
+router.get('/:id', async (req: Request, res: Response) => {
   try {
     const p = await prisma.property.findUnique({
       where: { id: req.params.id },
@@ -105,7 +105,7 @@ router.get('/:id', async (req, res) => {
   }
 });
 
-router.post('/', authMiddleware, requireRole('super_admin', 'editor'), async (req, res) => {
+router.post('/', authMiddleware, requireRole('super_admin', 'editor'), async (req: Request, res: Response) => {
   try {
     const body = req.body as Record<string, unknown>;
     const p = await prisma.property.create({
@@ -157,9 +157,9 @@ router.put('/:id', authMiddleware, requireRole('super_admin', 'editor'), async (
         ...(body.property_type !== undefined && { propertyType: body.property_type ? String(body.property_type) : null }),
         ...(body.status != null && { status: String(body.status) }),
         ...(body.featured !== undefined && { featured: Boolean(body.featured) }),
-        ...(body.images && { images: JSON.stringify(Array.isArray(body.images) ? body.images.map(String) : []) }),
-        ...(body.amenities && { amenities: JSON.stringify(Array.isArray(body.amenities) ? body.amenities.map(String) : []) }),
-        ...(body.features && { features: JSON.stringify(Array.isArray(body.features) ? body.features.map(String) : []) }),
+        ...(body.images ? { images: JSON.stringify(Array.isArray(body.images) ? body.images.map(String) : []) } : {}),
+        ...(body.amenities ? { amenities: JSON.stringify(Array.isArray(body.amenities) ? body.amenities.map(String) : []) } : {}),
+        ...(body.features ? { features: JSON.stringify(Array.isArray(body.features) ? body.features.map(String) : []) } : {}),
         ...(body.agent !== undefined && { agent: body.agent != null ? JSON.stringify(body.agent) : null }),
         ...(body.latitude !== undefined && { latitude: body.latitude != null ? Number(body.latitude) : null }),
         ...(body.longitude !== undefined && { longitude: body.longitude != null ? Number(body.longitude) : null }),
@@ -173,7 +173,7 @@ router.put('/:id', authMiddleware, requireRole('super_admin', 'editor'), async (
   }
 });
 
-router.delete('/:id', authMiddleware, requireRole('super_admin', 'editor'), async (req, res) => {
+router.delete('/:id', authMiddleware, requireRole('super_admin', 'editor'), async (req: Request, res: Response) => {
   try {
     await prisma.property.delete({ where: { id: req.params.id } });
     res.status(204).send();

@@ -1,11 +1,11 @@
-import { Router } from 'express';
+import { Router, type Request, type Response } from 'express';
 import { prisma } from '../lib/prisma.js';
 import { authMiddleware, requireRole } from '../middleware/auth.js';
 
 const router = Router();
 
 // Public: get published items
-router.get('/', async (req, res) => {
+router.get('/', async (req: Request, res: Response) => {
   try {
     const publishedOnly = req.query.published !== 'false';
     const items = await prisma.portfolioItem.findMany({
@@ -19,7 +19,7 @@ router.get('/', async (req, res) => {
 });
 
 // Public: get by slug (for detail pages)
-router.get('/slug/:slug', async (req, res) => {
+router.get('/slug/:slug', async (req: Request, res: Response) => {
   try {
     const item = await prisma.portfolioItem.findFirst({
       where: { slug: req.params.slug, published: true },
@@ -35,7 +35,7 @@ router.get('/slug/:slug', async (req, res) => {
 });
 
 // Public: get by id
-router.get('/:id', async (req, res) => {
+router.get('/:id', async (req: Request, res: Response) => {
   try {
     const item = await prisma.portfolioItem.findUnique({
       where: { id: req.params.id },
@@ -51,7 +51,7 @@ router.get('/:id', async (req, res) => {
 });
 
 // Admin: create
-router.post('/', authMiddleware, requireRole('super_admin', 'editor'), async (req, res) => {
+router.post('/', authMiddleware, requireRole('super_admin', 'editor'), async (req: Request, res: Response) => {
   try {
     const body = req.body as Record<string, unknown>;
     const item = await prisma.portfolioItem.create({
@@ -77,26 +77,26 @@ router.post('/', authMiddleware, requireRole('super_admin', 'editor'), async (re
 });
 
 // Admin: update
-router.put('/:id', authMiddleware, requireRole('super_admin', 'editor'), async (req, res) => {
+router.put('/:id', authMiddleware, requireRole('super_admin', 'editor'), async (req: Request, res: Response) => {
   try {
     const body = req.body as Record<string, unknown>;
     const item = await prisma.portfolioItem.update({
       where: { id: req.params.id },
       data: {
-        ...(body.title != null && { title: String(body.title) }),
-        ...(body.slug != null && { slug: String(body.slug) }),
-        ...(body.description !== undefined && { description: body.description ? String(body.description) : null }),
-        ...(body.content !== undefined && { content: body.content ? String(body.content) : null }),
-        ...(body.category != null && { category: String(body.category) }),
-        ...(body.featured_image_url !== undefined && { featuredImageUrl: body.featured_image_url ? String(body.featured_image_url) : null }),
-        ...(body.images && { images: JSON.stringify(Array.isArray(body.images) ? body.images.map(String) : []) }),
-        ...(body.technologies && { technologies: JSON.stringify(Array.isArray(body.technologies) ? body.technologies.map(String) : []) }),
-        ...(body.project_url !== undefined && { projectUrl: body.project_url ? String(body.project_url) : null }),
-        ...(body.published !== undefined && {
+        ...(body.title != null ? { title: String(body.title) } : {}),
+        ...(body.slug != null ? { slug: String(body.slug) } : {}),
+        ...(body.description !== undefined ? { description: body.description ? String(body.description) : null } : {}),
+        ...(body.content !== undefined ? { content: body.content ? String(body.content) : null } : {}),
+        ...(body.category != null ? { category: String(body.category) } : {}),
+        ...(body.featured_image_url !== undefined ? { featuredImageUrl: body.featured_image_url ? String(body.featured_image_url) : null } : {}),
+        ...(body.images ? { images: JSON.stringify(Array.isArray(body.images) ? body.images.map(String) : []) } : {}),
+        ...(body.technologies ? { technologies: JSON.stringify(Array.isArray(body.technologies) ? body.technologies.map(String) : []) } : {}),
+        ...(body.project_url !== undefined ? { projectUrl: body.project_url ? String(body.project_url) : null } : {}),
+        ...(body.published !== undefined ? {
           published: Boolean(body.published),
           publishedAt: body.published ? new Date() : null,
-        }),
-        ...(body.order_index !== undefined && { orderIndex: Number(body.order_index) }),
+        } : {}),
+        ...(body.order_index !== undefined ? { orderIndex: Number(body.order_index) } : {}),
       },
     });
     res.json(mapItem(item));
@@ -106,7 +106,7 @@ router.put('/:id', authMiddleware, requireRole('super_admin', 'editor'), async (
 });
 
 // Admin: delete
-router.delete('/:id', authMiddleware, requireRole('super_admin', 'editor'), async (req, res) => {
+router.delete('/:id', authMiddleware, requireRole('super_admin', 'editor'), async (req: Request, res: Response) => {
   try {
     await prisma.portfolioItem.delete({ where: { id: req.params.id } });
     res.status(204).send();

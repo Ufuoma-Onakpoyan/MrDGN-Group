@@ -1,4 +1,4 @@
-import { Router } from 'express';
+import { Router, type Request, type Response } from 'express';
 import { prisma } from '../lib/prisma.js';
 import { authMiddleware, requireRole } from '../middleware/auth.js';
 
@@ -49,7 +49,7 @@ function mapJob(p: {
 }
 
 // Public: get published jobs (optional ?source= to filter)
-router.get('/', async (req, res) => {
+router.get('/', async (req: Request, res: Response) => {
   try {
     const publishedOnly = req.query.published !== 'false';
     const source = req.query.source as string | undefined;
@@ -67,7 +67,7 @@ router.get('/', async (req, res) => {
 });
 
 // Public: get by slug
-router.get('/slug/:slug', async (req, res) => {
+router.get('/slug/:slug', async (req: Request, res: Response) => {
   try {
     const job = await prisma.jobPosting.findUnique({
       where: { slug: req.params.slug, published: true },
@@ -83,7 +83,7 @@ router.get('/slug/:slug', async (req, res) => {
 });
 
 // Public/Admin: get by id
-router.get('/:id', async (req, res) => {
+router.get('/:id', async (req: Request, res: Response) => {
   try {
     const job = await prisma.jobPosting.findUnique({
       where: { id: req.params.id },
@@ -99,7 +99,7 @@ router.get('/:id', async (req, res) => {
 });
 
 // Admin: create
-router.post('/', authMiddleware, requireRole('super_admin', 'editor'), async (req, res) => {
+router.post('/', authMiddleware, requireRole('super_admin', 'editor'), async (req: Request, res: Response) => {
   try {
     const body = req.body as Record<string, unknown>;
     const job = await prisma.jobPosting.create({
@@ -125,23 +125,23 @@ router.post('/', authMiddleware, requireRole('super_admin', 'editor'), async (re
 });
 
 // Admin: update
-router.put('/:id', authMiddleware, requireRole('super_admin', 'editor'), async (req, res) => {
+router.put('/:id', authMiddleware, requireRole('super_admin', 'editor'), async (req: Request, res: Response) => {
   try {
     const body = req.body as Record<string, unknown>;
     const job = await prisma.jobPosting.update({
       where: { id: req.params.id },
       data: {
-        ...(body.title != null && { title: String(body.title) }),
-        ...(body.slug != null && { slug: String(body.slug) }),
-        ...(body.description !== undefined && { description: body.description ? String(body.description) : null }),
-        ...(body.department !== undefined && { department: body.department ? String(body.department) : null }),
-        ...(body.location !== undefined && { location: body.location ? String(body.location) : null }),
-        ...(body.employment_type !== undefined && { employmentType: body.employment_type ? String(body.employment_type) : null }),
-        ...(body.salary !== undefined && { salary: body.salary ? String(body.salary) : null }),
-        ...(body.requirements && { requirements: JSON.stringify(Array.isArray(body.requirements) ? body.requirements.map(String) : []) }),
-        ...(body.source != null && { source: String(body.source) }),
-        ...(body.published !== undefined && { published: Boolean(body.published) }),
-        ...(body.order_index !== undefined && { orderIndex: Number(body.order_index) }),
+        ...(body.title != null ? { title: String(body.title) } : {}),
+        ...(body.slug != null ? { slug: String(body.slug) } : {}),
+        ...(body.description !== undefined ? { description: body.description ? String(body.description) : null } : {}),
+        ...(body.department !== undefined ? { department: body.department ? String(body.department) : null } : {}),
+        ...(body.location !== undefined ? { location: body.location ? String(body.location) : null } : {}),
+        ...(body.employment_type !== undefined ? { employmentType: body.employment_type ? String(body.employment_type) : null } : {}),
+        ...(body.salary !== undefined ? { salary: body.salary ? String(body.salary) : null } : {}),
+        ...(body.requirements ? { requirements: JSON.stringify(Array.isArray(body.requirements) ? body.requirements.map(String) : []) } : {}),
+        ...(body.source != null ? { source: String(body.source) } : {}),
+        ...(body.published !== undefined ? { published: Boolean(body.published) } : {}),
+        ...(body.order_index !== undefined ? { orderIndex: Number(body.order_index) } : {}),
       },
     });
     res.json(mapJob(job));
@@ -151,7 +151,7 @@ router.put('/:id', authMiddleware, requireRole('super_admin', 'editor'), async (
 });
 
 // Admin: delete
-router.delete('/:id', authMiddleware, requireRole('super_admin', 'editor'), async (req, res) => {
+router.delete('/:id', authMiddleware, requireRole('super_admin', 'editor'), async (req: Request, res: Response) => {
   try {
     await prisma.jobPosting.delete({ where: { id: req.params.id } });
     res.status(204).send();

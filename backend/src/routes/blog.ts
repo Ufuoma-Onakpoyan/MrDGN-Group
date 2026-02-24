@@ -1,4 +1,4 @@
-import { Router } from 'express';
+import { Router, type Request, type Response } from 'express';
 import { prisma } from '../lib/prisma.js';
 import { authMiddleware, requireRole } from '../middleware/auth.js';
 
@@ -21,7 +21,7 @@ function postMatchesSource(sourcesJson: string | null, source: string | undefine
 }
 
 // Public: get published posts (optional ?source= to filter by site)
-router.get('/', async (req, res) => {
+router.get('/', async (req: Request, res: Response) => {
   try {
     const publishedOnly = req.query.published !== 'false';
     const source = req.query.source as string | undefined;
@@ -39,7 +39,7 @@ router.get('/', async (req, res) => {
 });
 
 // Public: get by slug (optional ?source= to ensure post is for that site)
-router.get('/slug/:slug', async (req, res) => {
+router.get('/slug/:slug', async (req: Request, res: Response) => {
   try {
     const source = req.query.source as string | undefined;
     const post = await prisma.blogPost.findUnique({
@@ -60,7 +60,7 @@ router.get('/slug/:slug', async (req, res) => {
 });
 
 // Public/Admin: get by id
-router.get('/:id', async (req, res) => {
+router.get('/:id', async (req: Request, res: Response) => {
   try {
     const post = await prisma.blogPost.findUnique({
       where: { id: req.params.id },
@@ -76,7 +76,7 @@ router.get('/:id', async (req, res) => {
 });
 
 // Admin: create
-router.post('/', authMiddleware, requireRole('super_admin', 'editor'), async (req, res) => {
+router.post('/', authMiddleware, requireRole('super_admin', 'editor'), async (req: Request, res: Response) => {
   try {
     const body = req.body as Record<string, unknown>;
     const sources = Array.isArray(body.sources) && body.sources.length > 0
@@ -103,21 +103,21 @@ router.post('/', authMiddleware, requireRole('super_admin', 'editor'), async (re
 });
 
 // Admin: update
-router.put('/:id', authMiddleware, requireRole('super_admin', 'editor'), async (req, res) => {
+router.put('/:id', authMiddleware, requireRole('super_admin', 'editor'), async (req: Request, res: Response) => {
   try {
     const body = req.body as Record<string, unknown>;
     const updateData: Record<string, unknown> = {
-      ...(body.title != null && { title: String(body.title) }),
-      ...(body.slug != null && { slug: String(body.slug) }),
-      ...(body.content != null && { content: String(body.content) }),
-      ...(body.excerpt !== undefined && { excerpt: body.excerpt ? String(body.excerpt) : null }),
-      ...(body.featured_image_url !== undefined && { featuredImageUrl: body.featured_image_url ? String(body.featured_image_url) : null }),
-      ...(body.author != null && { author: String(body.author) }),
-      ...(body.published !== undefined && {
+      ...(body.title != null ? { title: String(body.title) } : {}),
+      ...(body.slug != null ? { slug: String(body.slug) } : {}),
+      ...(body.content != null ? { content: String(body.content) } : {}),
+      ...(body.excerpt !== undefined ? { excerpt: body.excerpt ? String(body.excerpt) : null } : {}),
+      ...(body.featured_image_url !== undefined ? { featuredImageUrl: body.featured_image_url ? String(body.featured_image_url) : null } : {}),
+      ...(body.author != null ? { author: String(body.author) } : {}),
+      ...(body.published !== undefined ? {
         published: Boolean(body.published),
         publishedAt: body.published ? new Date() : null,
-      }),
-      ...(body.tags && { tags: JSON.stringify(Array.isArray(body.tags) ? body.tags.map(String) : []) }),
+      } : {}),
+      ...(body.tags ? { tags: JSON.stringify(Array.isArray(body.tags) ? body.tags.map(String) : []) } : {}),
     };
     if (body.sources !== undefined && Array.isArray(body.sources) && body.sources.length > 0) {
       updateData.sources = JSON.stringify(body.sources.map(String));
@@ -133,7 +133,7 @@ router.put('/:id', authMiddleware, requireRole('super_admin', 'editor'), async (
 });
 
 // Admin: delete
-router.delete('/:id', authMiddleware, requireRole('super_admin', 'editor'), async (req, res) => {
+router.delete('/:id', authMiddleware, requireRole('super_admin', 'editor'), async (req: Request, res: Response) => {
   try {
     await prisma.blogPost.delete({ where: { id: req.params.id } });
     res.status(204).send();

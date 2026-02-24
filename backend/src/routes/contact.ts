@@ -1,11 +1,11 @@
-import { Router } from 'express';
+import { Router, type Request, type Response } from 'express';
 import { prisma } from '../lib/prisma.js';
 import { authMiddleware } from '../middleware/auth.js';
 
 const router = Router();
 
 // GET /api/contact - admin: list contact submissions
-router.get('/', authMiddleware, async (req, res) => {
+router.get('/', authMiddleware, async (req: Request, res: Response) => {
   try {
     const source = req.query.source as string | undefined;
     const limit = Math.min(parseInt(String(req.query.limit || 100), 10), 500);
@@ -39,7 +39,7 @@ router.get('/', authMiddleware, async (req, res) => {
 });
 
 // POST /api/contact - public contact form
-router.post('/', async (req, res) => {
+router.post('/', async (req: Request, res: Response) => {
   try {
     const body = req.body as Record<string, unknown>;
     await prisma.contactSubmission.create({

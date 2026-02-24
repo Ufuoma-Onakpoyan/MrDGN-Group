@@ -1,11 +1,11 @@
-import { Router } from 'express';
+import { Router, type Request, type Response } from 'express';
 import { prisma } from '../lib/prisma.js';
 import { authMiddleware, requireRole } from '../middleware/auth.js';
 
 const router = Router();
 
 // Public: get published testimonials. ?source=construction|mansaluxe-realty|...
-router.get('/', async (req, res) => {
+router.get('/', async (req: Request, res: Response) => {
   try {
     const source = req.query.source as string | undefined;
     const where: Record<string, unknown> = { published: true };
@@ -21,7 +21,7 @@ router.get('/', async (req, res) => {
 });
 
 // Admin: get all testimonials (incl. unpublished). ?source=construction|mansaluxe-realty|...
-router.get('/admin', authMiddleware, requireRole('super_admin', 'editor', 'viewer'), async (req, res) => {
+router.get('/admin', authMiddleware, requireRole('super_admin', 'editor', 'viewer'), async (req: Request, res: Response) => {
   try {
     const source = req.query.source as string | undefined;
     const where: Record<string, unknown> = {};
@@ -37,7 +37,7 @@ router.get('/admin', authMiddleware, requireRole('super_admin', 'editor', 'viewe
 });
 
 // Admin: create
-router.post('/', authMiddleware, requireRole('super_admin', 'editor'), async (req, res) => {
+router.post('/', authMiddleware, requireRole('super_admin', 'editor'), async (req: Request, res: Response) => {
   try {
     const body = req.body as Record<string, unknown>;
     const t = await prisma.testimonial.create({
@@ -61,7 +61,7 @@ router.post('/', authMiddleware, requireRole('super_admin', 'editor'), async (re
 });
 
 // Admin: update
-router.put('/:id', authMiddleware, requireRole('super_admin', 'editor'), async (req, res) => {
+router.put('/:id', authMiddleware, requireRole('super_admin', 'editor'), async (req: Request, res: Response) => {
   try {
     const body = req.body as Record<string, unknown>;
     const t = await prisma.testimonial.update({
@@ -86,7 +86,7 @@ router.put('/:id', authMiddleware, requireRole('super_admin', 'editor'), async (
 });
 
 // Admin: delete
-router.delete('/:id', authMiddleware, requireRole('super_admin', 'editor'), async (req, res) => {
+router.delete('/:id', authMiddleware, requireRole('super_admin', 'editor'), async (req: Request, res: Response) => {
   try {
     await prisma.testimonial.delete({ where: { id: req.params.id } });
     res.status(204).send();

@@ -1,11 +1,11 @@
-import { Router } from 'express';
+import { Router, type Request, type Response } from 'express';
 import { prisma } from '../lib/prisma.js';
 import { authMiddleware } from '../middleware/auth.js';
 
 const router = Router();
 
 // GET /api/dashboard/stats - admin dashboard stats
-router.get('/stats', authMiddleware, async (_req, res) => {
+router.get('/stats', authMiddleware, async (_req: Request, res: Response) => {
   try {
     const [propertyCount, testimonialCount, adminCount, soldProperties, productCount, contactCount, blogCount, jobCount] = await Promise.all([
       prisma.property.count(),

@@ -1,4 +1,4 @@
-import { Router } from 'express';
+import { Router, type Request, type Response } from 'express';
 import multer from 'multer';
 import path from 'path';
 import fs from 'fs';
@@ -15,14 +15,14 @@ if (!fs.existsSync(uploadsDir)) {
 
 // Subdirs for different buckets
 const storage = multer.diskStorage({
-  destination: (_req, file, cb) => {
+  destination: (_req: Request, file: Express.Multer.File, cb: (error: Error | null, destination: string) => void) => {
     const ext = path.extname(file.originalname).toLowerCase();
     const isVideo = /\.(mp4|mov|avi|webm)$/.test(ext);
     const dir = path.join(uploadsDir, isVideo ? 'videos' : 'images');
     if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
     cb(null, dir);
   },
-  filename: (_req, file, cb) => {
+  filename: (_req: Request, file: Express.Multer.File, cb: (error: Error | null, filename: string) => void) => {
     const ext = path.extname(file.originalname) || '.bin';
     cb(null, `${Date.now()}-${Math.random().toString(36).slice(2)}${ext}`);
   },
@@ -31,7 +31,7 @@ const storage = multer.diskStorage({
 const upload = multer({
   storage,
   limits: { fileSize: 1024 * 1024 * 1024 }, // 1GB - no practical limit for videos
-  fileFilter: (_req, file, cb) => {
+  fileFilter: (_req: Request, file: Express.Multer.File, cb: multer.FileFilterCallback) => {
     const allowed = /\.(jpg|jpeg|png|gif|webp|svg|mp4|mov|avi|webm)$/i;
     if (allowed.test(path.extname(file.originalname))) {
       cb(null, true);
@@ -45,7 +45,7 @@ const router = Router();
 const baseUrl = process.env.UPLOAD_URL || 'http://localhost:3001/uploads';
 
 // POST /api/upload/:bucket - upload file (protected)
-router.post('/:bucket', authMiddleware, upload.single('file'), (req, res) => {
+router.post('/:bucket', authMiddleware, upload.single('file'), (req: Request, res: Response) => {
   if (!req.file) {
     res.status(400).json({ error: 'No file uploaded' });
     return;

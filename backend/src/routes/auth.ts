@@ -1,4 +1,4 @@
-import { Router } from 'express';
+import { Router, type Request, type Response } from 'express';
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 import { z } from 'zod';
@@ -15,7 +15,7 @@ const loginSchema = z.object({
 });
 
 // POST /api/auth/login
-router.post('/login', async (req, res) => {
+router.post('/login', async (req: Request, res: Response) => {
   try {
     const { email, password } = loginSchema.parse(req.body);
     const user = await prisma.adminUser.findUnique({ where: { email } });

@@ -1,4 +1,4 @@
-import { Router } from 'express';
+import { Router, type Request, type Response } from 'express';
 import { prisma } from '../lib/prisma.js';
 import { authMiddleware, requireRole } from '../middleware/auth.js';
 
@@ -57,7 +57,7 @@ function mapProduct(p: {
 }
 
 // Public: get published products
-router.get('/', async (req, res) => {
+router.get('/', async (req: Request, res: Response) => {
   try {
     const publishedOnly = req.query.published !== 'false';
     const items = await prisma.product.findMany({
@@ -71,7 +71,7 @@ router.get('/', async (req, res) => {
 });
 
 // Public: get by slug
-router.get('/slug/:slug', async (req, res) => {
+router.get('/slug/:slug', async (req: Request, res: Response) => {
   try {
     const item = await prisma.product.findUnique({
       where: { slug: req.params.slug, published: true },
@@ -87,7 +87,7 @@ router.get('/slug/:slug', async (req, res) => {
 });
 
 // Public: get by id
-router.get('/:id', async (req, res) => {
+router.get('/:id', async (req: Request, res: Response) => {
   try {
     const item = await prisma.product.findUnique({
       where: { id: req.params.id },
@@ -103,7 +103,7 @@ router.get('/:id', async (req, res) => {
 });
 
 // Admin: create
-router.post('/', authMiddleware, requireRole('super_admin', 'editor'), async (req, res) => {
+router.post('/', authMiddleware, requireRole('super_admin', 'editor'), async (req: Request, res: Response) => {
   try {
     const body = req.body as Record<string, unknown>;
     const item = await prisma.product.create({
@@ -130,24 +130,24 @@ router.post('/', authMiddleware, requireRole('super_admin', 'editor'), async (re
 });
 
 // Admin: update
-router.put('/:id', authMiddleware, requireRole('super_admin', 'editor'), async (req, res) => {
+router.put('/:id', authMiddleware, requireRole('super_admin', 'editor'), async (req: Request, res: Response) => {
   try {
     const body = req.body as Record<string, unknown>;
     const item = await prisma.product.update({
       where: { id: req.params.id },
       data: {
-        ...(body.title != null && { title: String(body.title) }),
-        ...(body.slug != null && { slug: String(body.slug) }),
-        ...(body.description !== undefined && { description: body.description ? String(body.description) : null }),
-        ...(body.price !== undefined && { price: body.price != null ? Number(body.price) : null }),
-        ...(body.price_unit !== undefined && { priceUnit: body.price_unit ? String(body.price_unit) : null }),
-        ...(body.category != null && { category: String(body.category) }),
-        ...(body.images && { images: JSON.stringify(Array.isArray(body.images) ? body.images.map(String) : []) }),
-        ...(body.specifications !== undefined && { specifications: body.specifications ? JSON.stringify(body.specifications) : null }),
-        ...(body.features && { features: JSON.stringify(Array.isArray(body.features) ? body.features.map(String) : []) }),
-        ...(body.featured !== undefined && { featured: Boolean(body.featured) }),
-        ...(body.order_index !== undefined && { orderIndex: Number(body.order_index) }),
-        ...(body.published !== undefined && { published: Boolean(body.published) }),
+        ...(body.title != null ? { title: String(body.title) } : {}),
+        ...(body.slug != null ? { slug: String(body.slug) } : {}),
+        ...(body.description !== undefined ? { description: body.description ? String(body.description) : null } : {}),
+        ...(body.price !== undefined ? { price: body.price != null ? Number(body.price) : null } : {}),
+        ...(body.price_unit !== undefined ? { priceUnit: body.price_unit ? String(body.price_unit) : null } : {}),
+        ...(body.category != null ? { category: String(body.category) } : {}),
+        ...(body.images ? { images: JSON.stringify(Array.isArray(body.images) ? body.images.map(String) : []) } : {}),
+        ...(body.specifications !== undefined ? { specifications: body.specifications ? JSON.stringify(body.specifications) : null } : {}),
+        ...(body.features ? { features: JSON.stringify(Array.isArray(body.features) ? body.features.map(String) : []) } : {}),
+        ...(body.featured !== undefined ? { featured: Boolean(body.featured) } : {}),
+        ...(body.order_index !== undefined ? { orderIndex: Number(body.order_index) } : {}),
+        ...(body.published !== undefined ? { published: Boolean(body.published) } : {}),
       },
     });
     res.json(mapProduct(item));
@@ -157,7 +157,7 @@ router.put('/:id', authMiddleware, requireRole('super_admin', 'editor'), async (
 });
 
 // Admin: delete
-router.delete('/:id', authMiddleware, requireRole('super_admin', 'editor'), async (req, res) => {
+router.delete('/:id', authMiddleware, requireRole('super_admin', 'editor'), async (req: Request, res: Response) => {
   try {
     await prisma.product.delete({ where: { id: req.params.id } });
     res.status(204).send();

@@ -1,4 +1,4 @@
-import { Router } from 'express';
+import { Router, type Request, type Response } from 'express';
 import { prisma } from '../lib/prisma.js';
 import { authMiddleware, requireRole } from '../middleware/auth.js';
 
@@ -7,7 +7,7 @@ const router = Router();
 const SOURCES = ['group', 'construction', 'entertainment', 'mansaluxe-realty'] as const;
 
 // POST /api/newsletter/subscribe - public newsletter signup
-router.post('/subscribe', async (req, res) => {
+router.post('/subscribe', async (req: Request, res: Response) => {
   try {
     const body = req.body as Record<string, unknown>;
     const email = typeof body.email === 'string' ? body.email.trim() : '';
@@ -48,7 +48,7 @@ router.post('/subscribe', async (req, res) => {
 });
 
 // GET /api/newsletter - admin: list subscribers (optional ?source=)
-router.get('/', authMiddleware, requireRole('super_admin', 'editor', 'viewer'), async (req, res) => {
+router.get('/', authMiddleware, requireRole('super_admin', 'editor', 'viewer'), async (req: Request, res: Response) => {
   try {
     const source = req.query.source as string | undefined;
     const limit = Math.min(parseInt(String(req.query.limit || 500), 10), 2000);
