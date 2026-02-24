@@ -1,0 +1,303 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Mansa Luxe Realty Limited Design System - Rose Gold, Black & White */
+
+@layer base {
+  :root {
+    --background: 0 0% 0%;              /* Pure black */
+    --foreground: 0 0% 100%;            /* Pure white text */
+
+    --card: 0 0% 5%;                    /* Slightly lighter black for cards */
+    --card-foreground: 0 0% 100%;
+
+    --popover: 0 0% 8%;
+    --popover-foreground: 0 0% 100%;
+
+    /* Logo rose gold - #A97E6E (metallic rose gold from logo) */
+    --primary: 16 26% 55%;              /* #A97E6E - logo rose gold */
+    --primary-foreground: 0 0% 0%;      /* Black text on rose gold */
+
+    --secondary: 0 0% 10%;              /* Dark gray */
+    --secondary-foreground: 0 0% 100%;  /* White */
+
+    --muted: 0 0% 15%;                  /* Muted dark */
+    --muted-foreground: 0 0% 65%;       /* Light gray text */
+
+    --accent: 18 28% 66%;               /* #C19F8F - lighter logo highlight */
+    --accent-foreground: 0 0% 0%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 0 0% 20%;                 /* Dark border */
+    --input: 0 0% 8%;                   /* Dark input background */
+    --ring: 16 26% 55%;                 /* Logo rose gold focus ring */
+
+    --radius: 0.75rem;
+
+    /* Custom luxury gradients - logo metallic rose gold */
+    --gradient-copper: linear-gradient(135deg, hsl(14 22% 45%), hsl(18 28% 66%));
+    --gradient-rose-gold: linear-gradient(135deg, hsl(14 22% 45%), hsl(18 28% 66%));
+    --gradient-black: linear-gradient(135deg, hsl(0 0% 0%), hsl(0 0% 10%));
+    --gradient-subtle: linear-gradient(180deg, hsl(0 0% 5%), hsl(0 0% 0%));
+    
+    /* Elegant shadows */
+    --shadow-luxury: 0 20px 40px -10px hsl(16 26% 55% / 0.3);
+    --shadow-copper: 0 0 30px hsl(16 26% 55% / 0.4);
+    --shadow-elegant: 0 10px 30px -5px hsl(0 0% 0% / 0.5);
+
+    /* Animations */
+    --transition-luxury: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 0 0% 0%;
+    --foreground: 0 0% 100%;
+
+    --card: 0 0% 5%;
+    --card-foreground: 0 0% 100%;
+
+    --popover: 0 0% 8%;
+    --popover-foreground: 0 0% 100%;
+
+    --primary: 16 26% 55%;
+    --primary-foreground: 0 0% 0%;
+
+    --secondary: 0 0% 10%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 0 0% 15%;
+    --muted-foreground: 0 0% 65%;
+
+    --accent: 18 28% 66%;
+    --accent-foreground: 0 0% 0%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-body;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-serif;
+  }
+}
+
+@layer components {
+  /* Enhanced luxury button variants */
+  .btn-luxury {
+    @apply relative overflow-hidden bg-gradient-to-r from-primary to-accent text-primary-foreground;
+    @apply px-8 py-4 rounded-xl font-semibold transition-all duration-500;
+    @apply hover:scale-105 active:scale-95;
+    box-shadow: 0 25px 50px -12px hsl(var(--primary) / 0.4);
+  }
+
+  .btn-luxury::before {
+    content: '';
+    @apply absolute inset-0 bg-gradient-to-r from-accent to-primary opacity-0 transition-opacity duration-500;
+  }
+
+  .btn-luxury:hover::before {
+    @apply opacity-100;
+  }
+
+  .btn-luxury:hover {
+    box-shadow: 0 25px 50px -12px hsl(var(--primary) / 0.6);
+  }
+
+  .btn-outline-luxury {
+    @apply border-2 border-primary text-primary bg-transparent;
+    @apply px-8 py-4 rounded-xl font-semibold transition-all duration-500;
+    @apply hover:bg-primary hover:text-primary-foreground;
+    box-shadow: 0 25px 50px -12px hsl(var(--primary) / 0.2);
+  }
+
+  .btn-outline-luxury:hover {
+    box-shadow: 0 25px 50px -12px hsl(var(--primary) / 0.4);
+  }
+
+  /* Enhanced card with luxury styling */
+  .luxury-card {
+    @apply relative bg-gradient-to-br from-card via-card to-card/90 border border-border/30 rounded-2xl;
+    @apply backdrop-blur-sm transition-all duration-500 overflow-hidden;
+    box-shadow: 0 15px 35px -8px hsl(0 0% 0% / 0.4);
+  }
+
+  .luxury-card::before {
+    content: '';
+    @apply absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-accent/5 opacity-0 transition-opacity duration-500 pointer-events-none;
+  }
+
+  .luxury-card:hover::before {
+    @apply opacity-100;
+  }
+
+  .luxury-card:hover {
+    @apply border-primary/20 -translate-y-2;
+    box-shadow: 0 25px 50px -12px hsl(var(--primary) / 0.4);
+  }
+
+  /* Property card enhancements */
+  .property-card {
+    @apply luxury-card cursor-pointer;
+  }
+
+  .property-card:hover .property-image {
+    @apply transform scale-110;
+  }
+
+  .property-image {
+    @apply transition-transform duration-700 ease-out object-cover;
+  }
+
+  /* Image aspect ratio containers */
+  .aspect-card {
+    @apply aspect-[4/3] overflow-hidden rounded-xl;
+  }
+
+  /* Hero section styling */
+  .hero-section {
+    @apply min-h-screen flex items-center justify-center relative;
+    @apply bg-gradient-to-br from-background via-secondary to-background;
+    background-image: 
+      radial-gradient(circle at 20% 50%, hsl(16 26% 55% / 0.15) 0%, transparent 50%),
+      radial-gradient(circle at 80% 20%, hsl(16 26% 55% / 0.1) 0%, transparent 50%);
+  }
+
+  /* Text gradient for headings - rose gold */
+  .text-gold-gradient {
+    background: var(--gradient-rose-gold);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  /* Enhanced navbar glass effect */
+  .navbar-glass {
+    @apply backdrop-blur-xl bg-background/90 border-b border-primary/20;
+    box-shadow: 0 4px 20px hsl(16 26% 55% / 0.2);
+  }
+
+  /* Scroll reveal animations */
+  .scroll-reveal {
+    @apply opacity-0 translate-y-8 transition-all duration-700 ease-out;
+  }
+
+  .scroll-reveal.revealed {
+    @apply opacity-100 translate-y-0;
+  }
+
+  /* Hover effects */
+  .hover-lift {
+    @apply transition-transform duration-300 hover:translate-y-[-4px];
+  }
+
+  .hover-glow {
+    @apply transition-all duration-300;
+  }
+
+  .hover-glow:hover {
+    box-shadow: 0 0 30px hsl(16 26% 55% / 0.4);
+  }
+
+  .hover-scale {
+    @apply transition-transform duration-300 hover:scale-105;
+  }
+
+  /* Navbar hover effects */
+  .nav-link {
+    @apply relative overflow-hidden;
+  }
+
+  .nav-link::after {
+    content: '';
+    @apply absolute bottom-0 left-0 w-full h-0.5 bg-primary transform scale-x-0 transition-transform duration-300 origin-left;
+  }
+
+  .nav-link:hover::after {
+    @apply scale-x-100;
+  }
+
+  /* Stagger animation delays */
+  .stagger-1 { animation-delay: 0.1s; }
+  .stagger-2 { animation-delay: 0.2s; }
+  .stagger-3 { animation-delay: 0.3s; }
+  .stagger-4 { animation-delay: 0.4s; }
+  .stagger-5 { animation-delay: 0.5s; }
+  .stagger-6 { animation-delay: 0.6s; }
+
+  /* Scrollbar styles */
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Gallery and modal transitions */
+  .gallery-transition {
+    @apply transition-all duration-500 ease-out;
+  }
+
+  /* Loading skeleton */
+  .skeleton {
+    @apply animate-pulse bg-muted rounded;
+  }
+}
+
+@layer utilities {
+  /* Custom shadow utilities */
+  .shadow-luxury {
+    box-shadow: 0 25px 50px -12px hsl(var(--primary) / 0.4);
+  }
+  
+  .shadow-copper {
+    box-shadow: 0 0 30px hsl(16 26% 55% / 0.4);
+  }
+  
+  .shadow-elegant {
+    box-shadow: 0 20px 40px -10px hsl(var(--primary) / 0.2);
+  }
+}

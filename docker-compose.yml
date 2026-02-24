@@ -1,0 +1,18 @@
+# Local PostgreSQL for backend development
+# Run: docker compose up -d
+# Then: cd backend && npm run db:push && npm run db:seed && npm run dev
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: mrdgn
+      POSTGRES_PASSWORD: mrdgn
+      POSTGRES_DB: mrdgn
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:

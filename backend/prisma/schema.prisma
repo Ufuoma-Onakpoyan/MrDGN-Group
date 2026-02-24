@@ -1,0 +1,240 @@
+// MrDGN Group Website - Database Schema
+// PostgreSQL for production (Neon, Render, etc.). Use DATABASE_URL from Neon for local dev too.
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// Admin users (JWT auth)
+model AdminUser {
+  id        String   @id @default(uuid())
+  email     String   @unique
+  password  String   // bcrypt hash
+  name      String?
+  role      String   @default("editor") // super_admin | editor | viewer
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("admin_users")
+}
+
+// Realty - Properties
+model Property {
+  id          String   @id @default(uuid())
+  title       String
+  description String?
+  price       Float
+  location    String
+  bedrooms    Int?
+  bathrooms   Int?
+  squareFeet  Int?
+  lotSize     String?
+  yearBuilt   Int?
+  propertyType String?
+  status      String   @default("available") // available | sold | pending
+  featured    Boolean  @default(false)
+  images      String   @default("[]")
+  amenities   String   @default("[]")
+  features    String   @default("[]")
+  agent       String?
+  latitude    Float?
+  longitude   Float?
+  listingType String?  // sale | rent | new_development
+  videos      String?  // JSON: { drone?: string, walkthrough?: string, general?: string }
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  testimonials Testimonial[]
+
+  @@map("properties")
+}
+
+// Testimonials (construction, mansaluxe-realty, etc. - filter by source)
+model Testimonial {
+  id          String   @id @default(uuid())
+  name        String
+  role        String?
+  company     String?  // e.g. project type: "Residential Complex", "Commercial Building"
+  photo       String?
+  quote       String
+  rating      Int?     @default(5)
+  propertyId  String?
+  source      String   @default("mansaluxe-realty")  // construction | mansaluxe-realty | group | entertainment
+  published   Boolean  @default(true)
+  displayOrder Int     @default(0)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  property Property? @relation(fields: [propertyId], references: [id], onDelete: SetNull)
+
+  @@map("testimonials")
+}
+
+// Blog posts (group, entertainment, construction, mansaluxe-realty)
+model BlogPost {
+  id                String   @id @default(uuid())
+  title             String
+  slug              String   @unique
+  content           String
+  excerpt           String?
+  featuredImageUrl  String?
+  author            String   @default("MrDGN")
+  viewCount         Int      @default(0)
+  published         Boolean  @default(false)
+  publishedAt       DateTime?
+  tags              String   @default("[]")
+  sources           String   @default("[\"group\",\"entertainment\",\"construction\",\"mansaluxe-realty\"]") // JSON array: which sites show this post
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+
+  @@map("blog_posts")
+}
+
+// Portfolio items
+model PortfolioItem {
+  id                String   @id @default(uuid())
+  title             String
+  slug              String   @unique
+  description       String?
+  content           String?
+  category          String   @default("project")
+  featuredImageUrl  String?
+  images            String   @default("[]")
+  technologies      String   @default("[]")
+  projectUrl        String?
+  published         Boolean  @default(false)
+  publishedAt       DateTime?
+  orderIndex        Int      @default(0)
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+
+  @@map("portfolio")
+}
+
+// Construction - Featured projects (editable via admin)
+model ConstructionProject {
+  id                String   @id @default(uuid())
+  title             String
+  slug              String   @unique
+  description       String
+  imageUrl          String   // URL or path to featured image
+  category          String   // High-Rise, Residential, Commercial, etc.
+  location          String?
+  duration          String?  // e.g. "36 months"
+  value             String?  // e.g. "₦150M"
+  client            String?
+  architect         String?
+  planningDetails   String?
+  structuralDesign  String?
+  machines          String   @default("[]")  // JSON array
+  materials         String   @default("[]")  // JSON array
+  published         Boolean  @default(true)
+  orderIndex        Int      @default(0)
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+
+  @@map("construction_projects")
+}
+
+// Construction - Products (with prices)
+model Product {
+  id                String   @id @default(uuid())
+  title             String
+  slug              String   @unique
+  description       String?
+  price             Float?
+  priceUnit         String?  // per unit, per bag, per m², etc.
+  category          String   @default("general")
+  images            String   @default("[]")
+  specifications    String?  // JSON: { "Key": "Value", ... }
+  features         String   @default("[]") // JSON array
+  featured          Boolean  @default(false)
+  orderIndex        Int      @default(0)
+  published         Boolean  @default(true)
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+
+  @@map("products")
+}
+
+// Job postings (all sites - filter by source)
+model JobPosting {
+  id          String   @id @default(uuid())
+  title       String
+  slug        String   @unique
+  description String?
+  department  String?
+  location    String?
+  employmentType String?  // full-time | part-time | contract
+  salary      String?   // e.g. "₦80,000 - ₦120,000"
+  requirements String   @default("[]")  // JSON array
+  source      String   // group | entertainment | construction | mansaluxe-realty
+  published   Boolean  @default(true)
+  orderIndex  Int      @default(0)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@map("job_postings")
+}
+
+// Contact form submissions
+model ContactSubmission {
+  id        String   @id @default(uuid())
+  source    String   // mansaluxe-realty | construction | newsletter
+  name      String?
+  email     String
+  phone     String?
+  subject   String?
+  message   String?
+  metadata  String?
+  createdAt DateTime @default(now())
+
+  @@map("contact_submissions")
+}
+
+// Newsletter subscribers (all sites - filter by source)
+model NewsletterSubscriber {
+  id        String   @id @default(uuid())
+  email     String
+  name      String?
+  source    String   // group | construction | entertainment | mansaluxe-realty
+  createdAt DateTime @default(now())
+
+  @@unique([email, source])
+  @@map("newsletter_subscribers")
+}
+
+// Sponsored events (entertainment - events MrDGN has sponsored)
+model SponsoredEvent {
+  id              String   @id @default(uuid())
+  title           String
+  slug            String   @unique
+  description     String
+  eventType       String   @default("event")   // concert | expo | comedy | awards | other
+  eventDate       String?  // e.g. "December 4, 2022", "15 April 2022"
+  eventTime       String?  // e.g. "5 PM", "Red Carpet: 6 PM, Main: 7 PM"
+  venue           String?
+  venueAddress    String?  // full address
+  location        String?  // city, state
+  imageUrl        String?
+  presenter       String?  // e.g. "2 THINGS PROMOTIONS", "Engraced"
+  featuredArtists String   @default("[]")  // JSON array
+  ticketInfo      String   @default("{}")  // JSON: { regular?, vip?, tables? }
+  ticketOutlets   String   @default("[]")  // JSON array
+  contactPhones   String   @default("[]")  // JSON array
+  sponsors        String   @default("[]")  // JSON array
+  highlights      String   @default("[]")  // JSON array
+  extraNote       String?  // e.g. "COVID 19 GUIDELINES APPLY", "Casting Call for Models"
+  isPast          Boolean  @default(true)
+  orderIndex      Int      @default(0)
+  published       Boolean  @default(true)
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  @@map("sponsored_events")
+}
