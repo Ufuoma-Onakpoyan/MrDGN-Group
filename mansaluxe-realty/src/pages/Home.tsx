@@ -42,15 +42,15 @@ const Home = () => {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      {/* Video on top - import ensures original quality, no re-encoding */}
-      <section className="relative w-full aspect-video overflow-hidden bg-black">
+      {/* Video on top - central; on small screens black above/below (letterboxed) */}
+      <section className="relative w-full overflow-hidden bg-black flex items-center justify-center min-h-[85vh] md:min-h-0 md:aspect-video">
         <video
           autoPlay
           muted
           loop
           playsInline
           preload="auto"
-          className="w-full h-full object-cover"
+          className="w-full max-h-[85vh] md:max-h-none md:h-full object-contain md:object-cover"
           aria-label="Step into the world of opulence with MANSA Luxe Realty, Nigeria's pinnacle of luxury real estate"
         >
           <source src={heroVideo} type="video/mp4" />
