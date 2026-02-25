@@ -54,7 +54,7 @@ const Footer = () => {
               />
             </div>
             <p className="text-muted-foreground text-sm">
-              Nigeria's premier luxury real estate company, delivering exceptional properties and unmatched service since 2020.
+              Nigeria's premier luxury real estate company, delivering exceptional properties and unmatched service since 2020. Mansa Luxe Realty Limited is a subsidiary of MrDGN Group.
             </p>
             <div className="flex flex-wrap items-center gap-3">
               <a href="https://www.instagram.com/mansaluxerealty" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors" aria-label="Instagram">
@@ -189,14 +189,15 @@ const Footer = () => {
               <p className="text-muted-foreground text-sm">
                 © {currentYear} Mansa Luxe Realty Limited. All rights reserved.
               </p>
-              <div className="flex items-center space-x-2">
-                <span className="text-muted-foreground text-xs">A subsidiary of</span>
+              <a href="https://mrdgngroup.com" target="_blank" rel="noopener noreferrer" className="flex items-center space-x-2 text-muted-foreground hover:text-primary transition-colors" aria-label="MrDGN Group">
+                <span className="text-xs">A subsidiary of MrDGN Group</span>
                 <img 
                   src="/assets/logo-group.png" 
                   alt="MrDGN Group" 
                   className="h-5 md:h-6 w-auto object-contain"
                 />
-              </div>
+                <span className="text-primary text-xs hover:underline">mrdgngroup.com</span>
+              </a>
             </div>
             <div className="flex flex-wrap justify-center md:justify-end gap-4 md:gap-6">
               <Link to="/faq" className="text-muted-foreground hover:text-primary transition-colors text-sm">

@@ -28,7 +28,7 @@ const About = () => {
                 About <span className="gradient-text">MrDGN Entertainment</span>
               </h1>
               <p className="text-xl text-muted-foreground leading-relaxed">
-                MrDGN Entertainment is the event-sponsorship arm of MrDGN Group. We support concerts, comedy shows, music and fashion expos, and cultural events across Nigeria—helping bring world-class entertainment to local audiences and elevating Nigerian talent on stage.
+                MrDGN Entertainment is a subsidiary of MrDGN Group and its event-sponsorship arm. We support concerts, comedy shows, music and fashion expos, and cultural events across Nigeria—helping bring world-class entertainment to local audiences and elevating Nigerian talent on stage.
               </p>
             </section>
 

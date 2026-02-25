@@ -189,11 +189,14 @@ const Footer = () => {
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0 mt-6">
             <div className="flex items-center space-x-2 text-sm text-secondary-foreground/60">
               <span>Part of</span>
-              <img 
-                src="/assets/logo-group.png" 
-                alt="MrDGN Group" 
-                className="h-5 w-auto object-contain opacity-80"
-              />
+              <a href="https://mrdgngroup.com" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 hover:opacity-90 transition-opacity" aria-label="MrDGN Group">
+                <img 
+                  src="/assets/logo-group.png" 
+                  alt="MrDGN Group" 
+                  className="h-5 w-auto object-contain opacity-80"
+                />
+                <span className="text-primary hover:underline">mrdgngroup.com</span>
+              </a>
             </div>
           </div>
         </div>

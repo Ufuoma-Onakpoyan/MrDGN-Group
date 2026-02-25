@@ -51,7 +51,7 @@ const About = () => {
               About <span className="text-gold-gradient">Mansa Luxe Realty Limited</span>
             </h1>
             <p className="text-xl text-muted-foreground">
-              A subsidiary of MrDGNGroup, pioneering luxury real estate in Nigeria since 2020.
+              A subsidiary of MrDGN Group, pioneering luxury real estate in Nigeria since 2020.
             </p>
           </div>
         </div>

@@ -52,7 +52,7 @@ const AboutUs = () => {
               About <span className="text-primary">MrDGN Constructions</span>
             </h1>
             <p className="text-xl text-muted-foreground mb-8">
-              Building excellence for 5 years, we are your trusted partner for innovative construction solutions that stand the test of time.
+              Building excellence for 5 years, we are your trusted partner for innovative construction solutions that stand the test of time. MR DGN Constructions is a subsidiary of MrDGN Group.
             </p>
           </div>
         </div>
