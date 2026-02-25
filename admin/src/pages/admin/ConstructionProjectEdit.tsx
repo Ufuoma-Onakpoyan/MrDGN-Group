@@ -36,7 +36,7 @@ const ConstructionProjectEdit = () => {
   const navigate = useNavigate();
   const { toast } = useToast();
   const queryClient = useQueryClient();
-  const isNew = id === 'new';
+  const isNew = !id || id === 'new';
 
   const [formData, setFormData] = useState(defaultForm);
   const [isUploading, setIsUploading] = useState(false);

@@ -17,7 +17,7 @@ const ProductEdit = () => {
   const navigate = useNavigate();
   const { toast } = useToast();
   const queryClient = useQueryClient();
-  const isNew = id === 'new';
+  const isNew = !id || id === 'new';
 
   const [formData, setFormData] = useState({
     title: '',

@@ -25,7 +25,8 @@ const BlogEdit = () => {
   const navigate = useNavigate();
   const { toast } = useToast();
   const queryClient = useQueryClient();
-  const isNewPost = id === 'new';
+  // /admin/blog/new has no :id param, so id is undefined; treat as new post
+  const isNewPost = !id || id === 'new';
 
   const [formData, setFormData] = useState({
     title: '',

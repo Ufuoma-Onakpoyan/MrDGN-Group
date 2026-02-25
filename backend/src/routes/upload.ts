@@ -2,19 +2,22 @@ import { Router, type Request, type Response } from 'express';
 import multer from 'multer';
 import path from 'path';
 import fs from 'fs';
-import { fileURLToPath } from 'url';
 import { authMiddleware } from '../middleware/auth.js';
 
-const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const uploadsDir = path.join(process.cwd(), 'uploads');
 
-// Ensure uploads dir exists
+const useCloudinary =
+  !!process.env.CLOUDINARY_CLOUD_NAME &&
+  !!process.env.CLOUDINARY_API_KEY &&
+  !!process.env.CLOUDINARY_API_SECRET;
+
+// Ensure uploads dir exists (for disk fallback)
 if (!fs.existsSync(uploadsDir)) {
   fs.mkdirSync(uploadsDir, { recursive: true });
 }
 
-// Subdirs for different buckets
-const storage = multer.diskStorage({
+// Disk storage for local dev when Cloudinary is not configured
+const diskStorage = multer.diskStorage({
   destination: (_req: Request, file: Express.Multer.File, cb: (error: Error | null, destination: string) => void) => {
     const ext = path.extname(file.originalname).toLowerCase();
     const isVideo = /\.(mp4|mov|avi|webm)$/.test(ext);
@@ -28,9 +31,11 @@ const storage = multer.diskStorage({
   },
 });
 
+const memoryStorage = multer.memoryStorage();
+
 const upload = multer({
-  storage,
-  limits: { fileSize: 1024 * 1024 * 1024 }, // 1GB - no practical limit for videos
+  storage: useCloudinary ? memoryStorage : diskStorage,
+  limits: { fileSize: 1024 * 1024 * 1024 }, // 1GB
   fileFilter: (_req: Request, file: Express.Multer.File, cb: multer.FileFilterCallback) => {
     const allowed = /\.(jpg|jpeg|png|gif|webp|svg|mp4|mov|avi|webm)$/i;
     if (allowed.test(path.extname(file.originalname))) {
@@ -45,12 +50,41 @@ const router = Router();
 const baseUrl = process.env.UPLOAD_URL || 'http://localhost:3001/uploads';
 
 // POST /api/upload/:bucket - upload file (protected)
-router.post('/:bucket', authMiddleware, upload.single('file'), (req: Request, res: Response) => {
+router.post('/:bucket', authMiddleware, upload.single('file'), async (req: Request, res: Response) => {
   if (!req.file) {
     res.status(400).json({ error: 'No file uploaded' });
     return;
   }
-  const relativePath = path.relative(uploadsDir, req.file.path).replace(/\\/g, '/');
+
+  if (useCloudinary && req.file.buffer) {
+    try {
+      const { v2: cloudinary } = await import('cloudinary');
+      cloudinary.config({
+        cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+        api_key: process.env.CLOUDINARY_API_KEY,
+        api_secret: process.env.CLOUDINARY_API_SECRET,
+      });
+      const folder = process.env.CLOUDINARY_FOLDER || 'mrdgn';
+      const bucketFolder = `${folder}/${(req.params.bucket || 'uploads').replace(/-/g, '_')}`;
+      const ext = path.extname(req.file.originalname).toLowerCase();
+      const isVideo = /\.(mp4|mov|avi|webm)$/.test(ext);
+      const resourceType = isVideo ? 'video' : 'image';
+      const b64 = req.file.buffer.toString('base64');
+      const dataUri = `data:${req.file.mimetype};base64,${b64}`;
+      const result = await cloudinary.uploader.upload(dataUri, {
+        resource_type: resourceType,
+        folder: bucketFolder,
+      });
+      const url = result.secure_url;
+      return res.json({ url });
+    } catch (err) {
+      console.error('Cloudinary upload error:', err);
+      return res.status(500).json({ error: 'Upload failed' });
+    }
+  }
+
+  // Disk fallback (local or when Cloudinary not configured)
+  const relativePath = path.relative(uploadsDir, (req.file as Express.Multer.File & { path: string }).path).replace(/\\/g, '/');
   const url = `${baseUrl.replace(/\/$/, '')}/${relativePath}`;
   res.json({ url });
 });

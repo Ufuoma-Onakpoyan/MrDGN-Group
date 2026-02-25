@@ -152,6 +152,63 @@ https://your-group.vercel.app,https://your-admin.vercel.app,https://your-enterta
 
 Save. Render will redeploy automatically. This lets the browser load your API from those frontend domains.
 
+## Step 2.8 – Keep the backend awake (optional but recommended)
+
+On the **free** plan, Render spins down your backend after about **15 minutes** of no requests. The next visitor then waits 30–60 seconds while it starts again. To avoid that, ping your API on a schedule so it stays warm.
+
+Your backend already has a **health endpoint** that is safe to ping:
+
+- **URL:** `https://YOUR-RENDER-URL/api/health`  
+  Example: `https://mrdgn-api.onrender.com/api/health`
+
+Use one of these **free** options (pick one):
+
+### Option A: UptimeRobot (easiest)
+
+1. Go to **[uptimerobot.com](https://uptimerobot.com)** and sign up (free).
+2. Click **Add New Monitor**.
+3. **Monitor Type:** HTTP(s).
+4. **Friendly Name:** e.g. `MrDGN API`.
+5. **URL:** `https://mrdgn-api.onrender.com/api/health` (use your real Render URL).
+6. **Monitoring Interval:** 5 minutes (free tier allows this).
+7. Click **Create Monitor**.
+
+UptimeRobot will request that URL every 5 minutes. That’s enough to prevent Render from putting your backend to sleep.
+
+### Option B: cron-job.org
+
+1. Go to **[cron-job.org](https://cron-job.org)** and create a free account.
+2. **Create Cronjob** → **Title:** e.g. `MrDGN API keep-alive`.
+3. **Address:** `https://mrdgn-api.onrender.com/api/health` (your Render URL).
+4. **Schedule:** every 10 or 15 minutes (e.g. `*/10 * * * *` for every 10 minutes).
+5. Save.
+
+Either option will keep your backend from falling asleep so the first visit after idle stays fast.
+
+## Step 2.9 – Fix disappearing images (Cloudinary, strongly recommended)
+
+On Render’s **free** plan, the server’s disk is **ephemeral**: when the backend restarts (spin-down, redeploy, or crash), everything in the `uploads` folder is **deleted**. So property images, blog featured images, and any other uploads work at first but show as **broken** after a while. The same applies to blog featured images and any content that uses the upload API.
+
+To make uploads **persist**, use **Cloudinary** (free tier). The backend is already set up to use it when these environment variables are set.
+
+1. Go to **[cloudinary.com](https://cloudinary.com)** and sign up (free).
+2. In the **Dashboard**, note your **Cloud name**, **API Key**, and **API Secret**.
+3. In **Render** → your backend service → **Environment** → **Add Environment Variable**. Add:
+
+| Key | Value |
+|-----|--------|
+| `CLOUDINARY_CLOUD_NAME` | Your Cloud name from the dashboard |
+| `CLOUDINARY_API_KEY` | Your API key |
+| `CLOUDINARY_API_SECRET` | Your API secret |
+
+4. (Optional) To group uploads in a folder, add:
+   - **Key:** `CLOUDINARY_FOLDER`  
+   - **Value:** `mrdgn` (or any folder name you like)
+
+5. **Save**. Render will redeploy. After that, **new** uploads (properties, blog images, portfolio, etc.) will be stored on Cloudinary and will **no longer disappear** after a restart.
+
+**Note:** Images that were uploaded **before** adding Cloudinary were stored on the server disk and are already gone after any restart. Re-upload them from the admin (edit the property or blog post and upload the images again).
+
 ---
 
 # Part 3: Vercel (5 frontend websites)
