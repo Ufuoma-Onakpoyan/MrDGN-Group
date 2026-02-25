@@ -35,7 +35,8 @@ const BlogEdit = () => {
     excerpt: '',
     tags: '',
     featured_image_url: '',
-    published: false,
+    // Default published to true for new posts so they show on the website immediately
+    published: true,
     sources: ['group', 'entertainment', 'construction', 'mansaluxe-realty'] as string[],
   });
 

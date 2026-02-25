@@ -28,7 +28,8 @@ const PortfolioEdit = () => {
     project_url: '',
     category: 'project',
     technologies: '' as string,
-    published: false,
+    // Default published to true for new items so they show on the website immediately
+    published: true,
   });
 
   const { data: item, isLoading, isError, error } = useQuery({
