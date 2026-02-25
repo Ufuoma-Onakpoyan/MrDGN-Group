@@ -4,6 +4,7 @@ import {
   dashboardApi,
   uploadFile as apiUploadFile,
 } from './api-client';
+import type { BlogAnalytics } from './api-client';
 
 interface Property {
   id: string;
@@ -90,6 +91,17 @@ class AdminAPI {
       adminUser: 0,
       propertiesSold: 0,
       monthlyRevenue: '₦0M',
+    };
+  }
+
+  async getBlogAnalytics(source?: string): Promise<BlogAnalytics> {
+    if (useApi) return dashboardApi.blogAnalytics(source);
+    return {
+      source: source ?? 'all',
+      post_count: 0,
+      total_real_views: 0,
+      total_display_views: 0,
+      top_posts: [],
     };
   }
 

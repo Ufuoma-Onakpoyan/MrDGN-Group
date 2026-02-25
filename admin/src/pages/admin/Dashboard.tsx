@@ -2,12 +2,48 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { adminAPI, DashboardStats } from '@/lib/admin-api';
-import { Building2, MessageSquareText, TrendingUp, DollarSign, Home, FileText, Package, Mail, Briefcase } from 'lucide-react';
+import type { BlogAnalytics } from '@/lib/api-client';
+import { Building2, MessageSquareText, TrendingUp, DollarSign, Home, FileText, Package, Mail, Briefcase, BarChart3, Eye } from 'lucide-react';
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@/components/ui/select';
+
+const BLOG_SOURCE_OPTIONS = [
+  { value: 'all', label: 'All sites' },
+  { value: 'group', label: 'MrDGN Group' },
+  { value: 'entertainment', label: 'Entertainment' },
+  { value: 'construction', label: 'Construction' },
+  { value: 'mansaluxe-realty', label: 'MansaLuxe Realty' },
+];
 
 export default function Dashboard() {
   const [stats, setStats] = useState<DashboardStats | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [blogSource, setBlogSource] = useState<string>('all');
+  const [blogAnalytics, setBlogAnalytics] = useState<BlogAnalytics | null>(null);
+  const [blogAnalyticsLoading, setBlogAnalyticsLoading] = useState(false);
+
+  useEffect(() => {
+    let cancelled = false;
+    setBlogAnalyticsLoading(true);
+    adminAPI
+      .getBlogAnalytics(blogSource === 'all' ? undefined : blogSource)
+      .then((data) => {
+        if (!cancelled) setBlogAnalytics(data);
+      })
+      .catch(() => {
+        if (!cancelled) setBlogAnalytics(null);
+      })
+      .finally(() => {
+        if (!cancelled) setBlogAnalyticsLoading(false);
+      });
+    return () => { cancelled = true; };
+  }, [blogSource]);
 
   const loadDashboardStats = async () => {
     setError(null);
@@ -159,6 +195,94 @@ export default function Dashboard() {
           );
         })}
       </div>
+
+      {/* Blog analytics by website */}
+      <Card>
+        <CardHeader>
+          <div className="flex flex-wrap items-center justify-between gap-4">
+            <CardTitle className="text-lg font-serif flex items-center gap-2">
+              <BarChart3 className="h-5 w-5 text-primary" />
+              Blog analytics
+            </CardTitle>
+            <Select value={blogSource} onValueChange={setBlogSource}>
+              <SelectTrigger className="w-[200px]">
+                <SelectValue placeholder="Select website" />
+              </SelectTrigger>
+              <SelectContent>
+                {BLOG_SOURCE_OPTIONS.map((opt) => (
+                  <SelectItem key={opt.value} value={opt.value}>
+                    {opt.label}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+          </div>
+          <p className="text-sm text-muted-foreground mt-1">
+            Metrics for the selected website. Views = 1000 base + real page views.
+          </p>
+        </CardHeader>
+        <CardContent>
+          {blogAnalyticsLoading ? (
+            <div className="py-8 text-center text-muted-foreground">Loading analytics…</div>
+          ) : blogAnalytics ? (
+            <div className="space-y-6">
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div className="rounded-lg border bg-muted/30 p-4">
+                  <p className="text-xs font-medium text-muted-foreground uppercase tracking-wide">Posts</p>
+                  <p className="text-2xl font-bold mt-1">{blogAnalytics.post_count}</p>
+                </div>
+                <div className="rounded-lg border bg-muted/30 p-4">
+                  <p className="text-xs font-medium text-muted-foreground uppercase tracking-wide">Real views</p>
+                  <p className="text-2xl font-bold mt-1">{blogAnalytics.total_real_views.toLocaleString()}</p>
+                </div>
+                <div className="rounded-lg border bg-muted/30 p-4">
+                  <p className="text-xs font-medium text-muted-foreground uppercase tracking-wide">Display views</p>
+                  <p className="text-2xl font-bold mt-1">{blogAnalytics.total_display_views.toLocaleString()}</p>
+                </div>
+                <div className="rounded-lg border bg-muted/30 p-4 flex items-center gap-2">
+                  <Eye className="h-5 w-5 text-primary" />
+                  <p className="text-xs font-medium text-muted-foreground">What visitors see (1000 + real)</p>
+                </div>
+              </div>
+              {blogAnalytics.top_posts.length > 0 ? (
+                <div>
+                  <h4 className="text-sm font-semibold mb-3">Top posts by views (this site)</h4>
+                  <div className="border rounded-lg overflow-hidden">
+                    <table className="w-full text-sm">
+                      <thead>
+                        <tr className="border-b bg-muted/50">
+                          <th className="text-left p-3 font-medium">Title</th>
+                          <th className="text-left p-3 font-medium">Author</th>
+                          <th className="text-right p-3 font-medium">Real views</th>
+                          <th className="text-right p-3 font-medium">Display views</th>
+                          <th className="text-left p-3 font-medium">Published</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {blogAnalytics.top_posts.map((p) => (
+                          <tr key={p.id} className="border-b last:border-0">
+                            <td className="p-3 font-medium truncate max-w-[200px]" title={p.title}>{p.title}</td>
+                            <td className="p-3 text-muted-foreground">{p.author}</td>
+                            <td className="p-3 text-right">{p.real_views.toLocaleString()}</td>
+                            <td className="p-3 text-right">{p.display_views.toLocaleString()}</td>
+                            <td className="p-3 text-muted-foreground">
+                              {p.published_at ? new Date(p.published_at).toLocaleDateString() : '—'}
+                            </td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              ) : (
+                <p className="text-sm text-muted-foreground py-4">No published posts for this site yet.</p>
+              )}
+            </div>
+          ) : (
+            <p className="text-sm text-muted-foreground py-4">Could not load blog analytics.</p>
+          )}
+        </CardContent>
+      </Card>
 
       {/* Recent Activity Section */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">

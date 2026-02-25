@@ -155,6 +155,22 @@ export const newsletterApi = {
 };
 
 // Dashboard
+export interface BlogAnalytics {
+  source: string;
+  post_count: number;
+  total_real_views: number;
+  total_display_views: number;
+  top_posts: Array<{
+    id: string;
+    title: string;
+    slug: string;
+    author: string;
+    real_views: number;
+    display_views: number;
+    published_at: string | null;
+  }>;
+}
+
 export const dashboardApi = {
   stats: () =>
     request<{
@@ -166,6 +182,10 @@ export const dashboardApi = {
       propertiesSold: number;
       monthlyRevenue: string;
     }>('/api/dashboard/stats'),
+  blogAnalytics: (source?: string) => {
+    const q = source ? `?source=${encodeURIComponent(source)}` : '';
+    return request<BlogAnalytics>(`/api/dashboard/blog-analytics${q}`);
+  },
 };
 
 // Upload

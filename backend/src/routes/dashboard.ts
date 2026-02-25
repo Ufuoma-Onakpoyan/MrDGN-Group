@@ -4,6 +4,21 @@ import { authMiddleware } from '../middleware/auth.js';
 
 const router = Router();
 
+function parseSources(s: string | null | undefined): string[] {
+  if (!s) return [];
+  try {
+    const v = JSON.parse(s);
+    return Array.isArray(v) ? v.map(String) : [];
+  } catch {
+    return [];
+  }
+}
+
+function postMatchesSource(sourcesJson: string | null, source: string): boolean {
+  const sources = parseSources(sourcesJson);
+  return sources.length === 0 || sources.includes(source);
+}
+
 // GET /api/dashboard/stats - admin dashboard stats
 router.get('/stats', authMiddleware, async (_req: Request, res: Response) => {
   try {
@@ -57,6 +72,56 @@ router.get('/stats', authMiddleware, async (_req: Request, res: Response) => {
     });
   } catch {
     res.status(500).json({ error: 'Failed to fetch stats' });
+  }
+});
+
+const BLOG_VIEW_BASE = 1000;
+
+// GET /api/dashboard/blog-analytics?source=group - blog metrics for one site or all
+router.get('/blog-analytics', authMiddleware, async (req: Request, res: Response) => {
+  try {
+    const source = (req.query.source as string) || undefined;
+    const allPosts = await prisma.blogPost.findMany({
+      where: { published: true },
+      orderBy: { publishedAt: 'desc' },
+      select: {
+        id: true,
+        title: true,
+        slug: true,
+        viewCount: true,
+        publishedAt: true,
+        sources: true,
+        author: true,
+      },
+    });
+    const postsForSource = source
+      ? allPosts.filter((p) => postMatchesSource(p.sources, source))
+      : allPosts;
+    const totalRealViews = postsForSource.reduce((sum, p) => sum + p.viewCount, 0);
+    const totalDisplayViews = postsForSource.length * BLOG_VIEW_BASE + totalRealViews;
+    const topPosts = [...postsForSource]
+      .sort((a, b) => b.viewCount - a.viewCount)
+      .slice(0, 20)
+      .map((p) => ({
+        id: p.id,
+        title: p.title,
+        slug: p.slug,
+        author: p.author,
+        real_views: p.viewCount,
+        display_views: p.viewCount + BLOG_VIEW_BASE,
+        published_at: p.publishedAt?.toISOString() ?? null,
+      }));
+
+    res.json({
+      source: source ?? 'all',
+      post_count: postsForSource.length,
+      total_real_views: totalRealViews,
+      total_display_views: totalDisplayViews,
+      top_posts: topPosts,
+    });
+  } catch (e) {
+    console.error('Blog analytics error:', e);
+    res.status(500).json({ error: 'Failed to fetch blog analytics' });
   }
 });
 

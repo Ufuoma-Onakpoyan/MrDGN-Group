@@ -5,7 +5,7 @@ import { useBlogPost } from '@/hooks/useBlogPosts';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { Calendar, User, ArrowLeft, Loader2, Sparkles } from 'lucide-react';
+import { Calendar, User, ArrowLeft, Loader2, Sparkles, Eye } from 'lucide-react';
 
 const DEFAULT_FEATURED_IMAGE = '/assets/blog/blog-placeholder.svg';
 
@@ -98,6 +98,10 @@ const BlogPostPage = () => {
             <span className="flex items-center gap-2">
               <User className="h-4 w-4" />
               {post.author}
+            </span>
+            <span className="flex items-center gap-2">
+              <Eye className="h-4 w-4" />
+              {post.view_count?.toLocaleString() ?? '0'} views
             </span>
             {isLifestylePost(post.tags) && (
               <Badge className="bg-primary/90 text-primary-foreground flex items-center gap-1 w-fit">

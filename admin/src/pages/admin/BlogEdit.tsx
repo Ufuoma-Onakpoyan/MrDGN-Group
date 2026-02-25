@@ -35,6 +35,8 @@ const BlogEdit = () => {
     excerpt: '',
     tags: '',
     featured_image_url: '',
+    author: 'MrDGN',
+    published_at: '', // ISO date string for backdating; empty = use "now" when published
     // Default published to true for new posts so they show on the website immediately
     published: true,
     sources: ['group', 'entertainment', 'construction', 'mansaluxe-realty'] as string[],
@@ -48,6 +50,7 @@ const BlogEdit = () => {
 
   useEffect(() => {
     if (post) {
+      const pa = post.published_at;
       setFormData({
         title: post.title,
         slug: post.slug,
@@ -55,6 +58,8 @@ const BlogEdit = () => {
         excerpt: post.excerpt || '',
         tags: (post.tags || []).join(', '),
         featured_image_url: post.featured_image_url || '',
+        author: post.author || 'MrDGN',
+        published_at: pa ? pa.slice(0, 16) : '', // datetime-local uses YYYY-MM-DDTHH:mm
         published: post.published,
         sources: (post.sources && post.sources.length > 0)
           ? post.sources
@@ -73,6 +78,8 @@ const BlogEdit = () => {
         excerpt: data.excerpt || '',
         tags: tagsArray,
         featured_image_url: data.featured_image_url || '',
+        author: data.author || 'MrDGN',
+        published_at: data.published_at ? new Date(data.published_at).toISOString() : undefined,
         published: data.published,
         sources: data.sources.length > 0 ? data.sources : ['group', 'entertainment', 'construction', 'mansaluxe-realty'],
       };
@@ -200,6 +207,15 @@ const BlogEdit = () => {
                 <CardTitle>Settings</CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
+                <div>
+                  <Label htmlFor="author">Author</Label>
+                  <Input
+                    id="author"
+                    value={formData.author}
+                    onChange={(e) => setFormData((prev) => ({ ...prev, author: e.target.value }))}
+                    placeholder="e.g. MrDGN, Jane Doe"
+                  />
+                </div>
                 <div className="flex items-center justify-between">
                   <Label htmlFor="published">Published</Label>
                   <Switch
@@ -207,6 +223,18 @@ const BlogEdit = () => {
                     checked={formData.published}
                     onCheckedChange={(checked) => setFormData((prev) => ({ ...prev, published: checked }))}
                   />
+                </div>
+                <div>
+                  <Label htmlFor="published_at">Publish date (backdate)</Label>
+                  <Input
+                    id="published_at"
+                    type="datetime-local"
+                    value={formData.published_at}
+                    onChange={(e) => setFormData((prev) => ({ ...prev, published_at: e.target.value }))}
+                  />
+                  <p className="text-xs text-muted-foreground mt-1">
+                    Optional. Leave empty to use current time when published.
+                  </p>
                 </div>
                 <div>
                   <Label htmlFor="tags">Tags</Label>

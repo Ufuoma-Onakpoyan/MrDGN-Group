@@ -14,10 +14,22 @@ function parseSources(s: string | null | undefined): string[] {
   }
 }
 
+const BASE_VIEW_COUNT = 1000; // Display = BASE + real viewCount on public-facing responses
+
 function postMatchesSource(sourcesJson: string | null, source: string | undefined): boolean {
   if (!source) return true;
   const sources = parseSources(sourcesJson);
   return sources.length === 0 || sources.includes(source);
+}
+
+function parsePublishedAt(body: Record<string, unknown>): Date | null {
+  const v = body.published_at;
+  if (v === null || v === undefined) return null;
+  if (typeof v === 'string' && v.trim()) {
+    const d = new Date(v.trim());
+    if (!isNaN(d.getTime())) return d;
+  }
+  return null;
 }
 
 // Public: get published posts (optional ?source= to filter by site)
@@ -32,7 +44,7 @@ router.get('/', async (req: Request, res: Response) => {
     const filtered = source
       ? posts.filter((p) => postMatchesSource(p.sources, source))
       : posts;
-    res.json(filtered.map(mapPostWithSources));
+    res.json(filtered.map((p) => mapPostWithSources(p, true)));
   } catch (e) {
     console.error('Blog list error:', e);
     res.status(500).json({ error: 'Failed to fetch blog posts' });
@@ -54,7 +66,7 @@ router.get('/slug/:slug', async (req: Request, res: Response) => {
       where: { id: post.id },
       data: { viewCount: { increment: 1 } },
     });
-    res.json(mapPostWithSources({ ...post, viewCount: post.viewCount + 1 }));
+    res.json(mapPostWithSources({ ...post, viewCount: post.viewCount + 1 }, true));
   } catch {
     res.status(500).json({ error: 'Failed to fetch post' });
   }
@@ -83,6 +95,8 @@ router.post('/', authMiddleware, requireRole('super_admin', 'editor'), async (re
     const sources = Array.isArray(body.sources) && body.sources.length > 0
       ? body.sources.map(String)
       : ['group', 'entertainment', 'construction', 'mansaluxe-realty'];
+    const published = Boolean(body.published);
+    const publishedAt = parsePublishedAt(body) ?? (published ? new Date() : null);
     const post = await prisma.blogPost.create({
       data: {
         title: String(body.title),
@@ -91,8 +105,8 @@ router.post('/', authMiddleware, requireRole('super_admin', 'editor'), async (re
         excerpt: body.excerpt ? String(body.excerpt) : null,
         featuredImageUrl: body.featured_image_url ? String(body.featured_image_url) : null,
         author: body.author ? String(body.author) : 'MrDGN',
-        published: Boolean(body.published),
-        publishedAt: body.published ? new Date() : null,
+        published,
+        publishedAt,
         tags: JSON.stringify(Array.isArray(body.tags) ? body.tags.map(String) : []),
         sources: JSON.stringify(sources),
       },
@@ -116,10 +130,13 @@ router.put('/:id', authMiddleware, requireRole('super_admin', 'editor'), async (
       ...(body.author != null ? { author: String(body.author) } : {}),
       ...(body.published !== undefined ? {
         published: Boolean(body.published),
-        publishedAt: body.published ? new Date() : null,
+        publishedAt: body.published_at !== undefined ? parsePublishedAt(body) : (body.published ? new Date() : null),
       } : {}),
       ...(body.tags ? { tags: JSON.stringify(Array.isArray(body.tags) ? body.tags.map(String) : []) } : {}),
     };
+    if (body.published_at !== undefined && !('publishedAt' in updateData)) {
+      (updateData as Record<string, unknown>).publishedAt = parsePublishedAt(body);
+    }
     if (body.sources !== undefined && Array.isArray(body.sources) && body.sources.length > 0) {
       updateData.sources = JSON.stringify(body.sources.map(String));
     }
@@ -153,22 +170,25 @@ function parseJsonArray(s: string | null | undefined): string[] {
   }
 }
 
-function mapPostWithSources(p: {
-  id: string;
-  title: string;
-  slug: string;
-  content: string;
-  excerpt: string | null;
-  featuredImageUrl: string | null;
-  author: string;
-  viewCount: number;
-  published: boolean;
-  publishedAt: Date | null;
-  tags: string;
-  sources?: string | null;
-  createdAt: Date;
-  updatedAt: Date;
-}) {
+function mapPostWithSources(
+  p: {
+    id: string;
+    title: string;
+    slug: string;
+    content: string;
+    excerpt: string | null;
+    featuredImageUrl: string | null;
+    author: string;
+    viewCount: number;
+    published: boolean;
+    publishedAt: Date | null;
+    tags: string;
+    sources?: string | null;
+    createdAt: Date;
+    updatedAt: Date;
+  },
+  addBaseViews = false
+) {
   // Ensure featured_image_url is absolute so all frontends can load it
   let featuredImage = p.featuredImageUrl;
   if (featuredImage && featuredImage.startsWith('/') && !featuredImage.startsWith('//')) {
@@ -181,6 +201,7 @@ function mapPostWithSources(p: {
     })();
     featuredImage = baseOrigin + featuredImage;
   }
+  const viewCount = addBaseViews ? p.viewCount + BASE_VIEW_COUNT : p.viewCount;
 
   return {
     id: p.id,
@@ -190,7 +211,7 @@ function mapPostWithSources(p: {
     excerpt: p.excerpt,
     featured_image_url: featuredImage,
     author: p.author,
-    view_count: p.viewCount,
+    view_count: viewCount,
     published: p.published,
     published_at: p.publishedAt?.toISOString() ?? null,
     tags: parseJsonArray(p.tags),
