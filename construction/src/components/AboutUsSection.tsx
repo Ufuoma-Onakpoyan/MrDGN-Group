@@ -9,10 +9,10 @@ const AboutUsSection = () => {
       <div className="container mx-auto px-6">
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">
-            About <span className="text-gradient">MR DGN Constructions</span>
+            About <span className="text-gradient">Mr DGN Construction and Developers Limited</span>
           </h2>
           <p className="text-lg md:text-xl text-muted-foreground mb-8 leading-relaxed">
-            Since 2020, MR DGN Constructions has brought excellence to Nigeria's construction industry
+            Since 2020, Mr DGN construction and developers limited has brought excellence to Nigeria's construction industry
             and established itself as a premier construction company, delivering innovative
             solutions and superior craftsmanship across the nation. Our 20-strong team of engineers,
             managers, and bricklayers specializes in residential, commercial, and infrastructure

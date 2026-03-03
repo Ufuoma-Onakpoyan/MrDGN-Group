@@ -35,7 +35,7 @@ const HeroSection = () => {
               Together
             </h1>
             <p className="text-lg sm:text-xl lg:text-2xl mb-6 sm:mb-8 text-white/90 max-w-2xl">
-              MR DGN Constructions delivers excellence across Nigeria. From Lagos to Abuja, we build with precision, safety, and innovation that meets international standards.
+              Mr DGN construction and developers limited delivers excellence across Nigeria. From Lagos to Abuja, we build with precision, safety, and innovation that meets international standards.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <Button size="lg" className="btn-construction group">

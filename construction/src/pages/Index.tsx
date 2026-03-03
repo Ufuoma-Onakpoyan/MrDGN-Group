@@ -11,7 +11,7 @@ import Footer from '@/components/Footer';
 
 const Index = () => {
   useEffect(() => {
-    document.title = 'MR DGN Constructions - Building Excellence Since 2020 | Nigeria';
+    document.title = 'Mr DGN construction and developers limited - Building Excellence Since 2020 | Nigeria';
   }, []);
   return (
     <div className="min-h-screen">

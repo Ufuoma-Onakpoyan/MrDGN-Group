@@ -52,7 +52,7 @@ const AboutUs = () => {
               About <span className="text-primary">Mr DGN Construction and Developers Limited</span>
             </h1>
             <p className="text-xl text-muted-foreground mb-8">
-              Building excellence for 5 years, we are your trusted partner for innovative construction solutions that stand the test of time. MR DGN Constructions is a subsidiary of MrDGN Group.
+              Building excellence for 5 years, we are your trusted partner for innovative construction solutions that stand the test of time. Mr DGN construction and developers limited is a subsidiary of MrDGN Group.
             </p>
           </div>
         </div>

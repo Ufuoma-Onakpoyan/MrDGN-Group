@@ -12,7 +12,7 @@ const CTASection = () => {
             Ready to Start Your Next Construction Project?
           </h2>
           <p className="text-lg md:text-xl mb-8 text-primary-foreground/90">
-            Join hundreds of satisfied clients who trust MrDGN Constructions for their building needs. 
+            Join hundreds of satisfied clients who trust Mr DGN construction and developers limited for their building needs. 
             Let's transform your vision into reality with our expertise and dedication.
           </p>
           

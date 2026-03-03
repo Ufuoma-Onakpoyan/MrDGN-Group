@@ -48,7 +48,7 @@ const Navigation = () => {
           <Link to="/" className="flex items-center h-full py-1">
             <img 
               src="/assets/logo-construction.png" 
-              alt="MrDGN Construction" 
+              alt="Mr DGN construction and developers limited" 
               className="h-11 md:h-12 w-auto object-contain transition-all duration-300 hover:scale-105 drop-shadow-md"
               style={{ minHeight: '44px', maxHeight: '48px' }}
             />

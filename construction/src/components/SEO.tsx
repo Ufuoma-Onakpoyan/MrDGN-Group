@@ -5,7 +5,7 @@ interface SEOProps {
   description?: string;
 }
 
-const SITE_NAME = 'MR DGN Constructions';
+const SITE_NAME = 'Mr DGN construction and developers limited';
 
 export function SEO({ title, description }: SEOProps) {
   const fullTitle = title ? `${title} | ${SITE_NAME}` : `${SITE_NAME} - Building Excellence Since 2020`;

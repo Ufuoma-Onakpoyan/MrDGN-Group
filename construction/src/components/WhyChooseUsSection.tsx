@@ -41,7 +41,7 @@ const WhyChooseUsSection = () => {
       <div className="container mx-auto px-6">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-            Why Choose <span className="text-gradient">MR DGN Constructions</span>
+            Why Choose <span className="text-gradient">Mr DGN Construction and Developers Limited</span>
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
             Experience the difference that comes with working with Nigeria's construction industry leaders committed to excellence.
@@ -53,7 +53,7 @@ const WhyChooseUsSection = () => {
           <div className="order-2 lg:order-1">
             <img
               src="/our-story-premises.png"
-              alt="MR DGN Construction and Developers – our premises"
+              alt="Mr DGN construction and developers limited – our premises"
               className="w-full h-[400px] object-cover rounded-lg shadow-lg"
             />
           </div>
