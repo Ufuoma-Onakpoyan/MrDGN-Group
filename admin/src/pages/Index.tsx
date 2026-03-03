@@ -172,7 +172,7 @@ const Index = () => {
                   
                   <div className="flex justify-between items-center">
                     <p className="font-bold text-2xl text-primary">
-                      ₦{property.price.toLocaleString()}
+                      {property.price != null ? `₦${property.price.toLocaleString()}` : 'Price on request'}
                     </p>
                     <Button variant="outline">View Details</Button>
                   </div>

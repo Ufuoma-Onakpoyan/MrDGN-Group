@@ -849,7 +849,7 @@ export default function Properties() {
               
               <div className="flex justify-between items-center">
                 <div>
-                  <p className="font-bold text-lg text-primary">₦{property.price.toLocaleString()}</p>
+                  <p className="font-bold text-lg text-primary">{property.price != null ? `₦${property.price.toLocaleString()}` : 'Price on request'}</p>
                   <Badge variant={property.status === 'available' ? 'default' : property.status === 'sold' ? 'secondary' : 'outline'}>
                     {property.status === 'available' ? 'Available' : property.status === 'sold' ? 'Sold' : 'Under Contract'}
                   </Badge>

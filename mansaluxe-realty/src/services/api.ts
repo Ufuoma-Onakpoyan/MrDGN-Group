@@ -99,7 +99,8 @@ class ApiService {
     return (data || []).filter((p) => p.status === 'available');
   }
 
-  formatPrice(price: number): string {
+  formatPrice(price: number | null | undefined): string {
+    if (price == null) return 'Price on request';
     return `₦${price.toLocaleString()}`;
   }
 }
