@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button";
 import { RevealAnimation } from "@/components/ui/reveal-animation";
 import { apiService, Property } from "@/services/api";
 import { SEO } from "@/components/SEO";
+import { formatPriceDisplay } from "@/lib/utils";
 
 function getEmbedUrl(url: string): string | null {
   if (!url) return null;
@@ -173,9 +174,9 @@ const PropertyDetail = () => {
           </Link>
           <Badge 
             variant={property.status === 'sold' ? 'destructive' : 'secondary'} 
-            className="text-lg px-4 py-2"
+            className="text-base font-bold px-5 py-2.5 uppercase tracking-wide"
           >
-            {property.status.toUpperCase()}
+            {property.status === 'sold' ? 'Sold' : property.status === 'pending' ? 'Pending' : 'Available'}
           </Badge>
         </div>
 
@@ -346,7 +347,7 @@ const PropertyDetail = () => {
                   </div>
 
                   <div className="text-4xl font-bold text-primary">
-                    ₦{property.price.toLocaleString()}
+                    {formatPriceDisplay(property.price)}
                   </div>
 
                   {/* Property Stats */}

@@ -26,3 +26,9 @@ export function getYouTubeThumbnailUrl(url: string | null | undefined): string |
   if (!ytMatch) return null
   return `https://img.youtube.com/vi/${ytMatch[1]}/maxresdefault.jpg`
 }
+
+/** Display price or luxury "Price on request" when null. */
+export function formatPriceDisplay(price: number | null | undefined): string {
+  if (price == null) return "Price on request"
+  return `₦${price.toLocaleString()}`
+}

@@ -54,7 +54,8 @@ export default function Properties() {
     droneVideo: '',
     walkthroughVideo: '',
     generalVideo: '',
-    cardPosterUrl: ''
+    cardPosterUrl: '',
+    cardPosterVideoTimestampSeconds: '' as string | number
   });
 
   useEffect(() => {
@@ -109,7 +110,9 @@ export default function Properties() {
       floorPlanImages: [] as string[],
       droneVideo: '',
       walkthroughVideo: '',
-      generalVideo: ''
+      generalVideo: '',
+      cardPosterUrl: '',
+      cardPosterVideoTimestampSeconds: ''
     });
     setEditingProperty(null);
     setUploadedMedia([]);
@@ -121,7 +124,7 @@ export default function Properties() {
       setFormData({
         title: property.title,
         description: property.description || '',
-        price: property.price.toString(),
+        price: property.price != null ? property.price.toString() : '',
         location: property.location,
         bedrooms: property.bedrooms || 0,
         bathrooms: property.bathrooms || 0,
@@ -142,7 +145,9 @@ export default function Properties() {
         floorPlanImages: property.floorPlanImages || [],
         droneVideo: property.videos?.drone || '',
         walkthroughVideo: property.videos?.walkthrough || '',
-        generalVideo: property.videos?.general || ''
+        generalVideo: property.videos?.general || '',
+        cardPosterUrl: property.card_poster_url ?? '',
+        cardPosterVideoTimestampSeconds: property.card_poster_video_timestamp_seconds ?? ''
       });
       // Preserve order: build single list from property.images
       const media: MediaItem[] = (property.images || []).map(url => ({
@@ -264,6 +269,8 @@ export default function Properties() {
         videos: Object.keys(videos).length > 0 ? videos : undefined,
         features: featuresList,
         year_built: formData.yearBuilt === '' || formData.yearBuilt == null ? undefined : Number(formData.yearBuilt),
+        card_poster_url: formData.cardPosterUrl || null,
+        card_poster_video_timestamp_seconds: formData.cardPosterVideoTimestampSeconds === '' || formData.cardPosterVideoTimestampSeconds == null ? null : Number(formData.cardPosterVideoTimestampSeconds),
       };
 
       if (editingProperty) {
@@ -412,14 +419,14 @@ export default function Properties() {
                 </div>
                 
                 <div>
-                  <Label htmlFor="price">Price</Label>
+                  <Label htmlFor="price">Price (optional)</Label>
                   <Input
                     id="price"
                     value={formData.price}
                     onChange={(e) => setFormData({ ...formData, price: e.target.value })}
                     placeholder="₦850,000,000"
-                    required
                   />
+                  <p className="text-xs text-muted-foreground mt-1">Leave blank to show &quot;Price on request&quot; on the website.</p>
                 </div>
                 
                 <div>
@@ -741,6 +748,20 @@ export default function Properties() {
                       <img src={formData.cardPosterUrl} alt="Card poster preview" className="h-20 w-auto rounded border object-cover" />
                     </div>
                   )}
+                  <div className="mt-2">
+                    <Label htmlFor="cardPosterVideoTimestampSeconds" className="text-xs">Poster time (seconds)</Label>
+                    <Input
+                      id="cardPosterVideoTimestampSeconds"
+                      type="number"
+                      min={0}
+                      step={0.5}
+                      placeholder="e.g. 12"
+                      value={formData.cardPosterVideoTimestampSeconds === '' ? '' : formData.cardPosterVideoTimestampSeconds}
+                      onChange={(e) => setFormData({ ...formData, cardPosterVideoTimestampSeconds: e.target.value === '' ? '' : e.target.value })}
+                      className="max-w-[120px] mt-1"
+                    />
+                    <p className="text-xs text-muted-foreground mt-1">Optional: time in the video (seconds) this poster image is from. The card image is still the uploaded poster.</p>
+                  </div>
                 </div>
 
                 <div className="flex items-center space-x-2">

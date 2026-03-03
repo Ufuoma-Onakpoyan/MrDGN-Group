@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { ArrowRight, TrendingUp, Users, Award, Star, Sparkles, PlayCircle } from "lucide-react";
 import { useFeaturedProperties } from "@/hooks/useProperties";
-import { isVideoUrl, getYouTubeThumbnailUrl } from "@/lib/utils";
+import { isVideoUrl, getYouTubeThumbnailUrl, formatPriceDisplay } from "@/lib/utils";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -213,10 +213,14 @@ const Home = () => {
                           Featured
                         </Badge>
                       )}
-                      {property.listing_type === 'new_development' && (
-                        <Badge className="absolute top-3 right-3 z-10 bg-accent text-accent-foreground flex items-center gap-1 border border-primary/30">
+                      {property.listing_type === 'new_development' ? (
+                        <Badge className="absolute top-3 right-3 z-10 bg-accent text-accent-foreground flex items-center gap-1 border border-primary/30 px-3 py-1">
                           <Sparkles className="w-3 h-3" />
-                          <span>New development</span>
+                          <span>New Development</span>
+                        </Badge>
+                      ) : (
+                        <Badge variant="secondary" className="absolute top-3 right-3 z-10 text-xs font-medium">
+                          Available
                         </Badge>
                       )}
                     </div>
@@ -231,7 +235,7 @@ const Home = () => {
                       </p>
                       <div className="flex items-center justify-between">
                         <div className="text-2xl font-bold text-gold-gradient">
-                          ₦{property.price.toLocaleString()}
+                          {formatPriceDisplay(property.price)}
                         </div>
                         <Button asChild variant="outline" size="sm" className="hover-scale">
                           <Link to={`/properties/${property.id}`}>

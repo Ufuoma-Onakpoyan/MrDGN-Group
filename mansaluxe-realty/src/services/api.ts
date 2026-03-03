@@ -6,7 +6,7 @@ export interface Property {
   id: string;
   title: string;
   description: string | null;
-  price: number;
+  price: number | null;
   location: string;
   bedrooms: number | null;
   bathrooms: number | null;

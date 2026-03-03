@@ -28,7 +28,7 @@ function mapProperty(p: Record<string, unknown> & {
   id: string;
   title: string;
   description: string | null;
-  price: number;
+  price: number | null;
   location: string;
   bedrooms: number | null;
   bathrooms: number | null;
@@ -49,7 +49,7 @@ function mapProperty(p: Record<string, unknown> & {
     id: p.id,
     title: p.title,
     description: p.description,
-    price: p.price,
+    price: p.price != null ? p.price : null,
     location: p.location,
     bedrooms: p.bedrooms,
     bathrooms: p.bathrooms,
@@ -75,6 +75,7 @@ function mapProperty(p: Record<string, unknown> & {
     listing_type: p.listingType ?? null,
     videos: parseJsonObject<{ drone?: string; walkthrough?: string; general?: string }>(p.videos as string | null),
     card_poster_url: p.cardPosterUrl != null ? String(p.cardPosterUrl) : null,
+    card_poster_video_timestamp_seconds: p.cardPosterVideoTimestampSeconds != null ? Number(p.cardPosterVideoTimestampSeconds) : null,
     created_at: p.createdAt.toISOString(),
     updated_at: p.updatedAt.toISOString(),
   };
@@ -113,7 +114,7 @@ router.post('/', authMiddleware, requireRole('super_admin', 'editor'), async (re
       data: {
         title: String(body.title),
         description: body.description ? String(body.description) : null,
-        price: Number(body.price),
+        price: body.price != null && body.price !== '' ? Number(body.price) : null,
         location: String(body.location),
         bedrooms: body.bedrooms != null ? Number(body.bedrooms) : null,
         bathrooms: body.bathrooms != null ? Number(body.bathrooms) : null,
@@ -132,6 +133,7 @@ router.post('/', authMiddleware, requireRole('super_admin', 'editor'), async (re
         listingType: body.listing_type ? String(body.listing_type) : null,
         videos: body.videos != null ? JSON.stringify(body.videos) : null,
         cardPosterUrl: body.card_poster_url != null ? String(body.card_poster_url) : null,
+        cardPosterVideoTimestampSeconds: body.card_poster_video_timestamp_seconds != null && body.card_poster_video_timestamp_seconds !== '' ? Number(body.card_poster_video_timestamp_seconds) : null,
       },
     });
     res.status(201).json(mapProperty(p));
@@ -149,7 +151,7 @@ router.put('/:id', authMiddleware, requireRole('super_admin', 'editor'), async (
       data: {
         ...(body.title != null && { title: String(body.title) }),
         ...(body.description !== undefined && { description: body.description ? String(body.description) : null }),
-        ...(body.price != null && { price: Number(body.price) }),
+        ...(body.price !== undefined && { price: body.price != null && body.price !== '' ? Number(body.price) : null }),
         ...(body.location != null && { location: String(body.location) }),
         ...(body.bedrooms !== undefined && { bedrooms: body.bedrooms != null ? Number(body.bedrooms) : null }),
         ...(body.bathrooms !== undefined && { bathrooms: body.bathrooms != null ? Number(body.bathrooms) : null }),
@@ -168,6 +170,7 @@ router.put('/:id', authMiddleware, requireRole('super_admin', 'editor'), async (
         ...(body.listing_type !== undefined && { listingType: body.listing_type ? String(body.listing_type) : null }),
         ...(body.videos !== undefined && { videos: body.videos != null ? JSON.stringify(body.videos) : null }),
         ...(body.card_poster_url !== undefined && { cardPosterUrl: body.card_poster_url ? String(body.card_poster_url) : null }),
+        ...(body.card_poster_video_timestamp_seconds !== undefined && { cardPosterVideoTimestampSeconds: body.card_poster_video_timestamp_seconds != null && body.card_poster_video_timestamp_seconds !== '' ? Number(body.card_poster_video_timestamp_seconds) : null }),
       },
     });
     res.json(mapProperty(p));

@@ -6,7 +6,7 @@ export interface Property {
   id: string;
   title: string;
   description?: string;
-  price: number;
+  price: number | undefined;
   location: string;
   status: 'available' | 'sold' | 'pending';
   listing_type?: ListingType | null;
@@ -34,12 +34,14 @@ export interface Property {
   videos?: { drone?: string; walkthrough?: string; general?: string };
   /** Optional thumbnail for listing card when first media is video */
   card_poster_url?: string | null;
+  /** Optional: time in video (seconds) the poster image is from */
+  card_poster_video_timestamp_seconds?: number | null;
 }
 
 export interface CreatePropertyData {
   title: string;
   description?: string;
-  price: string;
+  price?: string;
   location: string;
   status?: 'available' | 'sold' | 'pending';
   listing_type?: ListingType | null;
@@ -61,10 +63,14 @@ export interface CreatePropertyData {
   videoUrl?: string;
   floorPlanImages?: string[];
   videos?: { drone?: string; walkthrough?: string; general?: string };
+  card_poster_url?: string | null;
+  card_poster_video_timestamp_seconds?: number | null;
 }
 
 function toApiData(d: CreatePropertyData) {
-  const price = parseFloat((d.price || '0').replace(/[^\d.-]/g, ''));
+  const priceVal = (d.price ?? '').toString().trim();
+  const parsed = priceVal !== '' ? parseFloat(priceVal.replace(/[^\d.-]/g, '')) : null;
+  const price = parsed != null && !Number.isNaN(parsed) ? parsed : null;
   return {
     title: d.title,
     description: d.description,
@@ -86,6 +92,8 @@ function toApiData(d: CreatePropertyData) {
     featured: d.featured,
     agent: d.virtualTourUrl || d.videoUrl ? { virtualTourUrl: d.virtualTourUrl, videoUrl: d.videoUrl } : undefined,
     videos: d.videos ?? undefined,
+    card_poster_url: d.card_poster_url != null && d.card_poster_url !== '' ? d.card_poster_url : null,
+    card_poster_video_timestamp_seconds: d.card_poster_video_timestamp_seconds != null && d.card_poster_video_timestamp_seconds !== '' ? Number(d.card_poster_video_timestamp_seconds) : null,
   };
 }
 
@@ -95,7 +103,7 @@ function fromApi(p: Record<string, unknown>): Property {
     id: String(p.id),
     title: String(p.title),
     description: p.description ? String(p.description) : undefined,
-    price: Number(p.price),
+    price: p.price != null ? Number(p.price) : undefined,
     location: String(p.location),
     status: String(p.status || 'available'),
     listing_type: (listingType === 'sale' || listingType === 'rent' || listingType === 'new_development') ? listingType : undefined,
@@ -114,6 +122,7 @@ function fromApi(p: Record<string, unknown>): Property {
     agent: p.agent,
     videos: (p.videos && typeof p.videos === 'object') ? p.videos as { drone?: string; walkthrough?: string; general?: string } : undefined,
     card_poster_url: p.card_poster_url != null ? String(p.card_poster_url) : undefined,
+    card_poster_video_timestamp_seconds: p.card_poster_video_timestamp_seconds != null ? Number(p.card_poster_video_timestamp_seconds) : undefined,
     created_at: String(p.created_at),
     updated_at: String(p.updated_at),
   };
@@ -157,7 +166,7 @@ export const propertiesService = {
   },
 
   async updateProperty(id: string, propertyData: Partial<CreatePropertyData>): Promise<Property> {
-    const payload = propertyData.price != null ? toApiData(propertyData as CreatePropertyData) : propertyData;
+    const payload = toApiData({ title: '', location: '', ...propertyData } as CreatePropertyData);
     if (useApi) {
       const p = await propertiesApi.update(id, payload);
       return fromApi(p as Record<string, unknown>);

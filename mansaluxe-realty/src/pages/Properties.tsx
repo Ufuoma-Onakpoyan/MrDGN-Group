@@ -13,7 +13,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { RevealAnimation } from "@/components/ui/reveal-animation";
 import { PropertyMap } from "@/components/PropertyMap";
-import { isVideoUrl, getYouTubeThumbnailUrl } from "@/lib/utils";
+import { isVideoUrl, getYouTubeThumbnailUrl, formatPriceDisplay } from "@/lib/utils";
 
 type ListingTab = 'all' | ListingType;
 
@@ -37,16 +37,6 @@ const initialFilterState: FilterState = {
   featured: false,
   status: "all",
   listingType: "all",
-};
-
-// Price formatter to convert string price to number (remove currency symbol and commas)
-const priceToNumber = (price: string): number => {
-  return parseInt(price.replace(/[^\d]/g, ''));
-};
-
-// Convert number back to formatted Nigerian Naira
-const formatPrice = (price: number): string => {
-  return `₦${price.toLocaleString()}`;
 };
 
 const Properties = () => {
@@ -94,9 +84,9 @@ const Properties = () => {
         return false;
       }
 
-      // Price range filter
+      // Price range filter: properties with no price always pass; others must be in range
       const propertyPrice = property.price;
-      if (propertyPrice < filters.priceRange[0] || propertyPrice > filters.priceRange[1]) {
+      if (propertyPrice != null && (propertyPrice < filters.priceRange[0] || propertyPrice > filters.priceRange[1])) {
         return false;
       }
 
@@ -131,9 +121,10 @@ const Properties = () => {
     setSearchTerm("");
   };
 
-  // Calculate price range for slider
-  const minPrice = useMemo(() => (properties.length ? Math.min(...properties.map(p => p.price)) : 0), [properties]);
-  const maxPrice = useMemo(() => (properties.length ? Math.max(...properties.map(p => p.price)) : 3000000000), [properties]);
+  // Calculate price range for slider (only from properties with a numeric price)
+  const pricesWithValues = useMemo(() => properties.map(p => p.price).filter((p): p is number => p != null), [properties]);
+  const minPrice = useMemo(() => (pricesWithValues.length ? Math.min(...pricesWithValues) : 0), [pricesWithValues]);
+  const maxPrice = useMemo(() => (pricesWithValues.length ? Math.max(...pricesWithValues) : 3000000000), [pricesWithValues]);
   const priceRangeWidth = maxPrice > minPrice ? ((filters.priceRange[1] - filters.priceRange[0]) / (maxPrice - minPrice)) * 100 : 100;
   const priceRangeLeft = maxPrice > minPrice ? ((filters.priceRange[0] - minPrice) / (maxPrice - minPrice)) * 100 : 0;
 
@@ -489,10 +480,18 @@ const Properties = () => {
                   filteredProperties.map((property) => (
                     <Link key={property.id} to={`/properties/${property.id}`}>
                       <Card className="luxury-card overflow-hidden hover-lift cursor-pointer p-0 relative">
-                        {property.listing_type === 'new_development' && (
-                          <Badge className="absolute top-1 left-1 z-10 bg-accent text-accent-foreground text-[10px] px-1.5 py-0 flex items-center gap-0.5">
-                            <Sparkles className="w-2.5 h-2.5" />
-                            <span>New dev</span>
+                        {property.status === 'sold' ? (
+                          <div className="absolute top-0 left-0 right-0 z-10 py-1.5 px-2 bg-destructive text-destructive-foreground text-center font-bold text-xs uppercase tracking-wide">
+                            Sold
+                          </div>
+                        ) : property.listing_type === 'new_development' ? (
+                          <Badge className="absolute top-1 left-1 z-10 bg-accent text-accent-foreground text-xs px-2 py-0.5 flex items-center gap-1">
+                            <Sparkles className="w-3 h-3" />
+                            <span>New Development</span>
+                          </Badge>
+                        ) : (
+                          <Badge variant="secondary" className="absolute top-1 left-1 z-10 text-xs px-2 py-0.5">
+                            Available
                           </Badge>
                         )}
                         <div className="flex gap-3">
@@ -521,7 +520,7 @@ const Properties = () => {
                           <div className="p-2 flex-1 min-w-0">
                             <h3 className="font-serif font-semibold text-sm truncate">{property.title}</h3>
                             <p className="text-xs text-muted-foreground truncate">{property.location}</p>
-                            <p className="text-sm font-semibold text-primary">₦{property.price.toLocaleString()}</p>
+                            <p className="text-sm font-semibold text-primary">{formatPriceDisplay(property.price)}</p>
                           </div>
                         </div>
                       </Card>
@@ -556,17 +555,24 @@ const Properties = () => {
                 >
                   <Link to={`/properties/${property.id}`} className="block">
                   <Card className="luxury-card overflow-hidden group hover-lift cursor-pointer h-full">
-                    {/* Property Status Badge */}
-                    {property.status === 'sold' && (
-                      <Badge className="absolute top-4 left-4 z-10 bg-destructive text-destructive-foreground">
-                        SOLD
-                      </Badge>
-                    )}
-                    {property.status !== 'sold' && (property.listing_type === 'new_development') && (
-                      <Badge className="absolute top-4 left-4 z-10 bg-accent text-accent-foreground flex items-center space-x-1 border border-primary/30">
-                        <Sparkles className="w-3 h-3" />
-                        <span>New development</span>
-                      </Badge>
+                    {/* Property Status Badge - prominent SOLD or Available/New Development */}
+                    {property.status === 'sold' ? (
+                      <div className="absolute top-0 left-0 right-0 z-10 py-2 px-4 bg-destructive text-destructive-foreground text-center font-bold text-sm uppercase tracking-wider shadow-md">
+                        Sold
+                      </div>
+                    ) : (
+                      <div className="absolute top-4 left-4 z-10">
+                        {property.listing_type === 'new_development' ? (
+                          <Badge className="bg-accent text-accent-foreground flex items-center space-x-1.5 border border-primary/30 px-3 py-1.5 text-sm font-medium">
+                            <Sparkles className="w-4 h-4" />
+                            <span>New Development</span>
+                          </Badge>
+                        ) : (
+                          <Badge variant="secondary" className="px-3 py-1.5 text-sm font-medium border border-border">
+                            Available
+                          </Badge>
+                        )}
+                      </div>
                     )}
                     {property.featured && (
                       <Badge className="absolute top-4 right-4 z-10 bg-primary text-primary-foreground flex items-center space-x-1">
@@ -623,7 +629,7 @@ const Properties = () => {
                       <div className="flex items-start justify-between">
                         <h3 className="text-xl font-serif font-bold line-clamp-2 flex-1 mr-4">{property.title}</h3>
                         <div className="text-2xl font-bold text-gold-gradient whitespace-nowrap">
-                          ₦{property.price.toLocaleString()}
+                          {formatPriceDisplay(property.price)}
                         </div>
                       </div>
                       
