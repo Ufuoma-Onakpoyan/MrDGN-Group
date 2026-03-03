@@ -25,6 +25,7 @@ export interface Property {
   featured: boolean | null;
   videos?: { drone?: string; walkthrough?: string; general?: string } | null;
   card_poster_url?: string | null;
+  card_poster_video_timestamp_seconds?: number | null;
   created_at: string;
   updated_at: string;
 }
