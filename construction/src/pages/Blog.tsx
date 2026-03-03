@@ -30,7 +30,7 @@ const Blog = () => {
               Construction <span className="text-primary">Blog</span>
             </h1>
             <p className="text-xl text-muted-foreground mb-8">
-              News, insights, and updates from MrDGN Construction. Stay informed on industry trends and our latest projects.
+              News, insights, and updates from MR DGN Construction. Stay informed on industry trends and our latest projects.
             </p>
           </div>
         </div>

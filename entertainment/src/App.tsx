@@ -17,19 +17,19 @@ import NotFound from "./pages/NotFound";
 const queryClient = new QueryClient();
 
 const PAGE_TITLES: Record<string, string> = {
-  '/': "MrDGN Entertainment | Event Sponsorship",
-  '/about': "About Us | MrDGN Entertainment",
-  '/blog': "Blog | MrDGN Entertainment",
-  '/events': "Events & Sponsorships | MrDGN Entertainment",
-  '/contact': "Contact | MrDGN Entertainment",
-  '/careers': "Careers | MrDGN Entertainment",
+  '/': "MR DGN Entertainment | Event Sponsorship",
+  '/about': "About Us | MR DGN Entertainment",
+  '/blog': "Blog | MR DGN Entertainment",
+  '/events': "Events & Sponsorships | MR DGN Entertainment",
+  '/contact': "Contact | MR DGN Entertainment",
+  '/careers': "Careers | MR DGN Entertainment",
 };
 
 function AppTitleSetter() {
   const location = useLocation();
   useEffect(() => {
     const basePath = location.pathname === '/' ? '/' : '/' + location.pathname.split('/').filter(Boolean)[0];
-    const title = PAGE_TITLES[location.pathname] ?? PAGE_TITLES[basePath] ?? "MrDGN Entertainment";
+    const title = PAGE_TITLES[location.pathname] ?? PAGE_TITLES[basePath] ?? "MR DGN Entertainment";
     document.title = title;
   }, [location.pathname]);
   return null;

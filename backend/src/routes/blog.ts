@@ -104,7 +104,7 @@ router.post('/', authMiddleware, requireRole('super_admin', 'editor'), async (re
         content: String(body.content),
         excerpt: body.excerpt ? String(body.excerpt) : null,
         featuredImageUrl: body.featured_image_url ? String(body.featured_image_url) : null,
-        author: body.author ? String(body.author) : 'MrDGN',
+        author: body.author ? String(body.author) : 'MR DGN',
         published,
         publishedAt,
         tags: JSON.stringify(Array.isArray(body.tags) ? body.tags.map(String) : []),

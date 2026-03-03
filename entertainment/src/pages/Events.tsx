@@ -32,7 +32,7 @@ function PastEventCard({ event }: { event: SponsoredEventResponse }) {
             <div className="absolute inset-0 flex items-center justify-center"><Music className="h-16 w-16 text-muted-foreground/50" /></div>
           )}
           <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-4">
-            <Badge className="bg-primary">Sponsored by MrDGN</Badge>
+            <Badge className="bg-primary">Sponsored by MR DGN</Badge>
           </div>
         </div>
         <div className="lg:col-span-3 p-6 md:p-8 flex flex-col">

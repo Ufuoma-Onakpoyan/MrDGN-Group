@@ -6,9 +6,9 @@ const About = () => {
   const teamMembers = [
     {
       name: "Onakpoyan Success",
-      position: "Chief Executive Officer, MrDGN Group",
+      position: "Chief Executive Officer, MR DGN Group",
       image: ceoPortrait,
-      bio: "A seasoned businessman and developer from Delta State, Nigeria, MrDGN leads the MrDGN Group with a vision to redefine luxury and excellence. His strategic leadership guides Mansa Luxe Realty Limited and the broader Group in delivering exceptional real estate and lifestyle experiences across Nigeria and beyond."
+      bio: "A seasoned businessman and developer from Delta State, Nigeria, MR DGN leads the MR DGN Group with a vision to redefine luxury and excellence. His strategic leadership guides Mansa Luxe Realty Limited and the broader Group in delivering exceptional real estate and lifestyle experiences across Nigeria and beyond."
     },
     {
       name: "Ufuoma Onakpoyan",
@@ -51,7 +51,7 @@ const About = () => {
               About <span className="text-gold-gradient">Mansa Luxe Realty Limited</span>
             </h1>
             <p className="text-xl text-muted-foreground">
-              A subsidiary of MrDGN Group, pioneering luxury real estate in Nigeria since 2020.
+              A subsidiary of MR DGN Group, pioneering luxury real estate in Nigeria since 2020.
             </p>
           </div>
         </div>
@@ -72,7 +72,7 @@ const About = () => {
               <h2 className="text-3xl font-serif font-bold mb-6">Our Story</h2>
               <div className="space-y-4 text-muted-foreground">
                 <p>
-                  Founded as a subsidiary of the prestigious MrDGN Group, Mansa Luxe Realty Limited emerged from a vision to 
+                  Founded as a subsidiary of the prestigious MR DGN Group, Mansa Luxe Realty Limited emerged from a vision to 
                   revolutionize Nigeria's luxury real estate market. Since our inception in 2020, we have been 
                   dedicated to connecting discerning clients with exceptional properties across Nigeria's most 
                   sought-after locations.
@@ -198,15 +198,15 @@ const About = () => {
         <div className="container mx-auto px-4">
           <div className="luxury-card p-8 md:p-12 text-center">
             <h2 className="text-3xl font-serif font-bold mb-6">
-              Part of the <span className="text-gold-gradient">MrDGNGroup</span> Family
+              Part of the <span className="text-gold-gradient">MR DGN Group</span> Family
             </h2>
             <p className="text-muted-foreground text-lg max-w-3xl mx-auto">
-              Mansa Luxe Realty Limited is proud to be a subsidiary of MrDGN Group, a diversified conglomerate 
+              Mansa Luxe Realty Limited is proud to be a subsidiary of MR DGN Group, a diversified conglomerate 
               with interests spanning real estate, technology, and investment. This partnership 
               provides us with the resources, expertise, and network to deliver exceptional value 
               to our clients while maintaining our commitment to luxury and excellence.
             </p>
-            {/* TODO: Add more details about MrDGNGroup relationship and benefits */}
+            {/* TODO: Add more details about MR DGN Group relationship and benefits */}
           </div>
         </div>
       </section>

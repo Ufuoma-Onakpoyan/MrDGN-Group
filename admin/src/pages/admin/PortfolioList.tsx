@@ -42,7 +42,7 @@ const PortfolioList = () => {
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
         <div>
           <h1 className="text-3xl font-bold text-foreground">Portfolio</h1>
-          <p className="text-muted-foreground">Projects displayed on the MrDGN Group site</p>
+          <p className="text-muted-foreground">Projects displayed on the MR DGN Group site</p>
         </div>
         <Link to="/admin/portfolio/new">
           <Button className="flex items-center gap-2">

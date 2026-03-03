@@ -13,7 +13,7 @@ const BlogPost = () => {
   const { data: post, isLoading, error } = useBlogPost(slug!);
 
   React.useEffect(() => {
-    if (post) document.title = `${post.title} | MrDGN Group`;
+    if (post) document.title = `${post.title} | MR DGN Group`;
   }, [post]);
 
   if (isLoading) {

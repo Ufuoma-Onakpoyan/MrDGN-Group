@@ -124,10 +124,10 @@ export function AdminSidebar({ collapsed = false, onToggleCollapse, onCloseMobil
             onClick={onCloseMobile}
             className={`flex items-center ${collapsed ? 'justify-center' : 'gap-3'}`}
           >
-            <img src="/logo.png" alt="MrDGN Group" className="h-10 w-10 object-contain shrink-0" />
+            <img src="/logo.png" alt="MR DGN Group" className="h-10 w-10 object-contain shrink-0" />
             {!collapsed && (
               <div className="flex flex-col min-w-0">
-                <span className="font-bold text-white text-sm leading-tight">MrDGN Group</span>
+                <span className="font-bold text-white text-sm leading-tight">MR DGN Group</span>
                 <span className="text-xs text-[hsl(var(--muted-foreground))]">Admin Panel</span>
               </div>
             )}

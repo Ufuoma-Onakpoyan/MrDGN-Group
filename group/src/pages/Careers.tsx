@@ -7,9 +7,9 @@ import { MapPin, Clock, DollarSign, Users, TrendingUp, Award, Loader2 } from 'lu
 import { useJobs } from '@/hooks/useJobs';
 import { Link } from 'react-router-dom';
 const sourceToDepartment: Record<string, string> = {
-  group: 'MrDGN Group',
-  entertainment: 'MrDGN Entertainment',
-  construction: 'MrDGN Construction',
+  group: 'MR DGN Group',
+  entertainment: 'MR DGN Entertainment',
+  construction: 'MR DGN Construction',
   'mansaluxe-realty': 'Mansa Luxe Realty Limited',
 };
 
@@ -45,7 +45,7 @@ const Careers = () => {
             Join Our Team
           </h1>
           <p className="text-xl text-white/90 max-w-3xl mx-auto animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
-            Build your career with MrDGN Group and help shape the future across entertainment, construction, and real estate industries.
+            Build your career with MR DGN Group and help shape the future across entertainment, construction, and real estate industries.
           </p>
         </div>
       </section>

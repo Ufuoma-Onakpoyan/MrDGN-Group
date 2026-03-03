@@ -46,7 +46,7 @@ const Footer = () => {
               <img src="/assets/logo-construction.png" alt="Mr DGN construction and developers limited" className="h-12 md:h-14 w-auto object-contain drop-shadow-md" style={{ minHeight: '48px', maxHeight: '56px' }} />
             </div>
             <p className="text-secondary-foreground/80 mb-6">
-              Building excellence across Nigeria since 2020. Your trusted partner for all construction needs. Mr DGN construction and developers limited is a subsidiary of MrDGN Group.
+              Building excellence across Nigeria since 2020. Your trusted partner for all construction needs. Mr DGN construction and developers limited is a subsidiary of MR DGN Group.
             </p>
             
             {/* Contact Info */}
@@ -162,7 +162,7 @@ const Footer = () => {
               <span>© {currentYear} Mr DGN construction and developers limited. All rights reserved.</span>
               <span className="hidden sm:inline">·</span>
               <a href="https://mrdgngroup.com" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">
-                A subsidiary of MrDGN Group — mrdgngroup.com
+                A subsidiary of MR DGN Group — mrdgngroup.com
               </a>
             </div>
 

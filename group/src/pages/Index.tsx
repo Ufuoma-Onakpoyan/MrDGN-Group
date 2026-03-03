@@ -24,13 +24,13 @@ const Index = () => {
     });
   }, [businessApi]);
   const businesses = [{
-    name: 'MrDGN Entertainment',
+    name: 'MR DGN Entertainment',
     description: 'Creating captivating content and experiences across digital and traditional media platforms.',
     logo: '/assets/logo-entertainment.png',
     icon: Clapperboard,
     color: 'from-purple-500 to-pink-500'
   }, {
-    name: 'MrDGN Construction',
+    name: 'MR DGN Construction',
     description: 'Building tomorrow\'s infrastructure with innovative construction solutions and sustainable practices.',
     logo: '/assets/logo-construction.png',
     icon: Building2,
@@ -63,18 +63,18 @@ const Index = () => {
   }, {
     title: 'Media',
     icon: FileText,
-    description: 'Stay updated with the latest news, press releases, and media coverage about MrDGN Group and our subsidiaries.',
+    description: 'Stay updated with the latest news, press releases, and media coverage about MR DGN Group and our subsidiaries.',
     link: '/media',
     color: 'from-orange-600 to-red-600'
   }];
   const portfolioItems = [{
     title: 'Digital Entertainment Leadership',
-    description: 'MrDGN Entertainment has produced over 50 innovative projects, reaching more than 1 million viewers worldwide.',
+    description: 'MR DGN Entertainment has produced over 50 innovative projects, reaching more than 1 million viewers worldwide.',
     images: ['/assets/entertainment-portfolio-1.png', '/assets/entertainment-portfolio-2.png', '/assets/entertainment-portfolio-3.png', '/assets/entertainment-portfolio-4.png', '/assets/entertainment-portfolio-5.png'],
     category: 'Entertainment'
   }, {
     title: 'Sustainable Construction Excellence',
-    description: 'MrDGN Construction has delivered 100+ projects worth over ₦50M, pioneering green building solutions.',
+    description: 'MR DGN Construction has delivered 100+ projects worth over ₦50M, pioneering green building solutions.',
     images: ['/assets/construction-portfolio-1.png', '/assets/construction-portfolio-2.png', '/assets/construction-portfolio-3.png', '/assets/construction-portfolio-4.png'],
     category: 'Construction'
   }, {
@@ -156,7 +156,7 @@ const Index = () => {
           <p className="text-2xl md:text-3xl text-black/95 mb-12 max-w-3xl mx-auto animate-fade-in font-light leading-relaxed" style={{
           animationDelay: '0.5s'
         }}>
-            MrDGN Group is a <span className="font-bold text-red-600">conglomerate</span> driving innovation across construction, entertainment, and real estate industries.
+            MR DGN Group is a <span className="font-bold text-red-600">conglomerate</span> driving innovation across construction, entertainment, and real estate industries.
           </p>
           
           <div className="flex flex-col sm:flex-row gap-6 justify-center animate-fade-in" style={{
@@ -183,7 +183,7 @@ const Index = () => {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
-              Discover MrDGN Group
+              Discover MR DGN Group
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
               Explore our story, businesses, and latest updates through these quick previews.
@@ -249,7 +249,7 @@ const Index = () => {
                           <div className="absolute inset-0 bg-gradient-to-t from-primary/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                           <div className="absolute -inset-4 bg-gradient-to-r from-primary/20 to-destructive/20 rounded-3xl opacity-0 group-hover:opacity-100 blur-xl transition-all duration-700"></div>
                           <div className="relative z-10">
-                            <div className={`w-16 h-16 mx-auto mb-6 rounded-2xl flex items-center justify-center group-hover:scale-125 group-hover:rotate-12 transition-all duration-700 shadow-lg relative overflow-hidden ${business.name === 'MrDGN Construction' ? 'bg-gray-100' : 'bg-white/10 backdrop-blur-sm'}`}>
+                            <div className={`w-16 h-16 mx-auto mb-6 rounded-2xl flex items-center justify-center group-hover:scale-125 group-hover:rotate-12 transition-all duration-700 shadow-lg relative overflow-hidden ${business.name === 'MR DGN Construction' ? 'bg-gray-100' : 'bg-white/10 backdrop-blur-sm'}`}>
                               <img 
                                 src={business.logo} 
                                 alt={`${business.name} Logo`}
@@ -359,7 +359,7 @@ const Index = () => {
             Ready to Partner with Us?
           </h2>
           <p className="text-xl text-white/90 mb-10 max-w-2xl mx-auto animate-fade-in" style={{ animationDelay: '0.2s' }}>
-            Join forces with MrDGN Group and be part of building tomorrow&apos;s industries. Together, we can create extraordinary value and lasting impact.
+            Join forces with MR DGN Group and be part of building tomorrow&apos;s industries. Together, we can create extraordinary value and lasting impact.
           </p>
           <Link to="/contact" onClick={() => window.scrollTo(0, 0)} className="inline-flex">
             <Button

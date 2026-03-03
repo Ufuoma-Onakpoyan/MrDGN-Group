@@ -20,7 +20,7 @@ const OfficeMap = () => (
           allowFullScreen
           loading="lazy"
           referrerPolicy="no-referrer-when-downgrade"
-          title="MrDGN Head Office - Asaba, Delta State"
+          title="MR DGN Head Office - Asaba, Delta State"
           className="w-full h-full"
         />
         <div className="absolute bottom-0 left-0 right-0 p-3 bg-background/90 text-center text-sm">

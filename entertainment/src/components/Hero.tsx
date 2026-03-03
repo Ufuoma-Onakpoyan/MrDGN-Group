@@ -14,11 +14,11 @@ const Hero = () => {
           <div className="inline-flex items-center gap-2 bg-primary/10 border border-primary/20 rounded-full px-4 py-2 mb-6">
             <img 
               src="/assets/8ab32aff-fbbf-4303-8bf1-acd410bb7261.png" 
-              alt="MrDGN Group" 
+              alt="MR DGN Group" 
               className="h-4 w-auto"
             />
             <span className="text-sm font-medium text-muted-foreground">
-              A subsidiary of MrDGN Group
+              A subsidiary of MR DGN Group
             </span>
           </div>
 
@@ -33,7 +33,7 @@ const Hero = () => {
 
           {/* Subheading */}
           <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-2xl mx-auto leading-relaxed">
-            MrDGN Entertainment supports concerts, expos, comedy shows, and cultural events that celebrate Nigerian talent and bring communities together.
+            MR DGN Entertainment supports concerts, expos, comedy shows, and cultural events that celebrate Nigerian talent and bring communities together.
           </p>
 
           {/* CTA Buttons */}

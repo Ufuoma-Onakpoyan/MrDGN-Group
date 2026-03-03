@@ -64,7 +64,7 @@ const ProductsList = () => {
         <div>
           <h1 className="text-3xl font-bold text-foreground">Construction Products</h1>
           <p className="text-muted-foreground">
-            Products with prices for the MrDGN Construction site
+            Products with prices for the MR DGN Construction site
           </p>
         </div>
         <Link to="/admin/products/new">

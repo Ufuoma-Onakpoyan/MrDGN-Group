@@ -2,7 +2,7 @@ import { useLocation } from "react-router-dom";
 import { SEO } from "./SEO";
 
 const routeMeta: Record<string, { title: string; description: string }> = {
-  "/": { title: "Mansa Luxe Realty Limited", description: "Discover Nigeria's most prestigious properties. Luxury real estate in Lagos, Abuja, Victoria Island, Ikoyi, and Port Harcourt. A subsidiary of MrDGN Group." },
+  "/": { title: "Mansa Luxe Realty Limited", description: "Discover Nigeria's most prestigious properties. Luxury real estate in Lagos, Abuja, Victoria Island, Ikoyi, and Port Harcourt. A subsidiary of MR DGN Group." },
   "/properties": { title: "Properties", description: "Browse luxury properties for sale and rent in Nigeria. Penthouse, villa, mansion, duplex, and estate listings in Lagos, Abuja, and beyond." },
   "/about": { title: "About Us", description: "Learn about Mansa Luxe Realty Limited, Nigeria's premier luxury real estate company. Our story, mission, vision, and team since 2020." },
   "/contact": { title: "Contact Us", description: "Contact Mansa Luxe Realty for property enquiries. Head office in Asaba, Delta State. Call +234 813 532 4467 or send a message." },

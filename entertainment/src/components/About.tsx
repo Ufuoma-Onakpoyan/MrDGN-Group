@@ -16,10 +16,10 @@ const About = () => {
                 <span className="text-sm font-medium text-primary">Event Sponsorship</span>
               </div>
               <h2 className="text-3xl md:text-4xl font-bold mb-4">
-                About <span className="gradient-text">MrDGN Entertainment</span>
+                About <span className="gradient-text">MR DGN Entertainment</span>
               </h2>
               <p className="text-muted-foreground mb-6 leading-relaxed">
-                We focus on supporting Nigerian entertainment through event sponsorship. As part of MrDGN Group, we partner with concerts, comedy shows, music and fashion expos, and cultural events that celebrate local talent and bring audiences together.
+                We focus on supporting Nigerian entertainment through event sponsorship. As part of MR DGN Group, we partner with concerts, comedy shows, music and fashion expos, and cultural events that celebrate local talent and bring audiences together.
               </p>
               <Link to="/about">
                 <Button size="lg" className="hero-glow group transition-all duration-300">
@@ -32,7 +32,7 @@ const About = () => {
               <div className="relative rounded-2xl overflow-hidden shadow-xl aspect-[4/5] max-w-sm w-full img-hover-scale">
                 <img
                   src={ceoPortrait}
-                  alt="Onakpoyan Success (MrDGN), CEO of MrDGN Group"
+                  alt="Onakpoyan Success (MR DGN), CEO of MR DGN Group"
                   className="w-full h-full object-cover"
                 />
               </div>

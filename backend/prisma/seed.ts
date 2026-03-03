@@ -31,10 +31,10 @@ const FILLER_BLOG_POSTS = [
   },
   {
     slug: 'mrdgn-group-expansion-2024',
-    title: 'MrDGN Group Expands Portfolio with Strategic Investments',
-    excerpt: 'MrDGN Group announces new strategic investments across entertainment, real estate, and construction sectors as part of our growth initiatives.',
-    content: `<h2>Strategic Growth Across Our Portfolio</h2><p>MrDGN Group is pleased to announce several strategic investments and partnerships that strengthen our position across key markets. Our diversified approach—spanning entertainment, real estate through MansaLuxe Realty, and construction services—enables us to drive value while contributing to local economic development.</p><h3>Entertainment and Media</h3><p>Our entertainment division continues to invest in talent development, production infrastructure, and digital distribution. We are committed to elevating African storytelling on the global stage.</p><h3>Real Estate and Construction</h3><p>MansaLuxe Realty and our construction arm are expanding their service offerings, with new projects delivering quality residential and commercial developments.</p>`,
-    author: 'MrDGN',
+    title: 'MR DGN Group Expands Portfolio with Strategic Investments',
+    excerpt: 'MR DGN Group announces new strategic investments across entertainment, real estate, and construction sectors as part of our growth initiatives.',
+    content: `<h2>Strategic Growth Across Our Portfolio</h2><p>MR DGN Group is pleased to announce several strategic investments and partnerships that strengthen our position across key markets. Our diversified approach—spanning entertainment, real estate through MansaLuxe Realty, and construction services—enables us to drive value while contributing to local economic development.</p><h3>Entertainment and Media</h3><p>Our entertainment division continues to invest in talent development, production infrastructure, and digital distribution. We are committed to elevating African storytelling on the global stage.</p><h3>Real Estate and Construction</h3><p>MansaLuxe Realty and our construction arm are expanding their service offerings, with new projects delivering quality residential and commercial developments.</p>`,
+    author: 'MR DGN',
     tags: ['Corporate', 'Expansion', 'Investments', 'Growth'],
   },
   {
@@ -42,15 +42,15 @@ const FILLER_BLOG_POSTS = [
     title: 'Luxury Real Estate Trends Shaping African Markets',
     excerpt: 'A look at emerging trends in African luxury real estate, from smart homes to sustainable design and premium amenities.',
     content: `<h2>The Evolving Luxury Real Estate Landscape</h2><p>African luxury real estate is experiencing a transformative period. Buyers are seeking properties that combine world-class amenities with sustainability, smart technology, and unique architectural design that reflects local identity.</p><h3>Key Trends</h3><p>Smart homes, sustainable construction, integrated wellness spaces, and premium security features are among the top priorities. MansaLuxe Realty is at the forefront of delivering these experiences to discerning clients across our markets.</p>`,
-    author: 'MrDGN',
+    author: 'MR DGN',
     tags: ['Real Estate', 'Luxury', 'Africa', 'Trends'],
   },
   {
     slug: 'building-sustainable-future',
     title: 'Building a Sustainable Future: Construction Best Practices',
     excerpt: 'How modern construction techniques and materials are reducing environmental impact while delivering durable, efficient structures.',
-    content: `<h2>Sustainability in Construction</h2><p>The construction industry is embracing sustainable practices at an accelerating pace. From recycled materials to energy-efficient design, modern projects are reducing their environmental footprint while improving long-term operational costs.</p><h3>Best Practices We Emphasize</h3><p>At MrDGN Construction, we prioritize eco-friendly materials, efficient waste management, and designs that maximize natural light and ventilation. Our commitment to sustainability goes hand-in-hand with delivering projects that stand the test of time.</p>`,
-    author: 'MrDGN',
+    content: `<h2>Sustainability in Construction</h2><p>The construction industry is embracing sustainable practices at an accelerating pace. From recycled materials to energy-efficient design, modern projects are reducing their environmental footprint while improving long-term operational costs.</p><h3>Best Practices We Emphasize</h3><p>At MR DGN Construction, we prioritize eco-friendly materials, efficient waste management, and designs that maximize natural light and ventilation. Our commitment to sustainability goes hand-in-hand with delivering projects that stand the test of time.</p>`,
+    author: 'MR DGN',
     tags: ['Construction', 'Sustainability', 'Best Practices'],
   },
 ];
@@ -255,8 +255,8 @@ const FILLER_PRODUCTS = [
 ];
 
 const FILLER_JOBS = [
-  { title: 'Senior Project Manager', slug: 'senior-project-manager-construction', description: 'Lead construction projects from conception to completion, managing teams and ensuring quality delivery.', department: 'MrDGN Construction', location: 'Downtown Office', employmentType: 'Full-time', salary: '₦80,000 - ₦120,000', requirements: JSON.stringify([]), source: 'group', orderIndex: 0 },
-  { title: 'Content Producer', slug: 'content-producer-entertainment', description: 'Create engaging digital content across multiple platforms, working with creative teams on innovative projects.', department: 'MrDGN Entertainment', location: 'Creative Studio', employmentType: 'Full-time', salary: '₦60,000 - ₦85,000', requirements: JSON.stringify([]), source: 'group', orderIndex: 1 },
+  { title: 'Senior Project Manager', slug: 'senior-project-manager-construction', description: 'Lead construction projects from conception to completion, managing teams and ensuring quality delivery.', department: 'MR DGN Construction', location: 'Downtown Office', employmentType: 'Full-time', salary: '₦80,000 - ₦120,000', requirements: JSON.stringify([]), source: 'group', orderIndex: 0 },
+  { title: 'Content Producer', slug: 'content-producer-entertainment', description: 'Create engaging digital content across multiple platforms, working with creative teams on innovative projects.', department: 'MR DGN Entertainment', location: 'Creative Studio', employmentType: 'Full-time', salary: '₦60,000 - ₦85,000', requirements: JSON.stringify([]), source: 'group', orderIndex: 1 },
   { title: 'Real Estate Advisor', slug: 'real-estate-advisor-mansaluxe', description: 'Guide clients through property transactions, providing expert advice and exceptional service.', department: 'MansaLuxe Realty', location: 'Sales Office', employmentType: 'Full-time', salary: '₦50,000 + Commission', requirements: JSON.stringify([]), source: 'group', orderIndex: 2 },
   { title: 'Software Engineer', slug: 'software-engineer-duerents', description: 'Develop innovative rental platform solutions and property management technologies using modern tech stacks.', department: 'Duerents', location: 'Tech Hub', employmentType: 'Full-time', salary: '₦85,000 - ₦115,000', requirements: JSON.stringify([]), source: 'group', orderIndex: 3 },
   { title: 'Senior Construction Manager', slug: 'senior-construction-manager', description: 'Lead large-scale construction projects from planning to completion.', department: 'Project Management', location: 'Lagos, Nigeria', employmentType: 'Full-time', salary: '₦95k - ₦120k', requirements: JSON.stringify(['10+ years experience', 'PMP Certification', 'Team Leadership']), source: 'construction', orderIndex: 0 },
@@ -399,13 +399,13 @@ const FILLER_PORTFOLIO = [
   { title: 'Abuja Diplomatic Quarter', slug: 'abuja-diplomatic-quarter', description: 'High-end residential project', content: 'Luxury homes designed for diplomats and executives in Abuja\'s most prestigious neighborhood.', category: 'residential', technologies: JSON.stringify(['Contemporary Design', 'Premium Finishes']), orderIndex: 2 },
 ];
 
-// Sponsored events (from uploaded posters – MrDGN Entertainment)
+// Sponsored events (from uploaded posters – MR DGN Entertainment)
 // Delta Music Comedy & Fashion Expo is ONE event (Akwocha Edition) with casting call + vendors as part of same expo
 const FILLER_SPONSORED_EVENTS = [
   {
     title: 'Goya Menor Homecoming Concert: Da Big Boys Concert',
     slug: 'goya-menor-homecoming-concert-2022',
-    description: 'MrDGN Group proudly sponsored the Goya Menor Homecoming Concert in Benin City—a major music event headlined by Goya Menor, featuring DJ Neptunes, Jaywillz, Erigga, Magnito, Berri Tiga (Machala), Lade, Maleke, and more. The concert brought together fans for an unforgettable night of Afrobeats and entertainment at the Victor Uwaifo Centre.',
+    description: 'MR DGN Group proudly sponsored the Goya Menor Homecoming Concert in Benin City—a major music event headlined by Goya Menor, featuring DJ Neptunes, Jaywillz, Erigga, Magnito, Berri Tiga (Machala), Lade, Maleke, and more. The concert brought together fans for an unforgettable night of Afrobeats and entertainment at the Victor Uwaifo Centre.',
     eventType: 'concert',
     eventDate: 'December 4, 2022',
     eventTime: '5 PM',
@@ -436,7 +436,7 @@ const FILLER_SPONSORED_EVENTS = [
   {
     title: 'Delta Music Comedy & Fashion Expo – Akwocha Edition',
     slug: 'delta-music-comedy-fashion-expo-akwocha-2022',
-    description: 'MrDGN Group was a proud sponsor of the Delta Music Comedy & Fashion Expo (Akwocha Edition), presented by 2 Things Promotions. The expo combined music, comedy, and fashion in a series of activations: a casting call for models at Grand Hotel Asaba (26 Feb 2022, 9 AM—women 5\'6" without heels, men 5\'7", dress code black top and black trousers with heels); a call for vendors and exhibitors to exhibit, sell, and network; and the main event at Dome Event Centre, Asaba (15 April 2022—Red Carpet 6 PM, Main Show 7 PM). COVID-19 guidelines applied. Art direction by Jimmy Whyte.',
+    description: 'MR DGN Group was a proud sponsor of the Delta Music Comedy & Fashion Expo (Akwocha Edition), presented by 2 Things Promotions. The expo combined music, comedy, and fashion in a series of activations: a casting call for models at Grand Hotel Asaba (26 Feb 2022, 9 AM—women 5\'6" without heels, men 5\'7", dress code black top and black trousers with heels); a call for vendors and exhibitors to exhibit, sell, and network; and the main event at Dome Event Centre, Asaba (15 April 2022—Red Carpet 6 PM, Main Show 7 PM). COVID-19 guidelines applied. Art direction by Jimmy Whyte.',
     eventType: 'expo',
     eventDate: 'February–April 2022',
     eventTime: 'Casting: 26 Feb 9 AM · Main event: 15 Apr, Red Carpet 6 PM, Main 7 PM',
@@ -459,7 +459,7 @@ const FILLER_SPONSORED_EVENTS = [
   {
     title: 'M.O.P Next of Kin – Thank You Lagos',
     slug: 'mop-next-of-kin-thank-you-lagos',
-    description: 'MrDGN Group sponsored M.O.P Next of Kin—an acclaimed comedy show by MOPCOMEDIAN in Lagos. This thank-you poster acknowledges the successful patronage and support from Lagos audiences. The show celebrated Nigerian comedy and entertainment with a memorable performance.',
+    description: 'MR DGN Group sponsored M.O.P Next of Kin—an acclaimed comedy show by MOPCOMEDIAN in Lagos. This thank-you poster acknowledges the successful patronage and support from Lagos audiences. The show celebrated Nigerian comedy and entertainment with a memorable performance.',
     eventType: 'comedy',
     eventDate: null,
     eventTime: null,
@@ -617,7 +617,7 @@ async function main() {
     console.log('Construction projects exist, skipping (' + projectCount + ')');
   }
 
-  // Seed sponsored events (entertainment – events MrDGN has sponsored)
+  // Seed sponsored events (entertainment – events MR DGN has sponsored)
   // Re-seed to keep data in sync: delete existing and create from FILLER_SPONSORED_EVENTS
   await prisma.sponsoredEvent.deleteMany({});
   for (const ev of FILLER_SPONSORED_EVENTS) {

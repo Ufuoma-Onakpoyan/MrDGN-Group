@@ -1,4 +1,4 @@
-# Deploy MrDGN Group Website (Beginner Guide)
+# Deploy MR DGN Group Website (Beginner Guide)
 
 Use **Neon** for the database, **Render** for the API backend, and **Vercel** for all 5 websites. Follow the steps in order.
 
@@ -17,7 +17,7 @@ Your code must be on **GitHub**. If it isn’t yet:
 1. Create a repo at [github.com/new](https://github.com/new).
 2. Push your project:
    ```bash
-   cd "C:\Users\ufuoma\Desktop\MrDGN Group Website"
+   cd "C:\Users\ufuoma\Desktop\MR DGN Group Website"
    git init
    git add .
    git commit -m "Initial commit"
@@ -65,7 +65,7 @@ Render will run your Node.js backend and connect it to Neon.
 1. Go to **[render.com](https://render.com)** and click **Get started**.
 2. Sign up with **GitHub**.
 3. In the dashboard, click **New +** → **Web Service**.
-4. **Connect your GitHub account** if asked, then **find and select the repository** that contains your MrDGN project.
+4. **Connect your GitHub account** if asked, then **find and select the repository** that contains your MR DGN project.
 5. Click **Connect** (or **Use this repository**).
 
 ## Step 2.2 – Configure the service
@@ -168,7 +168,7 @@ Use one of these **free** options (pick one):
 1. Go to **[uptimerobot.com](https://uptimerobot.com)** and sign up (free).
 2. Click **Add New Monitor**.
 3. **Monitor Type:** HTTP(s).
-4. **Friendly Name:** e.g. `MrDGN API`.
+4. **Friendly Name:** e.g. `MR DGN API`.
 5. **URL:** `https://mrdgn-api.onrender.com/api/health` (use your real Render URL).
 6. **Monitoring Interval:** 5 minutes (free tier allows this).
 7. Click **Create Monitor**.
@@ -178,7 +178,7 @@ UptimeRobot will request that URL every 5 minutes. That’s enough to prevent Re
 ### Option B: cron-job.org
 
 1. Go to **[cron-job.org](https://cron-job.org)** and create a free account.
-2. **Create Cronjob** → **Title:** e.g. `MrDGN API keep-alive`.
+2. **Create Cronjob** → **Title:** e.g. `MR DGN API keep-alive`.
 3. **Address:** `https://mrdgn-api.onrender.com/api/health` (your Render URL).
 4. **Schedule:** every 10 or 15 minutes (e.g. `*/10 * * * *` for every 10 minutes).
 5. Save.

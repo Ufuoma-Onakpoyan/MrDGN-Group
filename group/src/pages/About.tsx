@@ -50,7 +50,7 @@ const About = () => {
       <section className="pt-20 pb-16 gradient-hero">
         <div className="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
           <h1 className="text-5xl md:text-6xl font-bold text-white mb-6 animate-fade-in-down">
-            About MrDGN Group
+            About MR DGN Group
           </h1>
           <p className="text-xl text-white/90 max-w-3xl mx-auto animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
             Building tomorrow's industries through strategic investments, innovative leadership, and unwavering commitment to excellence.
@@ -67,26 +67,26 @@ const About = () => {
                 Our Story
               </h2>
               <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
-                Founded by Onakpoyan Success (MrDGN), a seasoned businessman and developer from Delta State, Nigeria, MrDGN Group has grown from a single entrepreneurial vision into a diversified holding company that shapes the future of entertainment, construction, and real estate. His blend of technical expertise and strategic business acumen continues to drive growth across every subsidiary.
+                Founded by Onakpoyan Success (MR DGN), a seasoned businessman and developer from Delta State, Nigeria, MR DGN Group has grown from a single entrepreneurial vision into a diversified holding company that shapes the future of entertainment, construction, and real estate. His blend of technical expertise and strategic business acumen continues to drive growth across every subsidiary.
               </p>
               <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
                 Our journey began with the understanding that true success comes from building businesses that not only generate returns but also contribute meaningfully to society. Today, we continue to identify and nurture opportunities that align with our core values of innovation, sustainability, and excellence.
               </p>
               <p className="text-lg text-muted-foreground leading-relaxed">
-                As we look to the future, MrDGN Group remains committed to expanding our portfolio with businesses that share our vision of creating positive change while delivering exceptional value to our stakeholders.
+                As we look to the future, MR DGN Group remains committed to expanding our portfolio with businesses that share our vision of creating positive change while delivering exceptional value to our stakeholders.
               </p>
             </div>
             <div className="animate-fade-in-right" style={{ animationDelay: '0.3s' }}>
               <div className="relative card-hover">
                 <img 
                   src={ceoPortrait}
-                  alt="Onakpoyan Success (MrDGN) - CEO and Founder of MrDGN Group"
+                  alt="Onakpoyan Success (MR DGN) - CEO and Founder of MR DGN Group"
                   className="rounded-lg shadow-2xl image-hover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-r from-primary/20 to-transparent rounded-lg transition-opacity duration-300 hover:opacity-80"></div>
                 <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/70 to-transparent rounded-b-lg">
                   <p className="text-white font-semibold">Onakpoyan Success</p>
-                  <p className="text-white/90 text-sm">MrDGN — CEO & Founder</p>
+                  <p className="text-white/90 text-sm">MR DGN — CEO & Founder</p>
                 </div>
               </div>
             </div>
@@ -150,15 +150,15 @@ const About = () => {
               <div className="flex-shrink-0">
                 <img 
                   src={ceoPortrait} 
-                  alt="Onakpoyan Success (MrDGN), CEO of MrDGN Group" 
+                  alt="Onakpoyan Success (MR DGN), CEO of MR DGN Group" 
                   className="w-48 h-48 rounded-xl object-cover shadow-lg"
                 />
               </div>
               <div>
                 <h3 className="text-2xl font-semibold text-foreground mb-2">Onakpoyan Success</h3>
-                <p className="text-primary font-medium mb-4">MrDGN — Chief Executive Officer & Founder</p>
+                <p className="text-primary font-medium mb-4">MR DGN — Chief Executive Officer & Founder</p>
                 <p className="text-muted-foreground leading-relaxed">
-                  A seasoned businessman and developer from Delta State, Nigeria, Onakpoyan Success (MrDGN) leads MrDGN Group with a unique combination of technical depth and strategic vision. His hands-on experience in both business and software development has shaped the Group's culture of innovation and operational excellence across entertainment, construction, and real estate.
+                  A seasoned businessman and developer from Delta State, Nigeria, Onakpoyan Success (MR DGN) leads MR DGN Group with a unique combination of technical depth and strategic vision. His hands-on experience in both business and software development has shaped the Group's culture of innovation and operational excellence across entertainment, construction, and real estate.
                 </p>
               </div>
             </div>

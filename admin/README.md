@@ -1,13 +1,13 @@
-# MrDGN Group Admin Panel
+# MR DGN Group Admin Panel
 
-Unified admin panel for MrDGN Group websites: MansaLuxe Realty, Group site, Entertainment, and Construction.
+Unified admin panel for MR DGN Group websites: MansaLuxe Realty, Group site, Entertainment, and Construction.
 
 ## 🏛️ Overview
 
-This admin panel manages content across all MrDGN Group sites:
+This admin panel manages content across all MR DGN Group sites:
 - **MansaLuxe Realty**: Properties, Testimonials
-- **MrDGN Group & Entertainment**: Blog, Portfolio
-- **MrDGN Construction**: Products (with prices)
+- **MR DGN Group & Entertainment**: Blog, Portfolio
+- **MR DGN Construction**: Products (with prices)
 
 ## ✨ Features
 
@@ -193,7 +193,7 @@ Deploy to any static hosting service:
 
 ## 📄 License
 
-This project is developed for MansaLuxeRealty, a subsidiary of MrDGNGroup. All rights reserved.
+This project is developed for MansaLuxeRealty, a subsidiary of MR DGN Group. All rights reserved.
 
 ---
 

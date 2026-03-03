@@ -13,51 +13,51 @@ import { Link } from 'react-router-dom';
 
 const faqItems = [
   {
-    question: 'What is MrDGN Group?',
-    answer: 'MrDGN Group is a diversified holding company based in Nigeria with businesses across entertainment, construction, and real estate. We build and support companies that create lasting value for our stakeholders and communities.',
+    question: 'What is MR DGN Group?',
+    answer: 'MR DGN Group is a diversified holding company based in Nigeria with businesses across entertainment, construction, and real estate. We build and support companies that create lasting value for our stakeholders and communities.',
   },
   {
-    question: 'What businesses does MrDGN Group own?',
-    answer: 'Our portfolio includes MrDGN Entertainment (content and media), MrDGN Construction (construction and development), Mansa Luxe Realty Limited (real estate sales and advisory), and Duerents (property management and rental technology). Each operates with its own brand and team while benefiting from group resources and strategy.',
+    question: 'What businesses does MR DGN Group own?',
+    answer: 'Our portfolio includes MR DGN Entertainment (content and media), MR DGN Construction (construction and development), Mansa Luxe Realty Limited (real estate sales and advisory), and Duerents (property management and rental technology). Each operates with its own brand and team while benefiting from group resources and strategy.',
   },
   {
-    question: 'Where is MrDGN Group headquartered?',
+    question: 'Where is MR DGN Group headquartered?',
     answer: 'Our head office is in Asaba, Delta State, Nigeria. You can find our address, map, and contact details on our Contact Us page.',
   },
   {
-    question: 'How can I contact MrDGN Group?',
+    question: 'How can I contact MR DGN Group?',
     answer: 'You can reach us by email at Contact@mrdgngroup.com, by phone at +234 813 532 4467, or via WhatsApp. We also have a contact form on our Contact Us page. For media inquiries, use the details on our Media page.',
   },
   {
-    question: 'Does MrDGN Group have job openings?',
+    question: 'Does MR DGN Group have job openings?',
     answer: 'Yes. We list current openings on our Careers page. You can browse roles across the group and apply from there. We also encourage you to follow us for future opportunities.',
   },
   {
-    question: 'How can I work with or partner with MrDGN Group?',
+    question: 'How can I work with or partner with MR DGN Group?',
     answer: 'We welcome serious inquiries from potential partners, clients, and investors. Please use our Contact form or email us with a brief description of your interest, and our team will respond.',
   },
   {
-    question: 'Where can I find news and updates about MrDGN Group?',
+    question: 'Where can I find news and updates about MR DGN Group?',
     answer: 'Our Media page features the latest news, blog posts, and a company overview video. For press-specific requests, see the Press Inquiries section on the same page.',
   },
   {
-    question: 'Is MrDGN Group involved in investor relations?',
+    question: 'Is MR DGN Group involved in investor relations?',
     answer: 'Yes. We have a dedicated Investor Relations section that outlines our strategy, vision, and approach. Key reports and resources will be published there as they become available. For direct investor inquiries, please contact us through the Contact page.',
   },
   {
-    question: 'What does MrDGN Entertainment do?',
+    question: 'What does MR DGN Entertainment do?',
     answer: (
       <>
-        MrDGN Entertainment focuses on content creation, digital media, and entertainment experiences. This includes production, events, and brand partnerships. You can learn more and get in touch via their website at{' '}
+        MR DGN Entertainment focuses on content creation, digital media, and entertainment experiences. This includes production, events, and brand partnerships. You can learn more and get in touch via their website at{' '}
         <a href="https://entertainment.mrdgngroup.com/" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">entertainment.mrdgngroup.com</a>.
       </>
     ),
   },
   {
-    question: 'What does MrDGN Construction offer?',
+    question: 'What does MR DGN Construction offer?',
     answer: (
       <>
-        MrDGN Construction delivers commercial and residential construction, infrastructure projects, and green building solutions. They combine quality execution with sustainable practices. Visit{' '}
+        MR DGN Construction delivers commercial and residential construction, infrastructure projects, and green building solutions. They combine quality execution with sustainable practices. Visit{' '}
         <a href="https://construction.mrdgngroup.com/" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">construction.mrdgngroup.com</a> for more.
       </>
     ),
@@ -89,7 +89,7 @@ const faqItems = [
     answer: 'Yes. We welcome scheduled visits to our head office in Asaba, Delta State. We recommend contacting us in advance so we can arrange a suitable time and ensure the right team is available to meet you.',
   },
   {
-    question: 'Does MrDGN Group offer internships or graduate programs?',
+    question: 'Does MR DGN Group offer internships or graduate programs?',
     answer: 'Opportunities for interns and graduates are sometimes listed on our Careers page. We encourage you to check there regularly and to get in touch via the contact form if you would like to express your interest for future openings.',
   },
   {
@@ -101,11 +101,11 @@ const faqItems = [
     answer: 'For official logos, imagery, or press kits, please contact our media team through the Press Inquiries section on our Media page. We can provide approved assets for editorial or partnership use.',
   },
   {
-    question: 'Does MrDGN Group operate outside Nigeria?',
+    question: 'Does MR DGN Group operate outside Nigeria?',
     answer: 'Yes. We operate in Nigeria and internationally. In Nigeria we focus on Asaba, Lagos, and Abuja. Outside Nigeria we have a presence in Dubai. We work anywhere our strategy and opportunities take us; for specific regions or partnerships, please contact us.',
   },
   {
-    question: 'What are MrDGN Group’s core values?',
+    question: 'What are MR DGN Group’s core values?',
     answer: 'Our core values are Innovation, Vision, Collaboration, and Excellence. We push boundaries, see opportunity in challenges, build strong partnerships, and maintain high standards in everything we do. You can read more on our About Us page.',
   },
 ];
@@ -125,7 +125,7 @@ const FAQ = () => {
             Frequently Asked Questions
           </h1>
           <p className="text-xl text-white/90 max-w-3xl mx-auto animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
-            Quick answers to common questions about MrDGN Group, our businesses, and how to get in touch.
+            Quick answers to common questions about MR DGN Group, our businesses, and how to get in touch.
           </p>
         </div>
       </section>

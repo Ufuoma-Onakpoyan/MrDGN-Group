@@ -22,20 +22,20 @@ function PageTransition({ children }: { children: React.ReactNode }) {
 }
 
 const PAGE_TITLES: Record<string, string> = {
-  '/': 'MrDGN Group | Holding Company – Entertainment, Construction & Real Estate',
-  '/about': 'About Us | MrDGN Group',
-  '/businesses': 'Our Businesses | MrDGN Group',
-  '/investors': 'Investor Relations | MrDGN Group',
-  '/media': 'Media & News | MrDGN Group',
-  '/careers': 'Careers | MrDGN Group',
-  '/faq': 'FAQ | MrDGN Group',
-  '/contact': 'Contact Us | MrDGN Group',
+  '/': 'MR DGN Group | Holding Company – Entertainment, Construction & Real Estate',
+  '/about': 'About Us | MR DGN Group',
+  '/businesses': 'Our Businesses | MR DGN Group',
+  '/investors': 'Investor Relations | MR DGN Group',
+  '/media': 'Media & News | MR DGN Group',
+  '/careers': 'Careers | MR DGN Group',
+  '/faq': 'FAQ | MR DGN Group',
+  '/contact': 'Contact Us | MR DGN Group',
 };
 
 const AppRoutes = () => {
   const location = useLocation();
   useEffect(() => {
-    const title = PAGE_TITLES[location.pathname] || 'MrDGN Group';
+    const title = PAGE_TITLES[location.pathname] || 'MR DGN Group';
     document.title = title;
   }, [location.pathname]);
   return (

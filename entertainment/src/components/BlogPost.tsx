@@ -40,7 +40,7 @@ const BlogPost = () => {
   }, [slug]);
 
   useEffect(() => {
-    if (post) document.title = `${post.title} | MrDGN Entertainment`;
+    if (post) document.title = `${post.title} | MR DGN Entertainment`;
   }, [post]);
 
   useEffect(() => {
@@ -81,7 +81,7 @@ const BlogPost = () => {
             slug: raw.slug,
             content: raw.content,
             excerpt: raw.excerpt || '',
-            author: raw.author || 'MrDGN',
+            author: raw.author || 'MR DGN',
             published_at: raw.published_at || raw.created_at,
             created_at: raw.created_at,
             tags: raw.tags || [],

@@ -18,7 +18,7 @@ import { Link } from 'react-router-dom';
 
 const SOURCE_OPTIONS = [
   { value: 'all', label: 'All sites' },
-  { value: 'group', label: 'MrDGN Group' },
+  { value: 'group', label: 'MR DGN Group' },
   { value: 'entertainment', label: 'Entertainment' },
   { value: 'construction', label: 'Construction' },
   { value: 'mansaluxe-realty', label: 'MansaLuxe Realty' },
@@ -74,7 +74,7 @@ const JobsList = () => {
         <div>
           <h1 className="text-3xl font-bold text-foreground">Job Postings</h1>
           <p className="text-muted-foreground">
-            Career opportunities across MrDGN Group sites
+            Career opportunities across MR DGN Group sites
           </p>
         </div>
         <Link to="/admin/jobs/new">

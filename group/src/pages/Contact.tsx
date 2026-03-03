@@ -300,7 +300,7 @@ const Contact = () => {
           <Accordion type="single" collapsible className="w-full">
             <AccordionItem value="contact-1" className="border-border bg-card px-6 rounded-lg mb-4 tile-glassy">
               <AccordionTrigger className="text-left font-semibold text-foreground hover:no-underline hover:text-primary">
-                How can I reach MrDGN Group?
+                How can I reach MR DGN Group?
               </AccordionTrigger>
               <AccordionContent className="text-muted-foreground">
                 You can email us at Contact@mrdgngroup.com, call +234 813 532 4467, use WhatsApp, or fill out the contact form on this page. We aim to respond within 24 hours on business days.

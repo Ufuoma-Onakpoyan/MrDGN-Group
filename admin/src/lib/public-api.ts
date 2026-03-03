@@ -114,7 +114,7 @@ class PublicAPI {
       // This would normally come from a settings API endpoint
       return {
         companyName: 'MansaLuxeRealty',
-        companySubtitle: 'A subsidiary of MrDGNGroup',
+        companySubtitle: 'A subsidiary of MR DGN Group',
         primaryColor: '#D4AF37',
         secondaryColor: '#000000',
         currency: '₦',

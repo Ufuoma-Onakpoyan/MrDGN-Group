@@ -36,7 +36,7 @@ app.use('/uploads', express.static(path.join(__dirname, '../uploads')));
 
 // Root: return 200 so uptime monitors hitting the base URL see the service as up
 app.get('/', (_req, res) => {
-  res.json({ status: 'ok', message: 'MrDGN API', health: '/api/health' });
+  res.json({ status: 'ok', message: 'MR DGN API', health: '/api/health' });
 });
 
 // Health check (for uptime monitors and load balancers)

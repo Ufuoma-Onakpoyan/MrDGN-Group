@@ -99,7 +99,7 @@ const PortfolioDetail = () => {
     : null;
 
   useEffect(() => {
-    if (item?.title) document.title = `${item.title} | MrDGN Entertainment`;
+    if (item?.title) document.title = `${item.title} | MR DGN Entertainment`;
   }, [item?.title]);
 
   if (isLoading && !fallbackItem) {

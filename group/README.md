@@ -1,6 +1,6 @@
-# MrDGN Group Website
+# MR DGN Group Website
 
-Main holding company website for MrDGN Group - overseeing MrDGN Entertainment, MrDGN Construction, and MansaLuxe Realty.
+Main holding company website for MR DGN Group - overseeing MR DGN Entertainment, MR DGN Construction, and MansaLuxe Realty.
 
 ## Tech Stack
 

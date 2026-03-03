@@ -69,13 +69,13 @@ export default function Login() {
       <Card className="w-full max-w-md mx-auto">
         <CardHeader className="text-center space-y-4">
           <div className="flex justify-center">
-            <img src="/logo.png" alt="MrDGN Group" className="h-12 w-auto sm:h-16" />
+            <img src="/logo.png" alt="MR DGN Group" className="h-12 w-auto sm:h-16" />
           </div>
           <CardTitle className="text-xl sm:text-2xl font-serif">
-            MrDGN Group Admin Panel
+            MR DGN Group Admin Panel
           </CardTitle>
           <CardDescription className="text-sm sm:text-base">
-            Sign in to manage properties, blog, portfolio, and content across all MrDGN Group websites
+            Sign in to manage properties, blog, portfolio, and content across all MR DGN Group websites
           </CardDescription>
         </CardHeader>
         

@@ -62,13 +62,13 @@ const Footer = () => {
             <div className="flex items-center space-x-3 mb-6">
               <img 
                 src="/assets/logo-entertainment.png" 
-                alt="MrDGN Entertainment" 
+                alt="MR DGN Entertainment" 
                 className="h-11 md:h-12 w-auto object-contain drop-shadow-md"
                 style={{ minHeight: '44px', maxHeight: '48px' }}
               />
             </div>
             <p className="text-secondary-foreground/80 mb-6 leading-relaxed max-w-md">
-              Supporting Nigerian entertainment through event sponsorship. A subsidiary of MrDGN Group.
+              Supporting Nigerian entertainment through event sponsorship. A subsidiary of MR DGN Group.
             </p>
             
             {/* Contact Info */}
@@ -189,10 +189,10 @@ const Footer = () => {
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0 mt-6">
             <div className="flex items-center space-x-2 text-sm text-secondary-foreground/60">
               <span>Part of</span>
-              <a href="https://mrdgngroup.com" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 hover:opacity-90 transition-opacity" aria-label="MrDGN Group">
+              <a href="https://mrdgngroup.com" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 hover:opacity-90 transition-opacity" aria-label="MR DGN Group">
                 <img 
                   src="/assets/logo-group.png" 
-                  alt="MrDGN Group" 
+                  alt="MR DGN Group" 
                   className="h-5 w-auto object-contain opacity-80"
                 />
                 <span className="text-primary hover:underline">mrdgngroup.com</span>
@@ -204,7 +204,7 @@ const Footer = () => {
         {/* Copyright */}
         <div className="border-t border-secondary-foreground/20 mt-8 pt-6 text-center">
           <p className="text-secondary-foreground/60 text-sm">
-            © {currentYear} MrDGN Entertainment. All rights reserved. | A subsidiary of MrDGN Group
+            © {currentYear} MR DGN Entertainment. All rights reserved. | A subsidiary of MR DGN Group
           </p>
         </div>
       </div>

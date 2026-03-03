@@ -40,8 +40,8 @@ const Footer = () => {
     }
   };
   const businesses = [
-    { name: "MrDGN Entertainment", logo: "/assets/logo-entertainment.png", url: "https://entertainment.mrdgngroup.com/" },
-    { name: "MrDGN Construction", logo: "/assets/logo-construction.png", url: "https://construction.mrdgngroup.com/" },
+    { name: "MR DGN Entertainment", logo: "/assets/logo-entertainment.png", url: "https://entertainment.mrdgngroup.com/" },
+    { name: "MR DGN Construction", logo: "/assets/logo-construction.png", url: "https://construction.mrdgngroup.com/" },
     { name: "Mansa Luxe Realty Limited", logo: "/assets/logo-mansaluxe.png", url: "https://mansaluxerealty.mrdgngroup.com/" },
     { name: "DueRent", logo: "/assets/duerent-logo.png", url: "https://duerents.com/" }
   ];
@@ -54,7 +54,7 @@ const Footer = () => {
             <div className="flex items-center space-x-3 mb-4">
               <img 
                 src="/assets/logo-group.png" 
-                alt="MrDGN Group Logo" 
+                alt="MR DGN Group Logo" 
                 className="h-12 md:h-14 w-auto object-contain drop-shadow-md"
                 style={{ minHeight: '48px', maxHeight: '56px' }}
               />
@@ -170,7 +170,7 @@ const Footer = () => {
             <h4 className="font-semibold mb-4 flex items-center gap-2">
               <Mail className="h-4 w-4" /> Newsletter
             </h4>
-            <p className="text-muted-foreground text-sm mb-3">Stay updated with MrDGN Group news.</p>
+            <p className="text-muted-foreground text-sm mb-3">Stay updated with MR DGN Group news.</p>
             <form onSubmit={handleNewsletterSubmit} className="space-y-2">
               <Input
                 type="email"
@@ -201,7 +201,7 @@ const Footer = () => {
           </div>
         </div>
         <div className="border-t border-border pt-8 mt-8 text-center text-muted-foreground">
-          <p>&copy; {currentYear} MrDGN Group. All rights reserved.</p>
+          <p>&copy; {currentYear} MR DGN Group. All rights reserved.</p>
         </div>
       </div>
     </footer>

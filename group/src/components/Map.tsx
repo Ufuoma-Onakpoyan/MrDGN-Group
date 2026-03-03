@@ -14,7 +14,7 @@ const Map: React.FC<MapProps> = ({ className = '' }) => {
   return (
     <div className={`w-full h-96 rounded-lg overflow-hidden border border-border/50 shadow-2xl ${className}`}>
       <iframe
-        title="MrDGN Group office location - Google Maps"
+        title="MR DGN Group office location - Google Maps"
         src={GOOGLE_EMBED_URL}
         width="100%"
         height="100%"

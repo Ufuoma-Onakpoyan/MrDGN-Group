@@ -113,7 +113,7 @@ This plan covers three major changes:
 ### 3.4 HTML Meta
 
 - Remove `Lovable Generated Project`, `@lovable_dev`, `lovable.dev` og:image
-- Use project-specific title/description or generic MrDGN branding
+- Use project-specific title/description or generic MR DGN branding
 - Replace og:image with project favicon or remove
 
 ### 3.5 README

@@ -45,7 +45,7 @@ const Blog = () => {
               title: p.title,
               slug: p.slug,
               excerpt: p.excerpt || '',
-              author: p.author || 'MrDGN',
+              author: p.author || 'MR DGN',
               published_at: p.published_at || p.created_at,
               created_at: p.created_at,
               tags: p.tags || [],

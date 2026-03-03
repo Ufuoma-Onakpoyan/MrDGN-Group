@@ -19,7 +19,7 @@ import { useToast } from '@/hooks/use-toast';
 import { ArrowLeft, Save } from 'lucide-react';
 
 const SOURCE_OPTIONS = [
-  { value: 'group', label: 'MrDGN Group' },
+  { value: 'group', label: 'MR DGN Group' },
   { value: 'entertainment', label: 'Entertainment' },
   { value: 'construction', label: 'Construction' },
   { value: 'mansaluxe-realty', label: 'MansaLuxe Realty' },

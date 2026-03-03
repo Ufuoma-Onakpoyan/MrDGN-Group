@@ -6,8 +6,8 @@ import Footer from '@/components/Footer';
 import { Calendar, Video, ExternalLink, Loader2 } from 'lucide-react';
 import { useBlogPosts } from '@/hooks/useBlogPosts';
 import { useNavigate } from 'react-router-dom';
-// Video: place your file at group/public/assets/MrDGN Group.mp4
-const COMPANY_VIDEO_SRC = '/assets/MrDGN Group.mp4';
+// Video: place your file at group/public/assets/MR DGN Group.mp4
+const COMPANY_VIDEO_SRC = '/assets/MR DGN Group.mp4';
 
 const Media = () => {
   const navigate = useNavigate();
@@ -24,7 +24,7 @@ const Media = () => {
             Media Center
           </h1>
           <p className="text-xl text-white/90 max-w-3xl mx-auto animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
-            Stay updated with the latest news, announcements, and insights from MrDGN Group and our portfolio companies.
+            Stay updated with the latest news, announcements, and insights from MR DGN Group and our portfolio companies.
           </p>
         </div>
       </section>
@@ -121,7 +121,7 @@ const Media = () => {
                 Company Overview Video
               </h2>
               <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-                A visual introduction to MrDGN Group and our portfolio of businesses.
+                A visual introduction to MR DGN Group and our portfolio of businesses.
               </p>
             </div>
             <div className="rounded-2xl overflow-hidden shadow-2xl border border-border/50 bg-card tile-glassy">
@@ -137,7 +137,7 @@ const Media = () => {
               </video>
               <div className="p-4 md:p-6 border-t border-border/50 bg-card/80">
                 <p className="text-sm text-muted-foreground text-center">
-                  MrDGN Group — Building tomorrow&apos;s industries through strategic investments and innovative leadership.
+                  MR DGN Group — Building tomorrow&apos;s industries through strategic investments and innovative leadership.
                 </p>
               </div>
             </div>

@@ -1,6 +1,6 @@
-# MrDGN Backend API
+# MR DGN Backend API
 
-Production-ready Node.js API for the MrDGN Group websites.
+Production-ready Node.js API for the MR DGN Group websites.
 
 ## Tech Stack
 

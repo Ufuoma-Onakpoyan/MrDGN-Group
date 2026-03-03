@@ -53,7 +53,7 @@ const Investors = () => {
               Our Strategy & Vision
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              MrDGN Group operates as a diversified holding company with a clear mandate: to identify, acquire, and grow businesses that align with our core competencies and deliver sustainable returns.
+              MR DGN Group operates as a diversified holding company with a clear mandate: to identify, acquire, and grow businesses that align with our core competencies and deliver sustainable returns.
             </p>
           </div>
 
@@ -94,7 +94,7 @@ const Investors = () => {
             We focus on businesses where we can add real value through leadership, operational improvement, and access to group resources. We are patient capital: we back management teams, invest in growth, and build for the long term rather than short-term gains.
           </p>
           <p className="text-lg text-muted-foreground leading-relaxed">
-            Our current portfolio spans <strong className="text-foreground">MrDGN Entertainment</strong>, <strong className="text-foreground">MrDGN Construction</strong>, <strong className="text-foreground">Mansa Luxe Realty Limited</strong>, and <strong className="text-foreground">Duerents</strong>—each chosen for its fit with our strategy and potential to contribute to the group&apos;s overall success.
+            Our current portfolio spans <strong className="text-foreground">MR DGN Entertainment</strong>, <strong className="text-foreground">MR DGN Construction</strong>, <strong className="text-foreground">Mansa Luxe Realty Limited</strong>, and <strong className="text-foreground">Duerents</strong>—each chosen for its fit with our strategy and potential to contribute to the group&apos;s overall success.
           </p>
         </div>
       </section>

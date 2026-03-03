@@ -14,7 +14,7 @@ import { ArrowLeft, Save } from 'lucide-react';
 import { ImageUpload } from '@/components/ImageUpload';
 
 const ALL_SITES = [
-  { id: 'group', label: 'MrDGN Group' },
+  { id: 'group', label: 'MR DGN Group' },
   { id: 'entertainment', label: 'Entertainment' },
   { id: 'construction', label: 'Construction' },
   { id: 'mansaluxe-realty', label: 'MansaLuxe Realty' },
@@ -35,7 +35,7 @@ const BlogEdit = () => {
     excerpt: '',
     tags: '',
     featured_image_url: '',
-    author: 'MrDGN',
+    author: 'MR DGN',
     published_at: '', // ISO date string for backdating; empty = use "now" when published
     // Default published to true for new posts so they show on the website immediately
     published: true,
@@ -58,7 +58,7 @@ const BlogEdit = () => {
         excerpt: post.excerpt || '',
         tags: (post.tags || []).join(', '),
         featured_image_url: post.featured_image_url || '',
-        author: post.author || 'MrDGN',
+        author: post.author || 'MR DGN',
         published_at: pa ? pa.slice(0, 16) : '', // datetime-local uses YYYY-MM-DDTHH:mm
         published: post.published,
         sources: (post.sources && post.sources.length > 0)
@@ -78,7 +78,7 @@ const BlogEdit = () => {
         excerpt: data.excerpt || '',
         tags: tagsArray,
         featured_image_url: data.featured_image_url || '',
-        author: data.author || 'MrDGN',
+        author: data.author || 'MR DGN',
         published_at: data.published_at ? new Date(data.published_at).toISOString() : undefined,
         published: data.published,
         sources: data.sources.length > 0 ? data.sources : ['group', 'entertainment', 'construction', 'mansaluxe-realty'],
@@ -213,7 +213,7 @@ const BlogEdit = () => {
                     id="author"
                     value={formData.author}
                     onChange={(e) => setFormData((prev) => ({ ...prev, author: e.target.value }))}
-                    placeholder="e.g. MrDGN, Jane Doe"
+                    placeholder="e.g. MR DGN, Jane Doe"
                   />
                 </div>
                 <div className="flex items-center justify-between">

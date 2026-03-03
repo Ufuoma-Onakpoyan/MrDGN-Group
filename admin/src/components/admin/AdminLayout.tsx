@@ -53,7 +53,7 @@ export function AdminLayout() {
             <Button variant="ghost" size="icon" className="lg:hidden" onClick={() => setSidebarOpen(true)}>
               <Menu className="h-5 w-5" />
             </Button>
-            <h1 className="text-base lg:text-lg font-semibold text-white">MrDGN Group Admin Panel</h1>
+            <h1 className="text-base lg:text-lg font-semibold text-white">MR DGN Group Admin Panel</h1>
           </div>
           <AdminHeader />
         </div>

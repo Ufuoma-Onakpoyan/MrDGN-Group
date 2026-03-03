@@ -52,7 +52,7 @@ const AboutUs = () => {
               About <span className="text-primary">Mr DGN Construction and Developers Limited</span>
             </h1>
             <p className="text-xl text-muted-foreground mb-8">
-              Building excellence for 5 years, we are your trusted partner for innovative construction solutions that stand the test of time. Mr DGN construction and developers limited is a subsidiary of MrDGN Group.
+              Building excellence for 5 years, we are your trusted partner for innovative construction solutions that stand the test of time. Mr DGN construction and developers limited is a subsidiary of MR DGN Group.
             </p>
           </div>
         </div>
@@ -121,15 +121,15 @@ const AboutUs = () => {
               <div className="relative">
                 <img 
                   src={ceoPortrait} 
-                  alt="Onakpoyan Success (MrDGN), CEO of Mr DGN construction and developers limited" 
+                  alt="Onakpoyan Success (MR DGN), CEO of Mr DGN construction and developers limited" 
                   className="rounded-2xl shadow-construction w-full max-w-md mx-auto object-cover"
                 />
               </div>
               <div>
                 <h3 className="text-2xl font-bold text-foreground mb-2">Onakpoyan Success</h3>
-                <p className="text-primary font-semibold mb-4">MrDGN — Chief Executive Officer</p>
+                <p className="text-primary font-semibold mb-4">MR DGN — Chief Executive Officer</p>
                 <p className="text-muted-foreground leading-relaxed mb-4">
-                  A seasoned businessman and developer from Delta State, Nigeria, Onakpoyan Success (MrDGN) brings a rare combination of technical expertise and construction industry leadership to Mr DGN construction and developers limited. His background in development and strategic business management has been instrumental in driving innovation, quality, and sustainable growth across our projects nationwide.
+                  A seasoned businessman and developer from Delta State, Nigeria, Onakpoyan Success (MR DGN) brings a rare combination of technical expertise and construction industry leadership to Mr DGN construction and developers limited. His background in development and strategic business management has been instrumental in driving innovation, quality, and sustainable growth across our projects nationwide.
                 </p>
                 <p className="text-muted-foreground leading-relaxed">
                   Under his leadership, we continue to deliver structures that stand the test of time while embracing modern building practices and community-focused development.

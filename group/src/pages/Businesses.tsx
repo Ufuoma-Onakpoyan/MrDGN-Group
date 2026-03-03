@@ -11,7 +11,7 @@ const realtyLogo = '/assets/logo-mansaluxe.png';
 const Businesses = () => {
   const businesses = [
     {
-      name: 'MrDGN Entertainment',
+      name: 'MR DGN Entertainment',
       description: 'Leading the future of digital entertainment through innovative content creation, immersive experiences, and cutting-edge media production.',
       icon: Clapperboard,
       logo: '/assets/logo-entertainment.png',
@@ -22,7 +22,7 @@ const Businesses = () => {
       stats: ['50+ Projects Completed', '1M+ Audience Reached', '25+ Brand Partners'],
     },
     {
-      name: 'MrDGN Construction',
+      name: 'MR DGN Construction',
       description: 'Building tomorrow\'s infrastructure with sustainable practices, innovative construction technologies, and unwavering commitment to quality.',
       icon: Building2,
       logo: '/assets/logo-construction.png',
@@ -97,7 +97,7 @@ const Businesses = () => {
                 >
                   <div className={`${isEven ? 'lg:pr-12' : 'lg:pl-12 lg:col-start-2'} space-y-6`}>
                     <div className="flex items-center mb-6">
-                      <div className={`w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg h-16 sm:h-20 md:h-24 flex items-center justify-start ${business.name === 'MrDGN Construction' ? 'bg-gray-100 rounded-xl px-5 sm:px-8 py-4 sm:py-5 shadow-md border border-gray-200' : ''}`}>
+                      <div className={`w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg h-16 sm:h-20 md:h-24 flex items-center justify-start ${business.name === 'MR DGN Construction' ? 'bg-gray-100 rounded-xl px-5 sm:px-8 py-4 sm:py-5 shadow-md border border-gray-200' : ''}`}>
                         <img 
                           src={business.logo} 
                           alt={`${business.name} logo`}

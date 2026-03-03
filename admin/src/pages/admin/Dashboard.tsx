@@ -14,7 +14,7 @@ import {
 
 const BLOG_SOURCE_OPTIONS = [
   { value: 'all', label: 'All sites' },
-  { value: 'group', label: 'MrDGN Group' },
+  { value: 'group', label: 'MR DGN Group' },
   { value: 'entertainment', label: 'Entertainment' },
   { value: 'construction', label: 'Construction' },
   { value: 'mansaluxe-realty', label: 'MansaLuxe Realty' },
@@ -167,7 +167,7 @@ export default function Dashboard() {
           Dashboard
         </h1>
         <p className="text-muted-foreground mt-2">
-          Overview of content across MrDGN Group websites: MansaLuxe Realty, Group, Entertainment, and Construction.
+          Overview of content across MR DGN Group websites: MansaLuxe Realty, Group, Entertainment, and Construction.
         </p>
       </div>
 

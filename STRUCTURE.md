@@ -1,4 +1,4 @@
-# MrDGN Group Website – Project Structure
+# MR DGN Group Website – Project Structure
 
 ## Running locally
 
@@ -38,7 +38,7 @@ Or from root: `npm run dev:backend` (after `db:push` and `db:seed`). The seed cr
 
 | Folder | Purpose |
 |--------|---------|
-| **group** | MrDGN Group main holding company site |
+| **group** | MR DGN Group main holding company site |
 | **entertainment** | Mr DGN Entertainment |
 | **construction** | Mr DGN Construction |
 | **mansaluxe-realty** | MansaLuxeRealty public website |

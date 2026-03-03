@@ -25,10 +25,10 @@ const About = () => {
                 Event Sponsorship
               </div>
               <h1 className="text-4xl md:text-5xl font-bold mb-6">
-                About <span className="gradient-text">MrDGN Entertainment</span>
+                About <span className="gradient-text">MR DGN Entertainment</span>
               </h1>
               <p className="text-xl text-muted-foreground leading-relaxed">
-                MrDGN Entertainment is a subsidiary of MrDGN Group and its event-sponsorship arm. We support concerts, comedy shows, music and fashion expos, and cultural events across Nigeria—helping bring world-class entertainment to local audiences and elevating Nigerian talent on stage.
+                MR DGN Entertainment is a subsidiary of MR DGN Group and its event-sponsorship arm. We support concerts, comedy shows, music and fashion expos, and cultural events across Nigeria—helping bring world-class entertainment to local audiences and elevating Nigerian talent on stage.
               </p>
             </section>
 
@@ -87,15 +87,15 @@ const About = () => {
                 <div className="rounded-2xl overflow-hidden shadow-xl aspect-[4/5] max-w-sm">
                   <img
                     src={ceoPortrait}
-                    alt="Onakpoyan Success (MrDGN), CEO of MrDGN Group"
+                    alt="Onakpoyan Success (MR DGN), CEO of MR DGN Group"
                     className="w-full h-full object-cover"
                   />
                 </div>
                 <div>
                   <h3 className="text-xl font-bold mb-1">Onakpoyan Success</h3>
-                  <p className="text-primary font-medium mb-4">MrDGN — CEO, MrDGN Group</p>
+                  <p className="text-primary font-medium mb-4">MR DGN — CEO, MR DGN Group</p>
                   <p className="text-muted-foreground leading-relaxed">
-                    Onakpoyan Success (MrDGN) leads MrDGN Group with a focus on elevating Nigerian businesses and culture. Under his direction, MrDGN Entertainment invests in event sponsorship as a way to support the creative industry and give back to communities that have supported the Group’s growth.
+                    Onakpoyan Success (MR DGN) leads MR DGN Group with a focus on elevating Nigerian businesses and culture. Under his direction, MR DGN Entertainment invests in event sponsorship as a way to support the creative industry and give back to communities that have supported the Group’s growth.
                   </p>
                 </div>
               </div>

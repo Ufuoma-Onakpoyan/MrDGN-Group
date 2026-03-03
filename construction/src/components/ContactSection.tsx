@@ -32,9 +32,9 @@ const ContactSection = () => {
     {
       icon: Mail,
       title: 'Email',
-      content: 'construction@MrDGNGroup.com',
+      content: 'construction@mrdgngroup.com',
       description: 'Send us your project details',
-      href: 'mailto:construction@MrDGNGroup.com',
+      href: 'mailto:construction@mrdgngroup.com',
     },
     {
       icon: MapPin,

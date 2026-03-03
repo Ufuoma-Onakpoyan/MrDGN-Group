@@ -1,6 +1,6 @@
 # MansaLuxeRealty - Luxury Real Estate Website
 
-A premium real estate website for MansaLuxeRealty, a subsidiary of MrDGNGroup, showcasing Nigeria's most luxurious properties.
+A premium real estate website for MansaLuxeRealty, a subsidiary of MR DGN Group, showcasing Nigeria's most luxurious properties.
 
 ## 🏗️ Project Overview
 
@@ -213,4 +213,4 @@ For development questions or customization needs, refer to the component documen
 
 ## 📄 License
 
-© 2024 MansaLuxeRealty - A MrDGNGroup Company. All rights reserved.
+© 2024 MansaLuxeRealty - A MR DGN Group Company. All rights reserved.

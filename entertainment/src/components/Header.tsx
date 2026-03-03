@@ -38,7 +38,7 @@ const Header = () => {
           <Link to="/" className="flex items-center space-x-3 rounded-md px-1 -mx-1">
             <img 
               src="/assets/logo-entertainment.png" 
-              alt="MrDGN Entertainment" 
+              alt="MR DGN Entertainment" 
               className="h-11 md:h-12 w-auto object-contain transition-transform duration-200 hover:scale-105 drop-shadow-md"
               style={{ minHeight: '44px', maxHeight: '52px' }}
             />

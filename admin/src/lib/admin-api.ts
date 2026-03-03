@@ -165,7 +165,7 @@ class AdminAPI {
   async getSettings(): Promise<Record<string, unknown>> {
     return {
       companyName: 'MansaLuxeRealty',
-      companySubtitle: 'A subsidiary of MrDGNGroup',
+      companySubtitle: 'A subsidiary of MR DGN Group',
       primaryColor: '#D4AF37',
       secondaryColor: '#000000',
       currency: '₦',

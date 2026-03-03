@@ -3,7 +3,7 @@
 ## What the site currently has
 
 - **Home** – Hero, stats (10+ sold, ₦3B+, Experienced Team, Trusted Expertise), featured properties, “Why Choose Us”, CTA
-- **About** – Company story, mission & vision, values, team (CEO + Head of Sales), parent company (MrDGN Group)
+- **About** – Company story, mission & vision, values, team (CEO + Head of Sales), parent company (MR DGN Group)
 - **Properties** – Listings (from API), filters, property cards
 - **Property Detail** – Single property view
 - **Services** – Six services (Property Sales, Luxury Rentals, Property Management, Investment Advisory, Property Valuation, Legal & Documentation) plus process steps
@@ -75,6 +75,6 @@
 
 ## Summary
 
-- **Done:** Company name updated to **Mansa Luxe Realty Limited** across the Mansa Luxe Realty site and on the MrDGN Group site where the subsidiary is named.
+- **Done:** Company name updated to **Mansa Luxe Realty Limited** across the Mansa Luxe Realty site and on the MR DGN Group site where the subsidiary is named.
 - **Strong base:** Home, About, Properties, Services, Testimonials, Contact, Careers, Blog are in place.
 - **Highest impact next steps:** Implement real Privacy and Terms pages, add Buying and Selling guides, then valuation/calculator and market insights. After that, focus on team/agent visibility, video/lifestyle content, and awards/affiliations as the business grows.

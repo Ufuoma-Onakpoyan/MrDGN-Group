@@ -1,5 +1,5 @@
 /**
- * API client for MrDGN backend
+ * API client for MR DGN backend
  * Set VITE_API_URL in .env (e.g. http://localhost:3001)
  */
 

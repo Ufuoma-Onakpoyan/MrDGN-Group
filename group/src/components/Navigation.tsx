@@ -99,7 +99,7 @@ const Navigation = () => {
           <Link to="/" onClick={handleNavClick} className="flex items-center space-x-3 group rounded-md px-1 -mx-1">
             <img 
               src="/assets/logo-group.png" 
-              alt="MrDGN Group Logo" 
+              alt="MR DGN Group Logo" 
               className="h-12 md:h-14 w-auto object-contain object-left transition-all duration-300 group-hover:scale-105 drop-shadow-md"
               style={{ minHeight: '48px', maxHeight: '56px' }}
             />
