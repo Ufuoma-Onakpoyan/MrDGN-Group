@@ -4,7 +4,7 @@ import {
   MapPin, Bed, Bath, Square, Search, 
   Building, Landmark, Home, Castle, Building2,
   SlidersHorizontal, Check, X, Loader2, AlertCircle, Star, Eye, ArrowRight,
-  LayoutGrid, Map, Sparkles
+  LayoutGrid, Map, Sparkles, PlayCircle
 } from "lucide-react";
 import { useProperties } from "@/hooks/useProperties";
 import { Property, ListingType } from "@/services/api";
@@ -13,8 +13,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { RevealAnimation } from "@/components/ui/reveal-animation";
 import { PropertyMap } from "@/components/PropertyMap";
-import { PropertyCardMedia } from "@/components/PropertyCardMedia";
-import { formatPriceDisplay } from "@/lib/utils";
+import { formatPriceDisplay, isVideoUrl, getYouTubeThumbnailUrl } from "@/lib/utils";
 
 type ListingTab = 'all' | ListingType;
 
@@ -479,7 +478,7 @@ const Properties = () => {
                   <p className="text-muted-foreground">No properties to show on map.</p>
                 ) : (
                   filteredProperties.map((property) => (
-                    <Link key={property.id} to={`/properties/${property.id}`}>
+                    <Link key={property.id} to={`/properties/${property.id}${isVideoUrl(property.images?.[0]) ? '?playVideo=1' : ''}`}>
                       <Card className="luxury-card overflow-hidden hover-lift cursor-pointer p-0 relative">
                         {property.status === 'sold' ? (
                           <div className="absolute top-0 left-0 right-0 z-10 py-1.5 px-2 bg-destructive text-destructive-foreground text-center font-bold text-xs uppercase tracking-wide">
@@ -497,7 +496,28 @@ const Properties = () => {
                         )}
                         <div className="flex gap-3">
                           <div className="w-24 h-24 flex-shrink-0 bg-muted overflow-hidden relative">
-                            <PropertyCardMedia property={property} variant="thumb" getPropertyIcon={getPropertyIcon} />
+                            {property.images?.[0] ? (
+                              isVideoUrl(property.images[0]) ? (
+                                <div
+                                  className={`w-full h-full flex items-center justify-center bg-cover bg-center ${!property.card_poster_url && !getYouTubeThumbnailUrl(property.images[0]) ? 'bg-gradient-to-br from-muted to-muted/70' : ''}`}
+                                  style={{
+                                    backgroundImage: (property.card_poster_url
+                                      ? `url(${property.card_poster_url})`
+                                      : getYouTubeThumbnailUrl(property.images[0])
+                                        ? `url(${getYouTubeThumbnailUrl(property.images[0])})`
+                                        : undefined),
+                                  }}
+                                >
+                                  <div className="absolute inset-0 bg-black/30 flex items-center justify-center">
+                                    <PlayCircle className="w-6 h-6 text-white" />
+                                  </div>
+                                </div>
+                              ) : (
+                                <img src={property.images[0]} alt="" className="w-full h-full object-cover" />
+                              )
+                            ) : (
+                              <div className="w-full h-full flex items-center justify-center">{getPropertyIcon(property.property_type || "apartment")}</div>
+                            )}
                           </div>
                           <div className="p-2 flex-1 min-w-0">
                             <h3 className="font-serif font-semibold text-sm truncate">{property.title}</h3>
@@ -535,7 +555,7 @@ const Properties = () => {
                   animation="fade-up" 
                   delay={index * 100}
                 >
-                  <Link to={`/properties/${property.id}`} className="block">
+                  <Link to={`/properties/${property.id}${isVideoUrl(property.images?.[0]) ? '?playVideo=1' : ''}`} className="block">
                   <Card className="luxury-card overflow-hidden group hover-lift cursor-pointer h-full">
                     {/* Property Status Badge - prominent SOLD or Available/New Development */}
                     {property.status === 'sold' ? (
@@ -564,7 +584,39 @@ const Properties = () => {
                     )}
                     
                     <div className="aspect-card bg-muted/20 relative overflow-hidden">
-                      <PropertyCardMedia property={property} variant="full" getPropertyIcon={getPropertyIcon} />
+                      {property.images && property.images.length > 0 ? (
+                        isVideoUrl(property.images[0]) ? (
+                          <div
+                            className={`w-full h-full relative flex items-center justify-center bg-cover bg-center transition-transform duration-700 group-hover:scale-105 ${!property.card_poster_url && !getYouTubeThumbnailUrl(property.images[0]) ? 'bg-gradient-to-br from-muted to-muted/70' : ''}`}
+                            style={{
+                              backgroundImage: (property.card_poster_url
+                                ? `url(${property.card_poster_url})`
+                                : getYouTubeThumbnailUrl(property.images[0])
+                                  ? `url(${getYouTubeThumbnailUrl(property.images[0])})`
+                                  : undefined),
+                            }}
+                          >
+                            <div className="absolute inset-0 bg-black/30 flex items-center justify-center">
+                              <PlayCircle className="w-14 h-14 text-white drop-shadow-md" />
+                            </div>
+                          </div>
+                        ) : (
+                          <img
+                            src={property.images[0]}
+                            alt={property.title}
+                            className="w-full h-full object-contain transition-transform duration-700 group-hover:scale-105"
+                          />
+                        )
+                      ) : (
+                        <div className="absolute inset-0 w-full h-full flex items-center justify-center text-muted-foreground">
+                          <div className="text-center">
+                            <div className="w-16 h-16 bg-border rounded-full flex items-center justify-center mx-auto mb-2">
+                              {getPropertyIcon(property.property_type || 'apartment')}
+                            </div>
+                            <p className="text-sm">{property.property_type?.charAt(0).toUpperCase() + property.property_type?.slice(1) || 'Property'}</p>
+                          </div>
+                        </div>
+                      )}
                       {/* Always Visible View Details Button - visual only, card is clickable */}
                       <div className="absolute bottom-4 left-4 right-4 flex justify-center pointer-events-none">
                         <span className="inline-flex items-center justify-center rounded-md px-3 py-1.5 text-sm font-medium bg-white/90 backdrop-blur-sm text-black shadow-md border border-white/20">

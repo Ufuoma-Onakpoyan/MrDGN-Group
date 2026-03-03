@@ -1,4 +1,4 @@
-import { useParams, Link, useNavigate } from "react-router-dom";
+import { useParams, Link, useNavigate, useSearchParams } from "react-router-dom";
 import { SITE_PHONE, SITE_PHONE_DISPLAY } from "@/lib/constants";
 import { useEffect, useState, useRef } from "react";
 import { ArrowLeft, MapPin, Bed, Bath, Square, Calendar, PlayCircle, ChevronLeft, ChevronRight } from "lucide-react";
@@ -9,6 +9,7 @@ import { RevealAnimation } from "@/components/ui/reveal-animation";
 import { apiService, Property } from "@/services/api";
 import { SEO } from "@/components/SEO";
 import { formatPriceDisplay } from "@/lib/utils";
+import { toast } from "sonner";
 
 function getEmbedUrl(url: string): string | null {
   if (!url) return null;
@@ -56,6 +57,8 @@ function buildMediaItems(property: Property): MediaItem[] {
 const PropertyDetail = () => {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
+  const mediaSectionRef = useRef<HTMLDivElement>(null);
   const [property, setProperty] = useState<Property | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -97,6 +100,13 @@ const PropertyDetail = () => {
       setSelectedImageIndex(Math.max(0, mediaItems.length - 1));
     }
   }, [mediaItems.length, selectedImageIndex]);
+
+  useEffect(() => {
+    if (searchParams.get('playVideo') === '1' && !loading && property && mediaItems.length > 0 && mediaItems[0].type === 'video') {
+      mediaSectionRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      toast.info('Click the video to play', { duration: 4000 });
+    }
+  }, [searchParams, loading, property, mediaItems]);
 
   useEffect(() => {
     if (property && !loading) {
@@ -183,7 +193,7 @@ const PropertyDetail = () => {
         {/* Main Content */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {/* Unified Media Gallery - Images & Videos in One Panel */}
-          <div className="lg:col-span-2 space-y-4">
+          <div ref={mediaSectionRef} className="lg:col-span-2 space-y-4">
             <RevealAnimation animation="fade-up">
               <Card className="overflow-hidden luxury-card">
                 <div className="relative h-[500px] group">

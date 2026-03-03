@@ -1,8 +1,7 @@
 import { Link } from "react-router-dom";
-import { ArrowRight, TrendingUp, Users, Award, Star, Sparkles } from "lucide-react";
+import { ArrowRight, TrendingUp, Users, Award, Star, Sparkles, PlayCircle } from "lucide-react";
 import { useFeaturedProperties } from "@/hooks/useProperties";
-import { formatPriceDisplay } from "@/lib/utils";
-import { PropertyCardMedia } from "@/components/PropertyCardMedia";
+import { formatPriceDisplay, isVideoUrl, getYouTubeThumbnailUrl } from "@/lib/utils";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -187,7 +186,34 @@ const Home = () => {
                 >
                   <Card className="property-card group hover-lift">
                     <div className="aspect-card overflow-hidden relative">
-                      <PropertyCardMedia property={property} variant="full" />
+                      {property.images?.[0] ? (
+                        isVideoUrl(property.images[0]) ? (
+                          <div
+                            className={`property-image relative w-full h-full flex items-center justify-center bg-cover bg-center ${!property.card_poster_url && !getYouTubeThumbnailUrl(property.images[0]) ? 'bg-gradient-to-br from-muted to-muted/70' : 'bg-muted/20'}`}
+                            style={{
+                              backgroundImage: (property.card_poster_url
+                                ? `url(${property.card_poster_url})`
+                                : getYouTubeThumbnailUrl(property.images[0])
+                                  ? `url(${getYouTubeThumbnailUrl(property.images[0])})`
+                                  : undefined),
+                            }}
+                          >
+                            <div className="absolute inset-0 bg-black/30 flex items-center justify-center">
+                              <PlayCircle className="w-14 h-14 text-white drop-shadow-md" />
+                            </div>
+                          </div>
+                        ) : (
+                          <img
+                            src={property.images[0]}
+                            alt={property.title}
+                            className="property-image w-full h-full object-contain bg-muted/20"
+                          />
+                        )
+                      ) : (
+                        <div className="w-full h-full flex items-center justify-center bg-muted/20">
+                          <PlayCircle className="w-14 h-14 text-muted-foreground" />
+                        </div>
+                      )}
                       {property.featured && (
                         <Badge className="absolute top-3 left-3 z-10 bg-primary text-primary-foreground">
                           Featured
@@ -218,7 +244,7 @@ const Home = () => {
                           {formatPriceDisplay(property.price)}
                         </div>
                         <Button asChild variant="outline" size="sm" className="hover-scale">
-                          <Link to={`/properties/${property.id}`}>
+                          <Link to={`/properties/${property.id}${isVideoUrl(property.images?.[0]) ? '?playVideo=1' : ''}`}>
                             View Details
                           </Link>
                         </Button>
