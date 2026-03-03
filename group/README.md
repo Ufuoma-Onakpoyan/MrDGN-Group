@@ -22,3 +22,7 @@ npm run dev
 ```sh
 npm run build
 ```
+
+## Media page video
+
+The Media page shows a company overview video. To add it: place your MP4 file at `public/assets/MR DGN Group.mp4`. See `public/assets/README.md` for details.

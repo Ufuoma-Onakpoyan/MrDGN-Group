@@ -53,7 +53,8 @@ export default function Properties() {
     floorPlanImages: [] as string[],
     droneVideo: '',
     walkthroughVideo: '',
-    generalVideo: ''
+    generalVideo: '',
+    cardPosterUrl: ''
   });
 
   useEffect(() => {
@@ -694,6 +695,52 @@ export default function Properties() {
                       </div>
                     </div>
                   </div>
+                </div>
+
+                <div className="col-span-2">
+                  <Label>Listing card thumbnail (when first media is video)</Label>
+                  <p className="text-xs text-muted-foreground mb-2">
+                    When the first media is a video, this image is used as the thumbnail on the property listing and home page. Upload a frame from the first few seconds of the video if desired.
+                  </p>
+                  <div className="flex gap-2 items-center flex-wrap">
+                    <Input
+                      type="url"
+                      placeholder="Poster image URL or upload below"
+                      value={formData.cardPosterUrl}
+                      onChange={(e) => setFormData({ ...formData, cardPosterUrl: e.target.value })}
+                      className="flex-1 min-w-[200px]"
+                    />
+                    <label className="flex items-center gap-2 px-4 py-2 rounded-md border border-input bg-background hover:bg-accent hover:text-accent-foreground cursor-pointer text-sm font-medium">
+                      <Upload className="h-4 w-4" />
+                      Upload
+                      <input
+                        type="file"
+                        className="hidden"
+                        accept="image/*"
+                        onChange={async (e) => {
+                          const file = e.target.files?.[0];
+                          if (!file) return;
+                          setIsUploading(true);
+                          try {
+                            const url = await adminAPI.uploadFile(file, 'property-images');
+                            setFormData((prev) => ({ ...prev, cardPosterUrl: url }));
+                            toast({ title: 'Success', description: 'Poster image uploaded' });
+                          } catch (err) {
+                            toast({ title: 'Error', description: 'Failed to upload', variant: 'destructive' });
+                          } finally {
+                            setIsUploading(false);
+                            e.target.value = '';
+                          }
+                        }}
+                        disabled={isUploading}
+                      />
+                    </label>
+                  </div>
+                  {formData.cardPosterUrl && (
+                    <div className="mt-2">
+                      <img src={formData.cardPosterUrl} alt="Card poster preview" className="h-20 w-auto rounded border object-cover" />
+                    </div>
+                  )}
                 </div>
 
                 <div className="flex items-center space-x-2">

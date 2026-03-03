@@ -190,9 +190,11 @@ const Home = () => {
                         <div
                           className="property-image w-full h-full bg-muted/20 flex items-center justify-center bg-cover bg-center"
                           style={{
-                            backgroundImage: getYouTubeThumbnailUrl(property.images[0])
-                              ? `url(${getYouTubeThumbnailUrl(property.images[0])})`
-                              : undefined,
+                            backgroundImage: (property.card_poster_url
+                              ? `url(${property.card_poster_url})`
+                              : getYouTubeThumbnailUrl(property.images[0])
+                                ? `url(${getYouTubeThumbnailUrl(property.images[0])})`
+                                : undefined),
                           }}
                         >
                           <div className="absolute inset-0 bg-black/40 flex items-center justify-center">

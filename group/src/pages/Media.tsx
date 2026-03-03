@@ -6,7 +6,7 @@ import Footer from '@/components/Footer';
 import { Calendar, Video, ExternalLink, Loader2 } from 'lucide-react';
 import { useBlogPosts } from '@/hooks/useBlogPosts';
 import { useNavigate } from 'react-router-dom';
-// Video: place your file at group/public/assets/MR DGN Group.mp4
+// Company overview video: place your MP4 at group/public/assets/MR DGN Group.mp4 (see public/assets/README.md)
 const COMPANY_VIDEO_SRC = '/assets/MR DGN Group.mp4';
 
 const Media = () => {

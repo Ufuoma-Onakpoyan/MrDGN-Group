@@ -502,9 +502,11 @@ const Properties = () => {
                                 <div
                                   className="w-full h-full bg-muted flex items-center justify-center bg-cover bg-center"
                                   style={{
-                                    backgroundImage: getYouTubeThumbnailUrl(property.images[0])
-                                      ? `url(${getYouTubeThumbnailUrl(property.images[0])})`
-                                      : undefined,
+                                    backgroundImage: (property.card_poster_url
+                                      ? `url(${property.card_poster_url})`
+                                      : getYouTubeThumbnailUrl(property.images[0])
+                                        ? `url(${getYouTubeThumbnailUrl(property.images[0])})`
+                                        : undefined),
                                   }}
                                 >
                                   <PlayCircle className="w-6 h-6 text-primary" />
@@ -579,9 +581,11 @@ const Properties = () => {
                           <div
                             className="w-full h-full bg-muted flex items-center justify-center transition-transform duration-700 group-hover:scale-105 bg-cover bg-center"
                             style={{
-                              backgroundImage: getYouTubeThumbnailUrl(property.images[0])
-                                ? `url(${getYouTubeThumbnailUrl(property.images[0])})`
-                                : undefined,
+                              backgroundImage: (property.card_poster_url
+                                ? `url(${property.card_poster_url})`
+                                : getYouTubeThumbnailUrl(property.images[0])
+                                  ? `url(${getYouTubeThumbnailUrl(property.images[0])})`
+                                  : undefined),
                             }}
                           >
                             <div className="absolute inset-0 bg-black/40 flex items-center justify-center">

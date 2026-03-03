@@ -44,10 +44,11 @@ model Property {
   agent       String?
   latitude    Float?
   longitude   Float?
-  listingType String?  // sale | rent | new_development
-  videos      String?  // JSON: { drone?: string, walkthrough?: string, general?: string }
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
+  listingType    String?  // sale | rent | new_development
+  videos         String?  // JSON: { drone?: string, walkthrough?: string, general?: string }
+  cardPosterUrl  String?  // optional thumbnail for listing card when first media is video
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
 
   testimonials Testimonial[]
 

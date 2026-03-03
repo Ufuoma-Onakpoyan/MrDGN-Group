@@ -32,6 +32,8 @@ export interface Property {
   floorPlanImages?: string[];
   /** Drone, walkthrough, general videos - labeled "Mansa Luxe Realty Limited" */
   videos?: { drone?: string; walkthrough?: string; general?: string };
+  /** Optional thumbnail for listing card when first media is video */
+  card_poster_url?: string | null;
 }
 
 export interface CreatePropertyData {
@@ -111,6 +113,7 @@ function fromApi(p: Record<string, unknown>): Property {
     featured: Boolean(p.featured),
     agent: p.agent,
     videos: (p.videos && typeof p.videos === 'object') ? p.videos as { drone?: string; walkthrough?: string; general?: string } : undefined,
+    card_poster_url: p.card_poster_url != null ? String(p.card_poster_url) : undefined,
     created_at: String(p.created_at),
     updated_at: String(p.updated_at),
   };

@@ -24,6 +24,7 @@ export interface Property {
   agent: unknown | null;
   featured: boolean | null;
   videos?: { drone?: string; walkthrough?: string; general?: string } | null;
+  card_poster_url?: string | null;
   created_at: string;
   updated_at: string;
 }

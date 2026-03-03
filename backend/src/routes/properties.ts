@@ -74,6 +74,7 @@ function mapProperty(p: Record<string, unknown> & {
     longitude: p.longitude != null ? Number(p.longitude) : null,
     listing_type: p.listingType ?? null,
     videos: parseJsonObject<{ drone?: string; walkthrough?: string; general?: string }>(p.videos as string | null),
+    card_poster_url: p.cardPosterUrl != null ? String(p.cardPosterUrl) : null,
     created_at: p.createdAt.toISOString(),
     updated_at: p.updatedAt.toISOString(),
   };
@@ -130,6 +131,7 @@ router.post('/', authMiddleware, requireRole('super_admin', 'editor'), async (re
         longitude: body.longitude != null ? Number(body.longitude) : null,
         listingType: body.listing_type ? String(body.listing_type) : null,
         videos: body.videos != null ? JSON.stringify(body.videos) : null,
+        cardPosterUrl: body.card_poster_url != null ? String(body.card_poster_url) : null,
       },
     });
     res.status(201).json(mapProperty(p));
@@ -165,6 +167,7 @@ router.put('/:id', authMiddleware, requireRole('super_admin', 'editor'), async (
         ...(body.longitude !== undefined && { longitude: body.longitude != null ? Number(body.longitude) : null }),
         ...(body.listing_type !== undefined && { listingType: body.listing_type ? String(body.listing_type) : null }),
         ...(body.videos !== undefined && { videos: body.videos != null ? JSON.stringify(body.videos) : null }),
+        ...(body.card_poster_url !== undefined && { cardPosterUrl: body.card_poster_url ? String(body.card_poster_url) : null }),
       },
     });
     res.json(mapProperty(p));
