@@ -1,6 +1,6 @@
 import { useParams, Link, useNavigate } from "react-router-dom";
 import { SITE_PHONE, SITE_PHONE_DISPLAY } from "@/lib/constants";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { ArrowLeft, MapPin, Bed, Bath, Square, Calendar, PlayCircle, ChevronLeft, ChevronRight } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -59,6 +59,8 @@ const PropertyDetail = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [embedPlayedIndices, setEmbedPlayedIndices] = useState<Set<number>>(new Set());
 
   const mediaItems = property ? buildMediaItems(property) : [];
 
@@ -155,10 +157,11 @@ const PropertyDetail = () => {
     );
   }
 
-  const firstImage = property.images?.[0];
+  const firstImageItem = mediaItems.find((m) => m.type === 'image');
+  const ogImage = firstImageItem?.url ?? (property.images?.[0] && !isVideoUrl(property.images[0]) ? property.images[0] : undefined);
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-background to-muted/20">
-      <SEO title={property.title} description={property.description || undefined} canonical={`/properties/${property.id}`} ogImage={firstImage} ogType="website" />
+      <SEO title={property.title} description={property.description || undefined} canonical={`/properties/${property.id}`} ogImage={ogImage} ogType="website" />
       <div className="container mx-auto px-4 py-8">
         {/* Header */}
         <div className="flex items-center justify-between mb-8">
@@ -195,27 +198,59 @@ const PropertyDetail = () => {
                       ) : (
                         <div className="relative w-full h-full bg-black">
                           {current.embedUrl ? (
-                            <iframe
-                              key={current.url}
-                              src={current.embedUrl}
-                              className="w-full h-full"
-                              allowFullScreen
-                              title={current.label || 'Video'}
-                            />
+                            embedPlayedIndices.has(selectedImageIndex) ? (
+                              <iframe
+                                key={current.url}
+                                src={`${current.embedUrl}?autoplay=1`}
+                                className="w-full h-full"
+                                allowFullScreen
+                                title={current.label || 'Video'}
+                              />
+                            ) : (
+                              <button
+                                type="button"
+                                onClick={() => setEmbedPlayedIndices((prev) => new Set(prev).add(selectedImageIndex))}
+                                className="absolute inset-0 w-full h-full flex flex-col items-center justify-center bg-black text-white focus:outline-none focus:ring-2 focus:ring-primary"
+                                style={{
+                                  backgroundImage: getYouTubePosterUrl(current.url)
+                                    ? `url(${getYouTubePosterUrl(current.url)})`
+                                    : undefined,
+                                  backgroundSize: 'cover',
+                                  backgroundPosition: 'center',
+                                }}
+                              >
+                                <div className="absolute inset-0 bg-black/50" />
+                                <PlayCircle className="w-20 h-20 text-white drop-shadow-lg relative z-10" />
+                                <span className="mt-2 text-sm font-medium relative z-10">Click to play</span>
+                              </button>
+                            )
                           ) : (
-                            <video
-                              key={current.url}
-                              className="w-full h-full object-contain bg-muted/20"
-                              controls
-                              preload="metadata"
-                              playsInline
+                            <div
+                              className="relative w-full h-full cursor-pointer"
+                              onClick={() => videoRef.current?.play()}
+                              role="button"
+                              tabIndex={0}
+                              onKeyDown={(e) => e.key === 'Enter' && videoRef.current?.play()}
+                              aria-label="Play video"
                             >
-                              <source src={current.url} type="video/mp4" />
-                              Your browser does not support the video tag.
-                            </video>
+                              <video
+                                ref={videoRef}
+                                key={current.url}
+                                className="w-full h-full object-contain bg-muted/20"
+                                controls
+                                preload="metadata"
+                                playsInline
+                              >
+                                <source src={current.url} type="video/mp4" />
+                                Your browser does not support the video tag.
+                              </video>
+                              <div className="absolute inset-0 flex items-center justify-center bg-black/30 opacity-0 hover:opacity-100 transition-opacity pointer-events-none">
+                                <PlayCircle className="w-20 h-20 text-white drop-shadow-lg" />
+                              </div>
+                            </div>
                           )}
                           {current.label && (
-                            <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent px-4 py-3">
+                            <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent px-4 py-3 pointer-events-none">
                               <p className="text-sm font-medium text-white">{current.label}</p>
                             </div>
                           )}

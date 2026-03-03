@@ -262,6 +262,8 @@ You’ll create **5 separate Vercel projects**, one per app. Each project uses t
 
 ## Step 3.5 – Deploy the fourth site (Construction)
 
+This site is for **Mr DGN construction and developers limited**.
+
 1. **Add New…** → **Project**.
 2. Same repo.
 3. **Root Directory:** **`construction`**.

@@ -4,7 +4,7 @@ import {
   MapPin, Bed, Bath, Square, Search, 
   Building, Landmark, Home, Castle, Building2,
   SlidersHorizontal, Check, X, Loader2, AlertCircle, Star, Eye, ArrowRight,
-  LayoutGrid, Map, Sparkles
+  LayoutGrid, Map, Sparkles, PlayCircle
 } from "lucide-react";
 import { useProperties } from "@/hooks/useProperties";
 import { Property, ListingType } from "@/services/api";
@@ -13,6 +13,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { RevealAnimation } from "@/components/ui/reveal-animation";
 import { PropertyMap } from "@/components/PropertyMap";
+import { isVideoUrl, getYouTubeThumbnailUrl } from "@/lib/utils";
 
 type ListingTab = 'all' | ListingType;
 
@@ -495,9 +496,22 @@ const Properties = () => {
                           </Badge>
                         )}
                         <div className="flex gap-3">
-                          <div className="w-24 h-24 flex-shrink-0 bg-muted">
+                          <div className="w-24 h-24 flex-shrink-0 bg-muted overflow-hidden">
                             {property.images?.[0] ? (
-                              <img src={property.images[0]} alt="" className="w-full h-full object-cover" />
+                              isVideoUrl(property.images[0]) ? (
+                                <div
+                                  className="w-full h-full bg-muted flex items-center justify-center bg-cover bg-center"
+                                  style={{
+                                    backgroundImage: getYouTubeThumbnailUrl(property.images[0])
+                                      ? `url(${getYouTubeThumbnailUrl(property.images[0])})`
+                                      : undefined,
+                                  }}
+                                >
+                                  <PlayCircle className="w-6 h-6 text-primary" />
+                                </div>
+                              ) : (
+                                <img src={property.images[0]} alt="" className="w-full h-full object-cover" />
+                              )
                             ) : (
                               <div className="w-full h-full flex items-center justify-center">{getPropertyIcon(property.property_type || "apartment")}</div>
                             )}
@@ -561,11 +575,26 @@ const Properties = () => {
                     
                     <div className="aspect-card bg-muted/20 relative overflow-hidden">
                       {property.images && property.images.length > 0 ? (
-                        <img
-                          src={property.images[0]}
-                          alt={property.title}
-                          className="w-full h-full object-contain transition-transform duration-700 group-hover:scale-105"
-                        />
+                        isVideoUrl(property.images[0]) ? (
+                          <div
+                            className="w-full h-full bg-muted flex items-center justify-center transition-transform duration-700 group-hover:scale-105 bg-cover bg-center"
+                            style={{
+                              backgroundImage: getYouTubeThumbnailUrl(property.images[0])
+                                ? `url(${getYouTubeThumbnailUrl(property.images[0])})`
+                                : undefined,
+                            }}
+                          >
+                            <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
+                              <PlayCircle className="w-14 h-14 text-white drop-shadow-md" />
+                            </div>
+                          </div>
+                        ) : (
+                          <img
+                            src={property.images[0]}
+                            alt={property.title}
+                            className="w-full h-full object-contain transition-transform duration-700 group-hover:scale-105"
+                          />
+                        )
                       ) : (
                         <div className="absolute inset-0 w-full h-full flex items-center justify-center text-muted-foreground">
                           <div className="text-center">

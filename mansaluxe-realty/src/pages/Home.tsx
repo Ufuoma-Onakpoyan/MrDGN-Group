@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
-import { ArrowRight, TrendingUp, Users, Award, Star, Sparkles } from "lucide-react";
+import { ArrowRight, TrendingUp, Users, Award, Star, Sparkles, PlayCircle } from "lucide-react";
 import { useFeaturedProperties } from "@/hooks/useProperties";
+import { isVideoUrl, getYouTubeThumbnailUrl } from "@/lib/utils";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -185,11 +186,26 @@ const Home = () => {
                 >
                   <Card className="property-card group hover-lift">
                     <div className="aspect-card overflow-hidden relative">
-                      <img
-                        src={property.images?.[0] || '/placeholder.svg'}
-                        alt={property.title}
-                        className="property-image w-full h-full object-contain bg-muted/20"
-                      />
+                      {property.images?.[0] && isVideoUrl(property.images[0]) ? (
+                        <div
+                          className="property-image w-full h-full bg-muted/20 flex items-center justify-center bg-cover bg-center"
+                          style={{
+                            backgroundImage: getYouTubeThumbnailUrl(property.images[0])
+                              ? `url(${getYouTubeThumbnailUrl(property.images[0])})`
+                              : undefined,
+                          }}
+                        >
+                          <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
+                            <PlayCircle className="w-14 h-14 text-white drop-shadow-md" />
+                          </div>
+                        </div>
+                      ) : (
+                        <img
+                          src={property.images?.[0] || '/placeholder.svg'}
+                          alt={property.title}
+                          className="property-image w-full h-full object-contain bg-muted/20"
+                        />
+                      )}
                       {property.featured && (
                         <Badge className="absolute top-3 left-3 z-10 bg-primary text-primary-foreground">
                           Featured
