@@ -29,6 +29,8 @@ export function getYouTubeThumbnailUrl(url: string | null | undefined): string |
 
 /** Display price or luxury "Price on request" when null. */
 export function formatPriceDisplay(price: number | null | undefined): string {
-  if (price == null) return "Price on request"
-  return `₦${price.toLocaleString()}`
+  if (price == null || price === "") return "Price on request"
+  const n = typeof price === "number" ? price : Number(price)
+  if (Number.isNaN(n)) return "Price on request"
+  return `₦${n.toLocaleString()}`
 }
