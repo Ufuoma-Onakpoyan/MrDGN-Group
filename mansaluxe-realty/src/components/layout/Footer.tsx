@@ -150,6 +150,28 @@ const Footer = () => {
           </div>
         </div>
 
+        {/* Explore our businesses */}
+        <div className="border-t border-border mt-8 pt-8">
+          <h3 className="text-foreground font-serif font-semibold text-lg mb-4">Explore our businesses</h3>
+          <ul className="space-y-2 text-sm">
+            <li>
+              <a href="https://construction.mrdgngroup.com/" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors">
+                Need to build a project or buy building materials? → Construction
+              </a>
+            </li>
+            <li>
+              <a href="https://entertainment.mrdgngroup.com/" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors">
+                Looking for entertainment or events? → Entertainment
+              </a>
+            </li>
+            <li>
+              <a href="https://duerents.com/" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors">
+                Property management or rentals? → Duerents
+              </a>
+            </li>
+          </ul>
+        </div>
+
         {/* Newsletter */}
         <div className="border-t border-border mt-8 pt-8">
           <div className="max-w-md">

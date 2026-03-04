@@ -35,8 +35,8 @@ const Testimonials = () => {
 
   const stats = [
     { value: "10+", label: "Properties Sold" },
-    { value: "₦3B+", label: "in Transactions" },
-    { value: "10+", label: "Experienced Team" },
+    { value: "$2M+", label: "in Transactions" },
+    { value: "50+", label: "Experienced Team" },
     { value: "100%", label: "Trusted Expertise" }
   ];
 

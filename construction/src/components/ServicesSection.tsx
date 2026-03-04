@@ -49,19 +49,19 @@ const ServicesSection = () => {
         <div className="mt-20 bg-gradient-to-r from-primary to-primary/90 rounded-3xl p-8 lg:p-12 text-white">
           <div className="grid md:grid-cols-4 gap-8 text-center">
             <div>
-              <div className="text-4xl lg:text-5xl font-bold mb-2">10+</div>
+              <div className="text-4xl lg:text-5xl font-bold mb-2">50+</div>
               <div className="text-primary-foreground/80">Projects Completed</div>
             </div>
             <div>
-              <div className="text-4xl lg:text-5xl font-bold mb-2">5+</div>
-              <div className="text-primary-foreground/80">Years in Business</div>
+              <div className="text-4xl lg:text-5xl font-bold mb-2">half a decade</div>
+              <div className="text-primary-foreground/80">in Business</div>
             </div>
             <div>
-              <div className="text-4xl lg:text-5xl font-bold mb-2">20</div>
+              <div className="text-4xl lg:text-5xl font-bold mb-2">50+</div>
               <div className="text-primary-foreground/80">Expert Team</div>
             </div>
             <div>
-              <div className="text-4xl lg:text-5xl font-bold mb-2">99%</div>
+              <div className="text-4xl lg:text-5xl font-bold mb-2">100%</div>
               <div className="text-primary-foreground/80">Client Satisfaction</div>
             </div>
           </div>

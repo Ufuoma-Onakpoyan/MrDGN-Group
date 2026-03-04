@@ -19,7 +19,7 @@ const Businesses = () => {
       color: 'from-purple-500 to-pink-500',
       image: '/assets/entertainment-business.png',
       services: ['Content Production', 'Digital Media', 'Event Management', 'Brand Partnerships'],
-      stats: ['50+ Projects Completed', '1M+ Audience Reached', '25+ Brand Partners'],
+      stats: ['50+ Events Sponsored', 'half a decade in Entertainment', 'Nationwide', 'Moving beyond soon'],
     },
     {
       name: 'MR DGN Construction',
@@ -30,7 +30,7 @@ const Businesses = () => {
       color: 'from-orange-500 to-red-500',
       image: '/assets/construction-business.png',
       services: ['Commercial Construction', 'Residential Development', 'Infrastructure Projects', 'Green Building Solutions'],
-      stats: ['100+ Projects Delivered', '₦50M+ in Contracts', '15+ Years Experience'],
+      stats: ['50+ Projects Completed', 'half a decade in Business', '50+ Expert Team', '100% Client Satisfaction'],
     },
     {
       name: 'Mansa Luxe Realty Limited',
@@ -41,7 +41,7 @@ const Businesses = () => {
       color: 'from-green-500 to-teal-500',
       image: '/assets/realty-business.png',
       services: ['Property Sales', 'Investment Advisory', 'Property Management', 'Market Analysis'],
-      stats: ['10+ Properties Sold', '₦3B+ in Transactions', 'Experienced Team'],
+      stats: ['10+ Properties Sold', '$2M+ in Transactions', '50+ Experienced Team', '100% Trusted Expertise'],
     },
     {
       name: 'Duerents',

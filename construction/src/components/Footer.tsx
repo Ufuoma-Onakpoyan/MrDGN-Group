@@ -154,6 +154,28 @@ const Footer = () => {
           </div>
         </div>
 
+        {/* Explore our businesses */}
+        <div className="mt-10 pt-8 border-t border-border/20">
+          <h3 className="text-lg font-semibold mb-4">Explore our businesses</h3>
+          <ul className="space-y-2 text-sm">
+            <li>
+              <a href="https://mansaluxerealty.mrdgngroup.com/" target="_blank" rel="noopener noreferrer" className="text-secondary-foreground/80 hover:text-primary transition-colors">
+                Need luxury property or real estate advisory? → Mansa Luxe Realty
+              </a>
+            </li>
+            <li>
+              <a href="https://entertainment.mrdgngroup.com/" target="_blank" rel="noopener noreferrer" className="text-secondary-foreground/80 hover:text-primary transition-colors">
+                Looking for entertainment or events? → Entertainment
+              </a>
+            </li>
+            <li>
+              <a href="https://duerents.com/" target="_blank" rel="noopener noreferrer" className="text-secondary-foreground/80 hover:text-primary transition-colors">
+                Property management or rentals? → Duerents
+              </a>
+            </li>
+          </ul>
+        </div>
+
         {/* Bottom Section */}
         <div className="border-t border-border/20 mt-12 pt-8">
           <div className="flex flex-col lg:flex-row justify-between items-center gap-6">

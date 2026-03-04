@@ -6,18 +6,18 @@ const WhyChooseUsSection = () => {
   const reasons = [
     {
       icon: Award,
-      title: "5+ Years Experience",
+      title: "half a decade in Business",
       description: "Five years of proven expertise in Nigeria's construction industry"
     },
     {
       icon: Clock,
       title: "On-Time Delivery",
-      description: "99% of our projects completed on schedule with zero compromise on quality"
+      description: "100% of our projects completed on schedule with zero compromise on quality"
     },
     {
       icon: Users,
-      title: "Expert Team",
-      description: "20 skilled engineers, managers, and bricklayers dedicated to excellence"
+      title: "50+ Expert Team",
+      description: "Skilled engineers, managers, and bricklayers dedicated to excellence"
     },
     {
       icon: Shield,
@@ -31,7 +31,7 @@ const WhyChooseUsSection = () => {
     },
     {
       icon: Star,
-      title: "99% Client Satisfaction",
+      title: "100% Client Satisfaction",
       description: "Exceptional customer service and long-term partnerships"
     }
   ];

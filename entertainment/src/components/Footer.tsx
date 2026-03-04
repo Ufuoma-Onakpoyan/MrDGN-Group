@@ -56,7 +56,7 @@ const Footer = () => {
   return (
     <footer className="bg-secondary text-secondary-foreground">
       <div className="container mx-auto px-4 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Company Info */}
           <div className="lg:col-span-2">
             <div className="flex items-center space-x-3 mb-6">
@@ -128,6 +128,28 @@ const Footer = () => {
                   </Link>
                 </li>
               ))}
+            </ul>
+          </div>
+
+          {/* Explore our businesses */}
+          <div>
+            <h3 className="font-semibold mb-4">Explore our businesses</h3>
+            <ul className="space-y-3 text-sm">
+              <li>
+                <a href="https://construction.mrdgngroup.com/" target="_blank" rel="noopener noreferrer" className="text-secondary-foreground/80 hover:text-primary transition-colors duration-200 inline-block">
+                  Need to build a project or buy building materials? → Construction
+                </a>
+              </li>
+              <li>
+                <a href="https://mansaluxerealty.mrdgngroup.com/" target="_blank" rel="noopener noreferrer" className="text-secondary-foreground/80 hover:text-primary transition-colors duration-200 inline-block">
+                  Looking for luxury property? → Mansa Luxe Realty
+                </a>
+              </li>
+              <li>
+                <a href="https://duerents.com/" target="_blank" rel="noopener noreferrer" className="text-secondary-foreground/80 hover:text-primary transition-colors duration-200 inline-block">
+                  Property management? → Duerents
+                </a>
+              </li>
             </ul>
           </div>
         </div>

@@ -11,10 +11,10 @@ const AboutUs = () => {
     document.title = 'About Us - Mr DGN construction and developers limited';
   }, []);
   const stats = [
-    { icon: Building2, number: '10+', label: 'Projects Completed' },
-    { icon: Users, number: '20', label: 'Expert Team Members' },
-    { icon: Award, number: '5+', label: 'Years of Excellence' },
-    { icon: Clock, number: '99%', label: 'On-Time Delivery' },
+    { icon: Building2, number: '50+', label: 'Projects Completed' },
+    { icon: Users, number: '50+', label: 'Expert Team Members' },
+    { icon: Award, number: 'half a decade', label: 'Years of Excellence' },
+    { icon: Clock, number: '100%', label: 'Client Satisfaction' },
   ];
 
   const values = [

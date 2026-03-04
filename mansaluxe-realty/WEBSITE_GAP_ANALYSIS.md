@@ -2,7 +2,7 @@
 
 ## What the site currently has
 
-- **Home** – Hero, stats (10+ sold, ₦3B+, Experienced Team, Trusted Expertise), featured properties, “Why Choose Us”, CTA
+- **Home** – Hero, stats (10+ sold, $2M+, 50+ team, Trusted Expertise), featured properties, “Why Choose Us”, CTA
 - **About** – Company story, mission & vision, values, team (CEO + Head of Sales), parent company (MR DGN Group)
 - **Properties** – Listings (from API), filters, property cards
 - **Property Detail** – Single property view

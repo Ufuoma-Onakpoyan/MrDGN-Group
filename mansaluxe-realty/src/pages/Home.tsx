@@ -19,8 +19,8 @@ const Home = () => {
 
   const stats = [
     { number: "10+", label: "Properties Sold", icon: TrendingUp },
-    { number: "₦3B+", label: "in Transactions", icon: Award },
-    { number: "10+", label: "Experienced Team", icon: Users },
+    { number: "$2M+", label: "in Transactions", icon: Award },
+    { number: "50+", label: "Experienced Team", icon: Users },
     { number: "100%", label: "Trusted Expertise", icon: Star },
   ];
 

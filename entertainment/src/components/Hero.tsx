@@ -53,18 +53,22 @@ const Hero = () => {
           </div>
 
           {/* Stats */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-2xl mx-auto">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 max-w-3xl mx-auto">
             <div className="text-center">
-              <div className="text-2xl md:text-3xl font-bold text-primary mb-2">3+</div>
+              <div className="text-2xl md:text-3xl font-bold text-primary mb-2">50+</div>
               <div className="text-muted-foreground">Events Sponsored</div>
             </div>
             <div className="text-center">
-              <div className="text-2xl md:text-3xl font-bold text-primary mb-2">5+</div>
-              <div className="text-muted-foreground">Years in Entertainment</div>
+              <div className="text-2xl md:text-3xl font-bold text-primary mb-2">half a decade</div>
+              <div className="text-muted-foreground">in Entertainment</div>
             </div>
             <div className="text-center">
               <div className="text-2xl md:text-3xl font-bold text-primary mb-2">Nationwide</div>
               <div className="text-muted-foreground">Lagos, Benin, Asaba &amp; More</div>
+            </div>
+            <div className="text-center">
+              <div className="text-2xl md:text-3xl font-bold text-primary mb-2">—</div>
+              <div className="text-muted-foreground">Moving beyond soon</div>
             </div>
           </div>
         </div>
