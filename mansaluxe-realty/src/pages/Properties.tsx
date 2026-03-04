@@ -558,13 +558,16 @@ const Properties = () => {
             </div>
           ) : (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {currentProperties.map((property, index) => (
+              {currentProperties.map((property, index) => {
+                const isVideo = isVideoUrl(property.images?.[0]);
+                const detailTo = `/properties/${property.id}${isVideo ? '?playVideo=1' : ''}`;
+                return (
                 <RevealAnimation 
                   key={property.id} 
                   animation="fade-up" 
                   delay={index * 100}
                 >
-                  <Link to={`/properties/${property.id}${isVideoUrl(property.images?.[0]) ? '?playVideo=1' : ''}`} className="block">
+                  {isVideo ? (
                   <Card className="luxury-card overflow-hidden group hover-lift cursor-pointer h-full">
                     {/* Property Status Badge - prominent SOLD or Available/New Development */}
                     {property.status === 'sold' ? (
@@ -633,7 +636,144 @@ const Properties = () => {
                           </div>
                         </div>
                       )}
-                      {/* Always Visible View Details Button - visual only, card is clickable */}
+                      {/* View Details: for video cards use a Link so it navigates; for non-video it's visual-only (parent Link handles click) */}
+                      {isVideo ? (
+                        <Link
+                          to={detailTo}
+                          className="absolute bottom-4 left-4 right-4 flex justify-center pointer-events-auto z-10"
+                          onClick={(e) => e.stopPropagation()}
+                        >
+                          <span className="inline-flex items-center justify-center rounded-md px-3 py-1.5 text-sm font-medium bg-white/90 backdrop-blur-sm text-black shadow-md border border-white/20 hover:bg-white">
+                            <Eye className="w-4 h-4 mr-2" />
+                            View Details
+                          </span>
+                        </Link>
+                      ) : (
+                        <div className="absolute bottom-4 left-4 right-4 flex justify-center pointer-events-none">
+                          <span className="inline-flex items-center justify-center rounded-md px-3 py-1.5 text-sm font-medium bg-white/90 backdrop-blur-sm text-black shadow-md border border-white/20">
+                            <Eye className="w-4 h-4 mr-2" />
+                            View Details
+                          </span>
+                        </div>
+                      )}
+                    </div>
+                    
+                    {isVideo ? (
+                      <Link to={detailTo} className="block">
+                        <CardContent className="p-6 space-y-4">
+                          <div className="flex items-start justify-between">
+                            <h3 className="text-xl font-serif font-bold line-clamp-2 flex-1 mr-4">{property.title}</h3>
+                            <div className="text-2xl font-bold text-gold-gradient whitespace-nowrap">
+                              {formatPriceDisplay(property.price)}
+                            </div>
+                          </div>
+                          
+                          <div className="flex items-center space-x-2 text-muted-foreground">
+                            <MapPin className="w-4 h-4 text-primary" />
+                            <span className="text-sm">{property.location}</span>
+                          </div>
+                          
+                          <p className="text-muted-foreground text-sm leading-relaxed line-clamp-2">
+                            {property.description}
+                          </p>
+                          
+                          <div className="flex items-center justify-between text-sm font-medium border-t border-border pt-4">
+                            <div className="flex items-center space-x-2 text-muted-foreground">
+                              <Bed className="w-4 h-4 text-primary" />
+                              <span>{property.bedrooms || 'N/A'}</span>
+                            </div>
+                            <div className="flex items-center space-x-2 text-muted-foreground">
+                              <Bath className="w-4 h-4 text-primary" />
+                              <span>{property.bathrooms || 'N/A'}</span>
+                            </div>
+                            <div className="flex items-center space-x-2 text-muted-foreground">
+                              <Square className="w-4 h-4 text-primary" />
+                              <span>{property.square_feet ? `${property.square_feet} sqft` : 'N/A'}</span>
+                            </div>
+                          </div>
+                        </CardContent>
+                      </Link>
+                    ) : (
+                      <CardContent className="p-6 space-y-4">
+                        <div className="flex items-start justify-between">
+                          <h3 className="text-xl font-serif font-bold line-clamp-2 flex-1 mr-4">{property.title}</h3>
+                          <div className="text-2xl font-bold text-gold-gradient whitespace-nowrap">
+                            {formatPriceDisplay(property.price)}
+                          </div>
+                        </div>
+                        
+                        <div className="flex items-center space-x-2 text-muted-foreground">
+                          <MapPin className="w-4 h-4 text-primary" />
+                          <span className="text-sm">{property.location}</span>
+                        </div>
+                        
+                        <p className="text-muted-foreground text-sm leading-relaxed line-clamp-2">
+                          {property.description}
+                        </p>
+                        
+                        <div className="flex items-center justify-between text-sm font-medium border-t border-border pt-4">
+                          <div className="flex items-center space-x-2 text-muted-foreground">
+                            <Bed className="w-4 h-4 text-primary" />
+                            <span>{property.bedrooms || 'N/A'}</span>
+                          </div>
+                          <div className="flex items-center space-x-2 text-muted-foreground">
+                            <Bath className="w-4 h-4 text-primary" />
+                            <span>{property.bathrooms || 'N/A'}</span>
+                          </div>
+                          <div className="flex items-center space-x-2 text-muted-foreground">
+                            <Square className="w-4 h-4 text-primary" />
+                            <span>{property.square_feet ? `${property.square_feet} sqft` : 'N/A'}</span>
+                          </div>
+                        </div>
+                      </CardContent>
+                    )}
+                  </Card>
+                  ) : (
+                  <Link to={detailTo} className="block">
+                  <Card className="luxury-card overflow-hidden group hover-lift cursor-pointer h-full">
+                    {/* Property Status Badge - prominent SOLD or Available/New Development */}
+                    {property.status === 'sold' ? (
+                      <div className="absolute top-0 left-0 right-0 z-10 py-2 px-4 bg-destructive text-destructive-foreground text-center font-bold text-sm uppercase tracking-wider shadow-md">
+                        Sold
+                      </div>
+                    ) : (
+                      <div className="absolute top-4 left-4 z-10">
+                        {property.listing_type === 'new_development' ? (
+                          <Badge className="bg-accent text-accent-foreground flex items-center space-x-1.5 border border-primary/30 px-3 py-1.5 text-sm font-medium">
+                            <Sparkles className="w-4 h-4" />
+                            <span>New Development</span>
+                          </Badge>
+                        ) : (
+                          <Badge variant="secondary" className="px-3 py-1.5 text-sm font-medium border border-border">
+                            Available
+                          </Badge>
+                        )}
+                      </div>
+                    )}
+                    {property.featured && (
+                      <Badge className="absolute top-4 right-4 z-10 bg-primary text-primary-foreground flex items-center space-x-1">
+                        <Star className="w-3 h-3 fill-current" />
+                        <span>Featured</span>
+                      </Badge>
+                    )}
+                    
+                    <div className="aspect-card bg-muted/20 relative overflow-hidden">
+                      {property.images && property.images.length > 0 ? (
+                        <img
+                          src={property.images[0]}
+                          alt={property.title}
+                          className="w-full h-full object-contain transition-transform duration-700 group-hover:scale-105"
+                        />
+                      ) : (
+                        <div className="absolute inset-0 w-full h-full flex items-center justify-center text-muted-foreground">
+                          <div className="text-center">
+                            <div className="w-16 h-16 bg-border rounded-full flex items-center justify-center mx-auto mb-2">
+                              {getPropertyIcon(property.property_type || 'apartment')}
+                            </div>
+                            <p className="text-sm">{property.property_type?.charAt(0).toUpperCase() + property.property_type?.slice(1) || 'Property'}</p>
+                          </div>
+                        </div>
+                      )}
                       <div className="absolute bottom-4 left-4 right-4 flex justify-center pointer-events-none">
                         <span className="inline-flex items-center justify-center rounded-md px-3 py-1.5 text-sm font-medium bg-white/90 backdrop-blur-sm text-black shadow-md border border-white/20">
                           <Eye className="w-4 h-4 mr-2" />
@@ -676,8 +816,10 @@ const Properties = () => {
                     </CardContent>
                   </Card>
                   </Link>
+                  )}
                 </RevealAnimation>
-              ))}
+              );
+              })}
             </div>
           )}
 
