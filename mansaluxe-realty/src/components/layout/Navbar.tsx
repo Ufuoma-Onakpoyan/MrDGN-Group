@@ -36,19 +36,16 @@ const Navbar = () => {
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 navbar-glass">
-      <div className="container mx-auto px-4 lg:px-6">
+      <div className="container mx-auto">
         <div className="flex justify-between items-center min-h-[4.5rem]">
           {/* Logo + brand */}
-          <NavLink to="/" className="flex items-center gap-3 shrink-0" onClick={() => setIsOpen(false)}>
+          <NavLink to="/" className="flex items-center shrink-0" onClick={() => setIsOpen(false)}>
             <img
               src="/assets/logo-mansaluxe.png"
               alt="Mansa Luxe Realty Limited"
               className="h-10 md:h-11 w-auto object-contain"
               style={{ minHeight: '40px', maxHeight: '44px' }}
             />
-            <span className="hidden sm:block font-serif text-lg font-semibold text-foreground tracking-tight">
-              Mansa Luxe Realty
-            </span>
           </NavLink>
 
           {/* Desktop: center nav */}
@@ -127,7 +124,7 @@ const Navbar = () => {
           role="dialog"
           aria-label="Mobile menu"
         >
-          <div className="container mx-auto px-4 py-4 max-h-[calc(100vh-5rem)] overflow-y-auto">
+          <div className="container mx-auto px-4 py-4 max-h-[calc(100vh-5rem)] overflow-y-auto lg:px-6">
             <ul className="space-y-0.5">
               {navItems.map((item) => (
                 <li key={item.to}>
