@@ -214,8 +214,8 @@
 
   /* Enhanced navbar glass effect */
   .navbar-glass {
-    @apply backdrop-blur-xl bg-background/90 border-b border-primary/20;
-    box-shadow: 0 4px 20px hsl(16 26% 55% / 0.2);
+    @apply backdrop-blur-xl bg-background/95 border-b border-border;
+    box-shadow: 0 1px 0 hsl(var(--primary) / 0.15), 0 4px 20px hsl(0 0% 0% / 0.3);
   }
 
   /* Scroll reveal animations */

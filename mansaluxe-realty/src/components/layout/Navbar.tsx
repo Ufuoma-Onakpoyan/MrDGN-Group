@@ -26,165 +26,171 @@ const Navbar = () => {
     { to: "/contact", label: "Contact", icon: Phone },
   ];
 
+  const linkClass = ({ isActive }: { isActive: boolean }) =>
+    `relative py-2 text-sm font-medium transition-colors duration-200 ${
+      isActive ? "text-primary" : "text-muted-foreground hover:text-foreground"
+    }`;
+
+  const linkClassDesktop = ({ isActive }: { isActive: boolean }) =>
+    `${linkClass({ isActive })} nav-link px-3 xl:px-4`;
+
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 navbar-glass">
-      <div className="container mx-auto px-4">
-        <div className="flex justify-between items-center h-16">
-          {/* Logo */}
-          <NavLink to="/" className="flex items-center space-x-3">
-            <img 
-              src="/assets/logo-mansaluxe.png" 
+    <header className="fixed top-0 left-0 right-0 z-50 navbar-glass">
+      <div className="container mx-auto px-4 lg:px-6">
+        <div className="flex justify-between items-center min-h-[4.5rem]">
+          {/* Logo + brand */}
+          <NavLink to="/" className="flex items-center gap-3 shrink-0" onClick={() => setIsOpen(false)}>
+            <img
+              src="/assets/logo-mansaluxe.png"
               alt="Mansa Luxe Realty Limited"
-              className="h-11 md:h-12 w-auto object-contain drop-shadow-md"
-              style={{ minHeight: '44px', maxHeight: '48px' }}
+              className="h-10 md:h-11 w-auto object-contain"
+              style={{ minHeight: '40px', maxHeight: '44px' }}
             />
+            <span className="hidden sm:block font-serif text-lg font-semibold text-foreground tracking-tight">
+              Mansa Luxe Realty
+            </span>
           </NavLink>
 
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-2 xl:space-x-4">
-            {navItems.map((item) => (
-              item.to === "/contact" ? (
-                <NavLink
-                  key={item.to}
-                  to={item.to}
-                  end={item.to === "/"}
-                  className={({ isActive }) =>
-                    `flex items-center space-x-1 px-4 xl:px-5 py-2 rounded-lg transition-all duration-300 text-sm xl:text-base font-semibold ${
-                      isActive
-                        ? "bg-primary text-primary-foreground"
-                        : "bg-primary text-primary-foreground hover:bg-primary/90 hover:scale-105 shadow-md"
-                    }`
-                  }
-                >
-                  <item.icon className="w-4 h-4" />
-                  <span className="text-xs xl:text-sm">{item.label}</span>
-                </NavLink>
-              ) : (
-                <NavLink
-                  key={item.to}
-                  to={item.to}
-                  end={item.to === "/"}
-                  className={({ isActive }) =>
-                    `nav-link flex items-center space-x-1 px-2 xl:px-3 py-2 rounded-lg transition-all duration-300 text-sm xl:text-base ${
-                      isActive
-                        ? "bg-primary/20 text-primary font-semibold"
-                        : "text-foreground/80 hover:text-primary hover:bg-primary/10"
-                    }`
-                  }
-                >
-                  <item.icon className="w-4 h-4" />
-                  <span className="text-xs xl:text-sm">{item.label}</span>
-                </NavLink>
-              )
-            ))}
-            
-            {/* Auth Section - Only show for admins */}
+          {/* Desktop: center nav */}
+          <nav className="hidden lg:flex items-center justify-center flex-1 min-w-0" aria-label="Main navigation">
+            <div className="flex flex-wrap items-center justify-center gap-x-1 xl:gap-x-2 gap-y-1">
+              {navItems
+                .filter((item) => item.to !== "/contact")
+                .map((item) => (
+                  <NavLink
+                    key={item.to}
+                    to={item.to}
+                    end={item.to === "/"}
+                    className={linkClassDesktop}
+                  >
+                    {item.label}
+                  </NavLink>
+                ))}
+            </div>
+          </nav>
+
+          {/* Desktop: right – CTA + admin */}
+          <div className="hidden lg:flex items-center gap-4 shrink-0">
             {user && isAdmin && (
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
-                  <Button variant="ghost" size="sm" className="flex items-center space-x-2">
+                  <Button variant="ghost" size="sm" className="text-muted-foreground hover:text-foreground gap-2">
                     <User className="w-4 h-4" />
-                    <span className="text-xs xl:text-sm">{user.email}</span>
+                    <span className="text-sm max-w-[120px] truncate">{user.email}</span>
                   </Button>
                 </DropdownMenuTrigger>
-                <DropdownMenuContent align="end">
+                <DropdownMenuContent align="end" className="min-w-[180px]">
                   <DropdownMenuItem asChild>
-                    <NavLink to="/admin">Admin Dashboard</NavLink>
+                    <NavLink to="/admin" className="cursor-pointer">Admin Dashboard</NavLink>
                   </DropdownMenuItem>
-                  <DropdownMenuItem onClick={signOut}>
+                  <DropdownMenuItem onClick={signOut} className="cursor-pointer">
                     <LogOut className="w-4 h-4 mr-2" />
                     Sign Out
                   </DropdownMenuItem>
                 </DropdownMenuContent>
               </DropdownMenu>
             )}
+            <NavLink to="/contact">
+              <Button
+                size="sm"
+                className="bg-primary text-primary-foreground hover:bg-primary/90 font-semibold rounded-lg px-5 h-10 shadow-md hover:shadow-lg transition-all duration-200"
+              >
+                Contact
+              </Button>
+            </NavLink>
           </div>
 
-          {/* Mobile menu button */}
-          <button
-            className="md:hidden p-2 text-primary"
-            onClick={() => setIsOpen(!isOpen)}
-          >
-            {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-          </button>
+          {/* Mobile: menu button */}
+          <div className="flex items-center gap-2 lg:hidden">
+            <NavLink to="/contact" className="sm:hidden">
+              <Button size="sm" className="bg-primary text-primary-foreground hover:bg-primary/90 rounded-lg h-9 px-3">
+                Contact
+              </Button>
+            </NavLink>
+            <button
+              type="button"
+              className="p-2.5 rounded-lg text-foreground hover:bg-white/10 transition-colors"
+              onClick={() => setIsOpen(!isOpen)}
+              aria-expanded={isOpen}
+              aria-label={isOpen ? "Close menu" : "Open menu"}
+            >
+              {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            </button>
+          </div>
         </div>
+      </div>
 
-        {/* Mobile Navigation */}
-        {isOpen && (
-          <div className="md:hidden absolute top-16 left-0 right-0 bg-background border-t border-primary/20 shadow-md">
-            <div className="container mx-auto px-4 py-4">
+      {/* Mobile menu */}
+      {isOpen && (
+        <div
+          className="lg:hidden absolute top-full left-0 right-0 bg-background/98 backdrop-blur-xl border-t border-border shadow-xl"
+          role="dialog"
+          aria-label="Mobile menu"
+        >
+          <div className="container mx-auto px-4 py-4 max-h-[calc(100vh-5rem)] overflow-y-auto">
+            <ul className="space-y-0.5">
               {navItems.map((item) => (
-                item.to === "/contact" ? (
-                  <NavLink
-                    key={item.to}
-                    to={item.to}
-                    end={item.to === "/"}
-                    className={({ isActive }) =>
-                      `flex items-center space-x-3 px-4 py-3 rounded-lg transition-all duration-300 font-semibold ${
-                        isActive
-                          ? "bg-primary text-primary-foreground"
-                          : "bg-primary text-primary-foreground"
-                      }`
-                    }
-                    onClick={() => setIsOpen(false)}
-                  >
-                    <item.icon className="w-5 h-5" />
-                    <span>{item.label}</span>
-                  </NavLink>
-                ) : (
-                  <NavLink
-                    key={item.to}
-                    to={item.to}
-                    end={item.to === "/"}
-                    className={({ isActive }) =>
-                      `flex items-center space-x-3 px-4 py-3 rounded-lg transition-all duration-300 ${
-                        isActive
-                          ? "bg-primary/20 text-primary font-semibold"
-                          : "text-primary/80 hover:text-primary hover:bg-primary/10"
-                      }`
-                    }
-                    onClick={() => setIsOpen(false)}
-                  >
-                    <item.icon className="w-5 h-5" />
-                    <span>{item.label}</span>
-                  </NavLink>
-                )
-              ))}
-              
-              {/* Mobile Auth Section - Only show for admins */}
-              {user && isAdmin && (
-                <div className="border-t border-primary/20 mt-4 pt-4">
-                  <div className="space-y-2">
-                    <div className="flex items-center space-x-3 px-4 py-2 text-primary/80">
-                      <User className="w-5 h-5" />
-                      <span className="text-sm">{user.email}</span>
-                    </div>
+                <li key={item.to}>
+                  {item.to === "/contact" ? (
                     <NavLink
-                      to="/admin"
-                      className="flex items-center space-x-3 px-4 py-3 rounded-lg text-primary/80 hover:text-primary hover:bg-primary/10 transition-all duration-300"
+                      to={item.to}
+                      className="flex items-center gap-3 px-4 py-3.5 rounded-xl bg-primary text-primary-foreground font-semibold"
                       onClick={() => setIsOpen(false)}
                     >
-                      <Building className="w-5 h-5" />
-                      <span>Admin Dashboard</span>
+                      <item.icon className="w-5 h-5 shrink-0" />
+                      {item.label}
                     </NavLink>
-                    <button
-                      onClick={() => {
-                        signOut();
-                        setIsOpen(false);
-                      }}
-                      className="flex items-center space-x-3 px-4 py-3 rounded-lg text-primary/80 hover:text-primary hover:bg-primary/10 transition-all duration-300 w-full text-left"
+                  ) : (
+                    <NavLink
+                      to={item.to}
+                      end={item.to === "/"}
+                      className={({ isActive }) =>
+                        `flex items-center gap-3 px-4 py-3.5 rounded-xl transition-colors ${
+                          isActive
+                            ? "bg-primary/15 text-primary font-medium"
+                            : "text-foreground/90 hover:bg-white/5 hover:text-foreground"
+                        }`
+                      }
+                      onClick={() => setIsOpen(false)}
                     >
-                      <LogOut className="w-5 h-5" />
-                      <span>Sign Out</span>
-                    </button>
-                  </div>
+                      <item.icon className="w-5 h-5 shrink-0 text-muted-foreground" />
+                      {item.label}
+                    </NavLink>
+                  )}
+                </li>
+              ))}
+            </ul>
+            {user && isAdmin && (
+              <div className="mt-6 pt-4 border-t border-border space-y-1">
+                <div className="flex items-center gap-3 px-4 py-2 text-muted-foreground text-sm">
+                  <User className="w-5 h-5 shrink-0" />
+                  <span className="truncate">{user.email}</span>
                 </div>
-              )}
-            </div>
+                <NavLink
+                  to="/admin"
+                  className="flex items-center gap-3 px-4 py-3.5 rounded-xl text-foreground/90 hover:bg-white/5"
+                  onClick={() => setIsOpen(false)}
+                >
+                  <Building className="w-5 h-5 shrink-0" />
+                  Admin Dashboard
+                </NavLink>
+                <button
+                  type="button"
+                  className="flex items-center gap-3 px-4 py-3.5 rounded-xl text-foreground/90 hover:bg-white/5 w-full text-left"
+                  onClick={() => {
+                    signOut();
+                    setIsOpen(false);
+                  }}
+                >
+                  <LogOut className="w-5 h-5 shrink-0" />
+                  Sign Out
+                </button>
+              </div>
+            )}
           </div>
-        )}
-      </div>
-    </nav>
+        </div>
+      )}
+    </header>
   );
 };
 
