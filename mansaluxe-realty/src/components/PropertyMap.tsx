@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
 import { Property } from "@/services/api";
-import { formatPriceDisplay } from "@/lib/utils";
+import { formatPriceDisplay, isVideoUrl } from "@/lib/utils";
 
 // Leaflet loaded from CDN in index.html
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -51,10 +51,13 @@ export function PropertyMap({ properties, filteredPropertiesWithCoords }: Proper
       const lng = Number(property.longitude);
       const marker = L.marker([lat, lng]).addTo(map);
       const statusLabel = property.status === "sold" ? "SOLD" : (property.listing_type === "new_development" ? "New Development" : "Available");
+      const detailHref = property.images?.[0] && isVideoUrl(property.images[0])
+        ? `/properties/${property.id}?playVideo=1`
+        : `/properties/${property.id}`;
       marker.bindPopup(
         `<div style="min-width:180px;">
           <p class="text-xs font-bold uppercase tracking-wide mb-1 ${property.status === 'sold' ? 'text-red-600' : 'text-muted-foreground'}">${escapeHtml(statusLabel)}</p>
-          <a href="/properties/${property.id}" class="font-semibold text-primary hover:underline">${escapeHtml(property.title)}</a>
+          <a href="${detailHref}" class="font-semibold text-primary hover:underline">${escapeHtml(property.title)}</a>
           <p class="text-sm text-muted-foreground mt-1">${escapeHtml(property.location || "")}</p>
           <p class="text-sm font-semibold mt-1">${escapeHtml(formatPriceDisplay(property.price))}</p>
         </div>`

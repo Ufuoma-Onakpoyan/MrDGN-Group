@@ -19,6 +19,16 @@ export function isVideoUrl(url: string | null | undefined): boolean {
   )
 }
 
+/** Embed URL for YouTube/Vimeo, or null for direct video files. */
+export function getEmbedUrl(url: string | null | undefined): string | null {
+  if (!url) return null
+  const ytMatch = url.match(/(?:youtube\.com\/watch\?v=|youtu\.be\/)([^&?/]+)/)
+  if (ytMatch) return `https://www.youtube.com/embed/${ytMatch[1]}`
+  const vimeoMatch = url.match(/vimeo\.com\/(?:video\/)?(\d+)/)
+  if (vimeoMatch) return `https://player.vimeo.com/video/${vimeoMatch[1]}`
+  return null
+}
+
 /** YouTube thumbnail URL for poster, or null if not YouTube. */
 export function getYouTubeThumbnailUrl(url: string | null | undefined): string | null {
   if (!url) return null

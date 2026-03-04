@@ -1,8 +1,10 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import { ArrowRight, TrendingUp, Users, Award, Star, Sparkles, PlayCircle } from "lucide-react";
 import { useFeaturedProperties } from "@/hooks/useProperties";
 import { formatPriceDisplay, isVideoUrl, getYouTubeThumbnailUrl } from "@/lib/utils";
 import { Card, CardContent } from "@/components/ui/card";
+import { PropertyVideoModal } from "@/components/PropertyVideoModal";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { RevealAnimation } from "@/components/ui/reveal-animation";
@@ -13,6 +15,7 @@ import heroVideo from "@/assets/hero-opulence.mp4?url";
 const Home = () => {
   const { properties: featuredProperties, loading, error: featuredError, refetch: refetchFeatured } = useFeaturedProperties();
   const { ref: statsRef, visibleItems } = useStaggeredReveal(4, 150);
+  const [videoModal, setVideoModal] = useState<{ open: boolean; url: string | null }>({ open: false, url: null });
 
   const stats = [
     { number: "10+", label: "Properties Sold", icon: TrendingUp },
@@ -188,8 +191,9 @@ const Home = () => {
                     <div className="aspect-card overflow-hidden relative">
                       {property.images?.[0] ? (
                         isVideoUrl(property.images[0]) ? (
-                          <div
-                            className={`property-image relative w-full h-full flex items-center justify-center bg-cover bg-center ${!property.card_poster_url && !getYouTubeThumbnailUrl(property.images[0]) ? 'bg-gradient-to-br from-muted to-muted/70' : 'bg-muted/20'}`}
+                          <button
+                            type="button"
+                            className={`property-image relative w-full h-full flex items-center justify-center bg-cover bg-center cursor-pointer border-0 p-0 ${!property.card_poster_url && !getYouTubeThumbnailUrl(property.images[0]) ? 'bg-gradient-to-br from-muted to-muted/70' : 'bg-muted/20'}`}
                             style={{
                               backgroundImage: (property.card_poster_url
                                 ? `url(${property.card_poster_url})`
@@ -197,11 +201,13 @@ const Home = () => {
                                   ? `url(${getYouTubeThumbnailUrl(property.images[0])})`
                                   : undefined),
                             }}
+                            onClick={() => setVideoModal({ open: true, url: property.images![0] })}
+                            aria-label="Play video"
                           >
                             <div className="absolute inset-0 bg-black/30 flex items-center justify-center">
                               <PlayCircle className="w-14 h-14 text-white drop-shadow-md" />
                             </div>
-                          </div>
+                          </button>
                         ) : (
                           <img
                             src={property.images[0]}
@@ -334,6 +340,12 @@ const Home = () => {
           </RevealAnimation>
         </div>
       </section>
+
+      <PropertyVideoModal
+        open={videoModal.open}
+        onClose={() => setVideoModal({ open: false, url: null })}
+        videoUrl={videoModal.url ?? ""}
+      />
     </div>
   );
 };

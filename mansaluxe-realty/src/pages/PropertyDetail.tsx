@@ -8,17 +8,8 @@ import { Button } from "@/components/ui/button";
 import { RevealAnimation } from "@/components/ui/reveal-animation";
 import { apiService, Property } from "@/services/api";
 import { SEO } from "@/components/SEO";
-import { formatPriceDisplay } from "@/lib/utils";
+import { formatPriceDisplay, getEmbedUrl, getYouTubeThumbnailUrl } from "@/lib/utils";
 import { toast } from "sonner";
-
-function getEmbedUrl(url: string): string | null {
-  if (!url) return null;
-  const ytMatch = url.match(/(?:youtube\.com\/watch\?v=|youtu\.be\/)([^&?/]+)/);
-  if (ytMatch) return `https://www.youtube.com/embed/${ytMatch[1]}`;
-  const vimeoMatch = url.match(/vimeo\.com\/(?:video\/)?(\d+)/);
-  if (vimeoMatch) return `https://player.vimeo.com/video/${vimeoMatch[1]}`;
-  return null;
-}
 
 function isVideoUrl(url: string): boolean {
   return !!(url?.includes('.mp4') || url?.includes('.mov') || url?.includes('.avi') || url?.includes('webm') ||
@@ -107,12 +98,6 @@ const PropertyDetail = () => {
       toast.info('Click the video to play', { duration: 4000 });
     }
   }, [searchParams, loading, property, mediaItems]);
-
-  useEffect(() => {
-    if (property && !loading) {
-      fetch('http://127.0.0.1:7729/ingest/3a7a69ee-46c6-491b-bc79-669dc68eb5b5', { method: 'POST', headers: { 'Content-Type': 'application/json', 'X-Debug-Session-Id': 'f07d7f' }, body: JSON.stringify({ sessionId: 'f07d7f', location: 'PropertyDetail.tsx:useEffect', message: 'Interested section should be rendered', data: { propertyId: property?.id, loading }, timestamp: Date.now(), hypothesisId: 'H2' }) }).catch(() => {});
-    }
-  }, [property, loading]);
 
   useEffect(() => {
     const handleKey = (e: KeyboardEvent) => {
@@ -223,8 +208,8 @@ const PropertyDetail = () => {
                                 onClick={() => setEmbedPlayedIndices((prev) => new Set(prev).add(selectedImageIndex))}
                                 className="absolute inset-0 w-full h-full flex flex-col items-center justify-center bg-black text-white focus:outline-none focus:ring-2 focus:ring-primary"
                                 style={{
-                                  backgroundImage: getYouTubePosterUrl(current.url)
-                                    ? `url(${getYouTubePosterUrl(current.url)})`
+                                  backgroundImage: getYouTubeThumbnailUrl(current.url)
+                                    ? `url(${getYouTubeThumbnailUrl(current.url)})`
                                     : undefined,
                                   backgroundSize: 'cover',
                                   backgroundPosition: 'center',
@@ -447,22 +432,14 @@ const PropertyDetail = () => {
             )}
 
             {/* Contact - relative z-20 + pointer-events-auto to ensure clicks reach buttons */}
-            {/* #region agent log */}
-            <Card className="luxury-card relative z-20" data-debug="interested-card">
+            <Card className="luxury-card relative z-20">
               <CardContent className="p-6">
                 <h3 className="text-xl font-bold mb-4">Interested?</h3>
-                <div
-                  className="space-y-3"
-                  onClick={(e) => {
-                    fetch('http://127.0.0.1:7729/ingest/3a7a69ee-46c6-491b-bc79-669dc68eb5b5', { method: 'POST', headers: { 'Content-Type': 'application/json', 'X-Debug-Session-Id': 'f07d7f' }, body: JSON.stringify({ sessionId: 'f07d7f', location: 'PropertyDetail.tsx:interested-div', message: 'Interested div click', data: { targetTag: (e.target as HTMLElement)?.tagName, targetRole: (e.target as HTMLElement)?.getAttribute?.('role'), currentTarget: 'div.space-y-3' }, timestamp: Date.now(), hypothesisId: 'H1' }) }).catch(() => {});
-                  }}
-                >
+                <div className="space-y-3">
                   <Button
                     className="w-full"
                     size="lg"
-                    data-debug="call-agent-btn"
                     onClick={(e) => {
-                      fetch('http://127.0.0.1:7729/ingest/3a7a69ee-46c6-491b-bc79-669dc68eb5b5', { method: 'POST', headers: { 'Content-Type': 'application/json', 'X-Debug-Session-Id': 'f07d7f' }, body: JSON.stringify({ sessionId: 'f07d7f', location: 'PropertyDetail.tsx:call-agent', message: 'Call Agent onClick fired', data: { tel: `tel:${SITE_PHONE}` }, timestamp: Date.now(), hypothesisId: 'H3' }) }).catch(() => {});
                       e.stopPropagation();
                       window.location.href = `tel:${SITE_PHONE}`;
                     }}
@@ -473,9 +450,7 @@ const PropertyDetail = () => {
                     variant="outline"
                     className="w-full"
                     size="lg"
-                    data-debug="contact-us-btn"
                     onClick={(e) => {
-                      fetch('http://127.0.0.1:7729/ingest/3a7a69ee-46c6-491b-bc79-669dc68eb5b5', { method: 'POST', headers: { 'Content-Type': 'application/json', 'X-Debug-Session-Id': 'f07d7f' }, body: JSON.stringify({ sessionId: 'f07d7f', location: 'PropertyDetail.tsx:contact-us', message: 'Contact Us onClick fired', data: { path: '/contact' }, timestamp: Date.now(), hypothesisId: 'H3' }) }).catch(() => {});
                       e.stopPropagation();
                       navigate('/contact');
                     }}
@@ -486,11 +461,9 @@ const PropertyDetail = () => {
                     variant="outline"
                     className="w-full"
                     size="lg"
-                    data-debug="schedule-viewing-btn"
                     onClick={(e) => {
-                      const win = window.open(`https://wa.me/${SITE_PHONE.replace(/\D/g, '')}`, '_blank', 'noopener,noreferrer');
-                      fetch('http://127.0.0.1:7729/ingest/3a7a69ee-46c6-491b-bc79-669dc68eb5b5', { method: 'POST', headers: { 'Content-Type': 'application/json', 'X-Debug-Session-Id': 'f07d7f' }, body: JSON.stringify({ sessionId: 'f07d7f', location: 'PropertyDetail.tsx:schedule-viewing', message: 'Schedule Viewing onClick fired', data: { windowOpenReturned: win !== null, popupBlocked: win === null }, timestamp: Date.now(), hypothesisId: 'H3,H4' }) }).catch(() => {});
                       e.stopPropagation();
+                      window.open(`https://wa.me/${SITE_PHONE.replace(/\D/g, '')}`, '_blank', 'noopener,noreferrer');
                     }}
                   >
                     Schedule Viewing (WhatsApp)
@@ -498,7 +471,6 @@ const PropertyDetail = () => {
                 </div>
               </CardContent>
             </Card>
-            {/* #endregion */}
           </div>
         </div>
       </div>

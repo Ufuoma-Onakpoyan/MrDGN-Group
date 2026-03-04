@@ -13,6 +13,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { RevealAnimation } from "@/components/ui/reveal-animation";
 import { PropertyMap } from "@/components/PropertyMap";
+import { PropertyVideoModal } from "@/components/PropertyVideoModal";
 import { formatPriceDisplay, isVideoUrl, getYouTubeThumbnailUrl } from "@/lib/utils";
 
 type ListingTab = 'all' | ListingType;
@@ -46,6 +47,7 @@ const Properties = () => {
   const [isFilterOpen, setIsFilterOpen] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const [viewMode, setViewMode] = useState<'list' | 'map'>('list');
+  const [videoModal, setVideoModal] = useState<{ open: boolean; url: string | null }>({ open: false, url: null });
   const propertiesPerPage = 9;
 
   // Predefined locations
@@ -498,8 +500,9 @@ const Properties = () => {
                           <div className="w-24 h-24 flex-shrink-0 bg-muted overflow-hidden relative">
                             {property.images?.[0] ? (
                               isVideoUrl(property.images[0]) ? (
-                                <div
-                                  className={`w-full h-full flex items-center justify-center bg-cover bg-center ${!property.card_poster_url && !getYouTubeThumbnailUrl(property.images[0]) ? 'bg-gradient-to-br from-muted to-muted/70' : ''}`}
+                                <button
+                                  type="button"
+                                  className={`w-full h-full flex items-center justify-center bg-cover bg-center cursor-pointer border-0 p-0 ${!property.card_poster_url && !getYouTubeThumbnailUrl(property.images[0]) ? 'bg-gradient-to-br from-muted to-muted/70' : ''}`}
                                   style={{
                                     backgroundImage: (property.card_poster_url
                                       ? `url(${property.card_poster_url})`
@@ -507,11 +510,17 @@ const Properties = () => {
                                         ? `url(${getYouTubeThumbnailUrl(property.images[0])})`
                                         : undefined),
                                   }}
+                                  onClick={(e) => {
+                                    e.preventDefault();
+                                    e.stopPropagation();
+                                    setVideoModal({ open: true, url: property.images![0] });
+                                  }}
+                                  aria-label="Play video"
                                 >
                                   <div className="absolute inset-0 bg-black/30 flex items-center justify-center">
                                     <PlayCircle className="w-6 h-6 text-white" />
                                   </div>
-                                </div>
+                                </button>
                               ) : (
                                 <img src={property.images[0]} alt="" className="w-full h-full object-cover" />
                               )
@@ -586,8 +595,9 @@ const Properties = () => {
                     <div className="aspect-card bg-muted/20 relative overflow-hidden">
                       {property.images && property.images.length > 0 ? (
                         isVideoUrl(property.images[0]) ? (
-                          <div
-                            className={`w-full h-full relative flex items-center justify-center bg-cover bg-center transition-transform duration-700 group-hover:scale-105 ${!property.card_poster_url && !getYouTubeThumbnailUrl(property.images[0]) ? 'bg-gradient-to-br from-muted to-muted/70' : ''}`}
+                          <button
+                            type="button"
+                            className={`w-full h-full relative flex items-center justify-center bg-cover bg-center transition-transform duration-700 group-hover:scale-105 cursor-pointer border-0 p-0 ${!property.card_poster_url && !getYouTubeThumbnailUrl(property.images[0]) ? 'bg-gradient-to-br from-muted to-muted/70' : ''}`}
                             style={{
                               backgroundImage: (property.card_poster_url
                                 ? `url(${property.card_poster_url})`
@@ -595,11 +605,17 @@ const Properties = () => {
                                   ? `url(${getYouTubeThumbnailUrl(property.images[0])})`
                                   : undefined),
                             }}
+                            onClick={(e) => {
+                              e.preventDefault();
+                              e.stopPropagation();
+                              setVideoModal({ open: true, url: property.images![0] });
+                            }}
+                            aria-label="Play video"
                           >
                             <div className="absolute inset-0 bg-black/30 flex items-center justify-center">
                               <PlayCircle className="w-14 h-14 text-white drop-shadow-md" />
                             </div>
-                          </div>
+                          </button>
                         ) : (
                           <img
                             src={property.images[0]}
@@ -726,6 +742,12 @@ const Properties = () => {
           </RevealAnimation>
         </div>
       </section>
+
+      <PropertyVideoModal
+        open={videoModal.open}
+        onClose={() => setVideoModal({ open: false, url: null })}
+        videoUrl={videoModal.url ?? ""}
+      />
     </div>
   );
 };
