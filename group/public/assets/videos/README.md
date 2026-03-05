@@ -8,9 +8,9 @@ Place the Duerents intro/promo video here.
 
 Supported format: MP4 (H.264). The video will play in a popup when users click "Duerents" across the MR DGN Group site.
 
-**Deployed builds:** This file is tracked with Git LFS. If you deploy from CI (e.g. Netlify, Vercel), run `git lfs pull` before `npm run build` so the real video is copied into `dist/`. Otherwise the deployed site may serve an LFS pointer and the video will not play. For the group site on Vercel, the build command in `vercel.json` already includes `git lfs install && git lfs pull`; you can also enable Git LFS in the Vercel project’s Git settings.
+**Deployed builds (Vercel):** This file is tracked with Git LFS. Running `git lfs pull` in the build command can fail on Vercel ("missing protocol" / empty URL). To get the video on the live site: (1) In Vercel, go to **Project → Settings → Git** and enable **Git LFS** so Vercel fetches LFS files during clone; redeploy. Or (2) host the video elsewhere (e.g. Cloudinary, Vercel Blob), set the env var **`VITE_DUERENTS_VIDEO_URL`** to that URL in Vercel, and redeploy—the app will use that URL and the video will play without LFS.
 
 ## Troubleshooting
 
 - **Local:** If the video doesn’t play when running `npm run dev`, open DevTools → Network, open the Duerents modal, and check the request to `…/duerents.mp4`. You should see status 200 and a large size (tens of MB). If you get 404 or a very small size, the file is missing or in the wrong place—confirm it is at `group/public/assets/videos/duerents.mp4` with the exact filename.
-- **Deployed:** If it works locally but not on Vercel, enable Git LFS for the project (or ensure the build command runs `git lfs pull`) and redeploy. Alternatively, set the env var `VITE_DUERENTS_VIDEO_URL` to a public URL where the video is hosted (e.g. Cloudinary, Vercel Blob) so the app loads the video from there and LFS is not needed for the build.
+- **Deployed:** If it works locally but not on Vercel, enable **Git LFS** in the project’s Git settings (Vercel will fetch LFS on clone) and redeploy. If LFS still fails in build, use **`VITE_DUERENTS_VIDEO_URL`**: upload the video to Cloudinary, Vercel Blob, or similar, add that URL as the env var in Vercel, and redeploy—the video will play from that URL and the build no longer depends on LFS.
