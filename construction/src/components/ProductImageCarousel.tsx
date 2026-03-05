@@ -35,6 +35,13 @@ export function ProductImageCarousel({
     api.on('select', () => setCurrent(api.selectedScrollSnap()));
   }, [api]);
 
+  // Auto-advance carousel when multiple images (still controllable via prev/next)
+  useEffect(() => {
+    if (!api || !images || images.length <= 1) return;
+    const interval = setInterval(() => api.scrollNext(), 4000);
+    return () => clearInterval(interval);
+  }, [api, images?.length]);
+
   if (!images || images.length === 0) {
     return (
       <div
@@ -47,11 +54,11 @@ export function ProductImageCarousel({
 
   if (images.length === 1) {
     return (
-      <div className={`relative overflow-hidden bg-muted ${className}`}>
+      <div className={`relative overflow-hidden bg-muted flex items-center justify-center ${className}`}>
         <img
           src={images[0]}
           alt={alt}
-          className="absolute inset-0 w-full h-full object-cover bg-muted"
+          className="w-full h-full object-contain bg-muted"
         />
       </div>
     );
@@ -67,7 +74,7 @@ export function ProductImageCarousel({
                 <img
                   src={src}
                   alt={`${alt} - image ${index + 1}`}
-                  className="absolute inset-0 w-full h-full object-cover"
+                  className="w-full h-full object-contain"
                 />
               </div>
             </CarouselItem>
