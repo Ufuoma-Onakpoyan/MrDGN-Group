@@ -10,14 +10,29 @@ import { ProductImageCarousel } from '@/components/ProductImageCarousel';
 
 const API_BASE = import.meta.env.VITE_API_URL || '';
 
-/** Resolve relative image paths (e.g. /uploads/...) to absolute using API base so they load from the backend. */
+/** Resolve image URLs: normalize to strings, then ensure uploads use API base and HTTPS when page is HTTPS (avoid mixed content). */
 function resolveImageUrls(urls: unknown[], base: string): string[] {
   if (!Array.isArray(urls)) return [];
   const asStrings = urls.map((u) => (typeof u === 'string' ? u : (u && typeof u === 'object' && 'url' in u && typeof (u as { url: string }).url === 'string' ? (u as { url: string }).url : String(u))));
   const valid = asStrings.filter((s) => typeof s === 'string' && s.length > 0 && !s.startsWith('[object'));
-  if (!base) return valid;
-  const root = base.replace(/\/$/, '');
-  return valid.map((u) => (u.startsWith('/') ? root + u : u));
+  const root = base ? base.replace(/\/$/, '') : '';
+  const forceHttps = typeof window !== 'undefined' && window.location?.protocol === 'https:';
+  return valid.map((u) => {
+    let out = u;
+    if (root) {
+      if (u.startsWith('/')) out = root + u;
+      else if (u.startsWith('http://') || u.startsWith('https://')) {
+        try {
+          const parsed = new URL(u);
+          if (parsed.pathname.includes('/uploads/')) out = root + parsed.pathname + parsed.search;
+        } catch {
+          /* leave out as u */
+        }
+      }
+    }
+    if (forceHttps && out.startsWith('http://')) out = 'https://' + out.slice(7);
+    return out;
+  });
 }
 
 interface ApiProduct {

@@ -4,6 +4,24 @@ import { authMiddleware, requireRole } from '../middleware/auth.js';
 
 const router = Router();
 
+/** Rewrite image URLs to use the given origin (e.g. from request), so clients get reachable URLs. */
+function rewriteImageUrlsToOrigin(urls: string[], origin: string | null): string[] {
+  if (!origin) return urls;
+  const base = origin.replace(/\/$/, '');
+  return urls.map((u) => {
+    const s = String(u).trim();
+    if (!s) return s;
+    if (s.startsWith('/')) return base + s;
+    try {
+      const parsed = new URL(s);
+      if (parsed.pathname.includes('/uploads/')) return base + parsed.pathname + parsed.search;
+    } catch {
+      /* ignore */
+    }
+    return s;
+  });
+}
+
 function parseJsonArray(s: string | null | undefined): string[] {
   if (!s) return [];
   try {
@@ -56,6 +74,13 @@ function mapProduct(p: {
   };
 }
 
+/** Get request origin so image URLs work from the client (respects X-Forwarded-Proto when behind a proxy). */
+function getRequestOrigin(req: Request): string {
+  const proto = (req.get('x-forwarded-proto') || req.protocol || 'http').split(',')[0].trim();
+  const host = req.get('host') || req.get('x-forwarded-host') || 'localhost:3001';
+  return `${proto}://${host}`;
+}
+
 // Public: get published products
 router.get('/', async (req: Request, res: Response) => {
   try {
@@ -64,7 +89,13 @@ router.get('/', async (req: Request, res: Response) => {
       where: publishedOnly ? { published: true } : undefined,
       orderBy: [{ orderIndex: 'asc' }, { createdAt: 'desc' }],
     });
-    res.json(items.map(mapProduct));
+    const origin = getRequestOrigin(req);
+    const products = items.map((p) => {
+      const mapped = mapProduct(p);
+      mapped.images = rewriteImageUrlsToOrigin(mapped.images, origin);
+      return mapped;
+    });
+    res.json(products);
   } catch {
     res.status(500).json({ error: 'Failed to fetch products' });
   }
@@ -80,7 +111,9 @@ router.get('/slug/:slug', async (req: Request, res: Response) => {
       res.status(404).json({ error: 'Not found' });
       return;
     }
-    res.json(mapProduct(item));
+    const mapped = mapProduct(item);
+    mapped.images = rewriteImageUrlsToOrigin(mapped.images, getRequestOrigin(req));
+    res.json(mapped);
   } catch {
     res.status(500).json({ error: 'Failed to fetch product' });
   }
@@ -96,7 +129,9 @@ router.get('/:id', async (req: Request, res: Response) => {
       res.status(404).json({ error: 'Not found' });
       return;
     }
-    res.json(mapProduct(item));
+    const mapped = mapProduct(item);
+    mapped.images = rewriteImageUrlsToOrigin(mapped.images, getRequestOrigin(req));
+    res.json(mapped);
   } catch {
     res.status(500).json({ error: 'Failed to fetch product' });
   }
