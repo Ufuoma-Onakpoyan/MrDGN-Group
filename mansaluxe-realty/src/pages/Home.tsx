@@ -231,8 +231,8 @@ const Home = () => {
                           <span>New Development</span>
                         </Badge>
                       ) : (
-                        <Badge variant="secondary" className="absolute top-3 right-3 z-10 text-xs font-medium">
-                          Available
+                        <Badge variant="secondary" className="absolute top-3 right-3 z-10 text-xs font-medium capitalize">
+                          {property.status ? String(property.status).toLowerCase().replace(/\b\w/g, (c) => c.toUpperCase()) : 'Available'}
                         </Badge>
                       )}
                     </div>
