@@ -21,10 +21,15 @@ export function useDuerentsVideo() {
 
 export function DuerentsVideoProvider({ children }: { children: React.ReactNode }) {
   const [open, setOpen] = useState(false);
+  const [loadError, setLoadError] = useState(false);
 
-  const openVideo = useCallback(() => setOpen(true), []);
+  const openVideo = useCallback(() => {
+    setLoadError(false);
+    setOpen(true);
+  }, []);
   const onOpenChange = useCallback((value: boolean) => {
     setOpen(value);
+    if (!value) setLoadError(false);
   }, []);
 
   return (
@@ -34,13 +39,27 @@ export function DuerentsVideoProvider({ children }: { children: React.ReactNode 
         <DialogContent className="max-w-4xl w-[95vw] p-0 gap-0 overflow-hidden bg-black">
           <DialogTitle className="sr-only">Duerents – MR DGN Group</DialogTitle>
           <div className="relative aspect-video w-full">
-            <video
-              src={DUERENTS_VIDEO_SRC}
-              controls
-              autoPlay
-              playsInline
-              className="w-full h-full object-contain"
-            />
+            {loadError ? (
+              <div className="flex flex-col items-center justify-center gap-3 p-6 text-white text-center min-h-[200px]">
+                <p>Video could not be loaded.</p>
+                <p className="text-sm text-white/80">
+                  The file may be missing from this build. Try again later or visit{" "}
+                  <a href="https://duerents.com/" target="_blank" rel="noopener noreferrer" className="text-primary underline">
+                    duerents.com
+                  </a>
+                  .
+                </p>
+              </div>
+            ) : (
+              <video
+                src={DUERENTS_VIDEO_SRC}
+                controls
+                autoPlay
+                playsInline
+                className="w-full h-full object-contain"
+                onError={() => setLoadError(true)}
+              />
+            )}
           </div>
         </DialogContent>
       </Dialog>
