@@ -4,11 +4,29 @@ import { authMiddleware, requireRole } from '../middleware/auth.js';
 
 const router = Router();
 
+const cloudName = process.env.CLOUDINARY_CLOUD_NAME;
+const cloudinaryBase = cloudName
+  ? `https://res.cloudinary.com/${cloudName}/image/upload`
+  : '';
+
+/** Turn Cloudinary path (e.g. mrdgn/product_images/i3ndnaqziq50m4wyykzx) into full URL. */
+function expandCloudinaryPaths(urls: string[]): string[] {
+  if (!cloudinaryBase) return urls;
+  return urls.map((u) => {
+    const s = String(u).trim();
+    if (!s) return s;
+    if (s.startsWith('http://') || s.startsWith('https://')) return s;
+    if (s.startsWith('/')) return s;
+    return `${cloudinaryBase}/${s.replace(/^\//, '')}`;
+  });
+}
+
 /** Rewrite image URLs to use the given origin (e.g. from request), so clients get reachable URLs. */
 function rewriteImageUrlsToOrigin(urls: string[], origin: string | null): string[] {
-  if (!origin) return urls;
+  const expanded = expandCloudinaryPaths(urls);
+  if (!origin) return expanded;
   const base = origin.replace(/\/$/, '');
-  return urls.map((u) => {
+  return expanded.map((u) => {
     const s = String(u).trim();
     if (!s) return s;
     if (s.startsWith('/')) return base + s;

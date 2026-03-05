@@ -7,6 +7,7 @@ import { useQuery } from '@tanstack/react-query';
 import { ProductImageCarousel } from '@/components/ProductImageCarousel';
 
 const API_BASE = import.meta.env.VITE_API_URL || '';
+const CLOUDINARY_CLOUD = import.meta.env.VITE_CLOUDINARY_CLOUD_NAME || '';
 
 function resolveImageUrls(urls: unknown[], base: string): string[] {
   if (!Array.isArray(urls)) return [];
@@ -14,6 +15,7 @@ function resolveImageUrls(urls: unknown[], base: string): string[] {
   const valid = asStrings.filter((s) => typeof s === 'string' && s.length > 0 && !s.startsWith('[object'));
   const root = base ? base.replace(/\/$/, '') : '';
   const forceHttps = typeof window !== 'undefined' && window.location?.protocol === 'https:';
+  const cloudinaryBase = CLOUDINARY_CLOUD ? `https://res.cloudinary.com/${CLOUDINARY_CLOUD}/image/upload` : '';
   return valid.map((u) => {
     let out = u;
     if (root) {
@@ -26,6 +28,9 @@ function resolveImageUrls(urls: unknown[], base: string): string[] {
           /* leave out as u */
         }
       }
+    }
+    if (cloudinaryBase && !out.startsWith('http') && !out.startsWith('/')) {
+      out = `${cloudinaryBase}/${out.replace(/^\//, '')}`;
     }
     if (forceHttps && out.startsWith('http://')) out = 'https://' + out.slice(7);
     return out;
