@@ -71,6 +71,7 @@ class ApiService {
     const data = await get<Property[]>('/api/properties');
     return (data || [])
       .filter((p) => Boolean(p.featured) && String(p.status || '').toLowerCase() === 'available')
+      .sort((a, b) => new Date(b.updated_at || 0).getTime() - new Date(a.updated_at || 0).getTime())
       .slice(0, 3);
   }
 
