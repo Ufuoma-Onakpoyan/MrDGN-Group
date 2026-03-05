@@ -3,11 +3,13 @@ import { Instagram, Facebook, Mail } from "lucide-react";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { DuerentsLink, useDuerentsVideo } from "@/components/DuerentsVideoModal";
 
 const API_BASE = import.meta.env.VITE_API_URL || '';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
+  const { openVideo } = useDuerentsVideo();
   const [email, setEmail] = useState('');
   const [name, setName] = useState('');
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
@@ -78,7 +80,7 @@ const Footer = () => {
           </div>
           <div>
             <h4 className="font-semibold mb-4">Our Businesses</h4>
-            <p className="text-muted-foreground text-sm mb-3">Need to build, buy property, or manage rentals? Explore Construction, Mansa Luxe Realty, Entertainment, and Duerents below.</p>
+            <p className="text-muted-foreground text-sm mb-3">Need to build, buy property, or manage rentals? Explore Construction, Mansa Luxe Realty, Entertainment, and <DuerentsLink className="text-primary hover:underline cursor-pointer inline" /> below.</p>
             <ul className="space-y-3">
               {businesses.map((business) => (
                 <li key={business.name} className="flex items-center space-x-3">
@@ -87,14 +89,20 @@ const Footer = () => {
                     alt={`${business.name} Logo`}
                     className="h-9 w-9 object-contain flex-shrink-0 drop-shadow-sm"
                   />
-                  <a 
-                    href={business.url} 
-                    target="_blank" 
-                    rel="noopener noreferrer" 
-                    className="text-muted-foreground hover:text-foreground transition-colors"
-                  >
-                    {business.name}
-                  </a>
+                  {business.name === 'DueRent' ? (
+                    <button type="button" onClick={openVideo} className="text-muted-foreground hover:text-foreground transition-colors text-left">
+                      Duerents
+                    </button>
+                  ) : (
+                    <a 
+                      href={business.url} 
+                      target="_blank" 
+                      rel="noopener noreferrer" 
+                      className="text-muted-foreground hover:text-foreground transition-colors"
+                    >
+                      {business.name}
+                    </a>
+                  )}
                 </li>
               ))}
             </ul>

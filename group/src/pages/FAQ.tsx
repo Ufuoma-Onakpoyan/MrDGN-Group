@@ -1,6 +1,7 @@
 import React from 'react';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
+import { DuerentsLink } from '@/components/DuerentsVideoModal';
 import { Card, CardContent } from '@/components/ui/card';
 import {
   Accordion,
@@ -18,7 +19,11 @@ const faqItems = [
   },
   {
     question: 'What businesses does MR DGN Group own?',
-    answer: 'Our portfolio includes MR DGN Entertainment (content and media), MR DGN Construction (construction and development), Mansa Luxe Realty Limited (real estate sales and advisory), and Duerents (property management and rental technology). Each operates with its own brand and team while benefiting from group resources and strategy.',
+    answer: (
+      <>
+        Our portfolio includes MR DGN Entertainment (content and media), MR DGN Construction (construction and development), Mansa Luxe Realty Limited (real estate sales and advisory), and <DuerentsLink /> (property management and rental technology). Each operates with its own brand and team while benefiting from group resources and strategy.
+      </>
+    ),
   },
   {
     question: 'Where is MR DGN Group headquartered?',
@@ -75,8 +80,8 @@ const faqItems = [
     question: 'What is Duerents?',
     answer: (
       <>
-        Duerents is our technology subsidiary focused on property management and rentals. They provide rental platforms, automated solutions, and tenant management tools. More information is available at{' '}
-        <a href="https://duerents.com/" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">duerents.com</a>.
+        <DuerentsLink /> is our technology subsidiary focused on property management and rentals. They provide rental platforms, automated solutions, and tenant management tools. More information is available at{' '}
+        <a href="https://duerents.com/" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">duerents.com</a> (or click Duerents above to watch our video).
       </>
     ),
   },

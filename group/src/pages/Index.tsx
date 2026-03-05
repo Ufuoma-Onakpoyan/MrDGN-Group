@@ -9,7 +9,10 @@ import { ArrowRight, Building2, Clapperboard, Home, Target, FileText } from 'luc
 import Map from '@/components/Map';
 import { Link } from 'react-router-dom';
 import Autoplay from "embla-carousel-autoplay";
+import { useDuerentsVideo } from '@/components/DuerentsVideoModal';
+
 const Index = () => {
+  const { openVideo } = useDuerentsVideo();
   const [businessApi, setBusinessApi] = useState<CarouselApi>();
   const [businessCurrent, setBusinessCurrent] = useState(0);
   const [businessCount, setBusinessCount] = useState(0);
@@ -324,7 +327,10 @@ const Index = () => {
               key={item.title} 
               className="tile-glassy cursor-pointer group animate-scale-in overflow-hidden" 
               style={{ animationDelay: `${index * 0.2}s` }}
-              onClick={() => businessLink && window.open(businessLink, '_blank')}
+              onClick={() => {
+                if (title.includes('Technology') || title.includes('Duerents')) openVideo();
+                else if (businessLink) window.open(businessLink, '_blank');
+              }}
             >
                   <div className="relative bg-muted flex items-center justify-center h-72 lg:h-80">
                     <img src={item.images[currentImageIndex]} alt={item.title} className="w-full h-full object-contain group-hover:scale-[1.02] transition-transform duration-500" />

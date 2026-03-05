@@ -291,7 +291,7 @@ const Index = () => {
           
           <div className="text-center pt-8 border-t border-background/20">
             <p className="text-background/80">
-              © 2024 MansaLuxeRealty. All rights reserved. | 
+              © {new Date().getFullYear()} MansaLuxeRealty. All rights reserved. | 
               <a href="/admin/login" className="ml-2 hover:underline">Admin Panel</a>
             </p>
           </div>

@@ -16,7 +16,7 @@ const TermsOfService = () => {
           <h1 className="text-4xl lg:text-5xl font-bold mb-4">
             Terms of <span className="text-primary">Service</span>
           </h1>
-          <p className="text-muted-foreground mb-8">Last updated: February 2025</p>
+          <p className="text-muted-foreground mb-8">Last updated: March 2026</p>
 
           <div className="prose prose-neutral dark:prose-invert max-w-none space-y-8 text-secondary-foreground/90">
             <section>
