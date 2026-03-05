@@ -38,7 +38,7 @@ export function ProductImageCarousel({
   if (!images || images.length === 0) {
     return (
       <div
-        className={`flex items-center justify-center bg-muted ${className}`}
+        className={`flex items-center justify-center bg-muted min-h-[200px] ${className}`}
       >
         <Package className="h-16 w-16 text-muted-foreground/50" />
       </div>
@@ -51,7 +51,7 @@ export function ProductImageCarousel({
         <img
           src={images[0]}
           alt={alt}
-          className="w-full h-full object-contain bg-muted"
+          className="absolute inset-0 w-full h-full object-cover bg-muted"
         />
       </div>
     );
@@ -62,12 +62,12 @@ export function ProductImageCarousel({
       <Carousel setApi={setApi} opts={{ loop: true }} className="h-full w-full">
         <CarouselContent className="ml-0 h-full">
           {images.map((src, index) => (
-            <CarouselItem key={index} className="pl-0 h-full">
-              <div className="h-full w-full flex items-center justify-center bg-muted">
+            <CarouselItem key={index} className="pl-0 h-full basis-full flex-none">
+              <div className="h-full w-full relative flex items-center justify-center bg-muted">
                 <img
                   src={src}
                   alt={`${alt} - image ${index + 1}`}
-                  className="w-full h-full object-contain"
+                  className="absolute inset-0 w-full h-full object-cover"
                 />
               </div>
             </CarouselItem>
