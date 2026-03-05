@@ -5,7 +5,9 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 
-const DUERENTS_VIDEO_SRC = "/assets/videos/duerents.mp4";
+const DUERENTS_VIDEO_SRC =
+  (import.meta.env.VITE_DUERENTS_VIDEO_URL as string | undefined)?.trim() ||
+  `${(import.meta.env.BASE_URL || "/").replace(/\/$/, "")}/assets/videos/duerents.mp4`;
 
 type DuerentsVideoContextValue = {
   openVideo: () => void;
