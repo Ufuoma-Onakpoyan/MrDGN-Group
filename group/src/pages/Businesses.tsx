@@ -3,12 +3,14 @@ import Navigation from '@/components/Navigation';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import Footer from '@/components/Footer';
-import { Building2, Clapperboard, Home, ArrowRight, Star, Users, TrendingUp, ExternalLink } from 'lucide-react';
+import { useDuerentsVideo } from '@/components/DuerentsVideoModal';
+import { Building2, Clapperboard, Home, ArrowRight, Star, Users, TrendingUp, ExternalLink, Play } from 'lucide-react';
 const constructionLogo = '/assets/logo-construction.png';
 const entertainmentLogo = '/assets/logo-entertainment.png';
 const realtyLogo = '/assets/logo-mansaluxe.png';
 
 const Businesses = () => {
+  const { openVideo } = useDuerentsVideo();
   const businesses = [
     {
       name: 'MR DGN Entertainment',
@@ -140,12 +142,21 @@ const Businesses = () => {
                       </div>
                     </div>
 
-                    <div className="pt-4">
+                    <div className="pt-4 flex flex-wrap gap-3">
+                      {business.name === 'Duerents' ? (
+                        <Button 
+                          className="button-hover hover-scale bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary text-white shadow-lg"
+                          onClick={openVideo}
+                        >
+                          Watch video
+                          <Play className="w-4 h-4 ml-2" />
+                        </Button>
+                      ) : null}
                       <Button 
                         className="button-hover hover-scale bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary text-white shadow-lg"
                         onClick={() => window.open(business.website, '_blank')}
                       >
-                        Visit Website
+                        {business.name === 'Duerents' ? 'Visit website' : 'Visit Website'}
                         <ExternalLink className="w-4 h-4 ml-2" />
                       </Button>
                     </div>

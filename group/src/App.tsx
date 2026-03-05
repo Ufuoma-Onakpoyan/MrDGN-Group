@@ -4,6 +4,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import { useEffect } from "react";
+import { DuerentsVideoProvider } from "@/components/DuerentsVideoModal";
 import Index from "./pages/Index";
 import About from "./pages/About";
 import Businesses from "./pages/Businesses";
@@ -57,11 +58,13 @@ const AppRoutes = () => {
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
-      <Toaster />
-      <Sonner />
-      <BrowserRouter>
-        <AppRoutes />
-      </BrowserRouter>
+      <DuerentsVideoProvider>
+        <Toaster />
+        <Sonner />
+        <BrowserRouter>
+          <AppRoutes />
+        </BrowserRouter>
+      </DuerentsVideoProvider>
     </TooltipProvider>
   </QueryClientProvider>
 );

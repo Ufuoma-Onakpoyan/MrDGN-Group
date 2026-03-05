@@ -2,6 +2,7 @@ import React from 'react';
 import Navigation from '@/components/Navigation';
 import { Card, CardContent } from '@/components/ui/card';
 import Footer from '@/components/Footer';
+import { DuerentsLink } from '@/components/DuerentsVideoModal';
 import { BarChart3, Target, TrendingUp, FileText, Building2, Leaf } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
@@ -94,7 +95,7 @@ const Investors = () => {
             We focus on businesses where we can add real value through leadership, operational improvement, and access to group resources. We are patient capital: we back management teams, invest in growth, and build for the long term rather than short-term gains.
           </p>
           <p className="text-lg text-muted-foreground leading-relaxed">
-            Our current portfolio spans <strong className="text-foreground">MR DGN Entertainment</strong>, <strong className="text-foreground">MR DGN Construction</strong>, <strong className="text-foreground">Mansa Luxe Realty Limited</strong>, and <strong className="text-foreground">Duerents</strong>—each chosen for its fit with our strategy and potential to contribute to the group&apos;s overall success.
+            Our current portfolio spans <strong className="text-foreground">MR DGN Entertainment</strong>, <strong className="text-foreground">MR DGN Construction</strong>, <strong className="text-foreground">Mansa Luxe Realty Limited</strong>, and <DuerentsLink className="text-primary hover:underline font-semibold" />—each chosen for its fit with our strategy and potential to contribute to the group&apos;s overall success.
           </p>
         </div>
       </section>
