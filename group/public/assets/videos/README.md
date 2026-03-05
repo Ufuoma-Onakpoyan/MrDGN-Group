@@ -1,16 +1,18 @@
 # Duerents video
 
-Place the Duerents intro/promo video here.
+The Duerents intro/promo video is **hosted on Cloudinary** (public id: `duerents_1_ji1mp7`). It plays in a popup when users click "Duerents" across the MR DGN Group site.
 
-**File name:** `duerents.mp4` (exact, lowercase)
+## What you need to do
 
-**Full path:** The video **must** be at **`group/public/assets/videos/duerents.mp4`**. Putting it only in the "group folder" (e.g. group root or `group/public`) will not work—the app loads only from this path.
+1. **Set your Cloudinary cloud name** (same as the one used by your backend/admin uploads):
+   - **Local:** In `group/.env.local`, add:  
+     `VITE_CLOUDINARY_CLOUD_NAME=your_cloud_name`
+   - **Vercel:** In Project → Settings → Environment Variables, add:  
+     `VITE_CLOUDINARY_CLOUD_NAME` = your Cloudinary cloud name (e.g. the value of `CLOUDINARY_CLOUD_NAME` from your backend).
 
-Supported format: MP4 (H.264). The video will play in a popup when users click "Duerents" across the MR DGN Group site.
+   The app will then load the video from:  
+   `https://res.cloudinary.com/<your_cloud_name>/video/upload/duerents_1_ji1mp7`
 
-**Deployed builds (Vercel):** This file is tracked with Git LFS. Running `git lfs pull` in the build command can fail on Vercel ("missing protocol" / empty URL). To get the video on the live site: (1) In Vercel, go to **Project → Settings → Git** and enable **Git LFS** so Vercel fetches LFS files during clone; redeploy. Or (2) host the video elsewhere (e.g. Cloudinary, Vercel Blob), set the env var **`VITE_DUERENTS_VIDEO_URL`** to that URL in Vercel, and redeploy—the app will use that URL and the video will play without LFS.
+2. **Optional override:** If you prefer a full URL (e.g. a different CDN), set **`VITE_DUERENTS_VIDEO_URL`** to that URL instead. It takes priority over the Cloudinary URL above.
 
-## Troubleshooting
-
-- **Local:** If the video doesn’t play when running `npm run dev`, open DevTools → Network, open the Duerents modal, and check the request to `…/duerents.mp4`. You should see status 200 and a large size (tens of MB). If you get 404 or a very small size, the file is missing or in the wrong place—confirm it is at `group/public/assets/videos/duerents.mp4` with the exact filename.
-- **Deployed:** If it works locally but not on Vercel, enable **Git LFS** in the project’s Git settings (Vercel will fetch LFS on clone) and redeploy. If LFS still fails in build, use **`VITE_DUERENTS_VIDEO_URL`**: upload the video to Cloudinary, Vercel Blob, or similar, add that URL as the env var in Vercel, and redeploy—the video will play from that URL and the build no longer depends on LFS.
+No video file is stored in this folder or in the repo; the video is served from Cloudinary.

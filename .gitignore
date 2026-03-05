@@ -33,3 +33,6 @@ dev.db
 *.njsproj
 *.sln
 *.sw?
+
+# Duerents video (hosted on Cloudinary; public id in DuerentsVideoModal)
+group/public/assets/videos/*.mp4

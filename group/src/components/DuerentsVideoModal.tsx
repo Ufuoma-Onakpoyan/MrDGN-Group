@@ -5,8 +5,14 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 
+const CLOUDINARY_PUBLIC_ID = "duerents_1_ji1mp7";
+const cloudName = (import.meta.env.VITE_CLOUDINARY_CLOUD_NAME as string | undefined)?.trim();
+const cloudinaryVideoUrl =
+  cloudName ? `https://res.cloudinary.com/${cloudName}/video/upload/${CLOUDINARY_PUBLIC_ID}` : "";
+
 const DUERENTS_VIDEO_SRC =
   (import.meta.env.VITE_DUERENTS_VIDEO_URL as string | undefined)?.trim() ||
+  cloudinaryVideoUrl ||
   `${(import.meta.env.BASE_URL || "/").replace(/\/$/, "")}/assets/videos/duerents.mp4`;
 
 type DuerentsVideoContextValue = {
