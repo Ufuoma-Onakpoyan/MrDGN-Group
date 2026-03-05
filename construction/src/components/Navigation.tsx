@@ -39,36 +39,41 @@ const Navigation = () => {
     label: 'Testimonials',
     href: '/testimonials'
   }];
-  return <nav className="fixed top-0 left-0 right-0 z-50 bg-gray-50 shadow-md">
-      {/* Background only covers the header bar (h-16), never the main content */}
-      <div className="absolute top-0 left-0 right-0 h-16 bg-gray-50 pointer-events-none" aria-hidden />
-      <div className="container mx-auto px-4 relative z-10">
-        <div className="flex items-center justify-between h-16">
-          {/* Logo - light nav so dark logo text is bold and clear */}
-          <Link to="/" className="flex items-center h-full py-1">
+  return <nav className="fixed top-0 left-0 right-0 z-50 bg-gray-50/95 backdrop-blur-sm shadow-sm border-b border-border/50">
+      <div className="absolute top-0 left-0 right-0 h-16 bg-gray-50/95 pointer-events-none" aria-hidden />
+      <div className="container mx-auto px-4 sm:px-6 max-w-7xl relative z-10">
+        <div className="grid grid-cols-[1fr_auto_1fr] items-center h-16 gap-4">
+          {/* Logo - left-aligned */}
+          <Link to="/" className="flex items-center h-full py-1 justify-self-start">
             <img 
               src="/assets/logo-construction.png" 
               alt="Mr DGN construction and developers limited" 
-              className="h-11 md:h-12 w-auto object-contain transition-all duration-300 hover:scale-105 drop-shadow-md"
-              style={{ minHeight: '44px', maxHeight: '48px' }}
+              className="h-10 sm:h-11 md:h-12 w-auto object-contain transition-transform duration-300 hover:scale-105"
+              style={{ minHeight: '40px', maxHeight: '48px' }}
             />
           </Link>
 
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
+          {/* Desktop Navigation - centered */}
+          <div className="hidden md:flex items-center justify-center gap-6 lg:gap-8">
             {navItems.map(item => (
-              <Link key={item.label} to={item.href} className={`text-black hover:text-primary transition-colors duration-300 font-medium whitespace-nowrap ${location.pathname === item.href ? 'text-primary' : ''}`}>
+              <Link 
+                key={item.label} 
+                to={item.href} 
+                className={`text-sm font-medium whitespace-nowrap transition-colors duration-200 ${location.pathname === item.href ? 'text-primary' : 'text-foreground/90 hover:text-primary'}`}
+              >
                 {item.label}
               </Link>
             ))}
-            <Button asChild className="btn-construction">
-              <Link to="/contact-us">Contact Us</Link>
-            </Button>
           </div>
 
-          {/* Mobile menu button */}
-          <div className="md:hidden">
-            <Button variant="ghost" size="icon" onClick={() => setIsOpen(!isOpen)} className="text-black hover:text-primary">
+          {/* Right: CTA on desktop, menu button on mobile */}
+          <div className="flex items-center justify-end gap-2">
+            <div className="hidden md:block">
+              <Button asChild size="sm" className="btn-construction rounded-md">
+                <Link to="/contact-us">Contact Us</Link>
+              </Button>
+            </div>
+            <Button variant="ghost" size="icon" onClick={() => setIsOpen(!isOpen)} className="md:hidden text-foreground hover:text-primary">
               {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
             </Button>
           </div>
