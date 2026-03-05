@@ -33,6 +33,3 @@ dev.db
 *.njsproj
 *.sln
 *.sw?
-
-# Large video assets (place duerents.mp4 in group/public/assets/videos/ per README)
-group/public/assets/videos/*.mp4
