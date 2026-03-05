@@ -10,6 +10,16 @@ import { ProductImageCarousel } from '@/components/ProductImageCarousel';
 
 const API_BASE = import.meta.env.VITE_API_URL || '';
 
+/** Resolve relative image paths (e.g. /uploads/...) to absolute using API base so they load from the backend. */
+function resolveImageUrls(urls: unknown[], base: string): string[] {
+  if (!Array.isArray(urls)) return [];
+  const asStrings = urls.map((u) => (typeof u === 'string' ? u : (u && typeof u === 'object' && 'url' in u && typeof (u as { url: string }).url === 'string' ? (u as { url: string }).url : String(u))));
+  const valid = asStrings.filter((s) => typeof s === 'string' && s.length > 0 && !s.startsWith('[object'));
+  if (!base) return valid;
+  const root = base.replace(/\/$/, '');
+  return valid.map((u) => (u.startsWith('/') ? root + u : u));
+}
+
 interface ApiProduct {
   id: string;
   title: string;
@@ -84,7 +94,7 @@ const Products = () => {
                   {/* Product image(s) on top - carousel when multiple */}
                   <div className="relative w-full overflow-hidden bg-muted">
                     <ProductImageCarousel
-                      images={product.images || []}
+                      images={resolveImageUrls(product.images || [], API_BASE)}
                       alt={product.title}
                       className="aspect-[4/3] min-h-[200px] w-full"
                       showButtons={true}
