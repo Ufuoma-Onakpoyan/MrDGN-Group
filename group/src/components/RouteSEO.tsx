@@ -12,7 +12,7 @@ const routeMeta: Record<string, { title: string; description: string }> = {
   },
   "/businesses": {
     title: "Our Businesses",
-    description: "MR DGN Entertainment, MR DGN Constructions, Mansa Luxe Realty, and Duerents. Explore our portfolio of businesses driving innovation across industries.",
+    description: "MR DGN Entertainment, MR DGN Constructions, Mansa Luxe Realty. Construction, real estate and entertainment in Asaba, Lagos, Abuja and Nigeria.",
   },
   "/media": {
     title: "Media & News",
@@ -24,7 +24,7 @@ const routeMeta: Record<string, { title: string; description: string }> = {
   },
   "/contact": {
     title: "Contact Us",
-    description: "Contact MR DGN Group. Head office in Asaba, Delta State. Reach us for business inquiries, partnerships, and general enquiries.",
+    description: "Contact MR DGN Group - Asaba, Lagos, Abuja, Nigeria. Head office Asaba, Delta State. Business inquiries, partnerships. Call +234 813 532 4467.",
   },
   "/investors": {
     title: "Investor Relations",

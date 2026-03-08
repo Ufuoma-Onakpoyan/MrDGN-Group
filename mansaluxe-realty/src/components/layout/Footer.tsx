@@ -49,6 +49,9 @@ const Footer = () => {
               <img 
                 src="/assets/logo-mansaluxe.png" 
                 alt="Mansa Luxe Realty Limited"
+                width="140"
+                height="48"
+                loading="lazy"
                 className="h-11 md:h-12 w-auto object-contain drop-shadow-md"
                 style={{ minHeight: '44px', maxHeight: '48px' }}
               />
@@ -63,8 +66,8 @@ const Footer = () => {
               <a href="https://www.facebook.com/p/Mr-DGN-Construction-and-Developers-Limited-100076096784485/" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors" aria-label="Facebook">
                 <Facebook className="w-5 h-5" />
               </a>
-              <a href="https://wa.me/2348135324467" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors text-sm">
-                WhatsApp +234 813 532 4467
+              <a href="https://wa.me/2348135324467" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors text-sm" aria-label="Contact Mansa Luxe Realty on WhatsApp +234 813 532 4467">
+                Contact us on WhatsApp (+234 813 532 4467)
               </a>
             </div>
           </div>

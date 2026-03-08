@@ -63,7 +63,8 @@ const BlogPost = () => {
               navigate('/media');
               window.scrollTo(0, 0);
             }}
-            className="mb-6 hover:bg-muted"
+            className="mb-6 hover:bg-muted min-h-[44px]"
+            aria-label="Back to Media Center"
           >
             <ArrowLeft className="w-4 h-4 mr-2" />
             Back to Media
@@ -74,6 +75,10 @@ const BlogPost = () => {
               <img 
                 src={post.featured_image_url} 
                 alt={post.title}
+                width="1200"
+                height="630"
+                loading="eager"
+                fetchPriority="high"
                 className="w-full h-auto max-w-full object-contain"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />

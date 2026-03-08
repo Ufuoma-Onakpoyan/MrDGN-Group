@@ -43,7 +43,7 @@ const Footer = () => {
           {/* Company Info */}
           <div className="lg:col-span-1">
             <div className="mb-4">
-              <img src="/assets/logo-construction.png" alt="Mr DGN construction and developers limited" className="h-12 md:h-14 w-auto object-contain drop-shadow-md" style={{ minHeight: '48px', maxHeight: '56px' }} />
+              <img src="/assets/logo-construction.png" alt="MR DGN Construction and Developers Limited" width="140" height="56" loading="lazy" className="h-12 md:h-14 w-auto object-contain drop-shadow-md" style={{ minHeight: '48px', maxHeight: '56px' }} />
             </div>
             <p className="text-secondary-foreground/80 mb-6">
               Building excellence across Nigeria since 2020. Your trusted partner for all construction needs. Mr DGN construction and developers limited is a subsidiary of MR DGN Group.
@@ -64,7 +64,7 @@ const Footer = () => {
                 <a href="https://www.google.com/maps/place/MR+DGN+Construction+%26+Developers+Ltd/@6.2339308,6.6315024,17z/data=!3m1!4b1!4m6!3m5!1s0x1043f131bd08a91f:0xc8d3b62056822334!8m2!3d6.2339308!4d6.6340773!16s%2Fg%2F11nm_wxdx4?entry=ttu" target="_blank" rel="noopener noreferrer" className="hover:underline">Jossie Excel School, After okpanam City Gate by the express, Asaba, delta state</a>
               </div>
               <div className="flex items-center gap-2">
-                <a href="https://wa.me/2348135324467" target="_blank" rel="noopener noreferrer" className="hover:underline">WhatsApp</a>
+                <a href="https://wa.me/2348135324467" target="_blank" rel="noopener noreferrer" className="hover:underline" aria-label="Contact MR DGN Constructions on WhatsApp">Contact us on WhatsApp</a>
               </div>
             </div>
           </div>

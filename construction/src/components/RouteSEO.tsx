@@ -4,23 +4,23 @@ import { SEO } from "./SEO";
 const routeMeta: Record<string, { title: string; description: string }> = {
   "/": {
     title: "MR DGN Constructions",
-    description: "Professional construction company in Nigeria. High-rise buildings, infrastructure, residential and commercial projects. 5+ years experience, 10+ projects. Based in Asaba, Delta State.",
+    description: "Top construction company in Asaba, Lagos, Abuja and Nigeria. High-rise buildings, infrastructure, residential and commercial projects. 5+ years, 10+ projects.",
   },
   "/about-us": {
     title: "About Us",
-    description: "Learn about MR DGN Constructions. Building excellence since 2020. Professional construction services across Nigeria.",
+    description: "MR DGN Constructions - Building excellence in Asaba, Lagos, Abuja and Nigeria since 2020. Professional construction services across Nigeria.",
   },
   "/our-services": {
     title: "Our Services",
-    description: "Construction services: high-rise, infrastructure, residential, commercial, renovation. Full-service construction in Asaba and Delta State.",
+    description: "Construction services in Asaba, Lagos, Abuja: high-rise, infrastructure, residential, commercial, renovation. Full-service construction Nigeria.",
   },
   "/products": {
     title: "Products",
-    description: "Construction products and materials from MR DGN Constructions. Quality building materials and solutions.",
+    description: "Construction products and materials in Asaba, Lagos, Abuja, Nigeria. MR DGN Constructions - quality building materials.",
   },
   "/projects": {
     title: "Projects",
-    description: "View our completed and ongoing construction projects. High-rise, residential, and commercial developments.",
+    description: "Construction projects in Asaba, Lagos, Abuja, Nigeria. High-rise, residential, commercial - MR DGN Constructions.",
   },
   "/career": {
     title: "Careers",
@@ -32,7 +32,7 @@ const routeMeta: Record<string, { title: string; description: string }> = {
   },
   "/contact-us": {
     title: "Contact Us",
-    description: "Contact MR DGN Constructions. Based in Asaba, Delta State. Get in touch for construction inquiries.",
+    description: "Contact MR DGN Constructions - Asaba, Lagos, Abuja, Nigeria. Construction inquiries, projects, building materials. Call +234 813 532 4467.",
   },
   "/process": {
     title: "Our Process",

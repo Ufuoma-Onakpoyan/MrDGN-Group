@@ -81,6 +81,9 @@ const About = () => {
                 <img 
                   src={ceoPortrait}
                   alt="Onakpoyan Success (MR DGN) - CEO and Founder of MR DGN Group"
+                  width="600"
+                  height="400"
+                  loading="lazy"
                   className="rounded-lg shadow-2xl image-hover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-r from-primary/20 to-transparent rounded-lg transition-opacity duration-300 hover:opacity-80"></div>
@@ -151,6 +154,9 @@ const About = () => {
                 <img 
                   src={ceoPortrait} 
                   alt="Onakpoyan Success (MR DGN), CEO of MR DGN Group" 
+                  width="192"
+                  height="192"
+                  loading="lazy"
                   className="w-48 h-48 rounded-xl object-cover shadow-lg"
                 />
               </div>

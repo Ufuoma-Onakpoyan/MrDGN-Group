@@ -4,11 +4,11 @@ import { SEO } from "./SEO";
 const routeMeta: Record<string, { title: string; description: string }> = {
   "/": {
     title: "MR DGN Entertainment",
-    description: "MR DGN Entertainment - Nigerian entertainment company specializing in movies, YouTube content, event sponsorship, and shorts. A subsidiary of MR DGN Group.",
+    description: "Leading entertainment company in Asaba, Lagos, Abuja and Nigeria. Movies, YouTube content, event sponsorship, Nollywood. MR DGN Entertainment.",
   },
   "/about": {
     title: "About Us",
-    description: "Learn about MR DGN Entertainment. Movies, YouTube content, event sponsorship, and short-form content. A subsidiary of MR DGN Group.",
+    description: "MR DGN Entertainment - Movies, event sponsorship and content across Asaba, Lagos, Abuja and Nigeria. A subsidiary of MR DGN Group.",
   },
   "/blog": {
     title: "Blog",
@@ -20,7 +20,7 @@ const routeMeta: Record<string, { title: string; description: string }> = {
   },
   "/contact": {
     title: "Contact",
-    description: "Contact MR DGN Entertainment. Get in touch for partnerships, events, and inquiries.",
+    description: "Contact MR DGN Entertainment - Asaba, Lagos, Abuja, Nigeria. Event sponsorship, partnerships, inquiries. Call +234 813 532 4467.",
   },
   "/careers": {
     title: "Careers",

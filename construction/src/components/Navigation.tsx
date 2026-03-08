@@ -44,10 +44,14 @@ const Navigation = () => {
       <div className="container mx-auto px-4 sm:px-6 max-w-7xl relative z-10">
         <div className="grid grid-cols-[1fr_auto_1fr] items-center h-16 gap-4">
           {/* Logo - left-aligned */}
-          <Link to="/" className="flex items-center h-full py-1 justify-self-start">
+          <Link to="/" className="flex items-center h-full py-1 justify-self-start" aria-label="MR DGN Constructions - Home">
             <img 
               src="/assets/logo-construction.png" 
-              alt="Mr DGN construction and developers limited" 
+              alt="MR DGN Construction and Developers Limited" 
+              width="160"
+              height="48"
+              loading="eager"
+              fetchPriority="high"
               className="h-10 sm:h-11 md:h-12 w-auto object-contain transition-transform duration-300 hover:scale-105"
               style={{ minHeight: '40px', maxHeight: '48px' }}
             />
@@ -73,7 +77,7 @@ const Navigation = () => {
                 <Link to="/contact-us">Contact Us</Link>
               </Button>
             </div>
-            <Button variant="ghost" size="icon" onClick={() => setIsOpen(!isOpen)} className="md:hidden text-foreground hover:text-primary">
+            <Button variant="ghost" size="icon" onClick={() => setIsOpen(!isOpen)} className="md:hidden text-foreground hover:text-primary min-w-[44px] min-h-[44px]" aria-label={isOpen ? "Close menu" : "Open menu"} aria-expanded={isOpen}>
               {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
             </Button>
           </div>

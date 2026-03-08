@@ -103,6 +103,9 @@ const Businesses = () => {
                         <img 
                           src={business.logo} 
                           alt={`${business.name} logo`}
+                          width="200"
+                          height="96"
+                          loading="lazy"
                           className="max-w-full max-h-full object-contain object-left transition-transform duration-300 hover:scale-105 drop-shadow-sm"
                         />
                       </div>
@@ -145,19 +148,21 @@ const Businesses = () => {
                     <div className="pt-4 flex flex-wrap gap-3">
                       {business.name === 'Duerents' ? (
                         <Button 
-                          className="button-hover hover-scale bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary text-white shadow-lg"
+                          className="button-hover hover-scale min-h-[44px] bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary text-white shadow-lg"
                           onClick={openVideo}
+                          aria-label="Watch Duerents video"
                         >
                           Watch video
-                          <Play className="w-4 h-4 ml-2" />
+                          <Play className="w-4 h-4 ml-2" aria-hidden />
                         </Button>
                       ) : null}
                       <Button 
-                        className="button-hover hover-scale bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary text-white shadow-lg"
+                        className="button-hover hover-scale min-h-[44px] bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary text-white shadow-lg"
                         onClick={() => window.open(business.website, '_blank')}
+                        aria-label={`Visit ${business.name} website`}
                       >
-                        {business.name === 'Duerents' ? 'Visit website' : 'Visit Website'}
-                        <ExternalLink className="w-4 h-4 ml-2" />
+                        Visit {business.name} website
+                        <ExternalLink className="w-4 h-4 ml-2" aria-hidden />
                       </Button>
                     </div>
                   </div>
@@ -167,7 +172,10 @@ const Businesses = () => {
                       <div className="relative group bg-muted flex items-center justify-center h-80 lg:h-96">
                         <img 
                           src={business.image} 
-                          alt={business.name}
+                          alt={`${business.name} - Industry overview`}
+                          width="600"
+                          height="384"
+                          loading="lazy"
                           className="w-full h-full object-contain transition-transform duration-700 group-hover:scale-[1.02]"
                         />
                         <div className={`absolute inset-0 bg-gradient-to-br ${business.color} opacity-20 transition-opacity duration-300 group-hover:opacity-30 pointer-events-none`}></div>

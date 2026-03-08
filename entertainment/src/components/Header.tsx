@@ -35,10 +35,14 @@ const Header = () => {
       <div className="container mx-auto px-4 py-4">
         <nav className="flex items-center justify-between">
           {/* Logo - light bg so dark logo text is bold and readable */}
-          <Link to="/" className="flex items-center space-x-3 rounded-md px-1 -mx-1">
+          <Link to="/" className="flex items-center space-x-3 rounded-md px-1 -mx-1" aria-label="MR DGN Entertainment - Home">
             <img 
               src="/assets/logo-entertainment.png" 
               alt="MR DGN Entertainment" 
+              width="140"
+              height="52"
+              loading="eager"
+              fetchPriority="high"
               className="h-11 md:h-12 w-auto object-contain transition-transform duration-200 hover:scale-105 drop-shadow-md"
               style={{ minHeight: '44px', maxHeight: '52px' }}
             />
@@ -70,8 +74,11 @@ const Header = () => {
 
           {/* Mobile Menu Button */}
           <button
-            className="md:hidden p-2"
+            type="button"
+            className="md:hidden p-2 min-w-[44px] min-h-[44px]"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
+            aria-expanded={isMobileMenuOpen}
           >
             {isMobileMenuOpen ? (
               <X className="h-6 w-6 text-foreground" />

@@ -78,10 +78,30 @@ The backend exposes sitemap endpoints:
 
 ---
 
-## 5. Optional Tools
+## 5. Local SEO (Asaba, Lagos, Abuja, Nigeria)
+
+To rank better for searches like "construction company in Lagos", "real estate Abuja", "entertainment Asaba":
+
+1. **Google Business Profile** – Create/claim a profile for each business:
+   - MR DGN Constructions – Asaba (primary), consider Lagos/Abuja if you have physical locations
+   - Mansa Luxe Realty – Asaba (primary), Lagos/Abuja if applicable
+   - MR DGN Entertainment – Asaba (primary)
+   - MR DGN Group – Asaba (head office)
+
+2. **Consistent NAP** – Use the same Name, Address, Phone number across:
+   - Website footers
+   - Google Business Profile
+   - Local directories (Yellow Pages Nigeria, Nairaland listings, industry-specific directories)
+
+3. **Local citations** – Submit to Nigerian/local directories and industry listings so searches for "construction Asaba", "real estate Lagos", etc. surface your sites.
+
+4. **Reviews** – Encourage satisfied clients to leave Google reviews; these boost local rankings.
+
+---
+
+## 6. Optional Tools
 
 - **Google Analytics 4** or **Google Tag Manager** – traffic and behavior
-- **Google Business Profile** – local SEO for construction, realty, and entertainment
 - **Ahrefs / SEMrush / Screaming Frog** – regular audits
 
 ---

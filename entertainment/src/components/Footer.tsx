@@ -63,6 +63,9 @@ const Footer = () => {
               <img 
                 src="/assets/logo-entertainment.png" 
                 alt="MR DGN Entertainment" 
+                width="140"
+                height="48"
+                loading="lazy"
                 className="h-11 md:h-12 w-auto object-contain drop-shadow-md"
                 style={{ minHeight: '44px', maxHeight: '48px' }}
               />
@@ -97,8 +100,9 @@ const Footer = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-secondary-foreground/80 hover:text-primary transition-colors"
+                  aria-label="Contact MR DGN Entertainment on WhatsApp"
                 >
-                  WhatsApp
+                  Contact us on WhatsApp
                 </a>
               </div>
               <div className="flex items-center space-x-3">

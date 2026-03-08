@@ -96,10 +96,14 @@ const Navigation = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16 md:h-18">
           {/* Logo - light bg ensures dark logo text is readable */}
-          <Link to="/" onClick={handleNavClick} className="flex items-center space-x-3 group rounded-md px-1 -mx-1">
+          <Link to="/" onClick={handleNavClick} className="flex items-center space-x-3 group rounded-md px-1 -mx-1" aria-label="MR DGN Group - Home">
             <img 
               src="/assets/logo-group.png" 
               alt="MR DGN Group Logo" 
+              width="140"
+              height="56"
+              loading="eager"
+              fetchPriority="high"
               className="h-12 md:h-14 w-auto object-contain object-left transition-all duration-300 group-hover:scale-105 drop-shadow-md"
               style={{ minHeight: '48px', maxHeight: '56px' }}
             />
@@ -138,7 +142,9 @@ const Navigation = () => {
               variant="ghost"
               size="sm"
               onClick={() => setIsOpen(!isOpen)}
-              className="drop-shadow-lg"
+              className="drop-shadow-lg min-w-[44px] min-h-[44px]"
+              aria-label={isOpen ? "Close menu" : "Open menu"}
+              aria-expanded={isOpen}
             >
               {isOpen ? <X size={24} /> : <Menu size={24} />}
             </Button>

@@ -209,10 +209,10 @@ const Index = () => {
                     <p className="text-muted-foreground leading-relaxed mb-6">
                       {snippet.description}
                     </p>
-                    <Button variant="outline" className="w-full">
-                      <Link to={snippet.link} className="flex items-center gap-2 justify-center" onClick={() => window.scrollTo(0, 0)}>
-                        Learn More
-                        <ArrowRight size={16} />
+                    <Button variant="outline" className="w-full min-h-[44px]">
+                      <Link to={snippet.link} className="flex items-center gap-2 justify-center" onClick={() => window.scrollTo(0, 0)} aria-label={`Learn more about ${snippet.title}`}>
+                        {snippet.title === 'About Us' ? 'Discover our story' : snippet.title === 'Our Businesses' ? 'Explore our businesses' : 'View latest news'}
+                        <ArrowRight size={16} aria-hidden />
                       </Link>
                     </Button>
                   </CardContent>
@@ -256,6 +256,9 @@ const Index = () => {
                               <img 
                                 src={business.logo} 
                                 alt={`${business.name} Logo`}
+                                width="48"
+                                height="48"
+                                loading="lazy"
                                 className="w-12 h-12 object-contain"
                               />
                             </div>
@@ -272,18 +275,28 @@ const Index = () => {
               })}
               </CarouselContent>
               <div className="absolute left-4 top-1/2 -translate-y-1/2 z-10">
-                <CarouselPrevious className="relative left-0 border-none bg-black/20 hover:bg-black/40 text-white opacity-50 hover:opacity-100 transition-all duration-300 w-10 h-10" />
+                <CarouselPrevious className="relative left-0 border-none bg-black/20 hover:bg-black/40 text-white opacity-50 hover:opacity-100 transition-all duration-300 w-10 h-10 min-w-[44px] min-h-[44px]" aria-label="Previous business slide" />
               </div>
               <div className="absolute right-4 top-1/2 -translate-y-1/2 z-10">
-                <CarouselNext className="relative right-0 border-none bg-black/20 hover:bg-black/40 text-white opacity-50 hover:opacity-100 transition-all duration-300 w-10 h-10" />
+                <CarouselNext className="relative right-0 border-none bg-black/20 hover:bg-black/40 text-white opacity-50 hover:opacity-100 transition-all duration-300 w-10 h-10 min-w-[44px] min-h-[44px]" aria-label="Next business slide" />
               </div>
             </Carousel>
 
-            {/* Dot Indicators */}
-            <div className="flex justify-center mt-8 space-x-2">
+            {/* Dot Indicators - 44px touch targets for accessibility */}
+            <div className="flex justify-center mt-8 gap-2" role="tablist" aria-label="Business carousel">
               {Array.from({
               length: businessCount
-            }).map((_, index) => <button key={index} className={`w-3 h-3 rounded-full transition-all duration-300 ${index === businessCurrent - 1 ? 'bg-primary scale-125' : 'bg-gray-300 hover:bg-gray-400'}`} onClick={() => businessApi?.scrollTo(index)} />)}
+            }).map((_, index) => (
+              <button
+                key={index}
+                type="button"
+                role="tab"
+                aria-selected={index === businessCurrent - 1}
+                aria-label={`Go to slide ${index + 1} of ${businessCount}`}
+                className={`min-w-[44px] min-h-[44px] p-2 flex items-center justify-center rounded-full transition-all duration-300 ${index === businessCurrent - 1 ? 'bg-primary scale-110' : 'bg-gray-300 hover:bg-gray-400'}`}
+                onClick={() => businessApi?.scrollTo(index)}
+              />
+            ))}
             </div>
           </div>
 
@@ -328,12 +341,12 @@ const Index = () => {
               className="tile-glassy cursor-pointer group animate-scale-in overflow-hidden" 
               style={{ animationDelay: `${index * 0.2}s` }}
               onClick={() => {
-                if (title.includes('Technology') || title.includes('Duerents')) openVideo();
+                if (item.title.includes('Technology') || item.title.includes('Duerents')) openVideo();
                 else if (businessLink) window.open(businessLink, '_blank');
               }}
             >
                   <div className="relative bg-muted flex items-center justify-center h-72 lg:h-80">
-                    <img src={item.images[currentImageIndex]} alt={item.title} className="w-full h-full object-contain group-hover:scale-[1.02] transition-transform duration-500" />
+                    <img src={item.images[currentImageIndex]} alt={item.title} width="600" height="320" loading="lazy" className="w-full h-full object-contain group-hover:scale-[1.02] transition-transform duration-500" />
                     <div className="absolute top-4 left-4">
                       <span className="bg-primary text-primary-foreground px-3 py-1 rounded-full text-sm font-medium">
                         {item.category}
@@ -367,14 +380,14 @@ const Index = () => {
           <p className="text-xl text-white/90 mb-10 max-w-2xl mx-auto animate-fade-in" style={{ animationDelay: '0.2s' }}>
             Join forces with MR DGN Group and be part of building tomorrow&apos;s industries. Together, we can create extraordinary value and lasting impact.
           </p>
-          <Link to="/contact" onClick={() => window.scrollTo(0, 0)} className="inline-flex">
+          <Link to="/contact" onClick={() => window.scrollTo(0, 0)} className="inline-flex" aria-label="Get in touch with MR DGN Group">
             <Button
               size="lg"
-              className="bg-white text-primary hover:bg-white/95 px-8 py-6 text-lg font-semibold rounded-full shadow-xl hover:shadow-2xl hover:scale-105 transform transition-all duration-300 animate-fade-in ring-2 ring-white/30 hover:ring-white/50"
+              className="bg-white text-primary hover:bg-white/95 px-8 py-6 text-lg font-semibold rounded-full shadow-xl hover:shadow-2xl hover:scale-105 transform transition-all duration-300 animate-fade-in ring-2 ring-white/30 hover:ring-white/50 min-h-[48px]"
               style={{ animationDelay: '0.4s' }}
             >
               Get in Touch
-              <ArrowRight size={22} className="ml-2" />
+              <ArrowRight size={22} className="ml-2" aria-hidden />
             </Button>
           </Link>
           <p className="text-white/80 text-sm mt-6 animate-fade-in" style={{ animationDelay: '0.5s' }}>

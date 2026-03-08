@@ -2,10 +2,10 @@ import { useLocation } from "react-router-dom";
 import { SEO } from "./SEO";
 
 const routeMeta: Record<string, { title: string; description: string }> = {
-  "/": { title: "Mansa Luxe Realty Limited", description: "Discover Nigeria's most prestigious properties. Luxury real estate in Lagos, Abuja, Victoria Island, Ikoyi, and Port Harcourt. A subsidiary of MR DGN Group." },
-  "/properties": { title: "Properties", description: "Browse luxury properties for sale and rent in Nigeria. Penthouse, villa, mansion, duplex, and estate listings in Lagos, Abuja, and beyond." },
+  "/": { title: "Mansa Luxe Realty Limited", description: "Premium luxury real estate in Asaba, Lagos, Abuja and Nigeria. Properties in Victoria Island, Ikoyi, Port Harcourt. Nigeria's premier real estate." },
+  "/properties": { title: "Properties", description: "Luxury properties for sale and rent in Lagos, Abuja, Asaba, Victoria Island, Ikoyi, Port Harcourt. Penthouse, villa, mansion, duplex - Mansa Luxe Realty." },
   "/about": { title: "About Us", description: "Learn about Mansa Luxe Realty Limited, Nigeria's premier luxury real estate company. Our story, mission, vision, and team since 2020." },
-  "/contact": { title: "Contact Us", description: "Contact Mansa Luxe Realty for property enquiries. Head office in Asaba, Delta State. Call +234 813 532 4467 or send a message." },
+  "/contact": { title: "Contact Us", description: "Contact Mansa Luxe Realty - Asaba, Lagos, Abuja, Nigeria. Property enquiries. Call +234 813 532 4467. Head office Asaba, Delta State." },
   "/services": { title: "Our Services", description: "Property sales, management, investment advisory, luxury rentals, and valuation. Full-service luxury real estate in Nigeria." },
   "/testimonials": { title: "Client Testimonials", description: "Read reviews and testimonials from satisfied clients. See why clients trust Mansa Luxe Realty for luxury property." },
   "/careers": { title: "Careers", description: "Join Mansa Luxe Realty. Careers in luxury real estate sales, property management, and client services across Nigeria." },

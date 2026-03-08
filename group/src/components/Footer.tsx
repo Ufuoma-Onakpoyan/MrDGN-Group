@@ -57,6 +57,9 @@ const Footer = () => {
               <img 
                 src="/assets/logo-group.png" 
                 alt="MR DGN Group Logo" 
+                width="140"
+                height="56"
+                loading="lazy"
                 className="h-12 md:h-14 w-auto object-contain drop-shadow-md"
                 style={{ minHeight: '48px', maxHeight: '56px' }}
               />
@@ -65,7 +68,7 @@ const Footer = () => {
               A modern holding company building the future across entertainment, construction, and real estate industries.
             </p>
             <p className="text-muted-foreground text-sm">
-              Head Office: Jossie Excel School, After Okpanam City Gate by the Express, Asaba, Delta State · <a href="tel:+2348135324467" className="hover:text-foreground">+234 813 532 4467</a> · <a href="https://wa.me/2348135324467" target="_blank" rel="noopener noreferrer" className="hover:text-foreground">WhatsApp</a>
+              Head Office: Jossie Excel School, After Okpanam City Gate by the Express, Asaba, Delta State · <a href="tel:+2348135324467" className="hover:text-foreground">+234 813 532 4467</a> · <a href="https://wa.me/2348135324467" target="_blank" rel="noopener noreferrer" className="hover:text-foreground" aria-label="Contact MR DGN Group on WhatsApp">Contact us on WhatsApp</a>
             </p>
             <div className="flex items-center gap-3 mt-4">
               <span className="text-muted-foreground text-sm">Follow us:</span>
@@ -75,7 +78,7 @@ const Footer = () => {
               <a href="https://www.facebook.com/p/Mr-DGN-Construction-and-Developers-Limited-100076096784485/" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-foreground transition-colors" aria-label="Facebook">
                 <Facebook className="w-5 h-5" />
               </a>
-              <a href="https://wa.me/2348135324467" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-foreground transition-colors text-sm">WhatsApp</a>
+              <a href="https://wa.me/2348135324467" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-foreground transition-colors text-sm" aria-label="Follow MR DGN Group on WhatsApp">WhatsApp</a>
             </div>
           </div>
           <div>
@@ -87,10 +90,13 @@ const Footer = () => {
                   <img 
                     src={business.logo} 
                     alt={`${business.name} Logo`}
+                    width="36"
+                    height="36"
+                    loading="lazy"
                     className="h-9 w-9 object-contain flex-shrink-0 drop-shadow-sm"
                   />
                   {business.name === 'DueRent' ? (
-                    <button type="button" onClick={openVideo} className="text-muted-foreground hover:text-foreground transition-colors text-left">
+                    <button type="button" onClick={openVideo} className="text-muted-foreground hover:text-foreground transition-colors text-left min-h-[44px] min-w-[44px] -ml-2 pl-2" aria-label="Learn about Duerents">
                       Duerents
                     </button>
                   ) : (

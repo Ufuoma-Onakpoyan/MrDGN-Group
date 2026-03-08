@@ -39,10 +39,14 @@ const Navbar = () => {
       <div className="container mx-auto">
         <div className="flex justify-between items-center min-h-[4.5rem]">
           {/* Logo + brand */}
-          <NavLink to="/" className="flex items-center shrink-0" onClick={() => setIsOpen(false)}>
+          <NavLink to="/" className="flex items-center shrink-0" onClick={() => setIsOpen(false)} aria-label="Mansa Luxe Realty - Home">
             <img
               src="/assets/logo-mansaluxe.png"
               alt="Mansa Luxe Realty Limited"
+              width="140"
+              height="44"
+              loading="eager"
+              fetchPriority="high"
               className="h-10 md:h-11 w-auto object-contain"
               style={{ minHeight: '40px', maxHeight: '44px' }}
             />
@@ -106,7 +110,7 @@ const Navbar = () => {
             </NavLink>
             <button
               type="button"
-              className="p-2.5 rounded-lg text-foreground hover:bg-white/10 transition-colors"
+              className="p-2.5 min-w-[44px] min-h-[44px] rounded-lg text-foreground hover:bg-white/10 transition-colors"
               onClick={() => setIsOpen(!isOpen)}
               aria-expanded={isOpen}
               aria-label={isOpen ? "Close menu" : "Open menu"}

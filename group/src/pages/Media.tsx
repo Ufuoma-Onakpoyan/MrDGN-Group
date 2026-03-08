@@ -64,6 +64,9 @@ const Media = () => {
                     <img 
                       src={post.featured_image_url || 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=400&h=250&fit=crop'} 
                       alt={post.title}
+                      width="400"
+                      height="250"
+                      loading="lazy"
                       className="w-full h-auto max-h-64 object-contain image-hover"
                     />
                     <div className="absolute top-4 left-4">
@@ -88,9 +91,9 @@ const Media = () => {
                       {post.excerpt || post.content.substring(0, 150) + '...'}
                     </p>
                     <div className="flex justify-between items-center">
-                      <Button variant="outline" size="sm">
-                        Read More
-                        <ExternalLink className="w-4 h-4 ml-2" />
+                      <Button variant="outline" size="sm" className="min-h-[44px]" aria-label={`Read full article: ${post.title}`}>
+                        Read article
+                        <ExternalLink className="w-4 h-4 ml-2" aria-hidden />
                       </Button>
                       <span className="text-xs text-muted-foreground">
                         By {post.author}
@@ -103,7 +106,7 @@ const Media = () => {
           )}
 
           <div className="text-center mt-12">
-            <Button size="lg" variant="outline" className="px-8 py-3 transition-all duration-300 hover:scale-[1.02]">
+            <Button size="lg" variant="outline" className="px-8 py-3 min-h-[48px] transition-all duration-300 hover:scale-[1.02]" aria-label="View all MR DGN Group news and updates">
               View All News & Updates
             </Button>
           </div>
@@ -180,7 +183,7 @@ const Media = () => {
                   <p className="text-muted-foreground mb-4">
                     We aim to respond to all media inquiries within 24 hours during business days.
                   </p>
-                  <Button>
+                  <Button className="min-h-[44px]" aria-label="Send press inquiry to MR DGN Group">
                     Send Press Inquiry
                   </Button>
                 </div>

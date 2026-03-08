@@ -167,10 +167,12 @@ const PropertyDetail = () => {
       "description": property.description || property.title,
       "url": listingUrl,
       "image": firstImageItem?.url ? [firstImageItem.url] : undefined,
+      "areaServed": ["Asaba", "Lagos", "Abuja", "Nigeria"],
       "address": {
         "@type": "PostalAddress",
         "streetAddress": property.location,
         "addressLocality": property.location,
+        "addressRegion": property.location?.includes("Lagos") ? "Lagos" : property.location?.includes("Abuja") ? "Abuja" : property.location?.includes("Asaba") ? "Delta" : undefined,
         "addressCountry": "NG",
       },
       ...(property.price != null && property.price > 0 && {
@@ -203,7 +205,7 @@ const PropertyDetail = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-background to-muted/20">
-      <SEO title={property.title} description={property.description || undefined} canonical={`/properties/${property.id}`} ogImage={ogImage} ogType="website" />
+      <SEO title={`${property.title}${property.location ? ` | ${property.location}, Nigeria` : " | Mansa Luxe Realty Nigeria"}`} description={property.description || `Luxury property in Lagos, Abuja, Asaba, Nigeria. ${property.title} - Mansa Luxe Realty.`} canonical={`/properties/${property.id}`} ogImage={ogImage} ogType="website" />
       <div className="container mx-auto px-4 py-8">
         {/* Header */}
         <div className="flex items-center justify-between mb-8">
@@ -307,6 +309,7 @@ const PropertyDetail = () => {
                             size="icon"
                             onClick={goPrev}
                             className="absolute left-2 top-1/2 -translate-y-1/2 z-10 h-12 w-12 rounded-full bg-black/50 text-white hover:bg-black/70 backdrop-blur-sm"
+                            aria-label="Previous image"
                           >
                             <ChevronLeft className="h-6 w-6" />
                           </Button>
@@ -315,6 +318,7 @@ const PropertyDetail = () => {
                             size="icon"
                             onClick={goNext}
                             className="absolute right-2 top-1/2 -translate-y-1/2 z-10 h-12 w-12 rounded-full bg-black/50 text-white hover:bg-black/70 backdrop-blur-sm"
+                            aria-label="Next image"
                           >
                             <ChevronRight className="h-6 w-6" />
                           </Button>
