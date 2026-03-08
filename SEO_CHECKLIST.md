@@ -13,7 +13,7 @@ For each domain, add and verify your property:
 | MR DGN Group | `https://mrdgngroup.com` |
 | MR DGN Constructions | `https://construction.mrdgngroup.com` |
 | MR DGN Entertainment | `https://entertainment.mrdgngroup.com` |
-| Mansa Luxe Realty | `https://mansaluxerealty.com` (or `https://mansaluxerealty.mrdgngroup.com` if that is your canonical domain) |
+| Mansa Luxe Realty | `https://mansaluxerealty.mrdgngroup.com` |
 
 **Steps:**
 1. Go to [Google Search Console](https://search.google.com/search-console)
@@ -26,7 +26,7 @@ For each domain, add and verify your property:
    - **Group:** `https://mrdgngroup.com/sitemap-index.xml`
    - **Construction:** `https://construction.mrdgngroup.com/sitemap-index.xml`
    - **Entertainment:** `https://entertainment.mrdgngroup.com/sitemap-index.xml`
-   - **Mansa Luxe:** `https://mansaluxerealty.com/sitemap-index.xml`
+   - **Mansa Luxe:** `https://mansaluxerealty.mrdgngroup.com/sitemap-index.xml`
    - (Google only accepts sitemaps on the same domain; the sitemap-index.xml is proxied from your API via Vercel rewrites)
 
 ---

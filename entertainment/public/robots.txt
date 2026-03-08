@@ -14,4 +14,4 @@ User-agent: *
 Allow: /
 
 Sitemap: https://entertainment.mrdgngroup.com/sitemap.xml
-# Dynamic blog sitemap: add Sitemap: https://YOUR_API_URL/api/sitemap/index?site=entertainment
+Sitemap: https://entertainment.mrdgngroup.com/sitemap-index.xml

@@ -156,7 +156,7 @@ const PropertyDetail = () => {
   const firstImageItem = mediaItems.find((m) => m.type === 'image');
   const ogImage = firstImageItem?.url ?? (property.images?.[0] && !isVideoUrl(property.images[0]) ? property.images[0] : undefined);
 
-  const siteUrl = import.meta.env.VITE_SITE_URL || (typeof window !== "undefined" ? window.location.origin : "https://mansaluxerealty.com");
+  const siteUrl = import.meta.env.VITE_SITE_URL || (typeof window !== "undefined" ? window.location.origin : "https://mansaluxerealty.mrdgngroup.com");
   const listingUrl = `${siteUrl}/properties/${property.id}`;
 
   useEffect(() => {

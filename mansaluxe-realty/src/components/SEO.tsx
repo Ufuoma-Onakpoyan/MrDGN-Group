@@ -11,7 +11,7 @@ interface SEOProps {
   noindex?: boolean;
 }
 
-const SITE_URL = import.meta.env.VITE_SITE_URL || (typeof window !== "undefined" ? window.location.origin : "https://mansaluxerealty.com");
+const SITE_URL = import.meta.env.VITE_SITE_URL || (typeof window !== "undefined" ? window.location.origin : "https://mansaluxerealty.mrdgngroup.com");
 const DEFAULT_TITLE = "Mansa Luxe Realty Limited - Nigeria's Premier Luxury Real Estate";
 const DEFAULT_DESC = "Discover Nigeria's most prestigious properties with Mansa Luxe Realty Limited. Luxury real estate in Lagos, Abuja, Victoria Island, Ikoyi, and Port Harcourt.";
 

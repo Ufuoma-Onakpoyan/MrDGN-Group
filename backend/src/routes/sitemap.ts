@@ -69,12 +69,12 @@ ${urls.join('\n')}
 });
 
 /**
- * GET /api/sitemap/properties?baseUrl=https://mansaluxerealty.com
+ * GET /api/sitemap/properties?baseUrl=https://mansaluxerealty.mrdgngroup.com
  * Returns XML sitemap for property listing URLs.
  */
 router.get('/properties', async (req: Request, res: Response) => {
   try {
-    const baseUrl = (req.query.baseUrl as string)?.replace(/\/$/, '') || 'https://mansaluxerealty.com';
+    const baseUrl = (req.query.baseUrl as string)?.replace(/\/$/, '') || 'https://mansaluxerealty.mrdgngroup.com';
 
     const properties = await prisma.property.findMany({
       where: { status: { in: ['available', 'sold', 'pending'] } },
@@ -108,7 +108,7 @@ const SITE_CONFIG: Record<string, { baseUrl: string; source?: string; hasBlog: b
   group: { baseUrl: 'https://mrdgngroup.com', source: 'group', hasBlog: true, hasProperties: false },
   construction: { baseUrl: 'https://construction.mrdgngroup.com', source: 'construction', hasBlog: true, hasProperties: false },
   entertainment: { baseUrl: 'https://entertainment.mrdgngroup.com', source: 'entertainment', hasBlog: true, hasProperties: false },
-  mansaluxe: { baseUrl: 'https://mansaluxerealty.com', source: 'mansaluxe-realty', hasBlog: true, hasProperties: true },
+  mansaluxe: { baseUrl: 'https://mansaluxerealty.mrdgngroup.com', source: 'mansaluxe-realty', hasBlog: true, hasProperties: true },
 };
 
 /**
