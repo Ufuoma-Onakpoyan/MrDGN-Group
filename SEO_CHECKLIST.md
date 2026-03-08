@@ -22,12 +22,12 @@ For each domain, add and verify your property:
    - **DNS:** Add the TXT record to your domain’s DNS
    - **HTML file:** Upload the file to your site’s root
    - **HTML meta tag:** Add the tag to `index.html` (we can add this for you if needed)
-4. After verification, go to **Sitemaps** and submit:
-   - `https://mrdgngroup.com/sitemap.xml`
-   - (Repeat for the other domains)
-5. To include **blog posts** and **properties** in sitemaps, add a second sitemap:
-   - `https://YOUR_API_URL/api/sitemap/index?site=group` (replace `group` with `construction`, `entertainment`, or `mansaluxe` for other sites)
-   - Replace `YOUR_API_URL` with your backend API URL (e.g. `https://api.mrdgngroup.com`)
+4. After verification, go to **Sitemaps** and submit the sitemap index (this includes static pages + blog + properties):
+   - **Group:** `https://mrdgngroup.com/sitemap-index.xml`
+   - **Construction:** `https://construction.mrdgngroup.com/sitemap-index.xml`
+   - **Entertainment:** `https://entertainment.mrdgngroup.com/sitemap-index.xml`
+   - **Mansa Luxe:** `https://mansaluxerealty.com/sitemap-index.xml`
+   - (Google only accepts sitemaps on the same domain; the sitemap-index.xml is proxied from your API via Vercel rewrites)
 
 ---
 

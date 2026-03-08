@@ -3,6 +3,7 @@
   "outputDirectory": "dist",
   "framework": "vite",
   "rewrites": [
+    { "source": "/sitemap-index.xml", "destination": "https://mrdgn-group-api.onrender.com/api/sitemap/index?site=construction" },
     { "source": "/(.*)", "destination": "/index.html" }
   ]
 }
