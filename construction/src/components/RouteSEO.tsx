@@ -30,6 +30,10 @@ const routeMeta: Record<string, { title: string; description: string }> = {
     title: "Blog",
     description: "Construction insights, project updates, and industry news from MR DGN Constructions.",
   },
+  "/contact-us/thank-you": {
+    title: "Contact Received",
+    description: "Thank you for your inquiry. MR DGN Constructions will get back to you within 24 hours.",
+  },
   "/contact-us": {
     title: "Contact Us",
     description: "Contact MR DGN Constructions - Asaba, Lagos, Abuja, Nigeria. Construction inquiries, projects, building materials. Call +234 813 532 4467.",

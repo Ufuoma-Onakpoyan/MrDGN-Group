@@ -13,6 +13,7 @@ import PropertyDetail from "./pages/PropertyDetail";
 import Services from "./pages/Services";
 import Testimonials from "./pages/Testimonials";
 import Contact from "./pages/Contact";
+import ContactThankYou from "./pages/ContactThankYou";
 import Careers from "./pages/Careers";
 import Blog from "./pages/Blog";
 import BlogPostPage from "./pages/BlogPostPage";
@@ -55,6 +56,7 @@ const App = () => (
             <Route path="/services" element={<Layout><Services /></Layout>} />
             <Route path="/testimonials" element={<Layout><Testimonials /></Layout>} />
             <Route path="/contact" element={<Layout><Contact /></Layout>} />
+            <Route path="/contact/thank-you" element={<Layout><ContactThankYou /></Layout>} />
             <Route path="/careers" element={<Layout><Careers /></Layout>} />
             <Route path="/blog" element={<Layout><Blog /></Layout>} />
             <Route path="/blog/:slug" element={<Layout><BlogPostPage /></Layout>} />

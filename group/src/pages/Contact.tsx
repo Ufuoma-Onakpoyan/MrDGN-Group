@@ -1,5 +1,6 @@
 
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Navigation from '@/components/Navigation';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -19,6 +20,7 @@ import {
 const API_BASE = import.meta.env.VITE_API_URL || '';
 
 const Contact = () => {
+  const navigate = useNavigate();
   const { toast } = useToast();
   const [formData, setFormData] = useState({
     name: '',
@@ -55,11 +57,7 @@ const Contact = () => {
         });
         if (!res.ok) throw new Error('Failed to send');
       }
-      toast({
-        title: "Message Sent!",
-        description: "Thank you for your message. We'll get back to you soon.",
-      });
-      setFormData({ name: '', email: '', company: '', subject: '', message: '' });
+      navigate('/contact/thank-you');
     } catch {
       toast({
         title: "Error",

@@ -18,6 +18,10 @@ const routeMeta: Record<string, { title: string; description: string }> = {
     title: "Events & Sponsorships",
     description: "MR DGN Entertainment events, film festivals, and sponsorship opportunities.",
   },
+  "/contact/thank-you": {
+    title: "Contact Received",
+    description: "Thank you for your message. MR DGN Entertainment will get back to you within 24 hours.",
+  },
   "/contact": {
     title: "Contact",
     description: "Contact MR DGN Entertainment - Asaba, Lagos, Abuja, Nigeria. Event sponsorship, partnerships, inquiries. Call +234 813 532 4467.",

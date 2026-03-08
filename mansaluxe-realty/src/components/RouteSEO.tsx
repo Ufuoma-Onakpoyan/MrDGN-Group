@@ -6,6 +6,7 @@ const routeMeta: Record<string, { title: string; description: string }> = {
   "/properties": { title: "Properties", description: "Luxury properties for sale and rent in Lagos, Abuja, Asaba, Victoria Island, Ikoyi, Port Harcourt. Penthouse, villa, mansion, duplex - Mansa Luxe Realty Limited." },
   "/about": { title: "About Us", description: "Learn about Mansa Luxe Realty Limited, Nigeria's premier luxury real estate company. Our story, mission, vision, and team since 2020." },
   "/contact": { title: "Contact Us", description: "Contact Mansa Luxe Realty Limited - Asaba, Lagos, Abuja, Nigeria. Property enquiries. Call +234 813 532 4467. Head office Asaba, Delta State." },
+  "/contact/thank-you": { title: "Contact Received", description: "Thank you for your inquiry. Mansa Luxe Realty Limited will get back to you within 24 hours." },
   "/services": { title: "Our Services", description: "Property sales, management, investment advisory, luxury rentals, and valuation. Full-service luxury real estate in Nigeria." },
   "/testimonials": { title: "Client Testimonials", description: "Read reviews and testimonials from satisfied clients. See why clients trust Mansa Luxe Realty Limited for luxury property." },
   "/careers": { title: "Careers", description: "Join Mansa Luxe Realty Limited. Careers in luxury real estate sales, property management, and client services across Nigeria." },

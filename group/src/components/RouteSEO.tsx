@@ -26,6 +26,10 @@ const routeMeta: Record<string, { title: string; description: string }> = {
     title: "Contact Us",
     description: "Contact MR DGN Group - Asaba, Lagos, Abuja, Nigeria. Head office Asaba, Delta State. Business inquiries, partnerships. Call +234 813 532 4467.",
   },
+  "/contact/thank-you": {
+    title: "Contact Received",
+    description: "Thank you for your message. MR DGN Group will get back to you within 24 hours.",
+  },
   "/investors": {
     title: "Investor Relations",
     description: "Investor relations and corporate information for MR DGN Group. Strategic investments across entertainment, construction, and real estate.",

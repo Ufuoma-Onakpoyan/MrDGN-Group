@@ -1,8 +1,10 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { MapPin, Phone, Mail, Clock, Send, Building, Loader2 } from "lucide-react";
 import { toast } from "sonner";
 
 const Contact = () => {
+  const navigate = useNavigate();
   const [submitting, setSubmitting] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
@@ -63,17 +65,7 @@ const Contact = () => {
         toast.error(msg);
         return;
       }
-      toast.success("Thank you for your inquiry! We will contact you within 24 hours.");
-      setFormData({
-        name: "",
-        email: "",
-        phone: "",
-        countryCode: "+234",
-        subject: "",
-        message: "",
-        propertyType: "",
-        budget: ""
-      });
+      navigate("/contact/thank-you");
     } catch (error) {
       console.error('Error sending contact form:', error);
       toast.error("Something went wrong. Please try again or contact us directly at +234 813 532 4467.");

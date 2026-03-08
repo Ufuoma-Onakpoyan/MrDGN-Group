@@ -13,6 +13,7 @@ import Media from "./pages/Media";
 import BlogPost from "./pages/BlogPost";
 import Careers from "./pages/Careers";
 import Contact from "./pages/Contact";
+import ContactThankYou from "./pages/ContactThankYou";
 import Investors from "./pages/Investors";
 import FAQ from "./pages/FAQ";
 import NotFound from "./pages/NotFound";
@@ -34,6 +35,7 @@ const AppRoutes = () => {
       <Route path="/blog/:slug" element={<PageTransition><BlogPost /></PageTransition>} />
       <Route path="/careers" element={<PageTransition><Careers /></PageTransition>} />
       <Route path="/contact" element={<PageTransition><Contact /></PageTransition>} />
+      <Route path="/contact/thank-you" element={<PageTransition><ContactThankYou /></PageTransition>} />
       <Route path="/investors" element={<PageTransition><Investors /></PageTransition>} />
       <Route path="/faq" element={<PageTransition><FAQ /></PageTransition>} />
       <Route path="*" element={<PageTransition><NotFound /></PageTransition>} />
