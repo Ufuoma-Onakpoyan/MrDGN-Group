@@ -4,3 +4,4 @@ Allow: /
 
 # Sitemap (replace with your actual domain when deployed)
 Sitemap: https://construction.mrdgngroup.com/sitemap.xml
+# Dynamic blog sitemap: add Sitemap: https://YOUR_API_URL/api/sitemap/index?site=construction

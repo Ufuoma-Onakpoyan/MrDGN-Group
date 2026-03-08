@@ -17,6 +17,7 @@ import { uploadRouter } from './routes/upload.js';
 import { dashboardRouter } from './routes/dashboard.js';
 import { newsletterRouter } from './routes/newsletter.js';
 import { eventsRouter } from './routes/events.js';
+import { sitemapRouter } from './routes/sitemap.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
@@ -58,6 +59,7 @@ app.use('/api/upload', uploadRouter);
 app.use('/api/dashboard', dashboardRouter);
 app.use('/api/newsletter', newsletterRouter);
 app.use('/api/events', eventsRouter);
+app.use('/api/sitemap', sitemapRouter);
 
 // 404
 app.use('/api/*', (_req, res) => {

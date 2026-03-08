@@ -5,6 +5,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import { useEffect } from "react";
 import { DuerentsVideoProvider } from "@/components/DuerentsVideoModal";
+import { RouteSEO } from "@/components/RouteSEO";
 import Index from "./pages/Index";
 import About from "./pages/About";
 import Businesses from "./pages/Businesses";
@@ -22,23 +23,8 @@ function PageTransition({ children }: { children: React.ReactNode }) {
   return <div className="page-transition min-h-screen">{children}</div>;
 }
 
-const PAGE_TITLES: Record<string, string> = {
-  '/': 'MR DGN Group | Holding Company – Entertainment, Construction & Real Estate',
-  '/about': 'About Us | MR DGN Group',
-  '/businesses': 'Our Businesses | MR DGN Group',
-  '/investors': 'Investor Relations | MR DGN Group',
-  '/media': 'Media & News | MR DGN Group',
-  '/careers': 'Careers | MR DGN Group',
-  '/faq': 'FAQ | MR DGN Group',
-  '/contact': 'Contact Us | MR DGN Group',
-};
-
 const AppRoutes = () => {
   const location = useLocation();
-  useEffect(() => {
-    const title = PAGE_TITLES[location.pathname] || 'MR DGN Group';
-    document.title = title;
-  }, [location.pathname]);
   return (
     <Routes location={location} key={location.pathname}>
       <Route path="/" element={<PageTransition><Index /></PageTransition>} />
@@ -62,6 +48,7 @@ const App = () => (
         <Toaster />
         <Sonner />
         <BrowserRouter>
+          <RouteSEO />
           <AppRoutes />
         </BrowserRouter>
       </DuerentsVideoProvider>

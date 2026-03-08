@@ -4,3 +4,4 @@ Disallow: /admin
 Disallow: /auth
 
 Sitemap: https://mansaluxerealty.com/sitemap.xml
+# Dynamic blog & property sitemaps: add Sitemap: https://YOUR_API_URL/api/sitemap/index?site=mansaluxe

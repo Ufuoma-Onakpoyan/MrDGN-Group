@@ -11,21 +11,21 @@ interface SEOProps {
   noindex?: boolean;
 }
 
-const SITE_URL = import.meta.env.VITE_SITE_URL || (typeof window !== "undefined" ? window.location.origin : "https://mansaluxerealty.com");
-const DEFAULT_TITLE = "Mansa Luxe Realty Limited - Nigeria's Premier Luxury Real Estate";
-const DEFAULT_DESC = "Discover Nigeria's most prestigious properties with Mansa Luxe Realty Limited. Luxury real estate in Lagos, Abuja, Victoria Island, Ikoyi, and Port Harcourt.";
+const SITE_URL = import.meta.env.VITE_SITE_URL || "https://entertainment.mrdgngroup.com";
+const DEFAULT_TITLE = "MR DGN Entertainment | Movies, YouTube Content & Event Sponsorship";
+const DEFAULT_DESC = "MR DGN Entertainment - Nigerian entertainment company specializing in movies, YouTube content, event sponsorship, and shorts. A subsidiary of MR DGN Group.";
 
 export function SEO({
   title,
   description = DEFAULT_DESC,
   canonical,
-  ogImage = "/assets/logo-mansaluxe.png",
+  ogImage = "/assets/4b1198b0-1fdd-4278-ac0c-203ae87eef5d.png",
   ogImageWidth = 1200,
   ogImageHeight = 630,
   ogType = "website",
   noindex = false,
 }: SEOProps) {
-  const fullTitle = title ? `${title} | Mansa Luxe Realty` : DEFAULT_TITLE;
+  const fullTitle = title ? `${title} | MR DGN Entertainment` : DEFAULT_TITLE;
   const fullCanonical = canonical ? `${SITE_URL}${canonical}` : SITE_URL;
   const fullOgImage = ogImage.startsWith("http") ? ogImage : `${SITE_URL}${ogImage}`;
 

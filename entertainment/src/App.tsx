@@ -2,9 +2,9 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
-import { useEffect } from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import ScrollToTop from "./components/ScrollToTop";
+import { RouteSEO } from "./components/RouteSEO";
 import Index from "./pages/Index";
 import About from "./pages/About";
 import Blog from "./pages/Blog";
@@ -16,32 +16,13 @@ import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
 
-const PAGE_TITLES: Record<string, string> = {
-  '/': "MR DGN Entertainment | Event Sponsorship",
-  '/about': "About Us | MR DGN Entertainment",
-  '/blog': "Blog | MR DGN Entertainment",
-  '/events': "Events & Sponsorships | MR DGN Entertainment",
-  '/contact': "Contact | MR DGN Entertainment",
-  '/careers': "Careers | MR DGN Entertainment",
-};
-
-function AppTitleSetter() {
-  const location = useLocation();
-  useEffect(() => {
-    const basePath = location.pathname === '/' ? '/' : '/' + location.pathname.split('/').filter(Boolean)[0];
-    const title = PAGE_TITLES[location.pathname] ?? PAGE_TITLES[basePath] ?? "MR DGN Entertainment";
-    document.title = title;
-  }, [location.pathname]);
-  return null;
-}
-
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
       <Toaster />
       <Sonner />
       <BrowserRouter>
-        <AppTitleSetter />
+        <RouteSEO />
         <ScrollToTop />
         <Routes>
           <Route path="/" element={<Index />} />
