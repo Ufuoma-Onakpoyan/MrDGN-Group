@@ -205,7 +205,7 @@ const PropertyDetail = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-background to-muted/20">
-      <SEO title={`${property.title}${property.location ? ` | ${property.location}, Nigeria` : " | Mansa Luxe Realty Nigeria"}`} description={property.description || `Luxury property in Lagos, Abuja, Asaba, Nigeria. ${property.title} - Mansa Luxe Realty.`} canonical={`/properties/${property.id}`} ogImage={ogImage} ogType="website" />
+      <SEO title={`${property.title}${property.location ? ` | ${property.location}, Nigeria` : " | Mansa Luxe Realty Limited Nigeria"}`} description={property.description || `Luxury property in Lagos, Abuja, Asaba, Nigeria. ${property.title} - Mansa Luxe Realty Limited.`} canonical={`/properties/${property.id}`} ogImage={ogImage} ogType="website" />
       <div className="container mx-auto px-4 py-8">
         {/* Header */}
         <div className="flex items-center justify-between mb-8">

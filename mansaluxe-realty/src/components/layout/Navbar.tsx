@@ -39,7 +39,7 @@ const Navbar = () => {
       <div className="container mx-auto">
         <div className="flex justify-between items-center min-h-[4.5rem]">
           {/* Logo + brand */}
-          <NavLink to="/" className="flex items-center shrink-0" onClick={() => setIsOpen(false)} aria-label="Mansa Luxe Realty - Home">
+          <NavLink to="/" className="flex items-center shrink-0" onClick={() => setIsOpen(false)} aria-label="Mansa Luxe Realty Limited - Home">
             <img
               src="/assets/logo-mansaluxe.png"
               alt="Mansa Luxe Realty Limited"

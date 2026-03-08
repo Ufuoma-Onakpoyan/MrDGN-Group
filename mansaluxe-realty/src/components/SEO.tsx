@@ -25,7 +25,7 @@ export function SEO({
   ogType = "website",
   noindex = false,
 }: SEOProps) {
-  const fullTitle = title ? `${title} | Mansa Luxe Realty` : DEFAULT_TITLE;
+  const fullTitle = title ? `${title} | Mansa Luxe Realty Limited` : DEFAULT_TITLE;
   const fullCanonical = canonical ? `${SITE_URL}${canonical}` : SITE_URL;
   const fullOgImage = ogImage.startsWith("http") ? ogImage : `${SITE_URL}${ogImage}`;
 

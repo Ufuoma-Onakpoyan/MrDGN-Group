@@ -48,7 +48,7 @@ export function AdminNavbar() {
             <Link to="/admin/dashboard" className="flex items-center space-x-2">
               <img 
                 src="/assets/d7dc5cc8-9f13-460e-9a16-e8567e5fc867.png" 
-                alt="Mansa Luxe Realty Logo" 
+                alt="Mansa Luxe Realty Limited Logo" 
                 className="h-8 w-auto sm:h-10"
               />
               <div className="hidden sm:flex flex-col">

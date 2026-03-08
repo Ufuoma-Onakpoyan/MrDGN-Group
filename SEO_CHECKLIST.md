@@ -13,7 +13,7 @@ For each domain, add and verify your property:
 | MR DGN Group | `https://mrdgngroup.com` |
 | MR DGN Constructions | `https://construction.mrdgngroup.com` |
 | MR DGN Entertainment | `https://entertainment.mrdgngroup.com` |
-| Mansa Luxe Realty | `https://mansaluxerealty.mrdgngroup.com` |
+| Mansa Luxe Realty Limited | `https://mansaluxerealty.mrdgngroup.com` |
 
 **Steps:**
 1. Go to [Google Search Console](https://search.google.com/search-console)
@@ -51,7 +51,7 @@ Create **1200×630 px** Open Graph images for each site. These appear when links
 | MR DGN Group | Logo + tagline “Entertainment, Construction & Real Estate” | `/og-home.png` |
 | MR DGN Constructions | Logo + “Building Excellence Since 2020” | `/og-home.png` |
 | MR DGN Entertainment | Logo + “Movies, YouTube Content & Event Sponsorship” | `/og-home.png` |
-| Mansa Luxe Realty | Logo + “Nigeria’s Premier Luxury Real Estate” | `/og-home.png` |
+| Mansa Luxe Realty Limited | Logo + “Nigeria’s Premier Luxury Real Estate” | `/og-home.png` |
 
 **Guidelines:**
 - Size: **1200×630 px** (PNG or JPG)
@@ -84,7 +84,7 @@ To rank better for searches like "construction company in Lagos", "real estate A
 
 1. **Google Business Profile** – Create/claim a profile for each business:
    - MR DGN Constructions – Asaba (primary), consider Lagos/Abuja if you have physical locations
-   - Mansa Luxe Realty – Asaba (primary), Lagos/Abuja if applicable
+   - Mansa Luxe Realty Limited – Asaba (primary), Lagos/Abuja if applicable
    - MR DGN Entertainment – Asaba (primary)
    - MR DGN Group – Asaba (head office)
 

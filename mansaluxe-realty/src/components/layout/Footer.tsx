@@ -66,7 +66,7 @@ const Footer = () => {
               <a href="https://www.facebook.com/p/Mr-DGN-Construction-and-Developers-Limited-100076096784485/" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors" aria-label="Facebook">
                 <Facebook className="w-5 h-5" />
               </a>
-              <a href="https://wa.me/2348135324467" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors text-sm" aria-label="Contact Mansa Luxe Realty on WhatsApp +234 813 532 4467">
+              <a href="https://wa.me/2348135324467" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors text-sm" aria-label="Contact Mansa Luxe Realty Limited on WhatsApp +234 813 532 4467">
                 Contact us on WhatsApp (+234 813 532 4467)
               </a>
             </div>

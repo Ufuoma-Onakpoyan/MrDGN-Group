@@ -12,7 +12,7 @@ const routeMeta: Record<string, { title: string; description: string }> = {
   },
   "/businesses": {
     title: "Our Businesses",
-    description: "MR DGN Entertainment, MR DGN Constructions, Mansa Luxe Realty. Construction, real estate and entertainment in Asaba, Lagos, Abuja and Nigeria.",
+    description: "MR DGN Entertainment, MR DGN Constructions, Mansa Luxe Realty Limited. Construction, real estate and entertainment in Asaba, Lagos, Abuja and Nigeria.",
   },
   "/media": {
     title: "Media & News",

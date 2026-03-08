@@ -146,7 +146,7 @@ const Footer = () => {
               </li>
               <li>
                 <a href="https://mansaluxerealty.mrdgngroup.com/" target="_blank" rel="noopener noreferrer" className="text-secondary-foreground/80 hover:text-primary transition-colors duration-200 inline-block">
-                  Looking for luxury property? → Mansa Luxe Realty
+                  Looking for luxury property? → Mansa Luxe Realty Limited
                 </a>
               </li>
               <li>

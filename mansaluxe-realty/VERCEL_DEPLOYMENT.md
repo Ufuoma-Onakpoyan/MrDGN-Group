@@ -1,4 +1,4 @@
-# Mansa Luxe Realty - Vercel Deployment Checklist
+# Mansa Luxe Realty Limited - Vercel Deployment Checklist
 
 ## Pre-Deploy
 

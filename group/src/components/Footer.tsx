@@ -83,7 +83,7 @@ const Footer = () => {
           </div>
           <div>
             <h4 className="font-semibold mb-4">Our Businesses</h4>
-            <p className="text-muted-foreground text-sm mb-3">Need to build, buy property, or manage rentals? Explore Construction, Mansa Luxe Realty, Entertainment, and <DuerentsLink className="text-primary hover:underline cursor-pointer inline" /> below.</p>
+            <p className="text-muted-foreground text-sm mb-3">Need to build, buy property, or manage rentals? Explore Construction, Mansa Luxe Realty Limited, Entertainment, and <DuerentsLink className="text-primary hover:underline cursor-pointer inline" /> below.</p>
             <ul className="space-y-3">
               {businesses.map((business) => (
                 <li key={business.name} className="flex items-center space-x-3">

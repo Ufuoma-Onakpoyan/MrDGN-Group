@@ -3,18 +3,18 @@ import { SEO } from "./SEO";
 
 const routeMeta: Record<string, { title: string; description: string }> = {
   "/": { title: "Mansa Luxe Realty Limited", description: "Premium luxury real estate in Asaba, Lagos, Abuja and Nigeria. Properties in Victoria Island, Ikoyi, Port Harcourt. Nigeria's premier real estate." },
-  "/properties": { title: "Properties", description: "Luxury properties for sale and rent in Lagos, Abuja, Asaba, Victoria Island, Ikoyi, Port Harcourt. Penthouse, villa, mansion, duplex - Mansa Luxe Realty." },
+  "/properties": { title: "Properties", description: "Luxury properties for sale and rent in Lagos, Abuja, Asaba, Victoria Island, Ikoyi, Port Harcourt. Penthouse, villa, mansion, duplex - Mansa Luxe Realty Limited." },
   "/about": { title: "About Us", description: "Learn about Mansa Luxe Realty Limited, Nigeria's premier luxury real estate company. Our story, mission, vision, and team since 2020." },
-  "/contact": { title: "Contact Us", description: "Contact Mansa Luxe Realty - Asaba, Lagos, Abuja, Nigeria. Property enquiries. Call +234 813 532 4467. Head office Asaba, Delta State." },
+  "/contact": { title: "Contact Us", description: "Contact Mansa Luxe Realty Limited - Asaba, Lagos, Abuja, Nigeria. Property enquiries. Call +234 813 532 4467. Head office Asaba, Delta State." },
   "/services": { title: "Our Services", description: "Property sales, management, investment advisory, luxury rentals, and valuation. Full-service luxury real estate in Nigeria." },
-  "/testimonials": { title: "Client Testimonials", description: "Read reviews and testimonials from satisfied clients. See why clients trust Mansa Luxe Realty for luxury property." },
-  "/careers": { title: "Careers", description: "Join Mansa Luxe Realty. Careers in luxury real estate sales, property management, and client services across Nigeria." },
-  "/blog": { title: "Blog & Lifestyle", description: "Luxury real estate insights, market updates, and lifestyle articles from Mansa Luxe Realty." },
-  "/buying": { title: "Buying Guide", description: "Guide to buying luxury property in Nigeria. Steps, tips, and what to expect when purchasing with Mansa Luxe Realty." },
-  "/selling": { title: "Selling Guide", description: "Sell your luxury property with Mansa Luxe Realty. Expert valuation, marketing, and a streamlined selling process." },
-  "/privacy": { title: "Privacy Policy", description: "Mansa Luxe Realty Privacy Policy. How we collect, use, and protect your information." },
-  "/terms": { title: "Terms of Service", description: "Mansa Luxe Realty Terms of Service. Terms and conditions for using our website and services." },
-  "/faq": { title: "FAQ", description: "Frequently asked questions about buying, selling, and investing in luxury real estate with Mansa Luxe Realty." },
+  "/testimonials": { title: "Client Testimonials", description: "Read reviews and testimonials from satisfied clients. See why clients trust Mansa Luxe Realty Limited for luxury property." },
+  "/careers": { title: "Careers", description: "Join Mansa Luxe Realty Limited. Careers in luxury real estate sales, property management, and client services across Nigeria." },
+  "/blog": { title: "Blog & Lifestyle", description: "Luxury real estate insights, market updates, and lifestyle articles from Mansa Luxe Realty Limited." },
+  "/buying": { title: "Buying Guide", description: "Guide to buying luxury property in Nigeria. Steps, tips, and what to expect when purchasing with Mansa Luxe Realty Limited." },
+  "/selling": { title: "Selling Guide", description: "Sell your luxury property with Mansa Luxe Realty Limited. Expert valuation, marketing, and a streamlined selling process." },
+  "/privacy": { title: "Privacy Policy", description: "Mansa Luxe Realty Limited Privacy Policy. How we collect, use, and protect your information." },
+  "/terms": { title: "Terms of Service", description: "Mansa Luxe Realty Limited Terms of Service. Terms and conditions for using our website and services." },
+  "/faq": { title: "FAQ", description: "Frequently asked questions about buying, selling, and investing in luxury real estate with Mansa Luxe Realty Limited." },
 };
 
 export function RouteSEO() {
