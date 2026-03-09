@@ -42,9 +42,9 @@ const Navigation = () => {
   return <nav className="fixed top-0 left-0 right-0 z-50 bg-gray-50/95 backdrop-blur-sm shadow-sm border-b border-border/50">
       <div className="absolute top-0 left-0 right-0 h-16 bg-gray-50/95 pointer-events-none" aria-hidden />
       <div className="container mx-auto px-4 sm:px-6 max-w-7xl relative z-10">
-        <div className="grid grid-cols-[1fr_auto_1fr] items-center h-16 gap-4">
+        <div className="relative flex items-center justify-between h-16 gap-4">
           {/* Logo - left-aligned */}
-          <Link to="/" className="flex items-center h-full py-1 justify-self-start" aria-label="MR DGN Constructions - Home">
+          <Link to="/" className="flex items-center h-full py-1 shrink-0" aria-label="MR DGN Constructions - Home">
             <img 
               src="/assets/logo-construction.png" 
               alt="MR DGN Construction and Developers Limited" 
@@ -57,8 +57,8 @@ const Navigation = () => {
             />
           </Link>
 
-          {/* Desktop Navigation - centered */}
-          <div className="hidden md:flex items-center justify-center gap-6 lg:gap-8">
+          {/* Desktop Navigation - centered (absolutely positioned for true center) */}
+          <div className="hidden md:flex absolute left-1/2 -translate-x-1/2 items-center justify-center gap-6 lg:gap-8">
             {navItems.map(item => (
               <Link 
                 key={item.label} 
@@ -71,7 +71,7 @@ const Navigation = () => {
           </div>
 
           {/* Right: CTA on desktop, menu button on mobile */}
-          <div className="flex items-center justify-end gap-2">
+          <div className="flex items-center justify-end gap-2 shrink-0 ml-auto md:ml-0">
             <div className="hidden md:block">
               <Button asChild size="sm" className="btn-construction rounded-md">
                 <Link to="/contact-us">Contact Us</Link>

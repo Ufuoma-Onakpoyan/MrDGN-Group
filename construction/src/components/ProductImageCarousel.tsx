@@ -66,15 +66,27 @@ export function ProductImageCarousel({
 
   return (
     <div className={`relative overflow-hidden bg-muted ${className}`}>
-      <Carousel setApi={setApi} opts={{ loop: true }} className="h-full w-full">
-        <CarouselContent className="ml-0 h-full">
+      <Carousel
+        setApi={setApi}
+        opts={{
+          loop: true,
+          align: 'start',
+          containScroll: 'trimSnaps',
+          dragFree: false,
+        }}
+        className="h-full w-full"
+      >
+        <CarouselContent className="ml-0 h-full flex-nowrap">
           {images.map((src, index) => (
-            <CarouselItem key={index} className="pl-0 h-full basis-full flex-none">
-              <div className="h-full w-full relative flex items-center justify-center bg-muted">
+            <CarouselItem
+              key={index}
+              className="pl-0 basis-full shrink-0 grow-0 w-full min-w-full h-full"
+            >
+              <div className="h-full w-full relative flex items-center justify-center bg-muted overflow-hidden">
                 <img
                   src={src}
                   alt={`${alt} - image ${index + 1}`}
-                  className="w-full h-full object-contain"
+                  className="w-full h-full object-contain select-none"
                 />
               </div>
             </CarouselItem>

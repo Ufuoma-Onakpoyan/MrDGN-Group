@@ -109,6 +109,55 @@ const PropertyDetail = () => {
     return () => window.removeEventListener('keydown', handleKey);
   }, [mediaItems.length]);
 
+  const firstImageItem = mediaItems.find((m) => m.type === 'image');
+  const siteUrl = import.meta.env.VITE_SITE_URL || (typeof window !== "undefined" ? window.location.origin : "https://mansaluxerealty.mrdgngroup.com");
+  const listingUrl = property ? `${siteUrl}/properties/${property.id}` : '';
+
+  useEffect(() => {
+    if (!property) return;
+    const schema = {
+      "@context": "https://schema.org",
+      "@type": "RealEstateListing",
+      "name": property.title,
+      "description": property.description || property.title,
+      "url": listingUrl,
+      "image": firstImageItem?.url ? [firstImageItem.url] : undefined,
+      "areaServed": ["Asaba", "Lagos", "Abuja", "Nigeria"],
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": property.location,
+        "addressLocality": property.location,
+        "addressRegion": property.location?.includes("Lagos") ? "Lagos" : property.location?.includes("Abuja") ? "Abuja" : property.location?.includes("Asaba") ? "Delta" : undefined,
+        "addressCountry": "NG",
+      },
+      ...(property.price != null && property.price > 0 && {
+        "offers": {
+          "@type": "Offer",
+          "price": property.price,
+          "priceCurrency": "NGN",
+        },
+      }),
+      ...(property.bedrooms != null && { "numberOfRooms": property.bedrooms }),
+      ...(property.square_feet != null && {
+        "floorSize": {
+          "@type": "QuantitativeValue",
+          "value": property.square_feet,
+          "unitCode": "FTK",
+        },
+      }),
+      "listingStatus": property.status === "sold" ? "sold" : property.status === "pending" ? "pending" : "available",
+    };
+    const script = document.createElement("script");
+    script.type = "application/ld+json";
+    script.textContent = JSON.stringify(schema);
+    script.id = "property-listing-schema";
+    document.head.appendChild(script);
+    return () => {
+      const el = document.getElementById("property-listing-schema");
+      if (el) el.remove();
+    };
+  }, [property?.id, property?.title, property?.description, property?.location, property?.price, property?.bedrooms, property?.square_feet, property?.status, firstImageItem?.url, listingUrl]);
+
   const goPrev = () => setSelectedImageIndex((i) => (i <= 0 ? mediaItems.length - 1 : i - 1));
   const goNext = () => setSelectedImageIndex((i) => (i >= mediaItems.length - 1 ? 0 : i + 1));
   const current = mediaItems[selectedImageIndex];
@@ -153,55 +202,7 @@ const PropertyDetail = () => {
     );
   }
 
-  const firstImageItem = mediaItems.find((m) => m.type === 'image');
   const ogImage = firstImageItem?.url ?? (property.images?.[0] && !isVideoUrl(property.images[0]) ? property.images[0] : undefined);
-
-  const siteUrl = import.meta.env.VITE_SITE_URL || (typeof window !== "undefined" ? window.location.origin : "https://mansaluxerealty.mrdgngroup.com");
-  const listingUrl = `${siteUrl}/properties/${property.id}`;
-
-  useEffect(() => {
-    const schema = {
-      "@context": "https://schema.org",
-      "@type": "RealEstateListing",
-      "name": property.title,
-      "description": property.description || property.title,
-      "url": listingUrl,
-      "image": firstImageItem?.url ? [firstImageItem.url] : undefined,
-      "areaServed": ["Asaba", "Lagos", "Abuja", "Nigeria"],
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": property.location,
-        "addressLocality": property.location,
-        "addressRegion": property.location?.includes("Lagos") ? "Lagos" : property.location?.includes("Abuja") ? "Abuja" : property.location?.includes("Asaba") ? "Delta" : undefined,
-        "addressCountry": "NG",
-      },
-      ...(property.price != null && property.price > 0 && {
-        "offers": {
-          "@type": "Offer",
-          "price": property.price,
-          "priceCurrency": "NGN",
-        },
-      }),
-      ...(property.bedrooms != null && { "numberOfRooms": property.bedrooms }),
-      ...(property.square_feet != null && {
-        "floorSize": {
-          "@type": "QuantitativeValue",
-          "value": property.square_feet,
-          "unitCode": "FTK",
-        },
-      }),
-      "listingStatus": property.status === "sold" ? "sold" : property.status === "pending" ? "pending" : "available",
-    };
-    const script = document.createElement("script");
-    script.type = "application/ld+json";
-    script.textContent = JSON.stringify(schema);
-    script.id = "property-listing-schema";
-    document.head.appendChild(script);
-    return () => {
-      const el = document.getElementById("property-listing-schema");
-      if (el) el.remove();
-    };
-  }, [property.id, property.title, property.description, property.location, property.price, property.bedrooms, property.square_feet, property.status, firstImageItem?.url, listingUrl]);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-background to-muted/20">
