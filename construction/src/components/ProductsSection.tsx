@@ -65,10 +65,10 @@ const ProductsSection = () => {
       <div className="container mx-auto px-6 max-w-6xl">
         <div className="text-center mb-12 sm:mb-14">
           <h2 className="text-3xl sm:text-4xl font-bold text-foreground tracking-tight mb-4">
-            Products & <span className="text-gradient">Materials</span>
+            Our <span className="text-gradient">Building Materials</span>
           </h2>
           <p className="text-lg text-muted-foreground leading-relaxed max-w-2xl mx-auto">
-            Premium construction materials manufactured to international standards and optimized for Nigerian conditions.
+            Quality construction materials in Asaba. Cement, blocks, roofing, and more—supplied for builders and projects across Delta State and Nigeria.
           </p>
         </div>
 

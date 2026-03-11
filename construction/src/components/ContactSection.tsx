@@ -35,7 +35,7 @@ const ContactSection = () => {
       icon: Mail,
       title: 'Email',
       content: 'construction@mrdgngroup.com',
-      description: 'Send us your project details',
+      description: 'Inquiries for building materials or construction projects',
       href: 'mailto:construction@mrdgngroup.com',
     },
     {
@@ -121,7 +121,7 @@ const ContactSection = () => {
             Get In <span className="text-primary">Touch</span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Ready to start your construction project? Contact us today for a consultation and free estimate.
+            Get building materials or discuss your construction project. We're in Asaba; we serve Delta and Nigeria.
           </p>
         </div>
 

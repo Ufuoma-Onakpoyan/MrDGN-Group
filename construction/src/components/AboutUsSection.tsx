@@ -12,12 +12,7 @@ const AboutUsSection = () => {
             About <span className="text-gradient">Mr DGN Construction and Developers Limited</span>
           </h2>
           <p className="text-lg md:text-xl text-muted-foreground mb-8 leading-relaxed">
-            Since 2020, Mr DGN construction and developers limited has brought excellence to Nigeria's construction industry
-            and established itself as a premier construction company, delivering innovative
-            solutions and superior craftsmanship across the nation. Our 20-strong team of engineers,
-            managers, and bricklayers specializes in residential, commercial, and infrastructure
-            projects, combining traditional Nigerian building techniques with cutting-edge
-            international technology to create structures that stand the test of time and climate.
+            Based in Asaba, Mr DGN is first your building materials supplier—quality cement, blocks, and construction materials for Delta State and Nigeria. We also deliver construction projects and have established ourselves as a trusted partner in the industry. Our 20-strong team of engineers, managers, and bricklayers specializes in materials supply and in residential, commercial, and infrastructure projects, combining traditional Nigerian building techniques with cutting-edge international standards.
           </p>
           <Button asChild size="lg" className="btn-construction group">
             <Link to="/about-us">

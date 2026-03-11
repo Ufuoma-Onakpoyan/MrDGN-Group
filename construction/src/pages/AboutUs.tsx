@@ -8,7 +8,7 @@ import ceoPortrait from '@/assets/mrdgn-ceo-portrait.png';
 
 const AboutUs = () => {
   useEffect(() => {
-    document.title = 'About Us - Mr DGN construction and developers limited';
+    document.title = 'About Us | Building Materials & Construction in Asaba – MR DGN Constructions';
   }, []);
   const stats = [
     { icon: Building2, number: '50+', label: 'Projects Completed' },
@@ -49,10 +49,10 @@ const AboutUs = () => {
         <div className="container mx-auto px-4">
           <div className="text-center max-w-4xl mx-auto">
             <h1 className="text-5xl lg:text-6xl font-bold mb-6">
-              About <span className="text-primary">Mr DGN Construction and Developers Limited</span>
+              About <span className="text-primary">Mr DGN – Your Building Materials & Construction Partner in Asaba</span>
             </h1>
             <p className="text-xl text-muted-foreground mb-8">
-              Building excellence for 5 years, we are your trusted partner for innovative construction solutions that stand the test of time. Mr DGN construction and developers limited is a subsidiary of MR DGN Group.
+              We are a building materials supplier and construction company based in Asaba. Mr DGN construction and developers limited is a subsidiary of MR DGN Group—your trusted partner for quality materials and construction across Delta State and Nigeria.
             </p>
           </div>
         </div>

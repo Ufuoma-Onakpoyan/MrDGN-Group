@@ -44,7 +44,7 @@ const WhyChooseUsSection = () => {
             Why Choose <span className="text-gradient">Mr DGN Construction and Developers Limited</span>
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Experience the difference that comes with working with Nigeria's construction industry leaders committed to excellence.
+            Quality materials supply and construction expertise. Why builders and project owners in Asaba and beyond trust us.
           </p>
         </div>
 

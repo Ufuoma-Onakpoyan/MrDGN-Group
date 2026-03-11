@@ -72,7 +72,7 @@ const Products = () => {
   });
 
   useEffect(() => {
-    document.title = 'Products - MR DGN Constructions';
+    document.title = 'Building Materials Asaba | Cement, Blocks & Supplies – MR DGN Constructions';
   }, []);
 
   return (
@@ -84,11 +84,10 @@ const Products = () => {
         <div className="container mx-auto px-6 max-w-4xl">
           <div className="text-center">
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground tracking-tight leading-tight mb-5">
-              Premium Construction <span className="text-gradient">Products</span>
+              Building Materials in <span className="text-gradient">Asaba</span>
             </h1>
             <p className="text-lg sm:text-xl text-muted-foreground leading-relaxed max-w-2xl mx-auto">
-              Discover our comprehensive range of high-quality construction materials and products,
-              manufactured to the highest industry standards for your building projects.
+              From our base in Asaba we supply cement, blocks, roofing, and construction materials for builders and projects across Delta State and Nigeria.
             </p>
           </div>
         </div>

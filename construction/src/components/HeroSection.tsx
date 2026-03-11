@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { ArrowRight, Play } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { Link } from 'react-router-dom';
 import VideoModal from './VideoModal';
 import heroImage from '@/assets/hero-construction.jpg';
 
@@ -30,17 +31,18 @@ const HeroSection = () => {
           {/* Text Content */}
           <div className="text-white px-2 sm:px-4 lg:px-0">
             <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold mb-4 sm:mb-6 leading-tight">
-              Building Nigeria's 
-              <span className="text-gradient block">Future</span>
-              Together
+              Your Building Materials
+              <span className="text-gradient block">Partner in Asaba</span>
             </h1>
             <p className="text-lg sm:text-xl lg:text-2xl mb-6 sm:mb-8 text-white/90 max-w-2xl">
-              Mr DGN construction and developers limited delivers excellence across Nigeria. From Lagos to Abuja, we build with precision, safety, and innovation that meets international standards.
+              Based in Asaba, we supply quality construction materials—cement, blocks, roofing, and more—and deliver construction projects across Delta State and Nigeria.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
-              <Button size="lg" className="btn-construction group">
-                Start Your Project
-                <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+              <Button asChild size="lg" className="btn-construction group">
+                <Link to="/products">
+                  View Building Materials
+                  <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+                </Link>
               </Button>
               <Button 
                 size="lg" 

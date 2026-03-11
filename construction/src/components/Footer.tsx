@@ -46,7 +46,7 @@ const Footer = () => {
               <img src="/assets/logo-construction.png" alt="MR DGN Construction and Developers Limited" width="140" height="56" loading="lazy" className="h-12 md:h-14 w-auto object-contain drop-shadow-md" style={{ minHeight: '48px', maxHeight: '56px' }} />
             </div>
             <p className="text-secondary-foreground/80 mb-6">
-              Building excellence across Nigeria since 2020. Your trusted partner for all construction needs. Mr DGN construction and developers limited is a subsidiary of MR DGN Group.
+              Your building materials supplier in Asaba and construction partner across Delta State and Nigeria since 2020. Mr DGN construction and developers limited is a subsidiary of MR DGN Group.
             </p>
             
             {/* Contact Info */}

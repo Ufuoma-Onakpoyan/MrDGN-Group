@@ -13,10 +13,10 @@ const ProjectGallerySection = () => {
       <div className="container mx-auto px-6">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-            Project <span className="text-gradient">Gallery</span>
+            Our <span className="text-gradient">Construction Projects</span>
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Explore our portfolio of completed projects across Nigeria showcasing our expertise and commitment to excellence.
+            From Asaba to the rest of Nigeria—explore our portfolio of completed projects.
           </p>
         </div>
 

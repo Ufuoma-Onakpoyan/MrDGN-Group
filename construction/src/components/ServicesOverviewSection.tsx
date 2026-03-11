@@ -22,7 +22,7 @@ const ServicesOverviewSection = () => {
             Our <span className="text-gradient">Services</span>
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Comprehensive construction solutions delivered by our 20-strong team—5 years of experience tailored to meet your needs across Nigeria.
+            From our base in Asaba we supply building materials and deliver full construction services—residential, commercial, and infrastructure—across Nigeria.
           </p>
         </div>
 

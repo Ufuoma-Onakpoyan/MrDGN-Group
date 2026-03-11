@@ -4,7 +4,7 @@ import Footer from '@/components/Footer';
 import ContactSection from '@/components/ContactSection';
 const ContactUs = () => {
   useEffect(() => {
-    document.title = 'Contact Us - MR DGN Constructions';
+    document.title = 'Contact Us | Building Materials & Construction – Asaba – MR DGN Constructions';
   }, []);
   return <div className="min-h-screen">
       <Navigation />

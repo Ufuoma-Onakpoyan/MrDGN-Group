@@ -12,8 +12,8 @@ interface SEOProps {
 }
 
 const SITE_URL = import.meta.env.VITE_SITE_URL || "https://construction.mrdgngroup.com";
-const DEFAULT_TITLE = "MR DGN Constructions - Building Excellence Since 2020 | Construction Nigeria";
-const DEFAULT_DESC = "Professional construction company in Nigeria. High-rise buildings, infrastructure, residential and commercial projects. 5+ years experience, 10+ projects. Based in Asaba, Delta State.";
+const DEFAULT_TITLE = "Building Materials & Construction | MR DGN Constructions – Asaba, Delta";
+const DEFAULT_DESC = "Building materials supplier in Asaba, Delta State. Quality cement, blocks, and construction materials. We also deliver construction projects across Nigeria.";
 
 export function SEO({
   title,

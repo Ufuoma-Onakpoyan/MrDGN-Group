@@ -3,32 +3,32 @@ import { SEO } from "./SEO";
 
 const routeMeta: Record<string, { title: string; description: string }> = {
   "/": {
-    title: "MR DGN Constructions",
-    description: "Top construction company in Asaba, Lagos, Abuja and Nigeria. High-rise buildings, infrastructure, residential and commercial projects. 5+ years, 10+ projects.",
+    title: "Building Materials in Asaba | MR DGN Constructions",
+    description: "Building materials supplier in Asaba, Delta State. Quality cement, blocks, roofing & construction materials. We also deliver construction projects across Nigeria.",
   },
   "/about-us": {
     title: "About Us",
-    description: "MR DGN Constructions - Building excellence in Asaba, Lagos, Abuja and Nigeria since 2020. Professional construction services across Nigeria.",
+    description: "Building materials and construction company in Asaba. MR DGN Constructions – your supplier and construction partner in Delta State and Nigeria.",
   },
   "/our-services": {
     title: "Our Services",
-    description: "Construction services in Asaba, Lagos, Abuja: high-rise, infrastructure, residential, commercial, renovation. Full-service construction Nigeria.",
+    description: "Construction services in Asaba from your local building materials supplier. High-rise, infrastructure, residential, commercial, renovation – full-service construction.",
   },
   "/products": {
-    title: "Products",
-    description: "Construction products and materials in Asaba, Lagos, Abuja, Nigeria. MR DGN Constructions - quality building materials.",
+    title: "Building Materials Asaba | Cement, Blocks & Construction Materials",
+    description: "Buy construction materials in Asaba. Quality cement, blocks, roofing, and building supplies. Delta State. Delivery and construction projects. MR DGN Constructions.",
   },
   "/projects": {
     title: "Projects",
-    description: "Construction projects in Asaba, Lagos, Abuja, Nigeria. High-rise, residential, commercial - MR DGN Constructions.",
+    description: "Our construction projects in Asaba and Nigeria. MR DGN Constructions – building materials supplier and construction company.",
   },
   "/career": {
     title: "Careers",
-    description: "Join MR DGN Constructions. Career opportunities in construction, project management, and engineering.",
+    description: "Join MR DGN Constructions in Asaba. Careers in building materials supply and construction – project management, engineering, and more.",
   },
   "/blog": {
     title: "Blog",
-    description: "Construction insights, project updates, and industry news from MR DGN Constructions.",
+    description: "Building materials and construction insights from MR DGN Constructions, Asaba. Industry news and project updates.",
   },
   "/contact-us/thank-you": {
     title: "Contact Received",
@@ -36,19 +36,19 @@ const routeMeta: Record<string, { title: string; description: string }> = {
   },
   "/contact-us": {
     title: "Contact Us",
-    description: "Contact MR DGN Constructions - Asaba, Lagos, Abuja, Nigeria. Construction inquiries, projects, building materials. Call +234 813 532 4467.",
+    description: "Contact us for building materials and construction in Asaba. Call or visit. MR DGN Constructions – Delta State. +234 813 532 4467.",
   },
   "/process": {
     title: "Our Process",
-    description: "How we deliver construction projects. From planning to completion with MR DGN Constructions.",
+    description: "How we supply building materials and deliver construction projects. From order to completion – MR DGN Constructions, Asaba.",
   },
   "/testimonials": {
     title: "Testimonials",
-    description: "Client testimonials and reviews for MR DGN Constructions. See what our clients say about us.",
+    description: "Client testimonials for MR DGN Constructions – building materials and construction in Asaba and Nigeria.",
   },
   "/faq": {
     title: "FAQ",
-    description: "Frequently asked questions about MR DGN Constructions and our services.",
+    description: "Frequently asked questions about building materials and construction services from MR DGN Constructions, Asaba.",
   },
   "/privacy-policy": {
     title: "Privacy Policy",
@@ -70,7 +70,7 @@ export function RouteSEO() {
     return (
       <SEO
         title="Blog Post"
-        description="Read our latest construction insights and project updates."
+        description="Building materials and construction insights from MR DGN Constructions, Asaba."
         canonical={pathname}
         ogType="article"
       />
@@ -80,7 +80,7 @@ export function RouteSEO() {
     return (
       <SEO
         title="Service"
-        description="Construction service details from MR DGN Constructions."
+        description="Construction service details from MR DGN Constructions – building materials supplier and construction company in Asaba."
         canonical={pathname}
       />
     );
@@ -89,7 +89,7 @@ export function RouteSEO() {
     return (
       <SEO
         title="Project"
-        description="View construction project details from MR DGN Constructions."
+        description="Construction project by MR DGN Constructions – building materials and construction in Asaba and Nigeria."
         canonical={pathname}
       />
     );
