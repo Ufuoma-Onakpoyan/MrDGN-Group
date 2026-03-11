@@ -94,6 +94,9 @@ export function RouteSEO() {
       />
     );
   }
+  if (pathname.startsWith("/products/") && pathname !== "/products") {
+    return null;
+  }
 
   if (!meta) return null;
   return <SEO title={meta.title} description={meta.description} canonical={pathname} />;

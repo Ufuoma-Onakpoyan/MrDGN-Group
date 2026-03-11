@@ -40,6 +40,7 @@ function resolveImageUrls(urls: unknown[], base: string): string[] {
 interface ApiProduct {
   id: string;
   title: string;
+  slug: string;
   description: string | null;
   images: string[];
 }
@@ -76,25 +77,27 @@ const ProductsSection = () => {
           <>
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
               {displayProducts.map((product) => (
-                <Card key={product.id} className="card-elevated hover-lift text-center overflow-hidden rounded-xl border-border/60 shadow-md hover:shadow-xl transition-shadow duration-300">
-                  <div className="relative aspect-[4/3] bg-muted/80 overflow-hidden">
-                    <ProductImageCarousel
-                      images={resolveImageUrls(product.images || [], API_BASE)}
-                      alt={product.title}
-                      className="aspect-[4/3] w-full h-full"
-                      showButtons={true}
-                      showDots={true}
-                    />
-                  </div>
-                  <CardHeader className="px-5 pt-5 pb-2">
-                    <CardTitle className="text-lg font-semibold leading-snug">{product.title}</CardTitle>
-                  </CardHeader>
-                  <CardContent className="px-5 pb-6">
-                    <CardDescription className="text-muted-foreground text-sm leading-relaxed line-clamp-3">
-                      {product.description || 'Quality construction materials.'}
-                    </CardDescription>
-                  </CardContent>
-                </Card>
+                <Link key={product.id} to={`/products/${product.slug || product.id}`} className="block group">
+                  <Card className="card-elevated hover-lift text-center overflow-hidden rounded-xl border-border/60 shadow-md hover:shadow-xl transition-shadow duration-300 h-full">
+                    <div className="relative aspect-[4/3] bg-muted/80 overflow-hidden">
+                      <ProductImageCarousel
+                        images={resolveImageUrls(product.images || [], API_BASE)}
+                        alt={product.title}
+                        className="aspect-[4/3] w-full h-full"
+                        showButtons={true}
+                        showDots={true}
+                      />
+                    </div>
+                    <CardHeader className="px-5 pt-5 pb-2">
+                      <CardTitle className="text-lg font-semibold leading-snug group-hover:text-primary transition-colors">{product.title}</CardTitle>
+                    </CardHeader>
+                    <CardContent className="px-5 pb-6">
+                      <CardDescription className="text-muted-foreground text-sm leading-relaxed line-clamp-3">
+                        {product.description || 'Quality construction materials.'}
+                      </CardDescription>
+                    </CardContent>
+                  </Card>
+                </Link>
               ))}
             </div>
             <div className="text-center">

@@ -166,9 +166,14 @@ const Products = () => {
                           </div>
                         </div>
                       )}
-                      <Button className="w-full btn-construction mt-3 rounded-lg font-medium" size="lg" asChild>
-                        <Link to="/contact-us">Request Quote</Link>
-                      </Button>
+                      <div className="flex flex-col gap-2 mt-3">
+                        <Button className="w-full rounded-lg font-medium" size="lg" variant="outline" asChild>
+                          <Link to={`/products/${product.slug}`}>View details</Link>
+                        </Button>
+                        <Button className="w-full btn-construction rounded-lg font-medium" size="lg" asChild>
+                          <Link to="/contact-us">Request Quote</Link>
+                        </Button>
+                      </div>
                     </CardContent>
                   </div>
                 </Card>

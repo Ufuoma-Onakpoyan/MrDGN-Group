@@ -104,11 +104,47 @@ ${urls.join('\n')}
   }
 });
 
-const SITE_CONFIG: Record<string, { baseUrl: string; source?: string; hasBlog: boolean; hasProperties: boolean }> = {
-  group: { baseUrl: 'https://mrdgngroup.com', source: 'group', hasBlog: true, hasProperties: false },
-  construction: { baseUrl: 'https://construction.mrdgngroup.com', source: 'construction', hasBlog: true, hasProperties: false },
-  entertainment: { baseUrl: 'https://entertainment.mrdgngroup.com', source: 'entertainment', hasBlog: true, hasProperties: false },
-  mansaluxe: { baseUrl: 'https://mansaluxerealty.mrdgngroup.com', source: 'mansaluxe-realty', hasBlog: true, hasProperties: true },
+/**
+ * GET /api/sitemap/products?baseUrl=https://construction.mrdgngroup.com
+ * Returns XML sitemap for construction product detail URLs.
+ */
+router.get('/products', async (req: Request, res: Response) => {
+  try {
+    const baseUrl = (req.query.baseUrl as string)?.replace(/\/$/, '') || 'https://construction.mrdgngroup.com';
+
+    const products = await prisma.product.findMany({
+      where: { published: true },
+      select: { slug: true, updatedAt: true },
+    });
+
+    const urls = products.map((p) => {
+      const lastmod = p.updatedAt ? p.updatedAt.toISOString().slice(0, 10) : '';
+      return `  <url>
+    <loc>${escapeXml(`${baseUrl}/products/${p.slug}`)}</loc>${lastmod ? `\n    <lastmod>${lastmod}</lastmod>` : ''}
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>`;
+    });
+
+    const xml = `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+${urls.join('\n')}
+</urlset>`;
+
+    res.set('Content-Type', 'application/xml');
+    res.set('Cache-Control', 'public, max-age=3600'); // 1 hour
+    res.send(xml);
+  } catch (e) {
+    console.error('Sitemap products error:', e);
+    res.status(500).send('<?xml version="1.0" encoding="UTF-8"?><error>Internal server error</error>');
+  }
+});
+
+const SITE_CONFIG: Record<string, { baseUrl: string; source?: string; hasBlog: boolean; hasProperties: boolean; hasProducts: boolean }> = {
+  group: { baseUrl: 'https://mrdgngroup.com', source: 'group', hasBlog: true, hasProperties: false, hasProducts: false },
+  construction: { baseUrl: 'https://construction.mrdgngroup.com', source: 'construction', hasBlog: true, hasProperties: false, hasProducts: true },
+  entertainment: { baseUrl: 'https://entertainment.mrdgngroup.com', source: 'entertainment', hasBlog: true, hasProperties: false, hasProducts: false },
+  mansaluxe: { baseUrl: 'https://mansaluxerealty.mrdgngroup.com', source: 'mansaluxe-realty', hasBlog: true, hasProperties: true, hasProducts: false },
 };
 
 /**
@@ -134,6 +170,9 @@ router.get('/index', async (req: Request, res: Response) => {
     }
     if (config.hasProperties) {
       sitemaps.push(`${apiBaseClean}/api/sitemap/properties?baseUrl=${encodeURIComponent(baseUrl)}`);
+    }
+    if (config.hasProducts) {
+      sitemaps.push(`${apiBaseClean}/api/sitemap/products?baseUrl=${encodeURIComponent(baseUrl)}`);
     }
 
     const urls = sitemaps.map((loc) => `  <sitemap>
