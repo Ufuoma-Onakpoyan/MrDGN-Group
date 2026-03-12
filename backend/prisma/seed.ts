@@ -525,6 +525,27 @@ async function main() {
     console.log('Blog posts exist, skipping (' + blogCount + ')');
   }
 
+  // Idempotent: construction promo blog post (Buy 10,000 blocks – Get 30 free + free delivery)
+  const PROMO_SLUG = 'buy-10000-blocks-get-30-free';
+  const existingPromo = await prisma.blogPost.findUnique({ where: { slug: PROMO_SLUG } });
+  const promoImageUrl = 'https://construction.mrdgngroup.com/assets/promo-blocks-offer.png';
+  const promoPost = {
+    slug: PROMO_SLUG,
+    title: 'Buy 10,000 Cement Blocks – Get 30 Free + Free Delivery in Asaba',
+    excerpt: 'Limited-time offer from MR DGN Constructions: order 10,000 cement blocks and get 30 blocks free, plus free delivery within Asaba. Quality blocks for quality homes.',
+    content: `<h2>Special Offer: Buy 10,000 Blocks, Get 30 Free</h2><p>MR DGN Constructions is pleased to announce a limited-time promotion for our customers in Asaba and the surrounding area. When you order <strong>10,000 cement blocks</strong>, you'll receive <strong>30 blocks free</strong> – and we'll deliver at no extra cost within Asaba.</p><h3>Quality Blocks for Quality Homes</h3><p>Our cement blocks are produced to high standards, giving you reliable materials for strong, durable builds. Whether you're working on a residential or commercial project, this offer helps you save while stocking up on quality construction materials.</p><h3>How to Order</h3><p>Contact us via WhatsApp or our contact page to place your order or request a quote. Our team will confirm availability, pricing, and delivery details. Offer valid while stocks last.</p><p><em>Quality blocks for quality homes – MR DGN Constructions, your building materials partner in Asaba.</em></p>`,
+    author: 'MR DGN',
+    tags: JSON.stringify(['Cement Blocks', 'Construction', 'Asaba', 'Promotion', 'Building Materials']),
+    sources: JSON.stringify(['construction']),
+    featuredImageUrl: promoImageUrl,
+    published: true,
+    publishedAt: new Date(),
+  };
+  if (!existingPromo) {
+    await prisma.blogPost.create({ data: promoPost });
+    console.log('Created construction promo blog post:', PROMO_SLUG);
+  }
+
   // Seed filler properties
   const propertyCount = await prisma.property.count();
   if (propertyCount === 0) {
