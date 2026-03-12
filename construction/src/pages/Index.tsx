@@ -15,6 +15,7 @@ const PROMO_POPUP_SESSION_KEY = 'construction_promo_popup_shown';
 
 const Index = () => {
   const [promoPopupOpen, setPromoPopupOpen] = useState(false);
+  const [scrolledPastProducts, setScrolledPastProducts] = useState(false);
   const rootRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -27,6 +28,12 @@ const Index = () => {
       setPromoPopupOpen(true);
     }, 2000);
     return () => clearTimeout(timer);
+  }, []);
+
+  /* iOS Safari: apply below-fold compositing layer after first paint so content is not clipped */
+  useEffect(() => {
+    const t = setTimeout(() => setScrolledPastProducts(true), 150);
+    return () => clearTimeout(t);
   }, []);
 
   // #region agent log
@@ -54,6 +61,8 @@ const Index = () => {
       const docSh = document.documentElement.scrollHeight;
       fetch('http://127.0.0.1:7729/ingest/a34b21ca-c51d-4e94-a26f-273b68fd62c8',{method:'POST',headers:{'Content-Type':'application/json','X-Debug-Session-Id':'361340'},body:JSON.stringify({sessionId:'361340',hypothesisId:'H1',location:'Index.tsx:scroll',message:'Scroll dimensions',data:{scrollY:window.scrollY,bodyScrollHeight:bodySh,docScrollHeight:docSh,innerHeight:window.innerHeight},timestamp:Date.now()})}).catch(()=>{});
       fetch('http://127.0.0.1:7729/ingest/a34b21ca-c51d-4e94-a26f-273b68fd62c8',{method:'POST',headers:{'Content-Type':'application/json','X-Debug-Session-Id':'361340'},body:JSON.stringify({sessionId:'361340',hypothesisId:'H5',location:'Index.tsx:scroll',message:'ProjectGallery in viewport',data:{projectGalleryTop:rect?.top,projectGalleryHeight:rect?.height,scrollY:window.scrollY},timestamp:Date.now()})}).catch(()=>{});
+      const threshold = Math.min(600, window.innerHeight * 0.6);
+      if (window.scrollY >= threshold) setScrolledPastProducts(true);
     };
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
@@ -74,8 +83,8 @@ const Index = () => {
       <AboutUsSection />
       <ServicesOverviewSection />
       <ProductsSection />
-      {/* Single wrapper for iOS Safari: one compositing layer for all content below Products */}
-      <div className="section-ios-paint">
+      {/* iOS Safari: apply compositing layer when user scrolls to force below-fold paint */}
+      <div className={scrolledPastProducts ? 'section-ios-paint' : 'section-ios-paint-placeholder'}>
         <ProjectGallerySection />
         <WhyChooseUsSection />
         <CTASection />

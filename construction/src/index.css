@@ -136,6 +136,7 @@ All colors MUST be HSL.
     min-height: 100vh;
     min-height: -webkit-fill-available;
     height: auto;
+    -webkit-overflow-scrolling: touch;
   }
 
   /* Overflow on wrapper instead of body fixes iOS Safari "white below fold" scroll bug */
@@ -198,13 +199,16 @@ All colors MUST be HSL.
   }
 
   /* Single compositing layer for all content below Products on iOS Safari */
-  .section-ios-paint {
-    transform: translateZ(0);
-    -webkit-transform: translateZ(0);
+  .section-ios-paint,
+  .section-ios-paint-placeholder {
     position: relative;
     z-index: 1;
     min-height: 1px;
     background-color: hsl(var(--background));
+  }
+  .section-ios-paint {
+    transform: translateZ(0);
+    -webkit-transform: translateZ(0);
   }
 }
 
