@@ -32,7 +32,10 @@ const ScrollToTop = () => {
   const { pathname } = useLocation();
 
   useEffect(() => {
-    window.scrollTo(0, 0);
+    const isIos = document.documentElement.classList.contains('ios-safari');
+    const scrollRoot = document.getElementById('app-wrap');
+    if (isIos && scrollRoot) scrollRoot.scrollTo(0, 0);
+    else window.scrollTo(0, 0);
   }, [pathname]);
 
   return null;

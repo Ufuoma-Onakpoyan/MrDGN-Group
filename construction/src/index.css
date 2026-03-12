@@ -122,7 +122,6 @@ All colors MUST be HSL.
 
   html {
     scroll-behavior: smooth;
-    /* Avoid overflow on html/body so iOS Safari computes scroll height correctly */
     min-height: 100%;
     min-height: 100vh;
     min-height: -webkit-fill-available;
@@ -139,7 +138,6 @@ All colors MUST be HSL.
     -webkit-overflow-scrolling: touch;
   }
 
-  /* Overflow on wrapper instead of body fixes iOS Safari "white below fold" scroll bug */
   #app-wrap {
     overflow-x: hidden;
     min-height: 100%;
@@ -150,6 +148,30 @@ All colors MUST be HSL.
     min-height: 100%;
     min-height: 100vh;
     min-height: -webkit-fill-available;
+  }
+
+  /* iOS only: fixed scroll container so content below fold paints (document scroll bug workaround) */
+  .ios-safari html {
+    height: 100%;
+    overflow: hidden;
+  }
+  .ios-safari body {
+    height: 100%;
+    overflow: hidden;
+  }
+  .ios-safari #app-wrap {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow-y: auto;
+    overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
+    min-height: 100%;
+  }
+  .ios-safari #root {
+    min-height: 100%;
   }
 
   /* Clear heading hierarchy and readable line length */
