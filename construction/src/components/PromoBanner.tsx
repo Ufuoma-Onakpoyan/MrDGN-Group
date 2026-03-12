@@ -9,10 +9,10 @@ const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent
 
 const PromoBanner = () => {
   return (
-    <section className="bg-gradient-to-r from-primary to-primary/90 text-primary-foreground border-b border-primary-foreground/20">
+    <section className="bg-gradient-to-r from-primary to-primary/90 text-primary-foreground border-b border-primary-foreground/20 pt-16">
       <div className="container mx-auto px-4 py-4">
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 text-center sm:text-left">
-          <p className="text-base md:text-lg font-bold shrink-0">
+          <p className="text-lg md:text-xl font-bold shrink-0">
             Buy 10,000 Cement Blocks – Get 30 Blocks Free + Free Delivery in Asaba
           </p>
           <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-3">
