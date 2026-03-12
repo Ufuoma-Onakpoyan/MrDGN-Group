@@ -4,7 +4,7 @@ import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
 
 const WHATSAPP_NUMBER = '2348135324467';
-const PROMO_MESSAGE = "Hi, I'm interested in the offer: Buy 10,000 cement blocks, get 30 free with free delivery in Asaba. Please send me a quote.";
+const PROMO_MESSAGE = "Hi, I'm interested in the offer: Buy 10,000 cement blocks, get 30 free. Free delivery only within Asaba and Okpanam. Please send me a quote.";
 const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(PROMO_MESSAGE)}`;
 
 const PromoBanner = () => {
@@ -13,7 +13,7 @@ const PromoBanner = () => {
       <div className="container mx-auto px-3 py-2 sm:py-2.5">
         <div className="flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-4 text-center sm:text-left">
           <p className="text-base md:text-lg font-bold shrink-0">
-            Buy 10,000 Cement Blocks – Get 30 Blocks Free + Free Delivery in Asaba
+            Buy 10,000 Cement Blocks – Get 30 Free. Free Delivery Only Within Asaba & Okpanam
           </p>
           <div className="flex items-center justify-center gap-2 shrink-0">
             <Button

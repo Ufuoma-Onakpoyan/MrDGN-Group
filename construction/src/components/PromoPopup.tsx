@@ -3,7 +3,7 @@ import { X, MessageCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 const WHATSAPP_NUMBER = '2348135324467';
-const PROMO_MESSAGE = "Hi, I'm interested in the offer: Buy 10,000 cement blocks, get 30 free with free delivery in Asaba. Please send me a quote.";
+const PROMO_MESSAGE = "Hi, I'm interested in the offer: Buy 10,000 cement blocks, get 30 free. Free delivery only within Asaba and Okpanam. Please send me a quote.";
 const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(PROMO_MESSAGE)}`;
 
 interface PromoPopupProps {
@@ -38,7 +38,7 @@ const PromoPopup = ({ isOpen, onClose }: PromoPopupProps) => {
           />
           <div className="p-6 pt-4 text-center">
             <p className="text-muted-foreground text-sm mb-4">
-              Quality Blocks for Quality Homes. Limited-time offer – order now.
+              Quality Blocks for Quality Homes. Free delivery only within Asaba & Okpanam. Limited-time offer – order now.
             </p>
             <Button
               asChild
