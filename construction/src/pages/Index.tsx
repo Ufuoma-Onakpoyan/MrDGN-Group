@@ -21,7 +21,7 @@ const Index = () => {
   }, []);
 
   useEffect(() => {
-    if (sessionStorage.getItem(PROMO_POPUP_SESSION_KEY)) return;
+    sessionStorage.removeItem(PROMO_POPUP_SESSION_KEY);
     const timer = setTimeout(() => {
       setPromoPopupOpen(true);
     }, 2000);
