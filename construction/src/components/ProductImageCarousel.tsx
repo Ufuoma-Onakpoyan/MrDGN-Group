@@ -92,13 +92,17 @@ export function ProductImageCarousel({
   // This sidesteps known iOS issues with carousels (ResizeObserver, transforms, large images).
   if (isIosSafari || images.length === 1) {
     return (
-      <div className={`relative overflow-hidden bg-muted flex items-center justify-center ${className}`}>
+      <div
+        className={`relative overflow-hidden bg-muted flex items-center justify-center max-w-full ${className}`}
+        style={{ touchAction: 'manipulation' } as React.CSSProperties}
+      >
         <img
           src={images[0]}
           alt={alt}
           loading="lazy"
           decoding="async"
-          className="w-full h-full max-h-[260px] object-contain bg-muted"
+          className="max-w-full w-full h-full max-h-[260px] object-contain bg-muted pointer-events-none select-none"
+          draggable={false}
         />
       </div>
     );

@@ -194,9 +194,14 @@ All colors MUST be HSL.
     @apply transition-all duration-300;
   }
 
-  /* Hover effects */
+  /* Hover effects: scale only when device supports hover (avoids sticky scale on touch) */
   .hover-lift {
-    @apply transition-all duration-300 hover:transform hover:scale-105 hover:shadow-xl;
+    @apply transition-all duration-300;
+  }
+  @media (hover: hover) {
+    .hover-lift:hover {
+      @apply transform scale-105 shadow-xl;
+    }
   }
 
   .hover-glow {
