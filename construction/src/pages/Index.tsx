@@ -38,9 +38,7 @@ const Index = () => {
       <Navigation />
       <PromoBanner />
       <PromoPopup isOpen={promoPopupOpen} onClose={handleClosePromoPopup} />
-      <div className="mt-6 md:mt-8 lg:mt-12">
-        <HeroSection />
-      </div>
+      <HeroSection />
       <AboutUsSection />
       <ServicesOverviewSection />
       <ProductsSection />
