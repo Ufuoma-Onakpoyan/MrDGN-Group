@@ -31,7 +31,6 @@ export function ProductImageCarousel({
   const [isIosSafari, setIsIosSafari] = useState(false);
   const [staticIndex, setStaticIndex] = useState(0);
 
-  // #region agent log
   useEffect(() => {
     const ua = typeof navigator !== 'undefined' ? navigator.userAgent : '';
     const isIos =
@@ -40,31 +39,7 @@ export function ProductImageCarousel({
         (navigator as any).platform === 'MacIntel' &&
         (navigator as any).maxTouchPoints > 1);
     setIsIosSafari(isIos);
-
-    try {
-      fetch('http://127.0.0.1:7729/ingest/a34b21ca-c51d-4e94-a26f-273b68fd62c8', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'X-Debug-Session-Id': '361340',
-        },
-        body: JSON.stringify({
-          sessionId: '361340',
-          hypothesisId: 'CAROUSEL_ENV',
-          location: 'ProductImageCarousel.tsx:env',
-          message: 'Carousel environment',
-          data: {
-            isIosSafari: isIos,
-            imagesLength: images?.length ?? 0,
-          },
-          timestamp: Date.now(),
-        }),
-      }).catch(() => {});
-    } catch {
-      // ignore
-    }
-  }, [images?.length]);
-  // #endregion
+  }, []);
 
   useEffect(() => {
     if (!api) return;

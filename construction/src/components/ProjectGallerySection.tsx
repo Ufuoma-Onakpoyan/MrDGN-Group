@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Instagram } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
@@ -7,12 +7,6 @@ import { useConstructionProjects } from '@/hooks/useConstructionProjects';
 const ProjectGallerySection = () => {
   const { data: projects = [] } = useConstructionProjects();
   const displayProjects = projects.slice(0, 6);
-
-  // #region agent log
-  useEffect(() => {
-    fetch('http://127.0.0.1:7729/ingest/a34b21ca-c51d-4e94-a26f-273b68fd62c8',{method:'POST',headers:{'Content-Type':'application/json','X-Debug-Session-Id':'361340'},body:JSON.stringify({sessionId:'361340',hypothesisId:'H3',location:'ProjectGallerySection.tsx:mount',message:'Section mounted',data:{mounted:true},timestamp:Date.now()})}).catch(()=>{});
-  }, []);
-  // #endregion
 
   return (
     <section data-section="project-gallery" className="py-16 bg-muted/30">
