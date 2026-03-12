@@ -30,6 +30,7 @@ export function ProductImageCarousel({
   const [current, setCurrent] = useState(0);
   const [isIosSafari, setIsIosSafari] = useState(false);
   const [staticIndex, setStaticIndex] = useState(0);
+  const [slideDirection, setSlideDirection] = useState<1 | -1>(1);
 
   useEffect(() => {
     const ua = typeof navigator !== 'undefined' ? navigator.userAgent : '';
@@ -84,13 +85,16 @@ export function ProductImageCarousel({
           } as React.CSSProperties
         }
       >
-        <div className="absolute inset-0 flex items-center justify-center">
+        <div
+          className={`absolute inset-0 flex items-center justify-center overflow-hidden ${slideDirection === 1 ? 'carousel-static-slide-next' : 'carousel-static-slide-prev'}`}
+        >
           <img
+            key={idx}
             src={images[idx]}
             alt={alt}
             loading="lazy"
             decoding="async"
-            className="max-w-full max-h-full w-auto h-auto object-contain bg-muted pointer-events-none select-none"
+            className="carousel-static-img max-w-full max-h-full w-auto h-auto object-contain bg-muted pointer-events-none select-none"
             style={{ maxHeight: '260px' }}
             draggable={false}
           />
@@ -102,7 +106,12 @@ export function ProductImageCarousel({
               variant="secondary"
               size="icon"
               className="absolute left-2 top-1/2 -translate-y-1/2 h-8 w-8 rounded-full bg-black/50 hover:bg-black/70 text-white border-0 z-10 touch-manipulation"
-              onClick={(e) => { e.preventDefault(); e.stopPropagation(); setStaticIndex((i) => i - 1); }}
+              onClick={(e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                setSlideDirection(-1);
+                setStaticIndex((i) => i - 1);
+              }}
               aria-label="Previous image"
             >
               <ChevronLeft className="h-4 w-4" />
@@ -112,7 +121,12 @@ export function ProductImageCarousel({
               variant="secondary"
               size="icon"
               className="absolute right-2 top-1/2 -translate-y-1/2 h-8 w-8 rounded-full bg-black/50 hover:bg-black/70 text-white border-0 z-10 touch-manipulation"
-              onClick={(e) => { e.preventDefault(); e.stopPropagation(); setStaticIndex((i) => i + 1); }}
+              onClick={(e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                setSlideDirection(1);
+                setStaticIndex((i) => i + 1);
+              }}
               aria-label="Next image"
             >
               <ChevronRight className="h-4 w-4" />

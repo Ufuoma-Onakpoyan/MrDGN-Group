@@ -248,6 +248,34 @@ All colors MUST be HSL.
     transform: translateZ(0);
     -webkit-transform: translateZ(0);
   }
+
+  /* iOS static carousel: slide transition when changing image (no Embla) */
+  .carousel-static-slide-next .carousel-static-img {
+    animation: carouselSlideInFromRight 0.35s ease-out;
+  }
+  .carousel-static-slide-prev .carousel-static-img {
+    animation: carouselSlideInFromLeft 0.35s ease-out;
+  }
+  @keyframes carouselSlideInFromRight {
+    from {
+      opacity: 0;
+      transform: translateX(24px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  @keyframes carouselSlideInFromLeft {
+    from {
+      opacity: 0;
+      transform: translateX(-24px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
 }
 
 @layer utilities {
