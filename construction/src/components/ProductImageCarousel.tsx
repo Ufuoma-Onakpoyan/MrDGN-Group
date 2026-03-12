@@ -28,6 +28,42 @@ export function ProductImageCarousel({
 }: ProductImageCarouselProps) {
   const [api, setApi] = useState<CarouselApi | null>(null);
   const [current, setCurrent] = useState(0);
+  const [isIosSafari, setIsIosSafari] = useState(false);
+
+  // #region agent log
+  useEffect(() => {
+    const ua = typeof navigator !== 'undefined' ? navigator.userAgent : '';
+    const isIos =
+      /iPad|iPhone|iPod/.test(ua) ||
+      (typeof navigator !== 'undefined' &&
+        (navigator as any).platform === 'MacIntel' &&
+        (navigator as any).maxTouchPoints > 1);
+    setIsIosSafari(isIos);
+
+    try {
+      fetch('http://127.0.0.1:7729/ingest/a34b21ca-c51d-4e94-a26f-273b68fd62c8', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'X-Debug-Session-Id': '361340',
+        },
+        body: JSON.stringify({
+          sessionId: '361340',
+          hypothesisId: 'CAROUSEL_ENV',
+          location: 'ProductImageCarousel.tsx:env',
+          message: 'Carousel environment',
+          data: {
+            isIosSafari: isIos,
+            imagesLength: images?.length ?? 0,
+          },
+          timestamp: Date.now(),
+        }),
+      }).catch(() => {});
+    } catch {
+      // ignore
+    }
+  }, [images?.length]);
+  // #endregion
 
   useEffect(() => {
     if (!api) return;
@@ -52,13 +88,17 @@ export function ProductImageCarousel({
     );
   }
 
-  if (images.length === 1) {
+  // On iOS Safari, avoid Embla carousel entirely and render a single static image.
+  // This sidesteps known iOS issues with carousels (ResizeObserver, transforms, large images).
+  if (isIosSafari || images.length === 1) {
     return (
       <div className={`relative overflow-hidden bg-muted flex items-center justify-center ${className}`}>
         <img
           src={images[0]}
           alt={alt}
-          className="w-full h-full object-contain bg-muted"
+          loading="lazy"
+          decoding="async"
+          className="w-full h-full max-h-[260px] object-contain bg-muted"
         />
       </div>
     );
@@ -86,7 +126,9 @@ export function ProductImageCarousel({
                 <img
                   src={src}
                   alt={`${alt} - image ${index + 1}`}
-                  className="w-full h-full object-contain select-none"
+                  loading="lazy"
+                  decoding="async"
+                  className="w-full h-full max-h-[260px] object-contain select-none"
                 />
               </div>
             </CarouselItem>

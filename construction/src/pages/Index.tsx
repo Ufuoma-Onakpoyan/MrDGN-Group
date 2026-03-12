@@ -14,7 +14,7 @@ import Footer from '@/components/Footer';
 const PROMO_POPUP_SESSION_KEY = 'construction_promo_popup_shown';
 
 /** Set to true to hide "Our Building Materials" carousel and test if iOS white screen disappears */
-const DISABLE_CAROUSEL_SECTION = true;
+const DISABLE_CAROUSEL_SECTION = false;
 
 const Index = () => {
   const [promoPopupOpen, setPromoPopupOpen] = useState(false);
