@@ -13,6 +13,9 @@ import Footer from '@/components/Footer';
 
 const PROMO_POPUP_SESSION_KEY = 'construction_promo_popup_shown';
 
+/** Set to true to hide "Our Building Materials" carousel and test if iOS white screen disappears */
+const DISABLE_CAROUSEL_SECTION = true;
+
 const Index = () => {
   const [promoPopupOpen, setPromoPopupOpen] = useState(false);
   const [scrolledPastProducts, setScrolledPastProducts] = useState(false);
@@ -82,7 +85,12 @@ const Index = () => {
       <HeroSection />
       <AboutUsSection />
       <ServicesOverviewSection />
-      <ProductsSection />
+      {!DISABLE_CAROUSEL_SECTION && <ProductsSection />}
+      {DISABLE_CAROUSEL_SECTION && (
+        <section className="py-16 bg-background text-center text-muted-foreground">
+          <p>[Our Building Materials — temporarily hidden for iOS test]</p>
+        </section>
+      )}
       {/* iOS Safari: apply compositing layer when user scrolls to force below-fold paint */}
       <div className={scrolledPastProducts ? 'section-ios-paint' : 'section-ios-paint-placeholder'}>
         <ProjectGallerySection />
