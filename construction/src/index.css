@@ -194,14 +194,25 @@ All colors MUST be HSL.
     @apply transition-all duration-300;
   }
 
-  /* Hover effects: scale only when device supports hover (avoids sticky scale on touch) */
+  /* Hover effects: scale only for fine pointer (mouse), never for touch (avoids carousel growing) */
   .hover-lift {
     @apply transition-all duration-300;
   }
-  @media (hover: hover) {
+  @media (pointer: fine) {
     .hover-lift:hover {
       @apply transform scale-105 shadow-xl;
     }
+  }
+
+  /* Product card media: no scale, no touch zoom, strict containment */
+  .product-card-media {
+    touch-action: manipulation;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    user-select: none;
+    contain: layout paint;
+    overflow: hidden;
+    max-width: 100%;
   }
 
   .hover-glow {

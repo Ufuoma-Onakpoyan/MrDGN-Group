@@ -29,6 +29,7 @@ export function ProductImageCarousel({
   const [api, setApi] = useState<CarouselApi | null>(null);
   const [current, setCurrent] = useState(0);
   const [isIosSafari, setIsIosSafari] = useState(false);
+  const [staticIndex, setStaticIndex] = useState(0);
 
   // #region agent log
   useEffect(() => {
@@ -88,28 +89,67 @@ export function ProductImageCarousel({
     );
   }
 
-  // On iOS Safari, avoid Embla carousel entirely and render a single static image.
-  // This sidesteps known iOS issues with carousels (ResizeObserver, transforms, large images).
+  // On iOS Safari, avoid Embla carousel entirely; show one image at a time with tap-to-cycle.
+  // Fixed-size container prevents any touch-induced growth; no transform/scale.
   if (isIosSafari || images.length === 1) {
+    const idx = images.length === 1 ? 0 : (staticIndex % images.length + images.length) % images.length;
+    const hasMultiple = images.length > 1;
+
     return (
       <div
-        className={`relative overflow-hidden bg-muted flex items-center justify-center max-w-full ${className}`}
-        style={{ touchAction: 'manipulation' } as React.CSSProperties}
+        className={`product-card-media relative bg-muted ${className}`}
+        style={
+          {
+            touchAction: 'manipulation',
+            WebkitTouchCallout: 'none',
+            userSelect: 'none',
+            overflow: 'hidden',
+            maxWidth: '100%',
+            minHeight: 0,
+          } as React.CSSProperties
+        }
       >
-        <img
-          src={images[0]}
-          alt={alt}
-          loading="lazy"
-          decoding="async"
-          className="max-w-full w-full h-full max-h-[260px] object-contain bg-muted pointer-events-none select-none"
-          draggable={false}
-        />
+        <div className="absolute inset-0 flex items-center justify-center">
+          <img
+            src={images[idx]}
+            alt={alt}
+            loading="lazy"
+            decoding="async"
+            className="max-w-full max-h-full w-auto h-auto object-contain bg-muted pointer-events-none select-none"
+            style={{ maxHeight: '260px' }}
+            draggable={false}
+          />
+        </div>
+        {hasMultiple && showButtons && (
+          <>
+            <Button
+              type="button"
+              variant="secondary"
+              size="icon"
+              className="absolute left-2 top-1/2 -translate-y-1/2 h-8 w-8 rounded-full bg-black/50 hover:bg-black/70 text-white border-0 z-10 touch-manipulation"
+              onClick={(e) => { e.preventDefault(); e.stopPropagation(); setStaticIndex((i) => i - 1); }}
+              aria-label="Previous image"
+            >
+              <ChevronLeft className="h-4 w-4" />
+            </Button>
+            <Button
+              type="button"
+              variant="secondary"
+              size="icon"
+              className="absolute right-2 top-1/2 -translate-y-1/2 h-8 w-8 rounded-full bg-black/50 hover:bg-black/70 text-white border-0 z-10 touch-manipulation"
+              onClick={(e) => { e.preventDefault(); e.stopPropagation(); setStaticIndex((i) => i + 1); }}
+              aria-label="Next image"
+            >
+              <ChevronRight className="h-4 w-4" />
+            </Button>
+          </>
+        )}
       </div>
     );
   }
 
   return (
-    <div className={`relative overflow-hidden bg-muted min-h-[200px] ${className}`}>
+    <div className={`product-card-media relative overflow-hidden bg-muted min-h-[200px] ${className}`}>
       <Carousel
         setApi={setApi}
         opts={{
