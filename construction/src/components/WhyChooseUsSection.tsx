@@ -1,9 +1,15 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Award, Clock, Users, Shield, CheckCircle, Star, Building2 } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 
 const WhyChooseUsSection = () => {
   const [imageError, setImageError] = useState(false);
+
+  // #region agent log
+  useEffect(() => {
+    fetch('http://127.0.0.1:7729/ingest/a34b21ca-c51d-4e94-a26f-273b68fd62c8',{method:'POST',headers:{'Content-Type':'application/json','X-Debug-Session-Id':'361340'},body:JSON.stringify({sessionId:'361340',hypothesisId:'H3',location:'WhyChooseUsSection.tsx:mount',message:'Section mounted',data:{mounted:true},timestamp:Date.now()})}).catch(()=>{});
+  }, []);
+  // #endregion
   const reasons = [
     {
       icon: Award,
@@ -38,7 +44,7 @@ const WhyChooseUsSection = () => {
   ];
 
   return (
-    <section className="py-16 bg-background">
+    <section data-section="why-choose-us" className="py-16 bg-background">
       <div className="container mx-auto px-6">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
