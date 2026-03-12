@@ -75,15 +75,15 @@ const ProductsSection = () => {
 
         {displayProducts.length > 0 ? (
           <>
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12 min-h-[280px]">
               {displayProducts.map((product) => (
                 <Link key={product.id} to={`/products/${product.slug || product.id}`} className="block group">
                   <Card className="card-elevated hover-lift text-center overflow-hidden rounded-xl border-border/60 shadow-md hover:shadow-xl transition-shadow duration-300 h-full">
-                    <div className="relative aspect-[4/3] bg-muted/80 overflow-hidden">
+                    <div className="relative aspect-[4/3] bg-muted/80 overflow-hidden min-h-[200px]">
                       <ProductImageCarousel
                         images={resolveImageUrls(product.images || [], API_BASE)}
                         alt={product.title}
-                        className="aspect-[4/3] w-full h-full"
+                        className="aspect-[4/3] w-full h-full min-h-[200px]"
                         showButtons={true}
                         showDots={true}
                       />

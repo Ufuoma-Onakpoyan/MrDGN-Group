@@ -34,7 +34,7 @@ const Index = () => {
   };
 
   return (
-    <div className="min-h-screen overflow-x-hidden min-w-0">
+    <div className="min-h-screen overflow-x-hidden min-w-0 bg-background">
       <Navigation />
       <PromoBanner />
       <PromoPopup isOpen={promoPopupOpen} onClose={handleClosePromoPopup} />

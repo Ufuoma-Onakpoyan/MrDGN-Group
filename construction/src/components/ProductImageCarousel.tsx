@@ -65,7 +65,7 @@ export function ProductImageCarousel({
   }
 
   return (
-    <div className={`relative overflow-hidden bg-muted ${className}`}>
+    <div className={`relative overflow-hidden bg-muted min-h-[200px] ${className}`}>
       <Carousel
         setApi={setApi}
         opts={{

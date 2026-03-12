@@ -92,6 +92,7 @@ All colors MUST be HSL.
     scroll-behavior: smooth;
     overflow-x: hidden;
     max-width: 100vw;
+    min-height: 100%;
   }
 
   body {
@@ -99,6 +100,7 @@ All colors MUST be HSL.
     position: relative;
     overflow-x: hidden;
     max-width: 100vw;
+    min-height: 100%;
   }
 
   /* Subtle mouse spotlight – mature business look */
@@ -143,6 +145,7 @@ All colors MUST be HSL.
   #root {
     position: relative;
     z-index: 3;
+    min-height: 100%;
   }
 
   /* Tasteful link and interactive transitions */

@@ -1,8 +1,9 @@
-import React from 'react';
-import { Award, Clock, Users, Shield, CheckCircle, Star } from 'lucide-react';
+import React, { useState } from 'react';
+import { Award, Clock, Users, Shield, CheckCircle, Star, Building2 } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 
 const WhyChooseUsSection = () => {
+  const [imageError, setImageError] = useState(false);
   const reasons = [
     {
       icon: Award,
@@ -50,12 +51,22 @@ const WhyChooseUsSection = () => {
 
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Image - same as Our Story on About Us */}
-          <div className="order-2 lg:order-1">
-            <img
-              src="/our-story-premises.png"
-              alt="Mr DGN construction and developers limited – our premises"
-              className="w-full h-[400px] object-cover rounded-lg shadow-lg"
-            />
+          <div className="order-2 lg:order-1 min-h-[240px]">
+            {!imageError ? (
+              <img
+                src="/our-story-premises.png"
+                alt="Mr DGN construction and developers limited – our premises"
+                className="w-full h-[400px] object-cover rounded-lg shadow-lg"
+                onError={() => setImageError(true)}
+              />
+            ) : (
+              <div className="w-full h-[400px] min-h-[240px] flex items-center justify-center bg-muted rounded-lg shadow-lg text-muted-foreground">
+                <div className="text-center px-4">
+                  <Building2 className="h-16 w-16 mx-auto mb-3 opacity-50" />
+                  <p className="text-sm">Our premises</p>
+                </div>
+              </div>
+            )}
           </div>
 
           {/* Reasons Grid */}
