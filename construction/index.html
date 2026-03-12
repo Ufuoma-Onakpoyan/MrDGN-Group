@@ -81,7 +81,10 @@
   </head>
 
   <body>
-    <div id="root"></div>
+    <!-- Wrapper for overflow-x so body scroll height is correct on iOS Safari -->
+    <div id="app-wrap">
+      <div id="root"></div>
+    </div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

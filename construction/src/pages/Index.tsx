@@ -66,7 +66,7 @@ const Index = () => {
   };
 
   return (
-    <div ref={rootRef} className="min-h-screen overflow-x-hidden min-w-0 bg-background">
+    <div ref={rootRef} className="min-h-screen overflow-x-hidden min-w-0 bg-background relative z-0 isolate">
       <Navigation />
       <PromoBanner />
       <PromoPopup isOpen={promoPopupOpen} onClose={handleClosePromoPopup} />

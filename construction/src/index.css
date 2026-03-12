@@ -122,24 +122,33 @@ All colors MUST be HSL.
 
   html {
     scroll-behavior: smooth;
-    overflow-x: hidden;
+    /* Avoid overflow on html/body so iOS Safari computes scroll height correctly */
     min-height: 100%;
     min-height: 100vh;
+    min-height: -webkit-fill-available;
     height: auto;
   }
 
   body {
     @apply bg-background text-foreground antialiased;
     font-feature-settings: "rlig" 1, "calt" 1;
-    overflow-x: hidden;
     max-width: 100vw;
     min-height: 100vh;
+    min-height: -webkit-fill-available;
     height: auto;
+  }
+
+  /* Overflow on wrapper instead of body fixes iOS Safari "white below fold" scroll bug */
+  #app-wrap {
+    overflow-x: hidden;
+    min-height: 100%;
+    width: 100%;
   }
 
   #root {
     min-height: 100%;
     min-height: 100vh;
+    min-height: -webkit-fill-available;
   }
 
   /* Clear heading hierarchy and readable line length */
