@@ -96,14 +96,13 @@ const VideoModal = ({ isOpen, onClose }: VideoModalProps) => {
         {/* Navigation bar */}
         <div className="flex items-center justify-between gap-4 bg-neutral-900 px-4 py-3">
           <Button
-            variant="outline"
-            size="sm"
+            type="button"
             onClick={goPrev}
             disabled={!hasPrev}
-            className="gap-2 text-white border-white/30 hover:bg-white/10 hover:border-white/50 disabled:opacity-40"
+            className="gap-2 bg-neutral-700 text-white border border-neutral-600 hover:bg-neutral-600 disabled:opacity-40 disabled:cursor-not-allowed min-w-[100px]"
           >
-            <ChevronLeft className="h-4 w-4" />
-            Previous
+            <ChevronLeft className="h-4 w-4 shrink-0" />
+            <span>Back</span>
           </Button>
           <div className="flex gap-1.5">
             {VIDEOS.map((_, i) => (
@@ -121,14 +120,13 @@ const VideoModal = ({ isOpen, onClose }: VideoModalProps) => {
             ))}
           </div>
           <Button
-            variant="outline"
-            size="sm"
+            type="button"
             onClick={goNext}
             disabled={!hasNext}
-            className="gap-2 text-white border-white/30 hover:bg-white/10 hover:border-white/50 disabled:opacity-40"
+            className="gap-2 bg-neutral-700 text-white border border-neutral-600 hover:bg-neutral-600 disabled:opacity-40 disabled:cursor-not-allowed min-w-[100px]"
           >
-            Next
-            <ChevronRight className="h-4 w-4" />
+            <span>Next</span>
+            <ChevronRight className="h-4 w-4 shrink-0" />
           </Button>
         </div>
       </div>

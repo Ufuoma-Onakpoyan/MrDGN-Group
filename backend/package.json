@@ -23,7 +23,6 @@
     "@types/jsonwebtoken": "^9.0.5",
     "@types/multer": "^1.4.11",
     "@types/node": "^22.9.0",
-    "cloudinary": "^2.5.1",
     "bcryptjs": "^2.4.3",
     "cloudinary": "^2.9.0",
     "cors": "^2.8.5",
@@ -32,6 +31,7 @@
     "jsonwebtoken": "^9.0.2",
     "mrdgn-websites": "file:..",
     "multer": "^1.4.5-lts.1",
+    "resend": "^4.8.0",
     "zod": "^3.23.8"
   },
   "devDependencies": {

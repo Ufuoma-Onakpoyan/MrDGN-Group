@@ -10,31 +10,29 @@ const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent
 const PromoBanner = () => {
   return (
     <section className="bg-gradient-to-r from-primary to-primary/90 text-primary-foreground border-b border-primary-foreground/20 pt-16">
-      <div className="container mx-auto px-4 py-4">
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 text-center sm:text-left">
-          <p className="text-lg md:text-xl font-bold shrink-0">
+      <div className="container mx-auto px-3 py-2 sm:py-2.5">
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-4 text-center sm:text-left">
+          <p className="text-base md:text-lg font-bold shrink-0">
             Buy 10,000 Cement Blocks – Get 30 Blocks Free + Free Delivery in Asaba
           </p>
-          <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-3">
+          <div className="flex items-center justify-center gap-2 shrink-0">
             <Button
               asChild
               size="sm"
-              variant="secondary"
-              className="bg-white text-primary hover:bg-white/90 font-semibold shadow-md"
+              className="bg-white text-primary hover:bg-white/90 font-semibold shadow-md border-0 h-8 px-3 text-sm"
             >
               <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer">
-                <MessageCircle className="mr-2 h-4 w-4" />
+                <MessageCircle className="mr-1.5 h-4 w-4 shrink-0" />
                 Order Blocks Now
               </a>
             </Button>
             <Button
               asChild
               size="sm"
-              variant="outline"
-              className="border-primary-foreground/50 text-primary-foreground hover:bg-primary-foreground/10"
+              className="bg-white/95 text-primary hover:bg-white font-semibold shadow-md border-0 h-8 px-3 text-sm"
             >
-              <Link to="/contact-us#contact">
-                <FileText className="mr-2 h-4 w-4" />
+              <Link to="/contact-us#contact" className="text-primary">
+                <FileText className="mr-1.5 h-4 w-4 shrink-0" />
                 Request Quote
               </Link>
             </Button>

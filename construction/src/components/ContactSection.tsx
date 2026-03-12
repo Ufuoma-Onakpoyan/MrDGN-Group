@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Phone, Mail, MapPin, Clock, Send, ChevronDown, MessageCircle } from 'lucide-react';
+import { Phone, Mail, MapPin, Clock, Send, MessageCircle, FileText } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
@@ -10,10 +10,17 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { useToast } from '@/hooks/use-toast';
 import MapComponent from './MapComponent';
 
+declare global {
+  interface Window {
+    gtag?: (command: string, ...args: unknown[]) => void;
+  }
+}
+
 const ContactSection = () => {
   const navigate = useNavigate();
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitSuccess, setSubmitSuccess] = useState(false);
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -89,9 +96,15 @@ const ContactSection = () => {
         });
       }
 
-      navigate('/contact-us/thank-you');
+      // Google Analytics: track quote request and project type for analysis
+      if (typeof window.gtag === 'function') {
+        window.gtag('event', 'generate_lead', {
+          form_name: 'request_quote',
+          project_type: formData.projectType || 'not_specified',
+        });
+      }
 
-      // Reset form
+      setSubmitSuccess(true);
       setFormData({
         firstName: '',
         lastName: '',
@@ -100,6 +113,10 @@ const ContactSection = () => {
         projectType: '',
         message: ''
       });
+
+      setTimeout(() => {
+        navigate('/contact-us/thank-you');
+      }, 2000);
     } catch (error) {
       console.error('Error sending message:', error);
       toast({
@@ -116,12 +133,12 @@ const ContactSection = () => {
     <section id="contact" className="py-20 bg-background">
       <div className="container mx-auto px-4">
         {/* Section Header */}
-        <div className="text-center mb-16">
+        <div className="text-center mb-12">
           <h2 className="text-4xl lg:text-5xl font-bold mb-4">
             Get In <span className="text-primary">Touch</span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Get building materials or discuss your construction project. We're in Asaba; we serve Delta and Nigeria.
+            Request a quote for building materials or tell us about your construction project. We're in Asaba; we serve Delta and Nigeria.
           </p>
         </div>
 
@@ -173,16 +190,30 @@ const ContactSection = () => {
             </div>
           </div>
 
-          {/* Contact Form */}
+          {/* Request Quote Section */}
           <div className="lg:col-span-2">
             <Card className="card-elevated">
               <CardHeader>
-                <CardTitle className="text-2xl">Send Us A Message</CardTitle>
+                <div className="flex items-center gap-2">
+                  <FileText className="h-7 w-7 text-primary" />
+                  <CardTitle className="text-2xl">Request a Quote</CardTitle>
+                </div>
                 <CardDescription>
-                  Fill out the form below and we'll get back to you within 24 hours.
+                  Fill out the form below to request a quote for building materials or a construction project. We'll confirm receipt and get back to you within 24 hours.
                 </CardDescription>
               </CardHeader>
               <CardContent>
+                {submitSuccess ? (
+                  <div className="py-8 text-center space-y-4">
+                    <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary/10 mx-auto">
+                      <Send className="h-8 w-8 text-primary" />
+                    </div>
+                    <h3 className="text-xl font-semibold">Quote request received</h3>
+                    <p className="text-muted-foreground">
+                      Thank you. We've received your request and will respond within 24 hours. Redirecting you to the confirmation page...
+                    </p>
+                  </div>
+                ) : (
                 <form onSubmit={handleSubmit} className="space-y-6">
                   <div className="grid md:grid-cols-2 gap-4">
                     <div className="space-y-2">
@@ -246,10 +277,16 @@ const ContactSection = () => {
                     </div>
                   </div>
 
-                  <div className="space-y-2">
-                    <Label htmlFor="projectType">Project Type</Label>
-                    <Select onValueChange={(value) => setFormData(prev => ({ ...prev, projectType: value }))}>
-                      <SelectTrigger>
+                  {/* Project type inquiries – helps us route your request and improve our service */}
+                  <div className="space-y-2 rounded-lg border border-border/50 bg-muted/30 p-4">
+                    <Label htmlFor="projectType" className="text-base font-medium">
+                      Project type (optional)
+                    </Label>
+                    <p className="text-sm text-muted-foreground mb-2">
+                      Select the type of project or inquiry so we can respond with the right information and help us understand how we can serve you better.
+                    </p>
+                    <Select value={formData.projectType || undefined} onValueChange={(value) => setFormData(prev => ({ ...prev, projectType: value }))}>
+                      <SelectTrigger id="projectType">
                         <SelectValue placeholder="Select your project type" />
                       </SelectTrigger>
                       <SelectContent>
@@ -258,6 +295,7 @@ const ContactSection = () => {
                         <SelectItem value="infrastructure">🛣️ Infrastructure & Roads</SelectItem>
                         <SelectItem value="renovation">🔨 Renovation & Remodeling</SelectItem>
                         <SelectItem value="consultation">💼 Design Consultation</SelectItem>
+                        <SelectItem value="materials">📦 Building Materials / Quote only</SelectItem>
                         <SelectItem value="other">📋 Other (Please specify in message)</SelectItem>
                       </SelectContent>
                     </Select>
@@ -280,10 +318,11 @@ const ContactSection = () => {
                     className="btn-construction w-full group" 
                     disabled={isSubmitting}
                   >
-                    {isSubmitting ? 'Sending...' : 'Send Message'}
+                    {isSubmitting ? 'Sending...' : 'Submit quote request'}
                     <Send className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
                   </Button>
                 </form>
+                )}
               </CardContent>
             </Card>
           </div>

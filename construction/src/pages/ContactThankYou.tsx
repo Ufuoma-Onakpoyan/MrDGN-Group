@@ -1,10 +1,18 @@
 import { Link } from "react-router-dom";
+import { useEffect } from "react";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { CheckCircle, Home, ArrowLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const ContactThankYou = () => {
+  useEffect(() => {
+    const gtag = (window as unknown as { gtag?: (a: string, b: string, c?: object) => void }).gtag;
+    if (typeof gtag === 'function') {
+      gtag('event', 'quote_request_received', { page_title: 'Contact Thank You' });
+    }
+  }, []);
+
   return (
     <div className="min-h-screen">
       <Navigation />
@@ -14,10 +22,10 @@ const ContactThankYou = () => {
             <CheckCircle className="w-12 h-12 text-primary" />
           </div>
           <h1 className="text-4xl md:text-5xl font-bold mb-4">
-            Message Received!
+            Quote request received
           </h1>
           <p className="text-xl text-muted-foreground mb-8">
-            Thank you for your inquiry. We have received your message and will get back to you within 24 hours.
+            Thank you for requesting a quote. We've received your details and will get back to you within 24 hours. If your inquiry was about a specific project type, our team will tailor the response accordingly.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
