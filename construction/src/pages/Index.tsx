@@ -66,7 +66,7 @@ const Index = () => {
   };
 
   return (
-    <div ref={rootRef} className="min-h-screen overflow-x-hidden min-w-0 bg-background relative z-0 isolate">
+    <div ref={rootRef} className="min-h-screen min-w-0 bg-background relative z-0 isolate">
       <Navigation />
       <PromoBanner />
       <PromoPopup isOpen={promoPopupOpen} onClose={handleClosePromoPopup} />
@@ -74,10 +74,13 @@ const Index = () => {
       <AboutUsSection />
       <ServicesOverviewSection />
       <ProductsSection />
-      <ProjectGallerySection />
-      <WhyChooseUsSection />
-      <CTASection />
-      <Footer />
+      {/* Single wrapper for iOS Safari: one compositing layer for all content below Products */}
+      <div className="section-ios-paint">
+        <ProjectGallerySection />
+        <WhyChooseUsSection />
+        <CTASection />
+        <Footer />
+      </div>
     </div>
   );
 };

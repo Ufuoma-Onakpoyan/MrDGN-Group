@@ -197,12 +197,14 @@ All colors MUST be HSL.
     @apply hover:shadow-xl transition-all duration-300;
   }
 
-  /* Force own compositing layer on iOS Safari so section paints below the fold */
+  /* Single compositing layer for all content below Products on iOS Safari */
   .section-ios-paint {
     transform: translateZ(0);
     -webkit-transform: translateZ(0);
     position: relative;
     z-index: 1;
+    min-height: 1px;
+    background-color: hsl(var(--background));
   }
 }
 

@@ -44,7 +44,7 @@ const WhyChooseUsSection = () => {
   ];
 
   return (
-    <section data-section="why-choose-us" className="section-ios-paint py-16 bg-background">
+    <section data-section="why-choose-us" className="py-16 bg-background">
       <div className="container mx-auto px-6">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
