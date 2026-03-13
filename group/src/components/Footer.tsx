@@ -217,6 +217,17 @@ const Footer = () => {
         </div>
         <div className="border-t border-border pt-8 mt-8 text-center text-muted-foreground">
           <p>&copy; {currentYear} MR DGN Group. All rights reserved.</p>
+          <p className="mt-4 text-sm opacity-80">
+            Website developed by{' '}
+            <a
+              href="https://elevatewebandmarketing.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-primary hover:underline transition-colors"
+            >
+              Elevate Web & Marketing
+            </a>
+          </p>
         </div>
       </div>
     </footer>

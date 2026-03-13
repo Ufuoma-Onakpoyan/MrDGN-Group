@@ -232,6 +232,17 @@ const Footer = () => {
           <p className="text-secondary-foreground/60 text-sm">
             © {currentYear} MR DGN Entertainment. All rights reserved. | A subsidiary of MR DGN Group
           </p>
+          <p className="text-secondary-foreground/50 text-sm mt-4">
+            Website developed by{' '}
+            <a
+              href="https://elevatewebandmarketing.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-primary/80 hover:text-primary hover:underline transition-colors"
+            >
+              Elevate Web & Marketing
+            </a>
+          </p>
         </div>
       </div>
     </footer>

@@ -228,6 +228,19 @@ const Footer = () => {
             </div>
           </div>
         </div>
+
+        {/* Developer credit */}
+        <p className="text-center text-sm text-secondary-foreground/60 mt-8 pt-6 border-t border-border/20">
+          Website developed by{' '}
+          <a
+            href="https://elevatewebandmarketing.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-primary/80 hover:text-primary hover:underline transition-colors"
+          >
+            Elevate Web & Marketing
+          </a>
+        </p>
       </div>
       
       <NewsletterModal 
