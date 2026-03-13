@@ -1,4 +1,5 @@
 import React from 'react';
+import { trackWhatsAppClick } from '@/lib/gtag';
 
 const WHATSAPP_NUMBER = '2348135324467';
 const DEFAULT_MESSAGE = "Hello, I'm contacting you from the MR DGN Constructions website. I'm interested in making inquiries about your products or services.";
@@ -16,6 +17,7 @@ const WhatsAppFloat = () => {
       href={WHATSAPP_URL}
       target="_blank"
       rel="noopener noreferrer"
+      onClick={trackWhatsAppClick}
       className="fixed bottom-6 right-6 z-40 flex items-center justify-center w-14 h-14 rounded-full bg-[#25D366] text-white shadow-lg hover:bg-[#20bd5a] hover:scale-110 active:scale-95 transition-all duration-200 focus:outline-none focus:ring-4 focus:ring-[#25D366]/50"
       aria-label="Chat on WhatsApp"
     >

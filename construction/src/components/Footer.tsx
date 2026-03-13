@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { Phone, Mail, MapPin, Facebook, Instagram } from 'lucide-react';
+import { trackWhatsAppClick } from '@/lib/gtag';
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
 import NewsletterModal from './NewsletterModal';
@@ -64,7 +65,7 @@ const Footer = () => {
                 <a href="https://www.google.com/maps/place/MR+DGN+Construction+%26+Developers+Ltd/@6.2339308,6.6315024,17z/data=!3m1!4b1!4m6!3m5!1s0x1043f131bd08a91f:0xc8d3b62056822334!8m2!3d6.2339308!4d6.6340773!16s%2Fg%2F11nm_wxdx4?entry=ttu" target="_blank" rel="noopener noreferrer" className="hover:underline">Jossie Excel School, After okpanam City Gate by the express, Asaba, delta state</a>
               </div>
               <div className="flex items-center gap-2">
-                <a href="https://wa.me/2348135324467" target="_blank" rel="noopener noreferrer" className="hover:underline" aria-label="Contact MR DGN Constructions on WhatsApp">Contact us on WhatsApp</a>
+                <a href="https://wa.me/2348135324467" target="_blank" rel="noopener noreferrer" onClick={trackWhatsAppClick} className="hover:underline" aria-label="Contact MR DGN Constructions on WhatsApp">Contact us on WhatsApp</a>
               </div>
             </div>
           </div>
@@ -209,6 +210,7 @@ const Footer = () => {
                 href="https://wa.me/2348135324467"
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={trackWhatsAppClick}
                 className="text-sm text-secondary-foreground/80 hover:text-primary transition-colors whitespace-nowrap"
               >
                 WhatsApp +234 813 532 4467

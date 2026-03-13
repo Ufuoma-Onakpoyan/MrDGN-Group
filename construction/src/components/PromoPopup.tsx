@@ -1,5 +1,6 @@
 import React from 'react';
 import { X, MessageCircle } from 'lucide-react';
+import { trackWhatsAppClick } from '@/lib/gtag';
 import { Button } from '@/components/ui/button';
 
 const WHATSAPP_NUMBER = '2348135324467';
@@ -44,7 +45,7 @@ const PromoPopup = ({ isOpen, onClose }: PromoPopupProps) => {
               asChild
               className="btn-construction w-full sm:w-auto"
             >
-              <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer">
+              <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" onClick={trackWhatsAppClick}>
                 <MessageCircle className="mr-2 h-4 w-4" />
                 Order Blocks Now
               </a>

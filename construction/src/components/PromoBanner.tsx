@@ -1,5 +1,6 @@
 import React from 'react';
 import { MessageCircle, FileText } from 'lucide-react';
+import { trackWhatsAppClick } from '@/lib/gtag';
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
 
@@ -21,7 +22,7 @@ const PromoBanner = () => {
               size="sm"
               className="bg-white text-primary hover:bg-white/90 font-semibold shadow-md border-0 h-8 px-3 text-sm"
             >
-              <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer">
+              <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" onClick={trackWhatsAppClick}>
                 <MessageCircle className="mr-1.5 h-4 w-4 shrink-0" />
                 Order Blocks Now
               </a>

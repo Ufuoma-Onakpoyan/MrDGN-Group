@@ -8,6 +8,7 @@ import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { useToast } from '@/hooks/use-toast';
+import { trackWhatsAppClick } from '@/lib/gtag';
 import MapComponent from './MapComponent';
 
 declare global {
@@ -339,7 +340,7 @@ const ContactSection = () => {
               <a href="tel:+2348135324467">Call: +234 813 532 4467</a>
             </Button>
             <Button asChild variant="outline" size="lg" className="bg-white text-primary hover:bg-white/90">
-              <a href="https://wa.me/2348135324467" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+              <a href="https://wa.me/2348135324467" target="_blank" rel="noopener noreferrer" onClick={trackWhatsAppClick}>WhatsApp</a>
             </Button>
           </div>
         </div>
