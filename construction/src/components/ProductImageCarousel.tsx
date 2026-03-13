@@ -86,7 +86,7 @@ export function ProductImageCarousel({
         }
       >
         <div
-          className={`absolute inset-0 flex items-center justify-center overflow-hidden ${slideDirection === 1 ? 'carousel-static-slide-next' : 'carousel-static-slide-prev'}`}
+          className={`absolute inset-0 overflow-hidden ${slideDirection === 1 ? 'carousel-static-slide-next' : 'carousel-static-slide-prev'}`}
         >
           <img
             key={idx}
@@ -94,8 +94,7 @@ export function ProductImageCarousel({
             alt={alt}
             loading="lazy"
             decoding="async"
-            className="carousel-static-img max-w-full max-h-full w-auto h-auto object-contain bg-muted pointer-events-none select-none"
-            style={{ maxHeight: '260px' }}
+            className="carousel-static-img w-full h-full object-cover object-center pointer-events-none select-none"
             draggable={false}
           />
         </div>
@@ -155,13 +154,13 @@ export function ProductImageCarousel({
               key={index}
               className="pl-0 basis-full shrink-0 grow-0 w-full min-w-full h-full"
             >
-              <div className="h-full w-full relative flex items-center justify-center bg-muted overflow-hidden">
+              <div className="h-full w-full relative overflow-hidden bg-muted">
                 <img
                   src={src}
                   alt={`${alt} - image ${index + 1}`}
                   loading="lazy"
                   decoding="async"
-                  className="w-full h-full max-h-[260px] object-contain select-none"
+                  className="w-full h-full object-cover object-center select-none"
                 />
               </div>
             </CarouselItem>
