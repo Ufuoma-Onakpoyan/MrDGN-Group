@@ -57,8 +57,8 @@ const Navigation = () => {
             />
           </Link>
 
-          {/* Desktop Navigation - centered (absolutely positioned for true center) */}
-          <div className="hidden md:flex absolute left-1/2 -translate-x-1/2 items-center justify-center gap-6 lg:gap-8">
+          {/* Desktop Navigation - centered; only at lg+ to avoid overlap on tablet/iPad */}
+          <div className="hidden lg:flex absolute left-1/2 -translate-x-1/2 items-center justify-center gap-4 xl:gap-6">
             {navItems.map(item => (
               <Link 
                 key={item.label} 
@@ -70,21 +70,21 @@ const Navigation = () => {
             ))}
           </div>
 
-          {/* Right: CTA on desktop, menu button on mobile */}
-          <div className="flex items-center justify-end gap-2 shrink-0 ml-auto md:ml-0">
-            <div className="hidden md:block">
+          {/* Right: CTA on desktop (lg+), hamburger on tablet/iPad and mobile */}
+          <div className="flex items-center justify-end gap-2 shrink-0 ml-auto lg:ml-0">
+            <div className="hidden lg:block">
               <Button asChild size="sm" className="btn-construction rounded-md">
                 <Link to="/contact-us">Contact Us</Link>
               </Button>
             </div>
-            <Button variant="ghost" size="icon" onClick={() => setIsOpen(!isOpen)} className="md:hidden text-foreground hover:text-primary min-w-[44px] min-h-[44px]" aria-label={isOpen ? "Close menu" : "Open menu"} aria-expanded={isOpen}>
+            <Button variant="ghost" size="icon" onClick={() => setIsOpen(!isOpen)} className="lg:hidden text-foreground hover:text-primary min-w-[44px] min-h-[44px]" aria-label={isOpen ? "Close menu" : "Open menu"} aria-expanded={isOpen}>
               {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
             </Button>
           </div>
         </div>
 
-        {/* Mobile Navigation */}
-        {isOpen && <div className="md:hidden bg-gray-50 border-t border-border relative z-10">
+        {/* Hamburger menu (tablet + mobile: below lg) */}
+        {isOpen && <div className="lg:hidden bg-gray-50 border-t border-border relative z-10">
             <div className="px-2 pt-2 pb-3 space-y-1">
               {navItems.map(item => <Link key={item.label} to={item.href} className={`block px-3 py-2 text-black hover:text-primary transition-colors duration-300 whitespace-nowrap ${location.pathname === item.href ? 'text-primary' : ''}`} onClick={() => setIsOpen(false)}>
                   {item.label}
