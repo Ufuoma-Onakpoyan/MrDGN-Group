@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { MessageCircle, FileText } from 'lucide-react';
-import { trackWhatsAppClick } from '@/lib/gtag';
+import { trackWhatsAppClick, trackPromoView, trackPromoSelect } from '@/lib/gtag';
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
 
@@ -9,8 +9,54 @@ const PROMO_MESSAGE = "Hi, I'm interested in the offer: Buy 10,000 cement blocks
 const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(PROMO_MESSAGE)}`;
 
 const PromoBanner = () => {
+  const sectionRef = useRef<HTMLElement | null>(null);
+
+  useEffect(() => {
+    const element = sectionRef.current;
+    if (!element || typeof window === 'undefined') {
+      return;
+    }
+
+    // If IntersectionObserver is not available, fire once on mount.
+    if (typeof (window as any).IntersectionObserver !== 'function') {
+      trackPromoView('homepage_banner', 'promo_banner');
+      return;
+    }
+
+    let viewed = false;
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!viewed && entry.isIntersecting) {
+            viewed = true;
+            trackPromoView('homepage_banner', 'promo_banner');
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      {
+        root: null,
+        threshold: 0.3,
+      }
+    );
+
+    observer.observe(element);
+
+    return () => {
+      observer.disconnect();
+    };
+  }, []);
+
+  const handleClick = () => {
+    trackPromoSelect('homepage_banner', 'promo_banner');
+    trackWhatsAppClick();
+  };
+
   return (
-    <section className="bg-gradient-to-r from-primary to-primary/90 text-primary-foreground border-b border-primary-foreground/20 pt-16">
+    <section
+      ref={sectionRef}
+      className="bg-gradient-to-r from-primary to-primary/90 text-primary-foreground border-b border-primary-foreground/20 pt-16"
+    >
       <div className="container mx-auto px-3 py-2 sm:py-2.5">
         <div className="flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-4 text-center sm:text-left">
           <p className="text-base md:text-lg font-bold shrink-0">
@@ -22,7 +68,7 @@ const PromoBanner = () => {
               size="sm"
               className="bg-white text-primary hover:bg-white/90 font-semibold shadow-md border-0 h-8 px-3 text-sm"
             >
-              <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" onClick={trackWhatsAppClick}>
+              <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" onClick={handleClick}>
                 <MessageCircle className="mr-1.5 h-4 w-4 shrink-0" />
                 Order Blocks Now
               </a>

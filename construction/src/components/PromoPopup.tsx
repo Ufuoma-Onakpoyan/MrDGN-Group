@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { X, MessageCircle } from 'lucide-react';
-import { trackWhatsAppClick } from '@/lib/gtag';
+import { trackWhatsAppClick, trackPromoView, trackPromoSelect } from '@/lib/gtag';
 import { Button } from '@/components/ui/button';
 
 const WHATSAPP_NUMBER = '2348135324467';
@@ -14,6 +14,17 @@ interface PromoPopupProps {
 
 const PromoPopup = ({ isOpen, onClose }: PromoPopupProps) => {
   if (!isOpen) return null;
+
+  useEffect(() => {
+    if (isOpen) {
+      trackPromoView('homepage_popup', 'promo_popup');
+    }
+  }, [isOpen]);
+
+  const handleClick = () => {
+    trackPromoSelect('homepage_popup', 'promo_popup');
+    trackWhatsAppClick();
+  };
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
@@ -45,7 +56,7 @@ const PromoPopup = ({ isOpen, onClose }: PromoPopupProps) => {
               asChild
               className="btn-construction w-full sm:w-auto"
             >
-              <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" onClick={trackWhatsAppClick}>
+              <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" onClick={handleClick}>
                 <MessageCircle className="mr-2 h-4 w-4" />
                 Order Blocks Now
               </a>
