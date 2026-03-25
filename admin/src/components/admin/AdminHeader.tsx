@@ -31,7 +31,9 @@ export function AdminHeader() {
   };
 
   return (
-    <DropdownMenu>
+    <div className="flex items-center gap-2">
+      <ThemeToggle />
+      <DropdownMenu>
         <DropdownMenuTrigger asChild>
           <Button variant="ghost" className="gap-2 text-white hover:bg-[hsl(var(--muted))]">
             <User className="h-4 w-4" />
