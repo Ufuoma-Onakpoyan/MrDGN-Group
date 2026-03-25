@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { ThemeToggle } from '@/components/theme-toggle';
 import { Link, useLocation } from 'react-router-dom';
 
 const Navigation = () => {
@@ -72,6 +73,7 @@ const Navigation = () => {
 
           {/* Right: CTA on desktop (lg+), hamburger on tablet/iPad and mobile */}
           <div className="flex items-center justify-end gap-2 shrink-0 ml-auto lg:ml-0">
+            <ThemeToggle />
             <div className="hidden lg:block">
               <Button asChild size="sm" className="btn-construction rounded-md">
                 <Link to="/contact-us">Contact Us</Link>

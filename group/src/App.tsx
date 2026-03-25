@@ -1,5 +1,6 @@
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
+import { ThemeProvider } from "@/components/theme-provider";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
@@ -45,16 +46,18 @@ const AppRoutes = () => {
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
-    <TooltipProvider>
-      <DuerentsVideoProvider>
-        <Toaster />
-        <Sonner />
-        <BrowserRouter>
-          <RouteSEO />
-          <AppRoutes />
-        </BrowserRouter>
-      </DuerentsVideoProvider>
-    </TooltipProvider>
+    <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false} storageKey="mrdgn-group-theme">
+      <TooltipProvider>
+        <DuerentsVideoProvider>
+          <Toaster />
+          <Sonner />
+          <BrowserRouter>
+            <RouteSEO />
+            <AppRoutes />
+          </BrowserRouter>
+        </DuerentsVideoProvider>
+      </TooltipProvider>
+    </ThemeProvider>
   </QueryClientProvider>
 );
 

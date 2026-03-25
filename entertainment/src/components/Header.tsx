@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
+import { ThemeToggle } from "@/components/theme-toggle";
 import { Menu, X } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
 
@@ -64,7 +65,8 @@ const Header = () => {
           </div>
 
           {/* Contact Button */}
-          <div className="hidden md:block">
+          <div className="hidden md:flex items-center gap-3">
+            <ThemeToggle />
             <Link to="/contact">
               <Button variant="default" className="hero-glow">
                 Contact Us
@@ -72,10 +74,13 @@ const Header = () => {
             </Link>
           </div>
 
+          {/* Mobile: theme + menu */}
+          <div className="flex md:hidden items-center gap-2">
+            <ThemeToggle />
           {/* Mobile Menu Button */}
           <button
             type="button"
-            className="md:hidden p-2 min-w-[44px] min-h-[44px]"
+            className="p-2 min-w-[44px] min-h-[44px]"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
             aria-expanded={isMobileMenuOpen}
@@ -86,6 +91,7 @@ const Header = () => {
               <Menu className="h-6 w-6 text-foreground" />
             )}
           </button>
+          </div>
         </nav>
 
         {/* Mobile Menu */}

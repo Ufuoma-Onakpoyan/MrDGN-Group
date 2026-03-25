@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
+import { ThemeToggle } from '@/components/theme-toggle';
 import { Menu, X } from 'lucide-react';
 
 const Navigation = () => {
@@ -126,6 +127,7 @@ const Navigation = () => {
                 }`} />
               </Link>
             ))}
+            <ThemeToggle />
             <Link to="/contact" onClick={handleNavClick}>
               <Button
                 size="sm"
@@ -137,7 +139,8 @@ const Navigation = () => {
           </div>
 
           {/* Mobile menu button */}
-          <div className="md:hidden">
+          <div className="md:hidden flex items-center gap-2">
+            <ThemeToggle />
             <Button
               variant="ghost"
               size="sm"

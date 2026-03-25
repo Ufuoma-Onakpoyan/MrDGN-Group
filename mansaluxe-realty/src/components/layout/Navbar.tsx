@@ -1,8 +1,9 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import { Menu, X, Info, Building, Briefcase, MessageSquare, Phone, User, LogOut, UserPlus, FileText, ShoppingBag, TrendingUp } from "lucide-react";
 import { useAuth } from '@/contexts/AuthContext';
 import { Button } from '@/components/ui/button';
+import { ThemeToggle } from '@/components/theme-toggle';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -13,6 +14,15 @@ import {
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const { user, signOut, isAdmin } = useAuth();
+
+  useEffect(() => {
+    if (!isOpen) return;
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = prev;
+    };
+  }, [isOpen]);
 
   const navItems = [
     { to: "/properties", label: "Properties", icon: Building },
@@ -35,8 +45,15 @@ const Navbar = () => {
     `${linkClass({ isActive })} nav-link px-3 xl:px-4`;
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 navbar-glass">
-      <div className="container mx-auto">
+    <header className="fixed top-0 left-0 right-0 z-50 navbar-glass relative">
+      {isOpen && (
+        <div
+          className="fixed inset-0 z-40 bg-background lg:hidden"
+          onClick={() => setIsOpen(false)}
+          aria-hidden="true"
+        />
+      )}
+      <div className="container mx-auto relative z-50">
         <div className="flex justify-between items-center min-h-[4.5rem]">
           {/* Logo + brand */}
           <NavLink to="/" className="flex items-center shrink-0" onClick={() => setIsOpen(false)} aria-label="Mansa Luxe Realty Limited - Home">
@@ -91,6 +108,7 @@ const Navbar = () => {
                 </DropdownMenuContent>
               </DropdownMenu>
             )}
+            <ThemeToggle />
             <NavLink to="/contact">
               <Button
                 size="sm"
@@ -103,6 +121,7 @@ const Navbar = () => {
 
           {/* Mobile: menu button */}
           <div className="flex items-center gap-2 lg:hidden">
+            <ThemeToggle />
             <NavLink to="/contact" className="sm:hidden">
               <Button size="sm" className="bg-primary text-primary-foreground hover:bg-primary/90 rounded-lg h-9 px-3">
                 Contact
@@ -124,7 +143,7 @@ const Navbar = () => {
       {/* Mobile menu */}
       {isOpen && (
         <div
-          className="lg:hidden absolute top-full left-0 right-0 bg-background/98 backdrop-blur-xl border-t border-border shadow-xl"
+          className="lg:hidden absolute top-full left-0 right-0 z-50 bg-background border-t border-border shadow-xl"
           role="dialog"
           aria-label="Mobile menu"
         >
