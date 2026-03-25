@@ -34,7 +34,7 @@ const queryClient = new QueryClient();
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
-    <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false} storageKey="mrdgn-admin-theme">
+    <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false} storageKey="mrdgn-admin-theme-v2">
       <TooltipProvider>
         <Toaster />
         <Sonner />

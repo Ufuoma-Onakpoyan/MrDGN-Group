@@ -42,7 +42,7 @@ const ScrollToTop = () => {
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <AuthProvider>
-      <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false} storageKey="mrdgn-mansaluxe-theme">
+      <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false} storageKey="mrdgn-mansaluxe-theme-v2">
         <TooltipProvider>
           <Toaster />
           <Sonner />

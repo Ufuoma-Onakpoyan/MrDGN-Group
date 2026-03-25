@@ -46,7 +46,7 @@ const AppRoutes = () => {
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
-    <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false} storageKey="mrdgn-group-theme">
+    <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false} storageKey="mrdgn-group-theme-v2">
       <TooltipProvider>
         <DuerentsVideoProvider>
           <Toaster />

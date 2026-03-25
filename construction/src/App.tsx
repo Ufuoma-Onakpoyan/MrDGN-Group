@@ -44,7 +44,7 @@ const ScrollToTop = () => {
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
-    <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false} storageKey="mrdgn-construction-theme">
+    <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false} storageKey="mrdgn-construction-theme-v2">
       <TooltipProvider>
         <Toaster />
         <Sonner />
