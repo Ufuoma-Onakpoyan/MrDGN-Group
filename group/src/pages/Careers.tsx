@@ -73,7 +73,7 @@ const Careers = () => {
                 >
                   <CardContent className="p-8">
                     <div className="w-16 h-16 mx-auto mb-6 rounded-full bg-gradient-to-r from-primary to-blue-600 flex items-center justify-center">
-                      <IconComponent className="w-8 h-8 text-white" />
+                      <IconComponent className="w-8 h-8 text-primary-foreground" />
                     </div>
                     <h3 className="text-xl font-semibold text-foreground mb-4">
                       {benefit.title}
@@ -190,7 +190,7 @@ const Careers = () => {
                  style={{ animationDelay: `${index * 0.1}s` }}
                >
                 <CardContent className="p-6">
-                  <div className="w-12 h-12 mx-auto mb-4 rounded-full bg-primary text-white flex items-center justify-center font-bold text-lg">
+                  <div className="w-12 h-12 mx-auto mb-4 rounded-full bg-primary text-primary-foreground flex items-center justify-center font-bold text-lg">
                     {item.step}
                   </div>
                   <h3 className="text-lg font-semibold text-foreground mb-3">

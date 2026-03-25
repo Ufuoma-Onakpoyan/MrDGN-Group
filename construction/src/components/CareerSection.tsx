@@ -146,12 +146,12 @@ const CareerSection = () => {
         </div>
 
         {/* Call to Action */}
-        <div className="text-center bg-gradient-to-r from-primary to-primary/90 rounded-3xl p-8 lg:p-12 text-white">
+        <div className="text-center bg-gradient-to-r from-primary to-primary/90 rounded-3xl p-8 lg:p-12 text-primary-foreground">
           <h3 className="text-3xl lg:text-4xl font-bold mb-4">Don't See Your Role?</h3>
           <p className="text-xl mb-6 text-primary-foreground/90">
             We're always interested in meeting talented professionals. Send us your resume!
           </p>
-          <Button variant="outline" size="lg" className="bg-white text-primary hover:bg-white/90">
+          <Button variant="outline" size="lg" className="bg-background text-primary hover:bg-background/90 border-border">
             Submit Your Resume
           </Button>
         </div>

@@ -115,7 +115,7 @@ const ProjectsSection = () => {
               <Button
                 variant="outline"
                 size="icon"
-                className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white/90 hover:bg-white"
+                className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-background/90 hover:bg-background text-foreground border border-border"
                 onClick={prevProject}
               >
                 <ChevronLeft className="h-6 w-6" />
@@ -123,7 +123,7 @@ const ProjectsSection = () => {
               <Button
                 variant="outline"
                 size="icon"
-                className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white/90 hover:bg-white"
+                className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-background/90 hover:bg-background text-foreground border border-border"
                 onClick={nextProject}
               >
                 <ChevronRight className="h-6 w-6" />

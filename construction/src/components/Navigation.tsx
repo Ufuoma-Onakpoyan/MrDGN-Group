@@ -40,8 +40,8 @@ const Navigation = () => {
     label: 'Testimonials',
     href: '/testimonials'
   }];
-  return <nav className="fixed top-0 left-0 right-0 z-50 bg-gray-50/95 backdrop-blur-sm shadow-sm border-b border-border/50">
-      <div className="absolute top-0 left-0 right-0 h-16 bg-gray-50/95 pointer-events-none" aria-hidden />
+  return <nav className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-sm shadow-sm border-b border-border/50">
+      <div className="absolute top-0 left-0 right-0 h-16 bg-background/95 pointer-events-none" aria-hidden />
       <div className="container mx-auto px-4 sm:px-6 max-w-7xl relative z-10">
         <div className="relative flex items-center justify-between h-16 gap-4">
           {/* Logo - left-aligned */}
@@ -86,9 +86,9 @@ const Navigation = () => {
         </div>
 
         {/* Hamburger menu (tablet + mobile: below lg) */}
-        {isOpen && <div className="lg:hidden bg-gray-50 border-t border-border relative z-10">
+        {isOpen && <div className="lg:hidden bg-background/95 border-t border-border relative z-10">
             <div className="px-2 pt-2 pb-3 space-y-1">
-              {navItems.map(item => <Link key={item.label} to={item.href} className={`block px-3 py-2 text-black hover:text-primary transition-colors duration-300 whitespace-nowrap ${location.pathname === item.href ? 'text-primary' : ''}`} onClick={() => setIsOpen(false)}>
+              {navItems.map(item => <Link key={item.label} to={item.href} className={`block px-3 py-2 text-foreground hover:text-primary transition-colors duration-300 whitespace-nowrap ${location.pathname === item.href ? 'text-primary' : ''}`} onClick={() => setIsOpen(false)}>
                   {item.label}
                 </Link>)}
               <div className="px-3 py-2">

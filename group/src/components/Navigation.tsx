@@ -69,31 +69,12 @@ const Navigation = () => {
     window.scrollTo(0, 0);
   };
 
-  const getNavbarStyle = () => {
-    if (location.pathname !== '/') {
-      return 'text-black';
-    }
-
-    switch (currentSection) {
-      case 'hero':
-        return 'text-black';
-      case 'snippets':
-        return 'text-white';
-      case 'businesses':
-        return 'text-black'; // Fixed: businesses section has white background
-      case 'contact':
-        return 'text-white'; // Fixed: contact section has dark background
-      case 'cta':
-        return 'text-white';
-      default:
-        return 'text-black';
-    }
-  };
-
+  // Theme-aware nav: keep text always readable by using semantic tokens.
+  const getNavbarStyle = () => 'text-foreground';
   const navStyle = getNavbarStyle();
 
   return (
-    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${navStyle} backdrop-blur-md shadow-lg border-b border-white/20 ${location.pathname !== '/' ? 'bg-white' : 'bg-white/90'}`}>
+    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${navStyle} backdrop-blur-md shadow-lg border-b border-border/20 bg-background/95`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16 md:h-18">
           {/* Logo - light bg ensures dark logo text is readable */}

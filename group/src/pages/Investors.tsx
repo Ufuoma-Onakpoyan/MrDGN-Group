@@ -69,7 +69,7 @@ const Investors = () => {
                 >
                   <CardContent className="p-8">
                     <div className="w-14 h-14 rounded-full bg-gradient-to-r from-primary to-blue-600 flex items-center justify-center mb-6">
-                      <IconComponent className="w-7 h-7 text-white" />
+                      <IconComponent className="w-7 h-7 text-primary-foreground" />
                     </div>
                     <h3 className="text-xl font-semibold text-foreground mb-3">
                       {pillar.title}

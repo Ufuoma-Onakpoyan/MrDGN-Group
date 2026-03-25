@@ -70,7 +70,7 @@ const Media = () => {
                       className="w-full h-auto max-h-64 object-contain image-hover"
                     />
                     <div className="absolute top-4 left-4">
-                      <span className="bg-primary text-white px-3 py-1 rounded-full text-sm font-medium">
+                      <span className="bg-primary text-primary-foreground px-3 py-1 rounded-full text-sm font-medium">
                         Blog Post
                       </span>
                     </div>

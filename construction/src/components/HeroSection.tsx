@@ -59,25 +59,25 @@ const HeroSection = () => {
           {/* Construction Stats */}
           <div className="px-2 sm:px-0">
             <div className="grid grid-cols-2 gap-4 sm:gap-6">
-              <div className="bg-white rounded-2xl p-4 sm:p-6 shadow-xl">
+              <div className="bg-card border border-border rounded-2xl p-4 sm:p-6 shadow-xl">
                 <div className="text-center">
                   <div className="text-2xl sm:text-3xl font-bold text-primary">50+</div>
                   <div className="text-xs sm:text-sm text-muted-foreground">Projects Completed</div>
                 </div>
               </div>
-              <div className="bg-white rounded-2xl p-4 sm:p-6 shadow-xl">
+              <div className="bg-card border border-border rounded-2xl p-4 sm:p-6 shadow-xl">
                 <div className="text-center">
                   <div className="text-2xl sm:text-3xl font-bold text-primary">half a decade</div>
                   <div className="text-xs sm:text-sm text-muted-foreground">in Business</div>
                 </div>
               </div>
-              <div className="bg-white rounded-2xl p-4 sm:p-6 shadow-xl">
+              <div className="bg-card border border-border rounded-2xl p-4 sm:p-6 shadow-xl">
                 <div className="text-center">
                   <div className="text-2xl sm:text-3xl font-bold text-primary">50+</div>
                   <div className="text-xs sm:text-sm text-muted-foreground">Expert Team</div>
                 </div>
               </div>
-              <div className="bg-white rounded-2xl p-4 sm:p-6 shadow-xl">
+              <div className="bg-card border border-border rounded-2xl p-4 sm:p-6 shadow-xl">
                 <div className="text-center">
                   <div className="text-2xl sm:text-3xl font-bold text-primary">100%</div>
                   <div className="text-xs sm:text-sm text-muted-foreground">Client Satisfaction</div>

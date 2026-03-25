@@ -46,7 +46,7 @@ const ServicesSection = () => {
         </div>
 
         {/* Stats Section */}
-        <div className="mt-20 bg-gradient-to-r from-primary to-primary/90 rounded-3xl p-8 lg:p-12 text-white">
+        <div className="mt-20 bg-gradient-to-r from-primary to-primary/90 rounded-3xl p-8 lg:p-12 text-primary-foreground">
           <div className="grid md:grid-cols-4 gap-8 text-center">
             <div>
               <div className="text-4xl lg:text-5xl font-bold mb-2">50+</div>

@@ -117,8 +117,8 @@ const Index = () => {
       <Navigation />
       
       {/* Hero Section */}
-      <section className="hero-section relative h-screen flex items-center justify-center bg-white overflow-hidden">
-        <div className="absolute inset-0 bg-white"></div>
+      <section className="hero-section relative h-screen flex items-center justify-center bg-background overflow-hidden">
+        <div className="absolute inset-0 bg-background"></div>
         
         {/* Animated Background Grid */}
         <div className="absolute inset-0 opacity-20">
@@ -142,11 +142,11 @@ const Index = () => {
 
         <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
           <div className="relative">
-            <h1 className="text-6xl md:text-8xl font-bold text-black mb-8 animate-fade-in leading-tight">
+            <h1 className="text-6xl md:text-8xl font-bold text-foreground mb-8 animate-fade-in leading-tight">
               <TypingEffect 
                 staticText="Creating"
                 words={["Spaces", "Stories", "Solutions"]}
-                className="block text-black font-extrabold glow-text-subtle"
+                className="block text-foreground font-extrabold glow-text-subtle"
               />
             </h1>
             
@@ -156,7 +156,7 @@ const Index = () => {
           }}></div>
           </div>
           
-          <p className="text-2xl md:text-3xl text-black/95 mb-12 max-w-3xl mx-auto animate-fade-in font-light leading-relaxed" style={{
+          <p className="text-2xl md:text-3xl text-foreground/95 mb-12 max-w-3xl mx-auto animate-fade-in font-light leading-relaxed" style={{
           animationDelay: '0.5s'
         }}>
             MR DGN Group is a <span className="font-bold text-red-600">conglomerate</span> driving innovation across construction, entertainment, and real estate industries.
@@ -165,13 +165,13 @@ const Index = () => {
           <div className="flex flex-col sm:flex-row gap-6 justify-center animate-fade-in" style={{
           animationDelay: '0.7s'
         }}>
-            <Button size="lg" className="bg-red-600 text-white hover:bg-red-700 hover:scale-105 transform transition-all duration-300 px-10 py-4 text-lg shadow-glow hover:shadow-glow-intense group">
+            <Button size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90 hover:scale-105 transform transition-all duration-300 px-10 py-4 text-lg shadow-glow hover:shadow-glow-intense group">
               <Link to="/about" className="flex items-center gap-3">
                 Discover Our Story
                 <ArrowRight size={24} className="group-hover:translate-x-1 transition-transform" />
               </Link>
             </Button>
-            <Button size="lg" variant="outline" className="border-2 border-black text-white bg-black hover:bg-black/90 px-10 py-4 text-lg backdrop-blur-sm hover:scale-105 transform transition-all duration-300 group">
+            <Button size="lg" variant="outline" className="border-2 border-border text-foreground bg-transparent hover:bg-muted hover:text-foreground px-10 py-4 text-lg backdrop-blur-sm hover:scale-105 transform transition-all duration-300 group">
               <Link to="/businesses" className="flex items-center gap-3">
                 Explore Our Businesses
                 <ArrowRight size={24} className="group-hover:translate-x-1 transition-transform" />
@@ -201,7 +201,7 @@ const Index = () => {
             }}>
                   <CardContent className="p-8 text-center">
                     <div className={`w-16 h-16 mx-auto mb-6 rounded-full bg-gradient-to-r ${snippet.color} flex items-center justify-center group-hover:scale-110 transition-transform duration-300`}>
-                      <IconComponent className="w-8 h-8 text-white" />
+                      <IconComponent className="w-8 h-8 text-primary-foreground" />
                     </div>
                     <h3 className="text-2xl font-semibold text-foreground mb-4 group-hover:text-primary transition-colors">
                       {snippet.title}
@@ -223,13 +223,13 @@ const Index = () => {
         </section>
 
       {/* Our Businesses Carousel Section */}
-      <section className="businesses-section py-20 bg-white">
+      <section className="businesses-section py-20 bg-background">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-black mb-4">
+            <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
               Our Businesses
             </h2>
-            <p className="text-xl text-black/70 max-w-3xl mx-auto">
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
               We operate diverse businesses united by a commitment to excellence, innovation, and sustainable growth.
             </p>
           </div>
@@ -246,13 +246,13 @@ const Index = () => {
                 {businesses.map((business, index) => {
                 const IconComponent = business.icon;
                 return <CarouselItem key={business.name} className="md:basis-1/2 lg:basis-1/3">
-                      <Card className="bg-black border border-gray-800 hover:border-primary/50 transition-all duration-500 group hover:scale-[1.08] hover:-translate-y-4 backdrop-blur-sm h-[17rem] relative overflow-hidden hover:shadow-[0_25px_60px_-15px_rgba(0,0,0,0.8),0_0_0_1px_rgba(59,130,246,0.3)] hover:bg-gradient-to-br hover:from-gray-900 hover:to-black">
+                      <Card className="bg-card border border-border/50 hover:border-primary/50 transition-all duration-500 group hover:scale-[1.08] hover:-translate-y-4 backdrop-blur-sm h-[17rem] relative overflow-hidden hover:shadow-[0_25px_60px_-15px_rgba(0,0,0,0.8),0_0_0_1px_rgba(59,130,246,0.3)] hover:bg-gradient-to-br hover:from-muted hover:to-background">
                         <CardContent className="p-8 text-center relative h-full flex flex-col justify-center">
                           <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-transparent to-destructive/20 opacity-0 group-hover:opacity-100 transition-all duration-700"></div>
                           <div className="absolute inset-0 bg-gradient-to-t from-primary/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                           <div className="absolute -inset-4 bg-gradient-to-r from-primary/20 to-destructive/20 rounded-3xl opacity-0 group-hover:opacity-100 blur-xl transition-all duration-700"></div>
                           <div className="relative z-10">
-                            <div className={`w-16 h-16 mx-auto mb-6 rounded-2xl flex items-center justify-center group-hover:scale-125 group-hover:rotate-12 transition-all duration-700 shadow-lg relative overflow-hidden ${business.name === 'MR DGN Construction' ? 'bg-gray-100' : 'bg-white/10 backdrop-blur-sm'}`}>
+                            <div className={`w-16 h-16 mx-auto mb-6 rounded-2xl flex items-center justify-center group-hover:scale-125 group-hover:rotate-12 transition-all duration-700 shadow-lg relative overflow-hidden ${business.name === 'MR DGN Construction' ? 'bg-background/70' : 'bg-foreground/10 backdrop-blur-sm'}`}>
                               <img 
                                 src={business.logo} 
                                 alt={`${business.name} Logo`}
@@ -262,10 +262,10 @@ const Index = () => {
                                 className="w-12 h-12 object-contain"
                               />
                             </div>
-                            <h3 className="text-xl font-bold text-white mb-4 group-hover:text-primary transition-colors duration-300 group-hover:drop-shadow-lg">
+                            <h3 className="text-xl font-bold text-foreground mb-4 group-hover:text-primary transition-colors duration-300 group-hover:drop-shadow-lg">
                               {business.name}
                             </h3>
-                            <p className="text-gray-300 leading-relaxed text-sm group-hover:text-white transition-colors duration-300 group-hover:drop-shadow-md">
+                            <p className="text-muted-foreground leading-relaxed text-sm group-hover:text-foreground transition-colors duration-300 group-hover:drop-shadow-md">
                               {business.description}
                             </p>
                           </div>
@@ -275,10 +275,10 @@ const Index = () => {
               })}
               </CarouselContent>
               <div className="absolute left-4 top-1/2 -translate-y-1/2 z-10">
-                <CarouselPrevious className="relative left-0 border-none bg-black/20 hover:bg-black/40 text-white opacity-50 hover:opacity-100 transition-all duration-300 w-10 h-10 min-w-[44px] min-h-[44px]" aria-label="Previous business slide" />
+                <CarouselPrevious className="relative left-0 border-none bg-foreground/10 hover:bg-foreground/20 text-foreground/90 opacity-50 hover:opacity-100 transition-all duration-300 w-10 h-10 min-w-[44px] min-h-[44px]" aria-label="Previous business slide" />
               </div>
               <div className="absolute right-4 top-1/2 -translate-y-1/2 z-10">
-                <CarouselNext className="relative right-0 border-none bg-black/20 hover:bg-black/40 text-white opacity-50 hover:opacity-100 transition-all duration-300 w-10 h-10 min-w-[44px] min-h-[44px]" aria-label="Next business slide" />
+                <CarouselNext className="relative right-0 border-none bg-foreground/10 hover:bg-foreground/20 text-foreground/90 opacity-50 hover:opacity-100 transition-all duration-300 w-10 h-10 min-w-[44px] min-h-[44px]" aria-label="Next business slide" />
               </div>
             </Carousel>
 
@@ -293,7 +293,7 @@ const Index = () => {
                 role="tab"
                 aria-selected={index === businessCurrent - 1}
                 aria-label={`Go to slide ${index + 1} of ${businessCount}`}
-                className={`min-w-[44px] min-h-[44px] p-2 flex items-center justify-center rounded-full transition-all duration-300 ${index === businessCurrent - 1 ? 'bg-primary scale-110' : 'bg-gray-300 hover:bg-gray-400'}`}
+                className={`min-w-[44px] min-h-[44px] p-2 flex items-center justify-center rounded-full transition-all duration-300 ${index === businessCurrent - 1 ? 'bg-primary scale-110' : 'bg-foreground/20 hover:bg-foreground/30'}`}
                 onClick={() => businessApi?.scrollTo(index)}
               />
             ))}
@@ -301,7 +301,7 @@ const Index = () => {
           </div>
 
           <div className="text-center mt-12">
-            <Button size="lg" className="px-8 py-3 bg-black text-white hover:bg-black/90">
+            <Button size="lg" className="px-8 py-3 bg-primary text-primary-foreground hover:bg-primary/90">
               <Link to="/businesses" className="flex items-center gap-2" onClick={() => window.scrollTo(0, 0)}>
                 Learn More About Our Businesses
                 <ArrowRight size={20} />
@@ -354,7 +354,7 @@ const Index = () => {
                     </div>
                     {/* Image Carousel Dots */}
                     <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
-                      {item.images.map((_, imgIndex) => <div key={imgIndex} className={`w-2 h-2 rounded-full transition-all duration-300 ${imgIndex === currentImageIndex ? 'bg-white scale-125' : 'bg-white/50'}`} />)}
+                      {item.images.map((_, imgIndex) => <div key={imgIndex} className={`w-2 h-2 rounded-full transition-all duration-300 ${imgIndex === currentImageIndex ? 'bg-foreground scale-125' : 'bg-foreground/50'}`} />)}
                     </div>
                   </div>
                   <CardContent className="p-8">
@@ -374,36 +374,36 @@ const Index = () => {
       {/* Ready to Partner Section */}
       <section className="cta-section py-24 gradient-hero text-center">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 animate-fade-in">
+          <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6 animate-fade-in">
             Ready to Partner with Us?
           </h2>
-          <p className="text-xl text-white/90 mb-10 max-w-2xl mx-auto animate-fade-in" style={{ animationDelay: '0.2s' }}>
+          <p className="text-xl text-foreground/90 mb-10 max-w-2xl mx-auto animate-fade-in" style={{ animationDelay: '0.2s' }}>
             Join forces with MR DGN Group and be part of building tomorrow&apos;s industries. Together, we can create extraordinary value and lasting impact.
           </p>
           <Link to="/contact" onClick={() => window.scrollTo(0, 0)} className="inline-flex" aria-label="Get in touch with MR DGN Group">
             <Button
               size="lg"
-              className="bg-white text-primary hover:bg-white/95 px-8 py-6 text-lg font-semibold rounded-full shadow-xl hover:shadow-2xl hover:scale-105 transform transition-all duration-300 animate-fade-in ring-2 ring-white/30 hover:ring-white/50 min-h-[48px]"
+              className="bg-background text-primary hover:bg-background/95 px-8 py-6 text-lg font-semibold rounded-full shadow-xl hover:shadow-2xl hover:scale-105 transform transition-all duration-300 animate-fade-in ring-2 ring-foreground/30 hover:ring-foreground/50 min-h-[48px]"
               style={{ animationDelay: '0.4s' }}
             >
               Get in Touch
               <ArrowRight size={22} className="ml-2" aria-hidden />
             </Button>
           </Link>
-          <p className="text-white/80 text-sm mt-6 animate-fade-in" style={{ animationDelay: '0.5s' }}>
+          <p className="text-foreground/80 text-sm mt-6 animate-fade-in" style={{ animationDelay: '0.5s' }}>
             We respond within 24 hours · Asaba, Lagos, Abuja & Dubai
           </p>
         </div>
       </section>
 
       {/* Google Map Section */}
-      <section className="contact-section py-20 bg-white">
+      <section className="contact-section py-20 bg-background">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
-              <h2 className="text-4xl font-bold mb-4 text-black">
+            <h2 className="text-4xl font-bold mb-4 text-foreground">
                 Visit Our Office
               </h2>
-              <p className="text-xl max-w-2xl mx-auto text-black/80">
+            <p className="text-xl max-w-2xl mx-auto text-foreground/80">
                 Head Office, Asaba, Delta State. Use the map below for directions.
               </p>
             </div>

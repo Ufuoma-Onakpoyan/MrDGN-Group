@@ -44,13 +44,13 @@ export function DuerentsVideoProvider({ children }: { children: React.ReactNode 
     <DuerentsVideoContext.Provider value={{ openVideo }}>
       {children}
       <Dialog open={open} onOpenChange={onOpenChange}>
-        <DialogContent className="max-w-4xl w-[95vw] p-0 gap-0 overflow-hidden bg-black">
+        <DialogContent className="max-w-4xl w-[95vw] p-0 gap-0 overflow-hidden bg-card border border-border">
           <DialogTitle className="sr-only">Duerents – MR DGN Group</DialogTitle>
-          <div className="relative aspect-video w-full">
+          <div className="relative aspect-video w-full bg-muted">
             {loadError ? (
-              <div className="flex flex-col items-center justify-center gap-3 p-6 text-white text-center min-h-[200px]">
+              <div className="flex flex-col items-center justify-center gap-3 p-6 text-foreground text-center min-h-[200px]">
                 <p>Video could not be loaded.</p>
-                <p className="text-sm text-white/80">
+                <p className="text-sm text-muted-foreground">
                   The file may be missing from this build. Try again later or visit{" "}
                   <a href="https://duerents.com/" target="_blank" rel="noopener noreferrer" className="text-primary underline">
                     duerents.com

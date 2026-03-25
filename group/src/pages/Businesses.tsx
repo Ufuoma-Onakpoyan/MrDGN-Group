@@ -75,7 +75,7 @@ const Businesses = () => {
       </section>
 
       {/* Businesses Overview */}
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-background">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
@@ -148,7 +148,7 @@ const Businesses = () => {
                     <div className="pt-4 flex flex-wrap gap-3">
                       {business.name === 'Duerents' ? (
                         <Button 
-                          className="button-hover hover-scale min-h-[44px] bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary text-white shadow-lg"
+                          className="button-hover hover-scale min-h-[44px] bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary text-primary-foreground shadow-lg"
                           onClick={openVideo}
                           aria-label="Watch Duerents video"
                         >
@@ -157,7 +157,7 @@ const Businesses = () => {
                         </Button>
                       ) : null}
                       <Button 
-                        className="button-hover hover-scale min-h-[44px] bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary text-white shadow-lg"
+                        className="button-hover hover-scale min-h-[44px] bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary text-primary-foreground shadow-lg"
                         onClick={() => window.open(business.website, '_blank')}
                         aria-label={`Visit ${business.name} website`}
                       >
@@ -179,13 +179,13 @@ const Businesses = () => {
                           className="w-full h-full object-contain transition-transform duration-700 group-hover:scale-[1.02]"
                         />
                         <div className={`absolute inset-0 bg-gradient-to-br ${business.color} opacity-20 transition-opacity duration-300 group-hover:opacity-30 pointer-events-none`}></div>
-                        <div className="absolute inset-0 bg-black/10 transition-opacity duration-300 group-hover:bg-black/20 pointer-events-none"></div>
+                        <div className="absolute inset-0 bg-foreground/10 transition-opacity duration-300 group-hover:bg-foreground/20 pointer-events-none"></div>
                         
                         {/* Floating business name overlay */}
                         <div className="absolute bottom-6 left-6 right-6">
-                          <div className="bg-white/95 backdrop-blur-sm rounded-lg p-4 transform translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
-                            <h3 className="text-lg font-bold text-gray-900">{business.name}</h3>
-                            <p className="text-sm text-gray-600 mt-1">Industry Leader</p>
+                          <div className="bg-background/95 backdrop-blur-sm rounded-lg p-4 transform translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
+                            <h3 className="text-lg font-bold text-foreground">{business.name}</h3>
+                            <p className="text-sm text-muted-foreground mt-1">Industry Leader</p>
                           </div>
                         </div>
                       </div>

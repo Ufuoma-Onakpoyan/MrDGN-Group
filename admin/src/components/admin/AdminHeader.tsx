@@ -35,12 +35,12 @@ export function AdminHeader() {
       <ThemeToggle />
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
-          <Button variant="ghost" className="gap-2 text-white hover:bg-[hsl(var(--muted))]">
+          <Button variant="ghost" className="gap-2 text-foreground hover:bg-muted">
             <User className="h-4 w-4" />
             <span className="hidden sm:inline truncate max-w-32">
               {adminUser?.name || user?.email || 'Admin'}
             </span>
-            <span className="hidden sm:inline text-xs px-2 py-0.5 rounded bg-[hsl(var(--primary))] text-white">
+            <span className="hidden sm:inline text-xs px-2 py-0.5 rounded bg-primary text-primary-foreground">
               {adminUser?.role === 'super_admin' ? 'Super Admin' : 'Admin'}
             </span>
             <ChevronDown className="h-4 w-4" />

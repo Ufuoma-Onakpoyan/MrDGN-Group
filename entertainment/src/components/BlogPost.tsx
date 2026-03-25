@@ -10,6 +10,7 @@ import { toast } from "sonner";
 import blogFeatured1 from "@/assets/blog-featured-1.jpg";
 import blogFeatured2 from "@/assets/blog-featured-2.jpg";
 import blogFeatured3 from "@/assets/blog-featured-3.jpg";
+import { SEO } from "@/components/SEO";
 
 interface BlogPost {
   id: string;
@@ -38,10 +39,6 @@ const BlogPost = () => {
       incrementViewCount(slug);
     }
   }, [slug]);
-
-  useEffect(() => {
-    if (post) document.title = `${post.title} | MR DGN Entertainment`;
-  }, [post]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -359,6 +356,13 @@ const BlogPost = () => {
 
   return (
     <article className="min-h-screen bg-gradient-to-br from-background via-background/95 to-background/90">
+      <SEO
+        title={post.title}
+        description={post.excerpt}
+        canonical={`/blog/${slug}`}
+        ogImage={post.featured_image_url}
+        ogType="article"
+      />
       {/* Reading Progress Bar */}
       <div 
         className="fixed top-0 left-0 h-1 bg-gradient-to-r from-primary to-primary/80 z-50 transition-all duration-150 shadow-lg"

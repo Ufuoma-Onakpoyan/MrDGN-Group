@@ -66,7 +66,7 @@ const PromoBanner = () => {
             <Button
               asChild
               size="sm"
-              className="bg-white text-primary hover:bg-white/90 font-semibold shadow-md border-0 h-8 px-3 text-sm"
+              className="bg-background text-primary hover:bg-background/90 font-semibold shadow-md border border-border h-8 px-3 text-sm"
             >
               <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" onClick={handleClick}>
                 <MessageCircle className="mr-1.5 h-4 w-4 shrink-0" />
@@ -76,7 +76,7 @@ const PromoBanner = () => {
             <Button
               asChild
               size="sm"
-              className="bg-white/95 text-primary hover:bg-white font-semibold shadow-md border-0 h-8 px-3 text-sm"
+              className="bg-background/95 text-primary hover:bg-background font-semibold shadow-md border border-border h-8 px-3 text-sm"
             >
               <Link to="/contact-us#contact" className="text-primary">
                 <FileText className="mr-1.5 h-4 w-4 shrink-0" />

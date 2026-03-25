@@ -104,7 +104,7 @@ export function ProductImageCarousel({
               type="button"
               variant="secondary"
               size="icon"
-              className="absolute left-2 top-1/2 -translate-y-1/2 h-8 w-8 rounded-full bg-black/50 hover:bg-black/70 text-white border-0 z-10 touch-manipulation"
+              className="absolute left-2 top-1/2 -translate-y-1/2 h-8 w-8 rounded-full bg-foreground/50 hover:bg-foreground/70 text-background border-0 z-10 touch-manipulation"
               onClick={(e) => {
                 e.preventDefault();
                 e.stopPropagation();
@@ -119,7 +119,7 @@ export function ProductImageCarousel({
               type="button"
               variant="secondary"
               size="icon"
-              className="absolute right-2 top-1/2 -translate-y-1/2 h-8 w-8 rounded-full bg-black/50 hover:bg-black/70 text-white border-0 z-10 touch-manipulation"
+              className="absolute right-2 top-1/2 -translate-y-1/2 h-8 w-8 rounded-full bg-foreground/50 hover:bg-foreground/70 text-background border-0 z-10 touch-manipulation"
               onClick={(e) => {
                 e.preventDefault();
                 e.stopPropagation();
@@ -171,7 +171,7 @@ export function ProductImageCarousel({
             <Button
               variant="secondary"
               size="icon"
-              className="absolute left-2 top-1/2 -translate-y-1/2 h-8 w-8 rounded-full bg-black/50 hover:bg-black/70 text-white border-0 z-10"
+              className="absolute left-2 top-1/2 -translate-y-1/2 h-8 w-8 rounded-full bg-foreground/50 hover:bg-foreground/70 text-background border-0 z-10"
               onClick={() => api?.scrollPrev()}
             >
               <ChevronLeft className="h-4 w-4" />
@@ -180,7 +180,7 @@ export function ProductImageCarousel({
             <Button
               variant="secondary"
               size="icon"
-              className="absolute right-2 top-1/2 -translate-y-1/2 h-8 w-8 rounded-full bg-black/50 hover:bg-black/70 text-white border-0 z-10"
+              className="absolute right-2 top-1/2 -translate-y-1/2 h-8 w-8 rounded-full bg-foreground/50 hover:bg-foreground/70 text-background border-0 z-10"
               onClick={() => api?.scrollNext()}
             >
               <ChevronRight className="h-4 w-4" />
@@ -197,7 +197,7 @@ export function ProductImageCarousel({
               type="button"
               onClick={() => api?.scrollTo(i)}
               className={`h-2 rounded-full transition-all ${
-                i === current ? 'w-5 bg-primary' : 'w-2 bg-white/60 hover:bg-white/80'
+                i === current ? 'w-5 bg-primary' : 'w-2 bg-background/70 hover:bg-background'
               }`}
               aria-label={`Go to image ${i + 1}`}
             />

@@ -5,16 +5,13 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import Footer from '@/components/Footer';
 import { useBlogPost } from '@/hooks/useBlogPosts';
+import { SEO } from '@/components/SEO';
 import { Calendar, User, Eye, ArrowLeft, Loader2, Tag } from 'lucide-react';
 
 const BlogPost = () => {
   const { slug } = useParams<{ slug: string }>();
   const navigate = useNavigate();
   const { data: post, isLoading, error } = useBlogPost(slug!);
-
-  React.useEffect(() => {
-    if (post) document.title = `${post.title} | MR DGN Group`;
-  }, [post]);
 
   if (isLoading) {
     return (
@@ -53,6 +50,13 @@ const BlogPost = () => {
   return (
     <div className="min-h-screen page-transition">
       <Navigation />
+      <SEO
+        title={post.title}
+        description={post.excerpt}
+        canonical={`/blog/${post.slug}`}
+        ogImage={post.featured_image_url}
+        ogType="article"
+      />
       
       {/* Hero Section with Featured Image */}
       <section className="pt-20 pb-8">
@@ -83,7 +87,7 @@ const BlogPost = () => {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
               <div className="absolute bottom-8 left-8 right-8">
-                <h1 className="text-3xl md:text-5xl font-bold text-white mb-4 leading-tight">
+                <h1 className="text-3xl md:text-5xl font-bold text-primary-foreground mb-4 leading-tight">
                   {post.title}
                 </h1>
               </div>

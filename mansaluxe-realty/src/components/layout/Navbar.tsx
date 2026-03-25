@@ -48,7 +48,7 @@ const Navbar = () => {
     <header className="fixed top-0 left-0 right-0 z-50 navbar-glass relative">
       {isOpen && (
         <div
-          className="fixed inset-0 z-40 bg-background lg:hidden"
+          className="fixed inset-0 z-40 bg-black/60 dark:bg-black/70 lg:hidden"
           onClick={() => setIsOpen(false)}
           aria-hidden="true"
         />
@@ -129,7 +129,7 @@ const Navbar = () => {
             </NavLink>
             <button
               type="button"
-              className="p-2.5 min-w-[44px] min-h-[44px] rounded-lg text-foreground hover:bg-white/10 transition-colors"
+              className="p-2.5 min-w-[44px] min-h-[44px] rounded-lg text-foreground hover:bg-muted transition-colors"
               onClick={() => setIsOpen(!isOpen)}
               aria-expanded={isOpen}
               aria-label={isOpen ? "Close menu" : "Open menu"}
@@ -168,7 +168,7 @@ const Navbar = () => {
                         `flex items-center gap-3 px-4 py-3.5 rounded-xl transition-colors ${
                           isActive
                             ? "bg-primary/15 text-primary font-medium"
-                            : "text-foreground/90 hover:bg-white/5 hover:text-foreground"
+                            : "text-foreground/90 hover:bg-muted/60 hover:text-foreground"
                         }`
                       }
                       onClick={() => setIsOpen(false)}
@@ -188,7 +188,7 @@ const Navbar = () => {
                 </div>
                 <NavLink
                   to="/admin"
-                  className="flex items-center gap-3 px-4 py-3.5 rounded-xl text-foreground/90 hover:bg-white/5"
+                  className="flex items-center gap-3 px-4 py-3.5 rounded-xl text-foreground/90 hover:bg-muted/60"
                   onClick={() => setIsOpen(false)}
                 >
                   <Building className="w-5 h-5 shrink-0" />
@@ -196,7 +196,7 @@ const Navbar = () => {
                 </NavLink>
                 <button
                   type="button"
-                  className="flex items-center gap-3 px-4 py-3.5 rounded-xl text-foreground/90 hover:bg-white/5 w-full text-left"
+                  className="flex items-center gap-3 px-4 py-3.5 rounded-xl text-foreground/90 hover:bg-muted/60 w-full text-left"
                   onClick={() => {
                     signOut();
                     setIsOpen(false);

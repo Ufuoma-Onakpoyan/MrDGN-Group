@@ -127,7 +127,7 @@ export function AdminSidebar({ collapsed = false, onToggleCollapse, onCloseMobil
             <img src="/logo.png" alt="MR DGN Group" className="h-10 w-10 object-contain shrink-0" />
             {!collapsed && (
               <div className="flex flex-col min-w-0">
-                <span className="font-bold text-white text-sm leading-tight">MR DGN Group</span>
+                <span className="font-bold text-[hsl(var(--sidebar-foreground))] text-sm leading-tight">MR DGN Group</span>
                 <span className="text-xs text-[hsl(var(--muted-foreground))]">Admin Panel</span>
               </div>
             )}
@@ -140,7 +140,7 @@ export function AdminSidebar({ collapsed = false, onToggleCollapse, onCloseMobil
             <button
               type="button"
               onClick={onToggleCollapse}
-              className={`flex items-center gap-2 px-2 py-1.5 rounded-md text-sm text-[hsl(var(--muted-foreground))] hover:text-white hover:bg-[hsl(var(--sidebar-accent))] transition-colors ${collapsed ? 'w-full justify-center' : 'w-full'}`}
+              className={`flex items-center gap-2 px-2 py-1.5 rounded-md text-sm text-[hsl(var(--muted-foreground))] hover:text-foreground hover:bg-[hsl(var(--sidebar-accent))] transition-colors ${collapsed ? 'w-full justify-center' : 'w-full'}`}
               aria-label={collapsed ? 'Expand sidebar' : 'Collapse sidebar'}
             >
               {collapsed ? (
@@ -165,7 +165,7 @@ export function AdminSidebar({ collapsed = false, onToggleCollapse, onCloseMobil
                 <button
                   type="button"
                   onClick={() => toggleSection(section.title)}
-                  className="w-full flex items-center justify-between px-3 py-2 text-left text-xs font-semibold uppercase tracking-wider text-[hsl(var(--muted-foreground))] hover:text-white transition-colors"
+                  className="w-full flex items-center justify-between px-3 py-2 text-left text-xs font-semibold uppercase tracking-wider text-[hsl(var(--muted-foreground))] hover:text-foreground transition-colors"
                 >
                   {section.title}
                   {isExpanded ? <ChevronDown className="h-4 w-4" /> : <ChevronRight className="h-4 w-4" />}
@@ -226,7 +226,7 @@ export function AdminSidebar({ collapsed = false, onToggleCollapse, onCloseMobil
                             collapsed ? 'justify-center p-2.5' : 'gap-3 px-3 py-2.5'
                           } ${
                             isActive
-                              ? 'bg-[hsl(var(--primary))] text-white'
+                              ? 'bg-[hsl(var(--primary))] text-primary-foreground'
                               : 'text-[hsl(var(--sidebar-foreground))] hover:bg-[hsl(var(--sidebar-accent))]'
                           }`}
                         >
@@ -234,7 +234,7 @@ export function AdminSidebar({ collapsed = false, onToggleCollapse, onCloseMobil
                           {!collapsed && (
                             <div className="flex flex-col min-w-0">
                               <span>{item.name}</span>
-                              <span className={`text-[10px] ${isActive ? 'text-white/80' : 'text-[hsl(var(--muted-foreground))]'}`}>
+                              <span className={`text-[10px] ${isActive ? 'text-primary-foreground/80' : 'text-[hsl(var(--muted-foreground))]'}`}>
                                 {item.desc}
                               </span>
                             </div>
@@ -251,7 +251,7 @@ export function AdminSidebar({ collapsed = false, onToggleCollapse, onCloseMobil
                                   onClick={onCloseMobile}
                                   className={`flex justify-center p-2.5 rounded-md text-sm font-medium transition-colors ${
                                     isActive
-                                      ? 'bg-[hsl(var(--primary))] text-white'
+                                      ? 'bg-[hsl(var(--primary))] text-primary-foreground'
                                       : 'text-[hsl(var(--sidebar-foreground))] hover:bg-[hsl(var(--sidebar-accent))]'
                                   }`}
                                 >

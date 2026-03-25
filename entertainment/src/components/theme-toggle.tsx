@@ -16,26 +16,30 @@ export function ThemeToggle() {
       <Button
         type="button"
         variant="outline"
-        size="icon"
-        className="min-w-[44px] min-h-[44px] shrink-0"
+        size="sm"
+        className="min-w-[84px] shrink-0 gap-2"
         aria-hidden
         disabled
-      />
+      >
+        <span className="text-xs font-semibold">...</span>
+      </Button>
     );
   }
 
   const isDark = resolvedTheme === "dark";
+  const modeLabel = isDark ? "Dark" : "Light";
 
   return (
     <Button
       type="button"
       variant="outline"
-      size="icon"
-      className="min-w-[44px] min-h-[44px] shrink-0"
+      size="sm"
+      className="min-w-[84px] shrink-0 gap-2"
       onClick={() => setTheme(isDark ? "light" : "dark")}
       aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
     >
-      {isDark ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
+      {isDark ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
+      <span className="text-xs sm:text-sm font-semibold">{modeLabel}</span>
     </Button>
   );
 }

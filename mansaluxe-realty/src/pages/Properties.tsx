@@ -643,14 +643,14 @@ const Properties = () => {
                           className="absolute bottom-4 left-4 right-4 flex justify-center pointer-events-auto z-10"
                           onClick={(e) => e.stopPropagation()}
                         >
-                          <span className="inline-flex items-center justify-center rounded-md px-3 py-1.5 text-sm font-medium bg-white/90 backdrop-blur-sm text-black shadow-md border border-white/20 hover:bg-white">
+                          <span className="inline-flex items-center justify-center rounded-md px-3 py-1.5 text-sm font-medium bg-card/95 backdrop-blur-sm text-foreground shadow-md border border-border hover:bg-card">
                             <Eye className="w-4 h-4 mr-2" />
                             View Details
                           </span>
                         </Link>
                       ) : (
                         <div className="absolute bottom-4 left-4 right-4 flex justify-center pointer-events-none">
-                          <span className="inline-flex items-center justify-center rounded-md px-3 py-1.5 text-sm font-medium bg-white/90 backdrop-blur-sm text-black shadow-md border border-white/20">
+                          <span className="inline-flex items-center justify-center rounded-md px-3 py-1.5 text-sm font-medium bg-card/95 backdrop-blur-sm text-foreground shadow-md border border-border">
                             <Eye className="w-4 h-4 mr-2" />
                             View Details
                           </span>
@@ -775,7 +775,7 @@ const Properties = () => {
                         </div>
                       )}
                       <div className="absolute bottom-4 left-4 right-4 flex justify-center pointer-events-none">
-                        <span className="inline-flex items-center justify-center rounded-md px-3 py-1.5 text-sm font-medium bg-white/90 backdrop-blur-sm text-black shadow-md border border-white/20">
+                        <span className="inline-flex items-center justify-center rounded-md px-3 py-1.5 text-sm font-medium bg-card/95 backdrop-blur-sm text-foreground shadow-md border border-border">
                           <Eye className="w-4 h-4 mr-2" />
                           View Details
                         </span>

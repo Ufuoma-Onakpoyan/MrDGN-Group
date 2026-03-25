@@ -119,7 +119,7 @@ const Contact = () => {
               const content = (
                 <>
                   <div className="w-16 h-16 mx-auto mb-6 rounded-full bg-gradient-to-r from-primary to-blue-600 flex items-center justify-center">
-                    <IconComponent className="w-8 h-8 text-white" />
+                    <IconComponent className="w-8 h-8 text-primary-foreground" />
                   </div>
                   <h3 className="text-xl font-semibold text-foreground mb-2">
                     {info.title}
@@ -157,7 +157,7 @@ const Contact = () => {
               <CardContent className="p-8">
                 <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className="block hover:opacity-90 transition-opacity">
                   <div className="w-16 h-16 mx-auto mb-6 rounded-full bg-gradient-to-r from-primary to-blue-600 flex items-center justify-center">
-                    <MessageCircle className="w-8 h-8 text-white" />
+                    <MessageCircle className="w-8 h-8 text-primary-foreground" />
                   </div>
                   <h3 className="text-xl font-semibold text-foreground mb-2">WhatsApp</h3>
                   <p className="text-lg font-medium text-primary mb-2">+234 813 532 4467</p>

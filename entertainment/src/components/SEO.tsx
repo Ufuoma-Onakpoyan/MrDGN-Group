@@ -54,6 +54,7 @@ export function SEO({
     setMeta("twitter:card", "summary_large_image");
     setMeta("twitter:title", fullTitle);
     setMeta("twitter:description", description);
+    setMeta("twitter:image", fullOgImage);
 
     let canon = document.querySelector('link[rel="canonical"]');
     if (!canon) {

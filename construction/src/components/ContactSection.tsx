@@ -330,16 +330,16 @@ const ContactSection = () => {
         </div>
 
         {/* Emergency Contact */}
-        <div className="mt-16 text-center bg-gradient-to-r from-primary to-primary/90 rounded-3xl p-8 text-white">
+        <div className="mt-16 text-center bg-gradient-to-r from-primary to-primary/90 rounded-3xl p-8 text-primary-foreground">
           <h3 className="text-2xl font-bold mb-2">Emergency Construction Services</h3>
           <p className="text-primary-foreground/90 mb-4">
             Available 24/7 for urgent construction and safety issues across Nigeria
           </p>
           <div className="flex flex-wrap gap-4 justify-center">
-            <Button asChild variant="outline" size="lg" className="bg-white text-primary hover:bg-white/90">
+            <Button asChild variant="outline" size="lg" className="bg-background text-primary hover:bg-background/90 border-border">
               <a href="tel:+2348135324467">Call: +234 813 532 4467</a>
             </Button>
-            <Button asChild variant="outline" size="lg" className="bg-white text-primary hover:bg-white/90">
+            <Button asChild variant="outline" size="lg" className="bg-background text-primary hover:bg-background/90 border-border">
               <a href="https://wa.me/2348135324467" target="_blank" rel="noopener noreferrer" onClick={trackWhatsAppClick}>WhatsApp</a>
             </Button>
           </div>

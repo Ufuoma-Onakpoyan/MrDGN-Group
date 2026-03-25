@@ -123,8 +123,8 @@ const FAQ = () => {
       {/* Hero Section */}
       <section className="pt-20 pb-16 gradient-hero">
         <div className="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
-          <div className="inline-flex items-center justify-center w-14 h-14 rounded-full bg-white/10 mb-6">
-            <HelpCircle className="w-7 h-7 text-white" />
+          <div className="inline-flex items-center justify-center w-14 h-14 rounded-full bg-foreground/10 mb-6">
+            <HelpCircle className="w-7 h-7 text-primary-foreground" />
           </div>
           <h1 className="text-5xl md:text-6xl font-bold text-white mb-6 animate-fade-in-down">
             Frequently Asked Questions

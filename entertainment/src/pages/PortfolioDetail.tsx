@@ -6,7 +6,8 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { ArrowLeft, Calendar, ExternalLink } from "lucide-react";
 import { usePortfolioItem } from "@/hooks/usePortfolio";
-import { useEffect, useMemo } from "react";
+import { useMemo } from "react";
+import { SEO } from "@/components/SEO";
 
 /** Fallback project details when API has no data (for hardcoded portfolio items) */
 const FALLBACK_PROJECTS: Record<string, { title: string; description: string; content: string; project_url: string; category: string; technologies: string[] }> = {
@@ -98,10 +99,6 @@ const PortfolioDetail = () => {
       : `${API_BASE.replace(/\/$/, "")}${item.featured_image_url.startsWith("/") ? "" : "/"}${item.featured_image_url}`
     : null;
 
-  useEffect(() => {
-    if (item?.title) document.title = `${item.title} | MR DGN Entertainment`;
-  }, [item?.title]);
-
   if (isLoading && !fallbackItem) {
     return (
       <div className="min-h-screen">
@@ -136,6 +133,13 @@ const PortfolioDetail = () => {
   return (
     <div className="min-h-screen">
       <Header />
+      <SEO
+        title={item.title}
+        description={item.description || item.content || ""}
+        canonical={`/portfolio/${slug}`}
+        ogImage={imageSrc || undefined}
+        ogType="article"
+      />
       <div className="pt-20">
         <section className="py-12 bg-gradient-to-br from-primary/5 via-background to-secondary/5">
           <div className="container mx-auto px-4 max-w-4xl">
